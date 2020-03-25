@@ -1,0 +1,13 @@
+.aside-links {
+  margin: 24px 0 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.aside-links > li {
+  cursor: pointer;
+}
+
+.aside-links > li > span {
+  font-size: 16px;
+}

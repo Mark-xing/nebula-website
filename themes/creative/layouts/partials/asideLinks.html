@@ -1,0 +1,8 @@
+<ul class="aside-links">
+  {{ range .Site.Params.links }}
+    <li onclick="window.open('{{.link}}')">
+      <span>{{.text}}</span>
+      <span class="glyphicon glyphicon-{{.icon}}"></span>
+    </li>
+  {{ end }}
+</ul>

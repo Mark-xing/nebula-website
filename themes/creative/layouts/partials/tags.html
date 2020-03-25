@@ -1,0 +1,19 @@
+<div class="tags-block">
+  <h3 class="glyphicon glyphicon-tag">{{.Site.Params.tags.title}}</h3>
+  <ul class="blog-tags">
+    <li class="col-md-12">
+      <a
+        href="{{"/posts" | relLangURL }}"
+        class="{{if in $.Permalink "post"}}active{{end}}"
+      >全部</a>
+    </li>
+    {{ range $key, $value := .Site.Taxonomies.tags }}
+      <li>
+        <a
+          href="{{ "/" | relLangURL}}tags/{{ $key | urlize}}"
+          class="{{if in $.Permalink $key}}active{{end}}"
+        >{{ $key }}</a>
+      </li>
+    {{ end }}
+  </ul>
+</div>

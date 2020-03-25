@@ -1,0 +1,40 @@
+.tags-block {
+  overflow: hidden;
+}
+.tags-block h3:before {
+  position: relative;
+  top: 4px;
+  margin-right: 8px;
+}
+
+
+.tags-block .blog-tags {
+  padding: 0;
+}
+.blog-tags li {
+  margin: 4px;
+  padding: 0px;
+  list-style: none;
+  display: inline-block;
+}
+
+.blog-tags li a {
+  padding: 0px 4px;
+  display: inline-block;
+  font-size: 18px;
+  color: #060812;
+  border-radius:1px;
+  border:1px solid rgba(205,209,227,1);
+}
+
+.blog-tags li a.active {
+  color: #fff;
+  background: rgba(0,128,255,1);
+  border: 1px solid rgba(205,209,227,1);
+}
+
+@media(max-width: 767px) {
+  .blog-side-bar {
+    display: none;
+  }
+}

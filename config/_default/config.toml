@@ -1,0 +1,11 @@
+baseurl = "https://nebula-graph.io"
+title = "Nebula Graph  - An Open Source, Distributed and High Performant Graph Database"
+theme = "creative"
+googleAnalytics = ""
+DefaultContentLanguage = "default"  ###judge browser language 
+defaultContentLanguageInSubdir = false
+
+[languages]
+################ init language Config ################
+  [languages.default]
+    contentDir = "content/default"

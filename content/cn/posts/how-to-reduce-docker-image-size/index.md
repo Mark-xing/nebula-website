@@ -2,6 +2,8 @@
 title: "前端 Docker 镜像体积优化"
 date: 2020-02-11
 description: "本文主要来讲述下开源的分布式图数据库 Nebula Graph 是如何将 Docker 应用到可视化界面中，并将镜像体积从 1.3G 减到 0.3G 。"
+tags: ["最佳实践"]
+author: Jerry
 ---
 
 # 前端 Docker 镜像体积优化

@@ -1,0 +1,8 @@
+[[carousels]]
+  banner = "https://nebula-blog.azureedge.net/nebula-blog/PotW.png"
+  description = "test1"
+  link = "/cn/posts/github-action-automating-project-process/"
+[[carousels]]
+  banner = "https://nebula-blog.azureedge.net/nebula-blog/Action01.png"
+  description = "test2"
+  link = "/cn/posts/github-action-automating-project-process/"
