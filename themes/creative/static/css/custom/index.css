@@ -9,6 +9,7 @@
 @import url('./listSideBar.css');
 @import url('./carousel.css');
 @import url('./asideLinks.css');
+@import url('./singleSideBar.css');
 
 main {
   height: 100%;

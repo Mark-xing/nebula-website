@@ -1,0 +1,97 @@
+ /*导航*/
+ .J-blog-anchor {
+  margin-top: 34px;
+  line-height: 1.5;
+  z-index: 2;
+  background: #fff;
+}
+
+.J-blog-anchor p {
+  font-size: 18px;
+  color: #060812;
+  margin: 0 0 0.3rem 0;
+  text-align: right;
+}
+
+.J-blog-anchor .AnchorContent {
+  padding: 6px 0px;
+  overflow: auto;
+  width: 240px;
+}
+
+.J-blog-anchor li {
+  font-size: 16px;
+  list-style: none;
+}
+
+.J-blog-anchor li .nav_item {
+  padding: 3px;
+}
+
+.J-blog-anchor li .item_h1 {
+  margin-left: 0rem;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.75;
+}
+
+.J-blog-anchor li .item_h2 {
+  margin-left: 1em;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.75;
+}
+
+.J-blog-anchor li .item_h3 {
+margin-left: 2em;
+font-size: 12px;
+font-weight: 500;
+line-height: 1.75;
+}
+.J-blog-anchor li .nav_item{
+  color: #060812;
+}
+
+
+.J-blog-anchor li .nav_item {
+  position: relative;
+}
+
+.J-blog-anchor li .nav_item::before {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: block;
+  width: 4px;
+  height: 4px;
+  background: #000;
+  border-radius: 50%;
+}
+
+.J-blog-anchor li .nav_item.current {
+text-decoration: underline;
+}
+
+#AnchorContentToggle {
+  font-size: 16px;
+  font-weight: normal;
+  display: inline-block;
+  line-height: 1.5;
+  font-style: normal;
+  padding: 0;
+}
+
+.J-blog-anchor a:hover {
+text-decoration: underline;
+}
+
+.J-blog-anchor a {
+  text-decoration: none;
+}
+@media(max-width: 768px) {
+  .J-blog-anchor{
+  display: none;
+  }
+}

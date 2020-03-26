@@ -204,12 +204,15 @@ contentDir = "content/cn"
   # Tags
   [params.tags]
     title = "标签"
+    all = "全部"
 
   [[params.links]]
     text = "去 Github 点 star"
     link = "https://github.com/vesoft-inc/nebula"
-    icon = "star" # icon: https://getbootstrap.com/docs/3.3/components/#glyphicons
+    image = "/images/good.png"
   [[params.links]]
     text = "订阅 RSS"
     link = "https://nebula-graph.io/en/posts/index.xml"
-    icon = "hand-right"
+    image = "/images/rss.png"
+  [params.share]
+    title = "分享"

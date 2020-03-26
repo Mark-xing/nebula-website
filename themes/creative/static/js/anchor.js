@@ -37,12 +37,9 @@ $(document).ready(function () {
                         return;
                 }
                 var anchorTitle = isEnglish ? "Contents▲" : "目录▲";
-                $("body").prepend('<div class="BlogAnchor">' +
-                        '<p>' +
-                        '<b id="AnchorContentToggle" title="收起" style="cursor:pointer;">' + anchorTitle + '</b>' +
-                        '</p>' +
-                        '<div class="AnchorContent" id="AnchorContent"> </div>' +
-                        '</div>');
+                $(".J-blog-anchor").prepend(
+                        '<p id="AnchorContentToggle" title="收起" style="cursor:pointer;">' + anchorTitle + '</p>' +
+                        '<ul class="AnchorContent" id="AnchorContent"> </ul>');
 
                 var vH1Index = 0;
                 var vH2Index = 0;
@@ -73,7 +70,7 @@ $(document).ready(function () {
                         var originText = $(item).text();
 
                         $("#AnchorContent").css('max-height', ($(window).height() - 180) + 'px');
-                        $("#AnchorContent").append('<li><a class="nav_item ' + className + ' anchor-link" onclick="return false;" href="#" link="#wow' + id + '">' + name + " · " + originText + '</a></li>');
+                        $("#AnchorContent").append('<li><a class="nav_item ' + className + ' anchor-link" onclick="return false;" href="#" link="#wow' + id + '">' + originText + '</a></li>');
                 });
 
                 $("#AnchorContentToggle").click(function () {
@@ -91,7 +88,7 @@ $(document).ready(function () {
                         $("html,body").animate({ scrollTop: $($(this).attr("link")).offset().top - 50 }, 500);
                 });
 
-                var headerNavs = $(".BlogAnchor li .nav_item");
+                var headerNavs = $(".J-blog-anchor li .nav_item");
                 var headerTops = [];
                 $(".wow_head").each(function (i, n) {
                         headerTops.push($(n).offset().top);
@@ -101,7 +98,7 @@ $(document).ready(function () {
                         $.each(headerTops, function (i, n) {
                                 var distance = n - scrollTop;
                                 if (distance >= 0) {
-                                        $(".BlogAnchor li .nav_item.current").removeClass('current');
+                                        $(".J-blog-anchor li .nav_item.current").removeClass('current');
                                         $(headerNavs[i]).addClass('current');
                                         return false;
                                 }
@@ -109,7 +106,7 @@ $(document).ready(function () {
                 });
 
                 if (!showNavBar) {
-                        $('.BlogAnchor').hide();
+                        $('.J-blog-anchor').hide();
                 }
                 if (!expandNavBar) {
                         $(this).html("目录▼");

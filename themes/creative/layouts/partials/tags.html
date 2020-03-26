@@ -5,13 +5,19 @@
       <a
         href="{{"/posts" | relLangURL }}"
         class="{{if in $.Permalink "post"}}active{{end}}"
-      >全部</a>
+      >{{.Site.Params.tags.all}}</a>
     </li>
     {{ range $key, $value := .Site.Taxonomies.tags }}
       <li>
         <a
           href="{{ "/" | relLangURL}}tags/{{ $key | urlize}}"
-          class="{{if in $.Permalink $key}}active{{end}}"
+          class="
+            {{if in $.Permalink $key}}
+              active
+            {{ else if in $.Params.tags $key }}
+              active
+            {{end}}
+          "
         >{{ $key }}</a>
       </li>
     {{ end }}

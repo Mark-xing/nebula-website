@@ -2,7 +2,7 @@
   {{ range .Site.Params.links }}
     <li onclick="window.open('{{.link}}')">
       <span>{{.text}}</span>
-      <span class="glyphicon glyphicon-{{.icon}}"></span>
+      <img src="{{.image}}" width="16px" height="16px" />
     </li>
   {{ end }}
 </ul>

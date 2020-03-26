@@ -19,8 +19,10 @@
 }
 
 .blog-tags li a {
-  padding: 0px 4px;
+  padding: 0px 10px;
+  height: 24px;
   display: inline-block;
+  line-height: 24px;
   font-size: 18px;
   color: #060812;
   border-radius:1px;

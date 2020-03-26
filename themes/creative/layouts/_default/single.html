@@ -47,10 +47,26 @@
 {{ define "main" }}
   <main class="blog-detail">
     <div class="wrapper">
-      <section class="blog-content">
-        {{- .Content }}
-        <div id='discourse-comments'></div>
-      </section>
+      <div class="inner">
+        <section class="blog-content">
+          {{- .Content }}
+          <p class="star-ads">
+            {{ if eq $.Site.Language.Lang "en" }}
+              <span>Do you like this post? If yes, just give me a</span>
+              <span class="glyphicon glyphicon-star"></span>
+              <span>star:</span>
+              <a href="https://github.com/vesoft-inc/nebula">https://github.com/vesoft-inc/nebula</a>
+            {{ else }}
+              <span>你喜欢这篇文章吗? 喜欢的话，给我们点个</span>
+              <span class="glyphicon glyphicon-star"></span>
+              <span>star 吧:</span>
+              <a href="https://github.com/vesoft-inc/nebula">https://github.com/vesoft-inc/nebula</a>
+            {{ end }}
+          </p>
+          <div id='discourse-comments'></div>
+        </section>
+        {{ partial "singleSideBar.html" .}}
+      </div>
     </div>
     {{ if .Site.Params.footer }}
       {{ partial "footer.html" . }}

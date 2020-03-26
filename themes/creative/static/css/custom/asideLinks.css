@@ -5,9 +5,15 @@
 }
 
 .aside-links > li {
+  display: flex;
+  align-items: center;
   cursor: pointer;
 }
 
 .aside-links > li > span {
   font-size: 16px;
+}
+
+.aside-links li img {
+  margin-left: 16px;
 }
