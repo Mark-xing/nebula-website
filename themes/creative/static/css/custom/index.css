@@ -16,3 +16,13 @@ main {
   height: 100%;
   width: 100%;
 }
+
+.go-ahead {
+  position: fixed;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  bottom: 10%;
+  right: 20px;
+  cursor: pointer;
+}

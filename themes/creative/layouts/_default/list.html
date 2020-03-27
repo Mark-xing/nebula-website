@@ -1,5 +1,5 @@
 {{ define "main" }}
-<main class="blog-list">
+<main id="top" class="blog-list">
     <div class="wrapper">
         <div class="inner">
             <ul class="list">
@@ -89,6 +89,7 @@
             </ul>
             {{ partial "listSideBar.html" .}}
         </div>
+        <img onclick="location.href='#top'" class="go-ahead" src="/images/up.png" >
     </div>
     {{ if .Site.Params.footer }}
         {{ partial "footer.html" . }}

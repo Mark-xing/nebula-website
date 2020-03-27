@@ -24,6 +24,8 @@ contentDir = "content/cn"
   postsTitle = "最新 Nebula Graph 博文"
   readAll ="阅读全文"
 
+  backBlogs = "返回到博客页"
+
   # Navigation
   [params.navigation]
     brand = "NebulaGraph"

@@ -34,7 +34,7 @@ Taking the above into consideration, **Nebula Graph** now supports indexing f
 
 This post gives a detailed introduction to the design of **Nebula Graph** indexing.
 
-If you prefer to the implementation part, feel free to skip the chapters in between and go directly to [Nebula Graph indexing in practice](#wow1_6) section. 
+If you prefer to the implementation part, feel free to skip the chapters in between and go directly to [Nebula Graph indexing in practice](#nebula-graph-indexing-in-practice) section. 
 
 ## Core concepts to understand Nebula Graph indexing
 
@@ -103,7 +103,7 @@ The index structure of vertex is shown in the table above, below is detailed exp
 
 **IndexId**: The identifier of an index. You can get the meta data of a specified index through indexId, for example, the TagId associated with the index, and the information of the column where index is located.
 
-**Index binary**: The core storage structure of an index. It is the byte encoding of the values of all index related columns. Detailed structure will be explained in the [Index Binary](#wow1_5_2) section.
+**Index binary**: The core storage structure of an index. It is the byte encoding of the values of all index related columns. Detailed structure will be explained in the [Index Binary](#index-binary) section.
 
 **VertexId**: The identifier of a vertex. In real use, a vertex may have multiple lines of data due to different versions. However, there is no version for index. **Index always maps to the tag of the latest Version**.
 

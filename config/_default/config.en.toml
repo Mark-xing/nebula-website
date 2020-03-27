@@ -27,6 +27,8 @@ contentDir = "content/en"
   postsTitle = "Latest Nebula Graph Posts"
   readAll ="Read"
 
+  backBlogs = "Back to blog home"
+
   # Navigation
   [params.navigation]
     brand = "NebulaGraph"
@@ -242,8 +244,7 @@ contentDir = "content/en"
     link = "https://nebula-graph.io/en/posts/index.xml"
     image = "/images/rss.png"
   [params.share]
-    title = "Share"
-  [params.ads]
+    title = "Share Post"
     star = "Do you like this post? If yes, just give me a <span class=\"glyphicon glyphicon-star\"></span> star: https://github.com/vesoft-inc/nebula"
 
     
