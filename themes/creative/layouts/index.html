@@ -11,7 +11,10 @@
         {{ if .Site.Params.features.list }}
         {{ partial "features.html" . }}
         {{ end }}
-    
+
+        {{ if .Site.Params.blog }}
+        {{ partial "latestPosts.html" . }}
+        {{ end }}
         <!-- {{ if .Site.Data.projects }}
         {{ partial "portfolio.html" . }}
         {{ end }}

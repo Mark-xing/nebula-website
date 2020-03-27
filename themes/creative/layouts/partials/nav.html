@@ -17,10 +17,13 @@
         </div>
         {{ "<!-- Collect the nav links, forms, and other content for toggling -->" | safeHTML }}
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav" id="nav">
+                <li class="github-star" id="github-star">
+                    <a class="github-button" href="https://github.com/vesoft-inc/nebula" data-size="large" data-show-count="true" aria-label="Star vesoft-inc/nebula on GitHub">Star</a>
+                </li>
                 {{ range .Site.Params.navigation.links }}
                     {{ if .links }}
-                        <li class="dropdown">
+                        <li class="dropdown navbar-right">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                                 <span class="{{.icon}}">{{ .title }}</span>
                                 <span class="caret"></span>
@@ -35,8 +38,12 @@
                             <!-- <a class="page-scroll" href="#about">{{ .title }}</a> -->
                         </li>
                     {{ else }}
-                        <li>
-                            <a href={{.link}} target="{{.target}}">{{.title}}</a>
+                        <li id="{{.calss}}">
+                          {{if .link}}
+                            <a href={{.link}} target="{{.target}}" >{{.title}}</a>
+                          {{else}}
+                            <a href={{.id}} target="{{.target}}" onclick="contactUsClick()">{{.title}}</a>
+                          {{end}}
                         </li>
                     {{ end }}
                 <!-- {{ if and .Site.Params.about .Site.Params.navigation.links.about }}
@@ -65,12 +72,15 @@
                     </li>
                 {{ end }} -->
                 {{ end }}
-                <li class="github-star">
-                    <a class="github-button" href="https://github.com/vesoft-inc/nebula" data-size="large" data-show-count="true" aria-label="Star vesoft-inc/nebula on GitHub">Star</a>
-                </li>
             </ul>
         </div>
         {{ "<!-- /.navbar-collapse -->" | safeHTML }}
     </div>
     {{ "<!-- /.container-fluid -->" | safeHTML }}
 </nav>
+<script>
+function contactUsClick() {
+    $('html,body').animate({scrollTop: document.documentElement.scrollHeight}, 800)
+    return false;
+}
+</script>

@@ -1,0 +1,72 @@
+{{ "<!-- latest-posts -->" | safeHTML }}
+<section id="latest-posts">
+    <div class="latest-posts">
+        <p class="posts-title posts-bolg-title">{{ .Site.Params.postsTitle }}</p>
+        {{ range .Pages }}
+            <div>
+            {{ range first 1  .Pages }}
+                    <div class="first">
+                        {{ with .Resources }}
+                            {{ with .GetMatch "{*.jpg,*.png,*.jpeg}" }}
+                                {{ $cover := .Resize "450x" }}
+                                {{ with $cover }}
+                                    <img src="{{ .Permalink }}"/>      
+                                {{ end }} 
+                            {{ else }}
+                                {{ with .GetMatch "{thumbnail.png}" }}
+                                    {{ $cover := .Resize "450x" }}
+                                    {{ with $cover }}
+                                        <img src="{{ .Permalink }}"/>      
+                                    {{ end }}
+                                {{ end }}
+                            {{ end }}
+                        {{ end }}
+                        <div id="first-rihgt">
+                            <a class="title-content" href="{{.Permalink}}">{{.Title}} </a>
+                            {{ with .Description }}
+                                <p class="pc-content">{{ . | truncate 200 }} </p>
+                            {{ else }}
+                                <p class="pc-content">{{ .Summary | truncate 200 }}</p>
+                            {{ end }}
+                            <a id="read-content" href="{{.Permalink}}">{{.Site.Params.readAll}} </a>
+                        </div>
+                    </div>
+            {{ end }}
+        {{ end }}
+
+        {{ range .Pages }}
+                <div id="content">
+            {{ range first 2 (after 1 .Pages) }}
+                {{ with .Resources }}
+                        <div id="content-detail">
+                            {{ with .GetMatch "{*.jpg,*.png,*.jpeg}" }}
+                                {{ $cover := .Resize "150x" }}
+                                {{ with $cover }}
+                                    <img src="{{ .Permalink }}"/>      
+                                {{ end }} 
+                            {{ else }}
+                                {{ with .GetMatch "{thumbnail.png}" }}
+                                    {{ $cover := .Resize "450x" }}
+                                    {{ with $cover }}
+                                        <img src="{{ .Permalink }}"/>      
+                                    {{ end }}
+                                {{ end }}
+                            {{ end }}
+                        {{ end }}
+                    <div id="content-left">
+                        <a class="posts-title" href="{{.Permalink}}">{{.Title| truncate 30}}</a>
+                        {{ with .Description }}
+                            <p class="pc-content">{{ . | truncate 150 }} </p>
+                        {{ else }}
+                            <p class="pc-content">{{ .Summary | truncate 150 }}</p>
+                        {{ end }}
+                        <a id="read-all" href="{{.Permalink}}">{{.Site.Params.readAll}}</a>
+                    </div>
+                    </div>
+                <div>
+            </div>
+            {{ end }}
+        {{ end }}
+    </div>
+
+</section>

@@ -1,29 +1,47 @@
 {{ "<!-- FOOTER -->" | safeHTML }}
-<footer class="container-fluid foot-wrap">
+<footer class="container-fluid foot-wrap"  name="{{.Site.Params.footer.name}}">
     <!--采用container，使得页尾内容居中 -->
         <div class="container">
+        <p align="center" class="statement">
+            Nebula Graph will respect your data privacy per our Privacy Policy
+        </p>
             <div class="row">
-                <div class="row-content col-lg-6 col-sm-6 col-xs-6">
+                <div class="row-content col-lg-4 col-sm-4 col-xs-4">
+                    <h3 >Community</h3>
+                    <ul>
+                         {{ range .Site.Params.footer.community }}
+                            {{ range  .links }}
+                                <li>
+                                    <img src="/img/{{.pic}}"/>
+                                    <a href="{{.link}}">
+                                        {{.title}}
+                                    </a>
+                                </li>
+                            {{ end }}
+                        {{ end }}
+                    </ul>
+                </div>
+                <div class="row-content col-lg-4 col-sm-4 col-xs-4">
                     <h3>{{ .Site.Params.footer.social.title }}</h3>
-                    <ul class="social">
+                    <ul>
                         {{ range .Site.Params.footer.social.links }}
-                            <li>
+                            <li >
+                                <img src="/img/{{.pic}}"/>
                                 <a href="{{.link}}" title="{{.title}}" data-toggle="modal"  data-target="{{.id}}">
-                                    <span class="{{.class}}"></span>
+                                    {{.title}}
                                 </a>
                             </li>
                         {{ end }}
                     </ul>
-                    <!-- <p class="row-content-text">Keep up with the latest news from Nebula Graph</p> -->
-                    <p class="row-content-text">Nebula Graph will respect your data privacy per our Privacy Policy</p>
                 </div>
-                <div class="row-content col-lg-6 col-sm-6 col-xs-6">
-                    <h3>Community</h3>
+                 <div class="contactus row-content col-lg-4 col-sm-4 col-xs-4">
+                    <h3>Contact Us</h3>
                     <ul>
-                         {{ range .Site.Params.footer.community }}
+                         {{ range .Site.Params.footer.contactus }}
                             {{ range .links }}
                                 <li>
-                                    <a href="{{.link}}">
+                                    <img src="/img/{{.pic}}"/>
+                                    <a href="{{.link}}" data-toggle="modal"  data-target="{{.id}}">
                                         {{.title}}
                                     </a>
                                 </li>
@@ -48,17 +66,31 @@
             </div><!--/.row -->
         </div><!--/.container-->
 
-        <p align="center" style="margin-top: 20px;color:#878B91;">
-            Copyright &copy;2020 VESoft Inc
+        <p align="left" style="font-size: 16px">
+           <img src="/images/VEsoft.png" style="margin-right: 10px"> Copyright &copy;2020 VESoft Inc
         </p>
-
+    <!-- modal（公众号） -->
+    <div class="modal fade" id="myGongzhonghaoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+               
+                <div class="modal-body wechat">
+                    <img src="/images/gonggonghaoCODE.jpg">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- modal（WeChat） -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                
                 <div class="modal-body wechat">
-                    <img src="../../img/wechat.png">
+                    <img src="/images/wechat.png">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">close

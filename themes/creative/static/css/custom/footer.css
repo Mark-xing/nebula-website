@@ -1,15 +1,32 @@
 .foot-wrap {
     background-color: #000;
+    background-image: url("../../img/footer_bg.png");
+    background-repeat:no-repeat;
+    background-position:bottom;
+    background-size: 100%;
+    color:rgba(255, 255, 255, 1);
+    font-family:"MicrosoftSansSerif";
 }
 
 .row-content >h3 {
-    color: hsla(0,0%,100%,.9);
-    opacity: .6;
-    font-size: 20px;
+    opacity: .8;
+    font-size: 18px;
     font-weight: 600;
     line-height: 24px;
     text-align: center;
-    margin: 40px 0 30px 34px;
+    margin: 10px 0 10px 34px;
+}
+
+.statement{
+    font-size:16px;
+    line-height:30px;
+    letter-spacing:1px;
+    padding: 30px 0 20px;
+    text-align: center;
+}
+.row-content h3{
+    text-align: left;
+    padding-left: 25%;
 }
 
 .row-content .row-content-text {
@@ -21,46 +38,29 @@
 }
 
 .row-content >ul {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 20px;
+    margin-bottom: 0;
 }
 
 .row-content >ul >li {
     list-style: none;
-    line-height: 48px;
-    text-align: center;
+    line-height: 40px;
+    text-align: left;
+    padding-left: 20%;
+    font-weight:400;
+}
+.row-content>ul>li  img{
+    margin-right: 10px;
 }
 .row-content >ul >li >a {
     color: hsla(0,0%,100%,.9);
+    text-decoration: none !important;
 }
 .row-content >ul >li > a:hover {
-    text-decoration: none;
     color: #c1ba62;
 }
 
-ul.social {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    display: flex;
-    flex-direction:row;
-    flex-wrap:wrap;
-}
-
-ul.social >li {
-    flex: 1;
-}
-ul.social >li >a {
-    display: inline-block;
-    font-size: 30px;
-    line-height: 50px;
-    border-radius: 36px;
-    color: #fff;
-}
-ul.social >li >a:hover {
-    text-decoration: none;
-    background-color: "@link-hover-color";
-}
 .wechat {
     text-align: center;
 }
@@ -75,6 +75,12 @@ ul.social >li >a:hover {
     .social >li {
         min-width: 50%;
     }
+    .statement{
+        padding: 20px 0 0;
+    }
+    .row-content h3{
+        font-size: 16px;
+    }
     .row-content .row-content-text {
         font-size: 14px;
         text-align: center;
@@ -82,9 +88,19 @@ ul.social >li >a:hover {
     }
     .row-content >ul{
         padding: 0;
-        font-size: 16px;
+        font-size: 14px;
+    }
+    .row-content>ul>li img {
+        margin-right: 2px;
     }
     .row-content>h3 {
         margin: 25px 0;
+    }
+    .row-content{
+        width: 50%;
+    }
+    .contactus{
+        margin-top: -120px;
+        margin-bottom: 10px;
     }
 }

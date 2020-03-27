@@ -24,40 +24,29 @@ contentDir = "content/en"
   favicon = "favicon.ico"
 
   blogTitle = "Nebula Graph Blog"
-
+  postsTitle = "Latest Nebula Graph Posts"
+  readAll ="Read"
 
   # Navigation
   [params.navigation]
     brand = "NebulaGraph"
 
     [[params.navigation.links]]
-      title = "Home"
-      link = "/"
+      title = "Docs"
+      link = "https://docs.nebula-graph.io/"
     [[params.navigation.links]]
-      title = "Solutions"
-      [[params.navigation.links.links]]
-        title = "Why Nebula Graph"
-        link = "/en/#features"
-      [[params.navigation.links.links]]
-        title = "Get Started"
-        link = "https://docs.nebula-graph.io/manual-EN/1.overview/2.quick-start/1.get-started/#batch-inserting"
-        target = "_blank"
+      title = "Blog"
+      link = "/en/posts"
+    [[params.navigation.links]]
+      title = "Forum"
+      link = "https://discuss.nebula-graph.io/"
+    [[params.navigation.links]]
+      title = "Contact Us"
+      id = "#contact_us"
       # [[params.navigation.links.links]]
       # 	title = "Use cases"
     # [[params.navigation.links]]
     # 	title = "Customers"
-    [[params.navigation.links]]
-      title = "Resources"
-      [[params.navigation.links.links]]
-        title = "Blog"
-        link = "/en/posts"
-      [[params.navigation.links.links]]
-        title = "Docs"
-        link = "https://docs.nebula-graph.io/"
-    [[params.navigation.links]]
-      title = "Forum"
-      link = "https://discuss.nebula-graph.io/"
-      target = "_blank"
     [[params.navigation.links]]
       icon = "glyphicon glyphicon-globe"
         [[params.navigation.links.links]]
@@ -66,78 +55,96 @@ contentDir = "content/en"
         [[params.navigation.links.links]]
           title = "中文"
           link = "/cn"
+    [[params.navigation.links]]
+        title = "Get Started"
+        link = "https://docs.nebula-graph.io/manual-EN/1.overview/2.quick-start/1.get-started/#batch-inserting"
+        calss= "navbar-right"
+        target = "_blank"
+
   # Hero section
   [params.header]
     # To change the background of the header section, replace the 'header.jpg' at './static/img' with your own.
-    slogan     = "Nebula Graph"
-    subtitle   = "A truly distributed, linearly scalable, lightning-fast graph database."
+    slogan     = "A distributed, scalable, lightning-fast graph database"
+    subtitle   = "Nebula Graph is an open-source graph database capable of hosting super large scale graphs with dozens of billions of vertices (nodes) and trillions of edges, with milliseconds of latency."
     buttonText = "Get Started"
+    downloadText = "DOWNLOAD"
+    class = "download"
 
   # Footer section
   [params.footer]
+    name = "contact_us"
     [params.footer.social]
       title = "Follow us on"
       [[params.footer.social.links]]
           title = "Twitter"
           class = "icon fa fa-twitter"
+          pic = "twitter.png"
           link = "https://twitter.com/NebulaGraph"
           target = "_blank"
       [[params.footer.social.links]]
           title = "WeiBo"
           class = "icon fa fa-weibo"
+          pic = "weibo.png"
           link = "https://weibo.com/nebulagraph"
           target = "_blank"
       [[params.footer.social.links]]
           title = "LinkedIn"
           class = "icon fa fa-linkedin"
+          pic = "linkedin.png"
           link = "https://www.linkedin.com/company/vesoft-nebula-graph/"
           target = "_blank"
       [[params.footer.social.links]]
           title = "YouTube"
           class = "icon fa fa-youtube"
+          pic = "youtube.png"
           link = "https://www.youtube.com/channel/UC73V8q795eSEMxDX4Pvdwmw"
           target = "_blank"
       [[params.footer.social.links]]
           title = "FaceBook"
           class = "icon fa fa-facebook"
+          pic = "facebook.png"
           link = "https://www.facebook.com/NebulaGraph/"
           target = "_blank"
       [[params.footer.social.links]]
-          title = "WeChat"
+          title = "Official Accounts"
           class = "icon fa fa-wechat"
-          id = "#myModal"
+          pic = "gongzhonghao.png"
+          id = "#myGongzhonghaoModal"
           target = "_blank"
     [[params.footer.community]]
       title = "Community"
       [[params.footer.community.links]]
           title = "GitHub"
+          pic = "github.png"
           link = "https://github.com/vesoft-inc/nebula"
           target = "_blank"
       [[params.footer.community.links]]
           title = "Forum"
+          pic = "forum.png"
           link = "https://discuss.nebula-graph.io/"
           target = "_blank"
       [[params.footer.community.links]]
           title = "Slack"
+          pic = "slack.png"
           link = "https://join.slack.com/t/nebulagraph/shared_invite/enQtNjIzMjQ5MzE2OTQ2LTM0MjY0MWFlODg3ZTNjMjg3YWU5ZGY2NDM5MDhmOGU2OWI5ZWZjZDUwNTExMGIxZTk2ZmQxY2Q2MzM1OWJhMmY#"
           target = "_blank"
-    [[params.footer.company]]
-      title = "Company"
-      [[params.footer.company.links]]
-          title = "About"
-          link = "https://github.com/vesoft-inc/nebula"
+    [[params.footer.contactus]]
+      title = "Contact Us"
+      [[params.footer.contactus.links]]
+          title = "(+86) 0571-28120658"
+          link = ""
+          pic = "iphone.png"
           target = "_blank"
-      [[params.footer.company.links]]
-          title = "News"
-          link = "https://weibo.com/nebulagraph"
+      [[params.footer.contactus.links]]
+          title = "info@vesoft.com"
+          link = ""
+          pic = "email.png"
           target = "_blank"
-      [[params.footer.company.links]]
-          title = "Contact"
-          link = "https://www.linkedin.com/company/vesoft-nebula-graph/"
-          target = "_blank"
-      [[params.footer.company.links]]
-          title = "Career"
-          link = "https://www.linkedin.com/company/vesoft-nebula-graph/"
+      [[params.footer.contactus.links]]
+          title = "WeChat"
+          link = ""
+          id = "#myModal"
+          pic = "weixin.png"
           target = "_blank"
     
 
@@ -154,43 +161,59 @@ contentDir = "content/en"
       [[params.features.list]]
         pic = "feature1.png"
         title = "Open Source"
-        description = "We are looking forward to collaborating with the community to popularize and promote the graph database."
+        link = "https://discuss.nebula-graph.io/"
+        description1 = "We are looking forward to"
+        description2 = "collaborating with the community"
+        description3 = "to popularize and promote the graph database."
 
       [[params.features.list]]
         pic = "feature2.png"
         title = "High Performance"
-        description = "Nebula Graph provides low latency read and write, while still maintaining high throughput."
+        description1 = "Nebula Graph provides low latency read and write, while still maintaining high throughput."
 
       [[params.features.list]]
         pic = "feature3.png"
         title = "SQL-like"
-        description = "Nebula Graph's SQL-like query language is easy to understand and powerful enough to meet complex business needs."
+        link = "https://docs.nebula-graph.io/manual-EN/1.overview/1.concepts/2.nGQL-overview/"
+        description1 = "Nebula Graph's SQL-like "
+        description2 = "query language"
+        description3 = "is easy to understand and powerful enough to meet complex business needs."
 
       [[params.features.list]]
         pic = "feature4.png"
         title = "Secure"
-        description = "With role-based access control, Nebula Graph only allows authenticated access."
+        description1 = "With role-based access control, Nebula Graph only allows authenticated access."
 
       [[params.features.list]]
         pic = "feature5.png"
         title = "Scalable"
-        description = "With shared-nothing distributed architecture, Nebula Graph offers linearly scalability."
+        link = "https://nebula-graph.io/en/posts/nebula-graph-architecture-overview/"
+        description1 = "With shared-nothing "
+        description2 = "distributed architecture"
+        description3 = ", Nebula Graph offers linearly scalability."
 
       [[params.features.list]]
         pic = "feature6.png"
         title = "Extensible"
-        description = "Nebula Graph supports multiple storage engine types. The query language can be extended to support new algorithms."
+        link = "https://nebula-graph.io/en/posts/nebula-graph-storage-engine-overview/"
+        description1 = "Nebula Graph supports multiple  "
+        description2 = "storage engine"
+        description3 = " types. The query language can be extended to support new algorithms."
 
       [[params.features.list]]
         pic = "feature7.png"
         title = "Transactional"
-        description = "With distributed ACID transaction support, Nebula Graph ensures data integrity."
+        description1 = "With distributed ACID transaction support, Nebula Graph ensures data integrity."
 
       [[params.features.list]]
         pic = "feature8.png"
         title = "Highly Available"
         description = "Nebula Graph guarantees high availability even in case of failures."
-
+        link = "https://nebula-graph.io/en/posts/nebula-graph-snapshot-introduction/"
+        description1 = "With horizontal scalability and"
+        description2 = "snapshot"
+        description3 = " , Nebula Graph guarantees high availability even in case of failures."
+    
   # [params.portfolio.modal]
   #       client = "Client"
   #       date = "Date"

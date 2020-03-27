@@ -1,0 +1,137 @@
+#latest-posts {
+  padding:40px 0;
+  background: #FCFBFF;
+}
+.latest-posts {
+    width: 960px;
+    margin: 0 auto;
+    font-size: 16px;
+    font-family: "PingFangSC-Regular,PingFang SC";
+    font-weight: 400;
+    color: rgba(63, 64, 71, 1);
+    line-height: 28px;
+    padding-top: 0;
+    background: #FCFBFF;
+}
+.latest-posts .picture {
+  padding: 0 10px;
+}
+.posts-title{
+  font-size:36px;
+  font-family:"PingFangSC-Regular,PingFang SC";
+  color:rgba(6, 8, 18, 1);
+  line-height:40px;
+  text-decoration: none !important;
+}
+.posts-bolg-title{
+  text-align: center;
+  margin-bottom: 60px;
+}
+.first{
+  height: 300px;
+}
+#first-rihgt{
+  position: relative;
+  float: right;
+  width: 490px;
+  height: 300px;
+  padding-left: 20px;
+}
+#content {
+  margin-top: 40px;
+  padding-bottom: 40px;
+}
+#content-detail{
+  height: 135px;
+}
+#content-left {
+  width: 750px;
+  margin-right: 40px;
+  float: left;
+  position: relative;
+}
+
+#read-all {
+  position: absolute;
+  right: 20px;
+  bottom: 0;
+}
+#first-rihgt .pc-content {
+  margin-bottom: 0 !important;
+  margin-top: 20px;
+}
+
+.title-content{
+  font-size:24px;
+  font-family:"PingFangSC-Regular,PingFang SC";
+  font-weight: 400;
+  color:rgba(6, 8, 18, 1);
+  line-height:27px;
+  text-decoration: none !important;
+}
+#first-rihgt .pc-content {
+  margin-top: 30px;
+}
+#read-content{
+  color:rgba(255, 255, 255, 1);
+  line-height:40px;
+  font-size: 20px;
+  display: block;
+  padding: 0 20px;
+  height: 40px;
+  background: #333;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 8px;
+  position: absolute;
+  bottom: 0px;
+}
+@media(max-width: 768px) {
+  .latest-posts {
+    width: 100%;
+  }
+  #content-left{
+    width: 70%;
+    height: 100%;
+    padding:0 5%;
+    margin-right: 0;
+  }
+  .first{
+    height: 100%;
+  }
+  .first img{
+    width: 20%;
+    margin: 10px 5%;
+  }
+  #content-detail img{
+    width: 20%;
+    margin: 10px 5%;
+  }
+  #first-rihgt{
+    width: 70%;
+    height: 100%;
+    padding:0 5%;
+  }
+  .posts-title{
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+  }
+  .title-content{
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+  }
+  .posts-bolg-title{
+    font-size:24px;
+  }
+
+  #first-rihgt .pc-content,
+  #read-content,
+  #read-all {
+    display: none;
+  }
+  #content{
+    padding-bottom: 0;
+  }
+}
