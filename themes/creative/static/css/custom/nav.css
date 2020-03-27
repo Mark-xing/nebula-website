@@ -10,6 +10,10 @@
   min-width: 150px;
 }
 
+.nav>li>a>img {
+    width: 30px;
+}
+
 .navbar-right .dropdown-menu {
   left: -1px !important;
   right: auto;
@@ -60,10 +64,6 @@
     background-image: url('../../img/logo-white.png');
     background-size: cover;
     margin-left: 10px !important;
-  }
-
-  .navbar.affix .navbar-brand {
-    background-image: url('../../img/logo-dart.png');
   }
  
 

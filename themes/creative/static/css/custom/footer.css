@@ -72,14 +72,13 @@
     padding: 0 !important;
 }
 @media(max-width: 768px) {
-    .social >li {
-        min-width: 50%;
-    }
     .statement{
         padding: 20px 0 0;
     }
     .row-content h3{
         font-size: 16px;
+        padding-left: 0;
+        text-align: center;
     }
     .row-content .row-content-text {
         font-size: 14px;
@@ -90,6 +89,10 @@
         padding: 0;
         font-size: 14px;
     }
+    .row-content>ul li {
+        text-align: center;
+        padding-left: 0;
+    }
     .row-content>ul>li img {
         margin-right: 2px;
     }
@@ -97,10 +100,9 @@
         margin: 25px 0;
     }
     .row-content{
-        width: 50%;
+        width: 100%;
     }
     .contactus{
-        margin-top: -120px;
         margin-bottom: 10px;
     }
 }

@@ -167,11 +167,11 @@ header .get-start:hover {
     font-size: 14px;
     margin-top: 10px;
   }
-  #subtitle {
-    margin-bottom: 10px !important;
+  header .header-content #subtitle {
+    margin-bottom: 10px ;
   }
-  #download{
-    margin-left: 0 !important;
+  header #download {
+    margin-left: 0 ;
   }
   .get-start{
     margin-right: 10px;
