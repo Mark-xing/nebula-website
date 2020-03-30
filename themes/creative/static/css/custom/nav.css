@@ -7,7 +7,19 @@
 }
 
 .dropdown-menu {
-  min-width: 150px;
+  min-width: 120px;
+}
+
+.nav>li>a>img {
+    width: 30px;
+}
+
+.nav>li>a>img {
+    width: 30px;
+}
+
+.nav>li>a>img {
+    width: 30px;
 }
 
 .nav>li>a>img {
@@ -26,13 +38,15 @@
   text-decoration: underline;
 }
 #navbar-right {
-    float: right !important;
+  float: right !important;
 }
 #navbar-right a{
   width:100%;
   height:30px !important;
   line-height: 0 !important;
   margin-top: 15px;
+  padding-left: 15px !important;
+  padding-right: 15px !important;
   background:rgba(15, 15, 15, 1);
   box-shadow:1px 1px 1px 0px rgba(0, 128, 255, 1);
   border-radius:15px;
@@ -41,12 +55,6 @@
 .navbar-right{
   margin: 0 15px;
 }
-
- .github-star {
-     display: none;
-     float: right !important;
-     margin-right: 10px;
- }
 
 @media(min-width: 768px) {
   .navbar {
@@ -72,22 +80,30 @@
   }
 
   .navbar-nav {
-    padding-right: 32px;
     height: 60px;
     width: calc(100% - 205px);
     width: -moz-calc(100% - (205px));
     width: -webkit-calc(100% - (205px));
   }
-
+  .navbar-nav>li>.dropdown-menu{
+    padding: 0;
+  }
   .navbar-nav li {
+    padding: 0 15px;
     height: 60px;
     text-align: center;
   }
   .dropdown-menu li{
+    cursor: pointer;
+    padding: 0;
+    background: rgba(0, 128, 255, 1);
     height: 40px !important;
   }
   .dropdown-menu li a{
+    color: #fff;
+    padding: 0;
     line-height: 40px;
+    font-size: 16px;
   }
 
   #nav > li>a {
@@ -95,8 +111,10 @@
     height: 60px;
     line-height: 30px;
     font-weight: 400;
-    font-family:"MicrosoftSansSerif";
+    font-family:"PingFangSC-Regular,PingFang SC";
     color:rgba(187, 188, 196, 1);
+    padding-left: 0;
+    padding-right: 0;
   }
   #nav>li a:hover{
     color:rgba(0, 128, 255, 1)!important;
@@ -105,8 +123,11 @@
 
   .navbar-nav .github-star {
     height: 60px;
-    display: flex;
     align-items: center;
+    display: flex;
+    float: right;
+    margin-right: 10px;
+    padding: 0;
   }
 
   .github-star > span {
@@ -136,6 +157,9 @@
   }
   .navbar-nav .github-star {
     display: none;
+  }
+  .github-star{
+    float: none;
   }
   #navbar-right {
       float: none !important;

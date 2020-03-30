@@ -33,6 +33,7 @@ contentDir = "content/cn"
     [[params.navigation.links]]
       title = "文档"
       link = "https://docs.nebula-graph.io/"
+      target = "_blank"
     [[params.navigation.links]]
       title = "博客"
       link = "/cn/posts"
@@ -43,11 +44,12 @@ contentDir = "content/cn"
     [[params.navigation.links]]
       title = "论坛"
       link = "https://discuss.nebula-graph.io/"
+      target = "_blank"
     [[params.navigation.links]]
       title = "联系我们"
       id = "#contact_us"
     [[params.navigation.links]]
-      icon = "glyphicon glyphicon-globe"
+      pic = "language120x120.png"
         [[params.navigation.links.links]]
           title = "English"
           link = "/en"
@@ -55,8 +57,8 @@ contentDir = "content/cn"
           title = "中文"
           link = "/cn"
     [[params.navigation.links]]
-      title = "开始尝试"
-      link = "https://docs.nebula-graph.io/manual-EN/1.overview/2.quick-start/1.get-started/#batch-inserting"
+      title = "Nebula Studio"
+      link = "https://github.com/vesoft-inc/nebula-web-docker"
       calss= "navbar-right"
 
       target = "_blank"
@@ -155,7 +157,7 @@ contentDir = "content/cn"
           target = "_blank"
       [[params.footer.contactus.links]]
           title = "info@vesoft.com"
-          link = ""
+          link = "mailto:info@vesoft.com"
           pic = "email.png"
           target = "_blank"
       [[params.footer.contactus.links]]

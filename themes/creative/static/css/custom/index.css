@@ -12,6 +12,11 @@
 @import url('./asideLinks.css');
 @import url('./singleSideBar.css');
 
+@font-face {
+    font-family: "PingFangSC-Regular,PingFang SC";
+    src: url('../fonts/PingFang-Medium.ttf')
+}
+
 main {
   height: 100%;
   width: 100%;

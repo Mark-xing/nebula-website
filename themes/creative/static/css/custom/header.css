@@ -1,8 +1,8 @@
 header {
   background-image: url('../../img/index_banner_bg.png');
   background-repeat:no-repeat;
-  background-size: 597px 830px;
-  background-position: 97% 80px;  
+  background-size: 60vh 85vh;
+  background-position: 97% 10vh;  
   background-color: #000;
   height: 640px;
   font-weight: 400;
@@ -14,7 +14,6 @@ header a{
   transform: translateY(0)
 }
 .header-content .header-content-inner{
-  max-width: 960px !important;
   text-align: left;
 }
 .header-content-inner a{
@@ -26,27 +25,27 @@ header a{
   width: 160px;
 }
 header .header-content #title {
-  max-width: 88.75%;
+  max-width: 100%;
   text-transform: none;
-  font-size:48px;
+  font-size: 60px;
   font-weight: 600;
   color:rgba(255, 255, 255, 1);
-  line-height: 54px;
+  line-height: 90px;
   letter-spacing:2px;
   text-align: left;
-  font-family:"MicrosoftSansSerif";
+  font-family:"PingFangSC-Regular,PingFang SC";
   margin: 0 ;
 }
 header .header-content #subtitle {
-  max-width: 56.97% ;
+  max-width: 75% ;
   text-transform: none;
-  font-size: 18px ;
+  font-size: 30px ;
   color: rgba(255, 255, 255, 1);
-  line-height: 24px;
+  line-height: 45px;
   font-weight: 400;
   letter-spacing: 1px;
   text-align: left;
-  font-family: "MicrosoftSansSerif";
+  font-family: "PingFangSC-Regular,PingFang SC";
   margin: 36px 0 80px;
 }
 header .get-start {
@@ -148,14 +147,17 @@ header .get-start:hover {
      text-decoration: none;
  }
 @media(max-width: 768px) {
+  .header-content {
+      transform: translateY(20%)
+  }
   .BlogAnchor{
     display: none;
   }
   header {
       background-image: url('../../img/index_banner_bg.png');
       background-repeat: no-repeat;
-      background-size: 30.8rem 42.5rem;
-      background-position: 95% 35%;
+      background-size: 35rem 52rem;
+      background-position: 95% 55%;
       background-color: #000;
   }
   header .header-content #title {
@@ -169,6 +171,8 @@ header .get-start:hover {
   }
   header .header-content #subtitle {
     margin-bottom: 10px ;
+    font-size: 14px;
+    line-height: 20px;
   }
   header #download {
     margin-left: 0 ;
