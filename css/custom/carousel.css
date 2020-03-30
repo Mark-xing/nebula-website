@@ -1,0 +1,34 @@
+#blog-carousel {
+  margin-top: 20px;
+  width: 220px;
+  height: 150px;
+}
+
+#blog-carousel .carousel-indicators {
+  bottom: -32px;
+}
+
+#blog-carousel .carousel-indicators li {
+  background-color: #000;
+}
+
+
+#blog-carousel .carousel-indicators li.active {
+  background-color: #0080FF
+}
+
+#blog-carousel .carousel-caption {
+  background-color: rgba(0,0,0,0.6);
+  right: 0;
+  left: 0;
+  bottom: 0;
+  line-height: 24px;
+  font-size: 16px;
+  padding: 0 24px;
+  height: 24px;
+  color: #fff;  
+}
+
+#blog-carousel .carousel-inner>.item>img {
+  height: 150px;
+}

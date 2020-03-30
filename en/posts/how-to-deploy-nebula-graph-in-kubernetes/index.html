@@ -1,0 +1,552 @@
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=author content="Nebula Graph"><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="@NebulaGraph"><meta name=twitter:creator content="@NebulaGraph"><meta name=twitter:domain content="nebula-graph.io"><meta name=twitter:title content="How to Deploy Nebula Graph on Kubernetes"><meta property="twitter:title" content="How to Deploy Nebula Graph on Kubernetes"><meta name=twitter:description content="This post gives a brief introduction of what Kubernetes is and provides a step-by-step guide to deploying Nebula Graph on Kubernetes, aka k8s."><meta name=og:description content="This post gives a brief introduction of what Kubernetes is and provides a step-by-step guide to deploying Nebula Graph on Kubernetes, aka k8s."><meta name=twitter:image content="https://nebula-graph.io/en/posts/how-to-deploy-nebula-graph-in-kubernetes/k8s_hu0a6e1f3f33419b63da06b9322f348a9b_139884_600x0_resize_box_2.png"><meta name=og:image content="https://nebula-graph.io/en/posts/how-to-deploy-nebula-graph-in-kubernetes/k8s_hu0a6e1f3f33419b63da06b9322f348a9b_139884_600x0_resize_box_2.png"><meta name=description content="This post gives a brief introduction of what Kubernetes is and provides a step-by-step guide to deploying Nebula Graph on Kubernetes, aka k8s."><meta name=generator content="Hugo 0.65.3"><title>How to Deploy Nebula Graph on Kubernetes</title><link rel="shortcut icon" href=/favicon.ico><link rel=stylesheet href=/css/bootstrap.min.css type=text/css><link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel=stylesheet type=text/css><link href="//fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic" rel=stylesheet type=text/css><link rel=stylesheet href=/font-awesome/css/font-awesome.min.css type=text/css><link rel=stylesheet href=/css/creative.css type=text/css><link rel=stylesheet href=/css/modals.css type=text/css><link rel=stylesheet href=/css/animate.min.css type=text/css><link rel=stylesheet href=/css/custom/index.css type=text/css><!--[if lt IE 9]><script src=https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js></script><script src=https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js></script><![endif]--><script src=/js/jquery.js></script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-60523578-5"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config','UA-60523578-5');</script></head><body id=page-top><nav id=mainNav class="navbar navbar-default navbar-fixed-top"><div class=container-fluid><div class=navbar-header><div class=github-star><a class=github-button href=https://github.com/vesoft-inc/nebula data-icon=octicon-star data-show-count=true aria-label="Star vesoft-inc/nebula on GitHub">Star</a></div><button type=button class="navbar-toggle collapsed" data-toggle=collapse data-target=#bs-example-navbar-collapse-1>
+<span class=sr-only>Toggle navigation</span>
+<span class=icon-bar></span><span class=icon-bar></span><span class=icon-bar></span></button>
+<a class="navbar-brand page-scroll" href=/></a></div><div class="collapse navbar-collapse" id=bs-example-navbar-collapse-1><ul class="nav navbar-nav" id=nav><li class=github-star id=github-star><a class=github-button href=https://github.com/vesoft-inc/nebula data-size=large data-show-count=true aria-label="Star vesoft-inc/nebula on GitHub">Star</a></li><li><a href=https://docs.nebula-graph.io/ target=_blank>Docs</a></li><li><a href=/en/posts target>Blog</a></li><li><a href=https://discuss.nebula-graph.io/ target=_blank>Forum</a></li><li><a href=#contact_us target onclick=contactUsClick()>Contact Us</a></li><li class="dropdown navbar-right"><a class=dropdown-toggle data-toggle=dropdown href=# role=button aria-haspopup=true aria-expanded=false><img src=/images/language120x120.png>
+<span class=caret></span></a><ul class=dropdown-menu><li class=nav-item><a class=dropdown-item href=/en target>English</a></li><li class=nav-item><a class=dropdown-item href=/cn target>中文</a></li></ul></li><li id=navbar-right><a href=https://github.com/vesoft-inc/nebula-web-docker target=_blank>Nebula Studio</a></li></ul></div></div></nav><script>function contactUsClick(){$('html,body').animate({scrollTop:document.documentElement.scrollHeight},800)
+return false;}</script><main id=top class=blog-detail><div class=wrapper><div class=inner><section class=blog-content><h1>How to Deploy Nebula Graph on Kubernetes</h1><div class=blog-metas><div class=meta><img src=/images/writer.png width=16px height=16px>
+<span>FlyCat</span></div><div class=meta><img src=/images/calendar.png width=16px height=16px>
+<span>2020-02-27</span></div><div class="tags meta"><img src=/images/tag.png width=16px height=16px>
+<a href=/en//tags/Deployment>Deployment</a></div></div><h2 id=what-is-kubernetes>What is Kubernetes</h2><p>Kubernetes (commonly stylized as k8s) is an open-source container-orchestration system, aiming to provide a simple yet efficient platform for automating deployment, scaling, and operations of application containers across clusters of hosts.</p><p>Kubernetes has a series of components architecturally, enabling a mechanism that can provide <strong>deployment</strong>, <strong>maintenance</strong>, and <strong>extension of applications</strong>.</p><p>The components are designed to be <strong>loosely coupled</strong> and <strong>scalable</strong> so that they can meet various kinds of workloads.</p><p>The scalability of the system is largely provided by the Kubernetes API which is used mainly as a scalable internal component and as a container running on Kubernetes.</p><p><img src=https://oscimg.oschina.net/oscnet/up-69f689e312c8968a3cbef1a5cb7d2075f0d.png alt></p><p>Kubernetes consists mainly of the following core components:</p><ul><li><code>etcd</code> is used as Kubernetes’ backing store for all cluster data</li><li><code>apiserver</code> provides a unique entry for resource operations and provides mechanisms for authentication, authorization, access control, API registration, and discovery</li><li><code>controller manager</code> is responsible for maintaining the state of the cluster, such as fault detection, automatic expansion, rolling updates, etc.</li><li><code>scheduler</code> is responsible for scheduling resources, and scheduling Pods to corresponding machines according to a predetermined scheduling policy</li><li><code>kubelet</code> is responsible for maintaining the life cycle of the container, and is also responsible for the management of Volume and Network</li><li><code>Container runtime</code> is responsible for image management and the runtime of the Pod and container (CRI)</li><li><code>kube-proxy</code> is responsible for providing service discovery and load balancing within the cluster for the kubernetes-service</li></ul><p>In addition to the core components, there are some recommended Add-ons:</p><ul><li><code>kube-dns</code> is responsible for providing DNS services for the entire cluster</li><li><code>Ingress Controller</code> provides external network access for services</li><li><code>Heapster</code> provides resource monitoring</li><li><code>Dashboard</code> provides GUI</li><li><code>Federation</code> provides clusters management across Availability Zones</li><li><code>Fluentd-elasticsearch</code> provides cluster log collection, storage and query</li></ul><h2 id=kubernetes-and-databases>Kubernetes and Databases</h2><p>Database containerization is a hot topic recently, and what benefits can Kubernetes bring to databases?</p><ul><li><strong>Fault recovery</strong>: Kubernetes <strong>restarts</strong> database applications when that fail, or migrates database to other health nodes in the cluster</li><li><strong>Storage management</strong>: Kubernetes provides various solutions on storage management so that databases can adopt different storage systems transparently</li><li><strong>Load balancing</strong>: Kubernetes Service provides load-balance by distributing external network traffic evenly to different database replications</li><li><strong>Horizontal scalability</strong>: Kubernetes can scale the replicas based on the resource utilization of the current database cluster, thereby improving resource utilization rate</li></ul><p>Currently many databases such as MySQL, MongoDB and TiDB all work fine on Kubernetes.</p><h2 id=nebula-graph-on-kubernetes>Nebula Graph on Kubernetes</h2><p><strong>Nebula Graph</strong> is a distributed, open source graph database that is comprised of graphd (the query engine), storaged (data storage) and metad (meta data). Kubernetes brings the following benefits to <strong>Nebula Graph</strong>:</p><ul><li>Kubernetes adjust the workload between the different replicas of the graphd, metad and storaged. The three can discover each other by the dns service provided by Kubernetes.</li><li>Kubernetes encapsulate the details of the underlying storage by storageclass, pvc and pv, no matter what kind of storage-system such as cloud-disk or local-disk.</li><li>Kubernetes can deploy <strong>Nebula Graph</strong> cluster within seconds and upgrade cluster automatically without perception.</li><li>Kubernetes supports self-healing. Kubernetes can restart the crashed single replica without operations engineer.</li><li>Kubernetes scales the cluster horizontally based on the cluster utility to improve the nebula performance.</li></ul><p>We will show you the details on deploying <strong>Nebula Graph</strong> with Kubernetes in the following part.</p><h3 id=deploy>Deploy</h3><h4 id=software-and-hardware-requirements>Software And Hardware Requirements </h4><p>The following list is software and hardware requirements involved in the deployment in this post:</p><ul><li>The operation system is CentOS-7.6.1810 x86_64.</li><li>Virtual machine configuration:<ul><li>4 CPU</li><li>8G memory</li><li>50G system disk</li><li>50G data disk A</li><li>50G data disk B</li></ul></li><li>Kubernetes cluster is version v1.16.</li><li>Use local PV as data storage.</li></ul><h4 id=cluster-topology>Cluster Topology</h4><p>Following is the cluster topology:</p><table><thead><tr><th>Server IP</th><th>Nebula Services</th><th>Role</th></tr></thead><tbody><tr><td>192.168.0.1</td><td></td><td>k8s-master</td></tr><tr><td>192.168.0.2</td><td>graphd, metad-0, storaged-0</td><td>k8s-slave</td></tr><tr><td>192.168.0.3</td><td>graphd, metad-1, storaged-1</td><td>k8s-slave</td></tr><tr><td>192.168.0.4</td><td>graphd, metad-2, storaged-2</td><td>k8s-slave</td></tr></tbody></table><h3 id=components-tobe-deployed>Components to Be Deployed</h3><ul><li>Install Helm</li><li>Prepare local disks and install local volume plugin</li><li>Install <strong>Nebula Graph</strong> cluster</li><li>Install ingress-controller</li></ul><h4 id=install-helm>Install Helm</h4><p>Helm is the Kubernetes package manager similar to yum on CentOS, or apt-get on Ubuntu. Helm makes deploying clusters more easily with Kubernetes. Since this article does not give a detailed introduction to Helm, read the <a href=https://www.hi-linux.com/posts/21466.html>Helm Getting Started Guide</a> to understand more about Helm.</p><h4 id=download-and-install-helm>Download and Install Helm</h4><p>Installing Helm with the following command in your terminal:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#f92672>[</span>root@nebula ~<span style=color:#f92672>]</span><span style=color:#75715e># wget https://get.helm.sh/helm-v3.0.1-linux-amd64.tar.gz</span>
+<span style=color:#f92672>[</span>root@nebula ~<span style=color:#f92672>]</span><span style=color:#75715e># tar -zxvf helm/helm-v3.0.1-linux-amd64.tgz</span>
+<span style=color:#f92672>[</span>root@nebula ~<span style=color:#f92672>]</span><span style=color:#75715e># mv linux-amd64/helm /usr/bin/helm</span>
+<span style=color:#f92672>[</span>root@nebula ~<span style=color:#f92672>]</span><span style=color:#75715e># chmod +x /usr/bin/helm</span>
+</code></pre></div><h4 id=view-the-helm-version>View the Helm Version</h4><p>You can view Helm version with the command <code>helm version</code> and the output is like the following:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp>version.BuildInfo{
+    Version:<span style=color:#e6db74>&#34;v3.0.1&#34;</span>,
+    GitCommit:<span style=color:#e6db74>&#34;7c22ef9ce89e0ebeb7125ba2ebf7d421f3e82ffa&#34;</span>,
+    GitTreeState:<span style=color:#e6db74>&#34;clean&#34;</span>,
+    GoVersion:<span style=color:#e6db74>&#34;go1.13.4&#34;</span>
+}
+</code></pre></div><h3 id=prepare-local-disks>Prepare Local Disks</h3><p>Configure each node as follows:</p><h4 id=create-mount-directory>Create Mount Directory</h4><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#f92672>[</span>root@nebula ~<span style=color:#f92672>]</span><span style=color:#75715e># sudo mkdir -p /mnt/disks</span>
+</code></pre></div><h4 id=format-data-disks>Format Data Disks</h4><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#f92672>[</span>root@nebula ~<span style=color:#f92672>]</span><span style=color:#75715e># sudo mkfs.ext4 /dev/diskA</span>
+<span style=color:#f92672>[</span>root@nebula ~<span style=color:#f92672>]</span><span style=color:#75715e># sudo mkfs.ext4 /dev/diskB</span>
+</code></pre></div><h4 id=mount-data-disks>Mount Data Disks</h4><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#f92672>[</span>root@nebula ~<span style=color:#f92672>]</span><span style=color:#75715e># DISKA_UUID=$(blkid -s UUID -o value /dev/diskA)</span>
+<span style=color:#f92672>[</span>root@nebula ~<span style=color:#f92672>]</span><span style=color:#75715e># DISKB_UUID=$(blkid -s UUID -o value /dev/diskB)</span>
+<span style=color:#f92672>[</span>root@nebula ~<span style=color:#f92672>]</span><span style=color:#75715e># sudo mkdir /mnt/disks/$DISKA_UUID</span>
+<span style=color:#f92672>[</span>root@nebula ~<span style=color:#f92672>]</span><span style=color:#75715e># sudo mkdir /mnt/disks/$DISKB_UUID</span>
+<span style=color:#f92672>[</span>root@nebula ~<span style=color:#f92672>]</span><span style=color:#75715e># sudo mount -t ext4 /dev/diskA /mnt/disks/$DISKA_UUID</span>
+<span style=color:#f92672>[</span>root@nebula ~<span style=color:#f92672>]</span><span style=color:#75715e># sudo mount -t ext4 /dev/diskB /mnt/disks/$DISKB_UUID</span>
+
+<span style=color:#f92672>[</span>root@nebula ~<span style=color:#f92672>]</span><span style=color:#75715e># echo UUID=`sudo blkid -s UUID -o value /dev/diskA` /mnt/disks/$DISKA_UUID ext4 defaults 0 2 | sudo tee -a /etc/fstab</span>
+<span style=color:#f92672>[</span>root@nebula ~<span style=color:#f92672>]</span><span style=color:#75715e># echo UUID=`sudo blkid -s UUID -o value /dev/diskB` /mnt/disks/$DISKB_UUID ext4 defaults 0 2 | sudo tee -a /etc/fstab</span>
+</code></pre></div><h3 id=deploy-local-volume-plugin>Deploy Local Volume Plugin</h3><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#f92672>[</span>root@nebula ~<span style=color:#f92672>]</span><span style=color:#75715e># curl https://github.com/kubernetes-sigs/sig-storage-local-static-provisioner/archive/v2.3.3.zip</span>
+<span style=color:#f92672>[</span>root@nebula ~<span style=color:#f92672>]</span><span style=color:#75715e># unzip v2.3.3.zip</span>
+</code></pre></div><p>Modify the <code>v2.3.3/helm/provisioner/values.yaml</code> file.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#75715e>#</span>
+<span style=color:#75715e># Common options.</span>
+<span style=color:#75715e>#</span>
+<span style=color:#66d9ef>common</span>:
+  <span style=color:#75715e>#</span>
+  <span style=color:#75715e># Defines whether to generate service account and role bindings.</span>
+  <span style=color:#75715e>#</span>
+  <span style=color:#66d9ef>rbac</span>: <span style=color:#66d9ef>true</span>
+  <span style=color:#75715e>#</span>
+  <span style=color:#75715e># Defines the namespace where provisioner runs</span>
+  <span style=color:#75715e>#</span>
+  <span style=color:#66d9ef>namespace</span>: default
+  <span style=color:#75715e>#</span>
+  <span style=color:#75715e># Defines whether to create provisioner namespace</span>
+  <span style=color:#75715e>#</span>
+  <span style=color:#66d9ef>createNamespace</span>: <span style=color:#66d9ef>false</span>
+  <span style=color:#75715e>#</span>
+  <span style=color:#75715e># Beta PV.NodeAffinity field is used by default. If running against pre-1.10</span>
+  <span style=color:#75715e># k8s version, the `useAlphaAPI` flag must be enabled in the configMap.</span>
+  <span style=color:#75715e>#</span>
+  <span style=color:#66d9ef>useAlphaAPI</span>: <span style=color:#66d9ef>false</span>
+  <span style=color:#75715e>#</span>
+  <span style=color:#75715e># Indicates if PVs should be dependents of the owner Node.</span>
+  <span style=color:#75715e>#</span>
+  <span style=color:#66d9ef>setPVOwnerRef</span>: <span style=color:#66d9ef>false</span>
+  <span style=color:#75715e>#</span>
+  <span style=color:#75715e># Provisioner clean volumes in process by default. If set to true, provisioner</span>
+  <span style=color:#75715e># will use Jobs to clean.</span>
+  <span style=color:#75715e>#</span>
+  <span style=color:#66d9ef>useJobForCleaning</span>: <span style=color:#66d9ef>false</span>
+  <span style=color:#75715e>#</span>
+  <span style=color:#75715e># Provisioner name contains Node.UID by default. If set to true, the provisioner</span>
+  <span style=color:#75715e># name will only use Node.Name.</span>
+  <span style=color:#75715e>#</span>
+  <span style=color:#66d9ef>useNodeNameOnly</span>: <span style=color:#66d9ef>false</span>
+  <span style=color:#75715e>#</span>
+  <span style=color:#75715e># Resync period in reflectors will be random between minResyncPeriod and</span>
+  <span style=color:#75715e># 2*minResyncPeriod. Default: 5m0s.</span>
+  <span style=color:#75715e>#</span>
+  <span style=color:#75715e>#minResyncPeriod: 5m0s</span>
+  <span style=color:#75715e>#</span>
+  <span style=color:#75715e># Defines the name of configmap used by Provisioner</span>
+  <span style=color:#75715e>#</span>
+  <span style=color:#66d9ef>configMapName</span>: <span style=color:#e6db74>&#34;local-provisioner-config&#34;</span>
+  <span style=color:#75715e>#</span>
+  <span style=color:#75715e># Enables or disables Pod Security Policy creation and binding</span>
+  <span style=color:#75715e>#</span>
+  <span style=color:#66d9ef>podSecurityPolicy</span>: <span style=color:#66d9ef>false</span>
+<span style=color:#75715e>#</span>
+<span style=color:#75715e># Configure storage classes.</span>
+<span style=color:#75715e>#</span>
+<span style=color:#66d9ef>classes</span>:
+- <span style=color:#66d9ef>name</span>: fast-disks <span style=color:#75715e># Defines name of storage classes.</span>
+  <span style=color:#75715e># Path on the host where local volumes of this storage class are mounted</span>
+  <span style=color:#75715e># under.</span>
+  <span style=color:#66d9ef>hostDir</span>: /mnt/fast-disks
+  <span style=color:#75715e># Optionally specify mount path of local volumes. By default, we use same</span>
+  <span style=color:#75715e># path as hostDir in container.</span>
+  <span style=color:#75715e># mountDir: /mnt/fast-disks</span>
+  <span style=color:#75715e># The volume mode of created PersistentVolume object. Default to Filesystem</span>
+  <span style=color:#75715e># if not specified.</span>
+  <span style=color:#66d9ef>volumeMode</span>: Filesystem
+  <span style=color:#75715e># Filesystem type to mount.</span>
+  <span style=color:#75715e># It applies only when the source path is a block device,</span>
+  <span style=color:#75715e># and desire volume mode is Filesystem.</span>
+  <span style=color:#75715e># Must be a filesystem type supported by the host operating system.</span>
+  <span style=color:#66d9ef>fsType</span>: ext4
+  <span style=color:#66d9ef>blockCleanerCommand</span>:
+  <span style=color:#75715e>#  Do a quick reset of the block device during its cleanup.</span>
+  <span style=color:#75715e>#  - &#34;/scripts/quick_reset.sh&#34;</span>
+  <span style=color:#75715e>#  or use dd to zero out block dev in two iterations by uncommenting these lines</span>
+  <span style=color:#75715e>#  - &#34;/scripts/dd_zero.sh&#34;</span>
+  <span style=color:#75715e>#  - &#34;2&#34;</span>
+  <span style=color:#75715e># or run shred utility for 2 iteration.s</span>
+     - <span style=color:#e6db74>&#34;/scripts/shred.sh&#34;</span>
+     - <span style=color:#e6db74>&#34;2&#34;</span>
+  <span style=color:#75715e># or blkdiscard utility by uncommenting the line below.</span>
+  <span style=color:#75715e>#  - &#34;/scripts/blkdiscard.sh&#34;</span>
+  <span style=color:#75715e># Uncomment to create storage class object with default configuration.</span>
+  <span style=color:#75715e># storageClass: true</span>
+  <span style=color:#75715e># Uncomment to create storage class object and configure it.</span>
+  <span style=color:#75715e># storageClass:</span>
+    <span style=color:#75715e># reclaimPolicy: Delete # Available reclaim policies: Delete/Retain, defaults: Delete.</span>
+    <span style=color:#75715e># isDefaultClass: true # set as default class</span>
+
+<span style=color:#75715e>#</span>
+<span style=color:#75715e># Configure DaemonSet for provisioner.</span>
+<span style=color:#75715e>#</span>
+<span style=color:#66d9ef>daemonset</span>:
+  <span style=color:#75715e>#</span>
+  <span style=color:#75715e># Defines the name of a Provisioner</span>
+  <span style=color:#75715e>#</span>
+  <span style=color:#66d9ef>name</span>: <span style=color:#e6db74>&#34;local-volume-provisioner&#34;</span>
+  <span style=color:#75715e>#</span>
+  <span style=color:#75715e># Defines Provisioner&#39;s image name including container registry.</span>
+  <span style=color:#75715e>#</span>
+  <span style=color:#66d9ef>image</span>: quay.io/external_storage/local-volume-provisioner:v2<span style=color:#ae81ff>.3.3</span>
+  <span style=color:#75715e>#</span>
+  <span style=color:#75715e># Defines Image download policy, see kubernetes documentation for available values.</span>
+  <span style=color:#75715e>#</span>
+  <span style=color:#75715e>#imagePullPolicy: Always</span>
+  <span style=color:#75715e>#</span>
+  <span style=color:#75715e># Defines a name of the service account which Provisioner will use to communicate with API server.</span>
+  <span style=color:#75715e>#</span>
+  <span style=color:#66d9ef>serviceAccount</span>: local-storage-admin
+  <span style=color:#75715e>#</span>
+  <span style=color:#75715e># Defines a name of the Pod Priority Class to use with the Provisioner DaemonSet</span>
+  <span style=color:#75715e>#</span>
+  <span style=color:#75715e># Note that if you want to make it critical, specify &#34;system-cluster-critical&#34;</span>
+  <span style=color:#75715e># or &#34;system-node-critical&#34; and deploy in kube-system namespace.</span>
+  <span style=color:#75715e># Ref: https://k8s.io/docs/tasks/administer-cluster/guaranteed-scheduling-critical-addon-pods/#marking-pod-as-critical</span>
+  <span style=color:#75715e>#</span>
+  <span style=color:#75715e>#priorityClassName: system-node-critical</span>
+  <span style=color:#75715e># If configured, nodeSelector will add a nodeSelector field to the DaemonSet PodSpec.</span>
+  <span style=color:#75715e>#</span>
+  <span style=color:#75715e># NodeSelector constraint for local-volume-provisioner scheduling to nodes.</span>
+  <span style=color:#75715e># Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector</span>
+  <span style=color:#66d9ef>nodeSelector</span>: {}
+  <span style=color:#75715e>#</span>
+  <span style=color:#75715e># If configured KubeConfigEnv will (optionally) specify the location of kubeconfig file on the node.</span>
+  <span style=color:#75715e>#  kubeConfigEnv: KUBECONFIG</span>
+  <span style=color:#75715e>#</span>
+  <span style=color:#75715e># List of node labels to be copied to the PVs created by the provisioner in a format:</span>
+  <span style=color:#75715e>#</span>
+  <span style=color:#75715e>#  nodeLabels:</span>
+  <span style=color:#75715e>#    - failure-domain.beta.kubernetes.io/zone</span>
+  <span style=color:#75715e>#    - failure-domain.beta.kubernetes.io/region</span>
+  <span style=color:#75715e>#</span>
+  <span style=color:#75715e># If configured, tolerations will add a toleration field to the DaemonSet PodSpec.</span>
+  <span style=color:#75715e>#</span>
+  <span style=color:#75715e># Node tolerations for local-volume-provisioner scheduling to nodes with taints.</span>
+  <span style=color:#75715e># Ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/</span>
+  <span style=color:#66d9ef>tolerations</span>: []
+  <span style=color:#75715e>#</span>
+  <span style=color:#75715e># If configured, resources will set the requests/limits field to the Daemonset PodSpec.</span>
+  <span style=color:#75715e># Ref: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/</span>
+  <span style=color:#66d9ef>resources</span>: {}
+<span style=color:#75715e>#</span>
+<span style=color:#75715e># Configure Prometheus monitoring</span>
+<span style=color:#75715e>#</span>
+<span style=color:#66d9ef>prometheus</span>:
+  <span style=color:#66d9ef>operator</span>:
+    <span style=color:#75715e>## Are you using Prometheus Operator?</span>
+    <span style=color:#66d9ef>enabled</span>: <span style=color:#66d9ef>false</span>
+
+    <span style=color:#66d9ef>serviceMonitor</span>:
+      <span style=color:#75715e>## Interval at which Prometheus scrapes the provisioner</span>
+      <span style=color:#66d9ef>interval</span>: 10s
+
+      <span style=color:#75715e># Namespace Prometheus is installed in</span>
+      <span style=color:#66d9ef>namespace</span>: monitoring
+
+      <span style=color:#75715e>## Defaults to what is used if you follow CoreOS [Prometheus Install Instructions](https://github.com/coreos/prometheus-operator/tree/master/helm#tldr)</span>
+      <span style=color:#75715e>## [Prometheus Selector Label](https://github.com/coreos/prometheus-operator/blob/master/helm/prometheus/templates/prometheus.yaml#L65)</span>
+      <span style=color:#75715e>## [Kube Prometheus Selector Label](https://github.com/coreos/prometheus-operator/blob/master/helm/kube-prometheus/values.yaml#L298)</span>
+      <span style=color:#66d9ef>selector</span>:
+        <span style=color:#66d9ef>prometheus</span>: kube-prometheus
+</code></pre></div><p>Modify <code>hostDir: /mnt/fast-disks</code> and <code># storageClass: true</code> to <code>hostDir: /mnt/disks</code> and <code>storageClass: true</code> respectively, then run:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># Installing</span>
+<span style=color:#f92672>[</span>root@nebula ~<span style=color:#f92672>]</span><span style=color:#75715e># helm install local-static-provisioner v2.3.3/helm/provisioner</span>
+<span style=color:#75715e># List local-static-provisioner deployment</span>
+<span style=color:#f92672>[</span>root@nebula ~<span style=color:#f92672>]</span><span style=color:#75715e># helm list</span>
+</code></pre></div><h3 id=deploy-nebula-graph-cluster>Deploy Nebula Graph Cluster</h3><h4 id=download-nebula-helm-chart-package>Download nebula helm-chart Package</h4><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># Downloading nebula</span>
+<span style=color:#f92672>[</span>root@nebula ~<span style=color:#f92672>]</span><span style=color:#75715e># wget https://github.com/vesoft-inc/nebula/archive/master.zip</span>
+<span style=color:#75715e># Unzip</span>
+<span style=color:#f92672>[</span>root@nebula ~<span style=color:#f92672>]</span><span style=color:#75715e># unzip master.zip</span>
+</code></pre></div><h4 id=label-kubernetes-slave-nodes>Label Kubernetes Slave Nodes</h4><p>The following is a list of Kubernetes nodes. We need to set the scheduling labels of the worker nodes. We can label <em>192.168.0.2</em>, <em>192.168.0.3</em>, <em>192.168.0.4</em> with label <code>nebula: "yes"</code>.</p><table><thead><tr><th>Server IP</th><th>kubernetes roles</th><th>nodeName</th></tr></thead><tbody><tr><td>192.168.0.1</td><td>master</td><td>192.168.0.1</td></tr><tr><td>192.168.0.2</td><td>worker</td><td>192.168.0.2</td></tr><tr><td>192.168.0.3</td><td>worker</td><td>192.168.0.3</td></tr><tr><td>192.168.0.4</td><td>worker</td><td>192.168.0.4</td></tr></tbody></table><p>Detailed operations are as follows:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#f92672>[</span>root@nebula ~<span style=color:#f92672>]</span><span style=color:#75715e># kubectl  label node 192.168.0.2 nebula=&#34;yes&#34; --overwrite</span>
+<span style=color:#f92672>[</span>root@nebula ~<span style=color:#f92672>]</span><span style=color:#75715e># kubectl  label node 192.168.0.3 nebula=&#34;yes&#34; --overwrite</span>
+<span style=color:#f92672>[</span>root@nebula ~<span style=color:#f92672>]</span><span style=color:#75715e># kubectl  label node 192.168.</span>
+<span style=color:#75715e>### Deploying Ingress-controller on one Node</span>
+</code></pre></div><h4 id=modify-the-default-values-for-nebula-helm-chart>Modify the Default Values for nebula helm chart</h4><p>Following is the directory list of nebula helm-chart:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>master/kubernetes/
+└── helm
+    ├── Chart.yaml
+    ├── templates
+    │   ├── configmap.yaml
+    │   ├── deployment.yaml
+    │   ├── _helpers.tpl
+    │   ├── ingress-configmap.yaml<span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>    │   ├── NOTES.txt
+    │   ├── pdb.yaml
+    │   ├── service.yaml
+    │   └── statefulset.yaml
+    └── values.yaml
+
+<span style=color:#ae81ff>2</span> directories, <span style=color:#ae81ff>10</span> files
+</code></pre></div><p>We need to adjust the value of MetadHosts in the yaml file <code>master/kubernetes/values.yaml</code>, and replace the IP list with the IPs of the 3 k8s workers in our environment.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#66d9ef>MetadHosts</span>:
+  - <span style=color:#ae81ff>192.168.0.2</span>:<span style=color:#ae81ff>44500</span>
+  - <span style=color:#ae81ff>192.168.0.3</span>:<span style=color:#ae81ff>44500</span>
+  - <span style=color:#ae81ff>192.168.0.4</span>:<span style=color:#ae81ff>44500</span>
+</code></pre></div><h4 id=install-nebula-via-helm>Install Nebula via Helm</h4><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># Installing</span>
+<span style=color:#f92672>[</span>root@nebula ~<span style=color:#f92672>]</span><span style=color:#75715e># helm install nebula master/kubernetes/helm</span>
+<span style=color:#75715e># Checking</span>
+<span style=color:#f92672>[</span>root@nebula ~<span style=color:#f92672>]</span><span style=color:#75715e># helm status nebula</span>
+<span style=color:#75715e># Checking nebula deployment on the k8s cluster</span>
+
+<span style=color:#f92672>[</span>root@nebula ~<span style=color:#f92672>]</span><span style=color:#75715e># kubectl get pod  | grep nebula</span>
+nebula-graphd-579d89c958-g2j2c                   1/1     Running            <span style=color:#ae81ff>0</span>          1m
+nebula-graphd-579d89c958-p7829                   1/1     Running            <span style=color:#ae81ff>0</span>          1m
+nebula-graphd-579d89c958-q74zx                   1/1     Running            <span style=color:#ae81ff>0</span>          1m
+nebula-metad-0                                   1/1     Running            <span style=color:#ae81ff>0</span>          1m
+nebula-metad-1                                   1/1     Running            <span style=color:#ae81ff>0</span>          1m
+nebula-metad-2                                   1/1     Running            <span style=color:#ae81ff>0</span>          1m
+nebula-storaged-0                                1/1     Running            <span style=color:#ae81ff>0</span>          1m
+nebula-storaged-1                                1/1     Running            <span style=color:#ae81ff>0</span>          1m
+nebula-storaged-2                                1/1     Running            <span style=color:#ae81ff>0</span>          1m
+</code></pre></div><h3 id=deploy-ingress-controller>Deploy Ingress-controller</h3><p>Ingress-controller is one of the Add-Ons of Kubernetes. Kubernetes exposes services deployed internally to external users through ingress-controller. Ingress-controller also provides load balancing function, which can distribute external access to different replicas of applications in k8s.</p><p><img src=https://oscimg.oschina.net/oscnet/up-c65947ff5c4972dfc8b8eadddc9178a01a8.png alt></p><h3 id=select-a-node-to-deploy-ingress-controller>Select a Node to Deploy Ingress-controller</h3><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#f92672>[</span>root@nebula ~<span style=color:#f92672>]</span><span style=color:#75715e># kubectl get node</span>
+NAME              STATUS     ROLES    AGE   VERSION
+192.168.0.1       Ready      master   82d   v1.16.1
+192.168.0.2       Ready      &lt;none&gt;   82d   v1.16.1
+192.168.0.3       Ready      &lt;none&gt;   82d   v1.16.1
+192.168.0.4       Ready      &lt;none&gt;   82d   v1.16.1
+<span style=color:#f92672>[</span>root@nebula ~<span style=color:#f92672>]</span><span style=color:#75715e># kubectl label node 192.168.0.4 ingress=yes</span>
+</code></pre></div><p>Edit the <code>ingress-nginx.yaml</code> deployment file.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>apiVersion: v1
+kind: Namespace
+metadata:
+  name: ingress-nginx
+  labels:
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/part-of: ingress-nginx
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: nginx-configuration
+  namespace: ingress-nginx
+  labels:
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/part-of: ingress-nginx
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: tcp-services
+  namespace: ingress-nginx
+  labels:
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/part-of: ingress-nginx
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: udp-services
+  namespace: ingress-nginx
+  labels:
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/part-of: ingress-nginx
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: nginx-ingress-serviceaccount
+  namespace: ingress-nginx
+  labels:
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/part-of: ingress-nginx
+
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRole
+metadata:
+  name: nginx-ingress-clusterrole
+  labels:
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/part-of: ingress-nginx
+rules:
+  - apiGroups:
+      - <span style=color:#e6db74>&#34;&#34;</span>
+    resources:
+      - configmaps
+      - endpoints
+      - nodes
+      - pods
+      - secrets
+    verbs:
+      - list
+      - watch
+  - apiGroups:
+      - <span style=color:#e6db74>&#34;&#34;</span>
+    resources:
+      - nodes
+    verbs:
+      - get
+  - apiGroups:
+      - <span style=color:#e6db74>&#34;&#34;</span>
+    resources:
+      - services
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - <span style=color:#e6db74>&#34;extensions&#34;</span>
+      - <span style=color:#e6db74>&#34;networking.k8s.io&#34;</span>
+    resources:
+      - ingresses
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - <span style=color:#e6db74>&#34;&#34;</span>
+    resources:
+      - events
+    verbs:
+      - create
+      - patch
+  - apiGroups:
+      - <span style=color:#e6db74>&#34;extensions&#34;</span>
+      - <span style=color:#e6db74>&#34;networking.k8s.io&#34;</span>
+    resources:
+      - ingresses/status
+    verbs:
+      - update
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: Role
+metadata:
+  name: nginx-ingress-role
+  namespace: ingress-nginx
+  labels:
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/part-of: ingress-nginx
+rules:
+  - apiGroups:
+      - <span style=color:#e6db74>&#34;&#34;</span>
+    resources:
+      - configmaps
+      - pods
+      - secrets
+      - namespaces
+    verbs:
+      - get
+  - apiGroups:
+      - <span style=color:#e6db74>&#34;&#34;</span>
+    resources:
+      - configmaps
+    resourceNames:
+      <span style=color:#75715e># Defaults to &#34;&lt;election-id&gt;-&lt;ingress-class&gt;&#34;</span>
+      <span style=color:#75715e># Here: &#34;&lt;ingress-controller-leader&gt;-&lt;nginx&gt;&#34;</span>
+      <span style=color:#75715e># This has to be adapted if you change either parameter</span>
+      <span style=color:#75715e># when launching the nginx-ingress-controller.</span>
+      - <span style=color:#e6db74>&#34;ingress-controller-leader-nginx&#34;</span>
+    verbs:
+      - get
+      - update
+  - apiGroups:
+      - <span style=color:#e6db74>&#34;&#34;</span>
+    resources:
+      - configmaps
+    verbs:
+      - create
+  - apiGroups:
+      - <span style=color:#e6db74>&#34;&#34;</span>
+    resources:
+      - endpoints
+    verbs:
+      - get
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: RoleBinding
+metadata:
+  name: nginx-ingress-role-nisa-binding
+  namespace: ingress-nginx
+  labels:
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/part-of: ingress-nginx
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: nginx-ingress-role
+subjects:
+  - kind: ServiceAccount
+    name: nginx-ingress-serviceaccount
+    namespace: ingress-nginx
+
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: nginx-ingress-clusterrole-nisa-binding
+  labels:
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/part-of: ingress-nginx
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: nginx-ingress-clusterrole
+subjects:
+  - kind: ServiceAccount
+    name: nginx-ingress-serviceaccount
+    namespace: ingress-nginx
+
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: nginx-ingress-controller
+  namespace: ingress-nginx
+  labels:
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/part-of: ingress-nginx
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: ingress-nginx
+      app.kubernetes.io/part-of: ingress-nginx
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: ingress-nginx
+        app.kubernetes.io/part-of: ingress-nginx
+      annotations:
+        prometheus.io/port: <span style=color:#e6db74>&#34;10254&#34;</span>
+        prometheus.io/scrape: <span style=color:#e6db74>&#34;true&#34;</span>
+    spec:
+      hostNetwork: true
+      tolerations:
+        - key: <span style=color:#e6db74>&#34;node-role.kubernetes.io/master&#34;</span>
+          operator: <span style=color:#e6db74>&#34;Exists&#34;</span>
+          effect: <span style=color:#e6db74>&#34;NoSchedule&#34;</span>
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app.kubernetes.io/name
+                    operator: In
+                    values:
+                      - ingress-nginx
+              topologyKey: <span style=color:#e6db74>&#34;ingress-nginx.kubernetes.io/master&#34;</span>
+      nodeSelector:
+        ingress: <span style=color:#e6db74>&#34;yes&#34;</span>
+      serviceAccountName: nginx-ingress-serviceaccount
+      containers:
+        - name: nginx-ingress-controller
+          image: quay.io/kubernetes-ingress-controller/nginx-ingress-controller-amd64:0.26.1
+          args:
+            - /nginx-ingress-controller
+            - --configmap<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>POD_NAMESPACE<span style=color:#66d9ef>)</span>/nginx-configuration
+            - --tcp-services-configmap<span style=color:#f92672>=</span>default/graphd-services
+            - --udp-services-configmap<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>POD_NAMESPACE<span style=color:#66d9ef>)</span>/udp-services
+            - --publish-service<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>POD_NAMESPACE<span style=color:#66d9ef>)</span>/ingress-nginx
+            - --annotations-prefix<span style=color:#f92672>=</span>nginx.ingress.kubernetes.io
+            - --http-port<span style=color:#f92672>=</span><span style=color:#ae81ff>8000</span>
+          securityContext:
+            allowPrivilegeEscalation: true
+            capabilities:
+              drop:
+                - ALL
+              add:
+                - NET_BIND_SERVICE
+            <span style=color:#75715e># www-data -&gt; 33</span>
+            runAsUser: <span style=color:#ae81ff>33</span>
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+          ports:
+            - name: http
+              containerPort: <span style=color:#ae81ff>80</span>
+            - name: https
+              containerPort: <span style=color:#ae81ff>443</span>
+          livenessProbe:
+            failureThreshold: <span style=color:#ae81ff>3</span>
+            httpGet:
+              path: /healthz
+              port: <span style=color:#ae81ff>10254</span>
+              scheme: HTTP
+            initialDelaySeconds: <span style=color:#ae81ff>10</span>
+            periodSeconds: <span style=color:#ae81ff>10</span>
+            successThreshold: <span style=color:#ae81ff>1</span>
+            timeoutSeconds: <span style=color:#ae81ff>10</span>
+          readinessProbe:
+            failureThreshold: <span style=color:#ae81ff>3</span>
+            httpGet:
+              path: /healthz
+              port: <span style=color:#ae81ff>10254</span>
+              scheme: HTTP
+            periodSeconds: <span style=color:#ae81ff>10</span>
+            successThreshold: <span style=color:#ae81ff>1</span>
+            timeoutSeconds: <span style=color:#ae81ff>10</span>
+</code></pre></div><p>Deploying ingress-nginx.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># Deployment</span>
+<span style=color:#f92672>[</span>root@nebula ~<span style=color:#f92672>]</span><span style=color:#75715e># kubectl create -f ingress-nginx.yaml</span>
+<span style=color:#75715e># View deployment</span>
+<span style=color:#f92672>[</span>root@nebula ~<span style=color:#f92672>]</span><span style=color:#75715e># kubectl get pod -n ingress-nginx</span>
+NAME                             READY   STATUS    RESTARTS   AGE
+nginx-ingress-controller-mmms7   1/1     Running   <span style=color:#ae81ff>2</span>          1m
+</code></pre></div><h3 id=access-nebula-graph-clusterin-kubernetes>Access Nebula Graph Cluster in Kubernetes</h3><p>View which node ingress-nginx is located in:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#f92672>[</span>root@nebula ~<span style=color:#f92672>]</span><span style=color:#75715e># kubectl get node -l ingress=yes -owide</span>
+NAME            STATUS   ROLES    AGE   VERSION   INTERNAL-IP    EXTERNAL-IP   OS-IMAGE                KERNEL-VERSION          CONTAINER-RUNTIME
+nebula.node23   Ready    &lt;none&gt;   1d   v1.16.1   192.168.8.23   &lt;none&gt;        CentOS Linux <span style=color:#ae81ff>7</span> <span style=color:#f92672>(</span>Core<span style=color:#f92672>)</span>   7.6.1810.el7.x86_64   docker://19.3.3
+</code></pre></div><p>Access <strong>Nebula Graph</strong> Cluster:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#f92672>[</span>root@nebula ~<span style=color:#f92672>]</span><span style=color:#75715e># docker run --rm -ti --net=host vesoft/nebula-console:nightly --addr=192.168.8.23 --port=3699</span>
+</code></pre></div><h2 id=faq>FAQ</h2><blockquote><p>How to deploy Kubernetes cluster?</p></blockquote><p>Please refer to the <a href=https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability/>Official Doc</a> on deployment of high-availability Kubernetes clusters.</p><p>You can also refer to <a href=https://kubernetes.io/docs/setup/learning-environment/minikube/>Installing Kubernetes with Minikube</a> on how to deploy local Kubernetes cluster with minikube.</p><blockquote><p>How to modify the <strong>Nebula Graph</strong> cluster parameters?</p></blockquote><p>When using <code>helm install</code>, you can use <code>--set</code> to override the default variables in <code>values.yaml</code>. Please refer to <a href=https://helm.sh/docs/intro/using_helm/>Helm</a> on details.</p><blockquote><p>How to observe nebula cluster status?</p></blockquote><p>You can use the <code>kubectl get pod | grep nebula</code> command or via the kubernetes dashboard.</p><blockquote><p>How to use other disk types?</p></blockquote><p>Please refer to the <a href=https://kubernetes.io/zh/docs/concepts/storage/storage-classes/>Storage Classes</a> doc.</p><h2 id=references>References</h2><ul><li><a href=https://helm.sh/docs/intro/quickstart/>Helm Quickstart Guide</a></li><li><a href=https://docs.traefik.io/providers/kubernetes-ingress/>Traefik & Kubernetes</a></li><li>GitHub：<a href=https://github.com/vesoft-inc/nebula>https://github.com/vesoft-inc/nebula</a></li></ul><blockquote class=star-ads><span>Do you like this post? If yes, just give me a</span>
+<span class="glyphicon glyphicon-star"></span><span>star:</span>
+<a href=https://github.com/vesoft-inc/nebula>https://github.com/vesoft-inc/nebula</a></blockquote><ul class=blog-footer><li><img src=/images/tag.png>
+<a href=/en/tags/Deployment>Deployment</a></li><li class="nebula-share st-btn"><img src=/images/share.png>
+<span>Share Post</span><ul class=blog-footer-share-links><li class=st-custom-button data-network=twitter><img alt="twitter-white sharing button" src=https://platform-cdn.sharethis.com/img/twitter-white.svg>
+<span class=st-label>Twitter</span></li><li class=st-custom-button data-network=linkedin><img alt="twitter-white sharing button" src=https://platform-cdn.sharethis.com/img/linkedin-white.svg>
+<span class=st-label>Linkedin</span></li><li class=st-custom-button data-network=facebook><img alt="twitter-white sharing button" src=https://platform-cdn.sharethis.com/img/facebook-white.svg>
+<span class=st-label>Facebook</span></li><li class=st-custom-button data-network=sharethis><img alt="twitter-white sharing button" src=https://platform-cdn.sharethis.com/img/sharethis-white.svg>
+<span class=st-label>Others</span></li></ul></li><li onclick="location.href='\/en\/posts'"><img src=/images/blog.png>
+<a href=/en/posts>Back to blog home</a></li><li onclick="location.href='https:\/\/nebula-graph.io/en/posts/index.xml'"><img src=/images/rss.png>
+<a onclick="window.open('https:\/\/nebula-graph.io/en/posts/index.xml')" href>RSS</a></li></ul><div id=discourse-comments></div></section><div class=single-side-bar><div class=tags-block><h3 class="glyphicon glyphicon-tag">Tags</h3><ul class=blog-tags><li class=col-md-12><a href=/en/posts class=active>All</a></li><li><a href=/en/tags/architecture>architecture</a></li><li><a href=/en/tags/community>community</a></li><li><a href=/en/tags/deployment>deployment</a></li><li><a href=/en/tags/dev-log>dev-log</a></li><li><a href=/en/tags/features>features</a></li><li><a href=/en/tags/graph-database>graph-database</a></li><li><a href=/en/tags/graph-query-language>graph-query-language</a></li><li><a href=/en/tags/performance>performance</a></li><li><a href=/en/tags/release-notes>release-notes</a></li><li><a href=/en/tags/system-testing>system-testing</a></li><li><a href=/en/tags/tools>tools</a></li><li><a href=/en/tags/use-cases>use-cases</a></li></ul></div><div id=blog-carousel class="carousel slide" data-ride=carousel><ol class=carousel-indicators><li data-target=#blog-carousel data-slide-to=0 class=active></li><li data-target=#blog-carousel data-slide-to=1></li></ol><div class=carousel-inner role=listbox><div class="item active" onclick="location.href='\/en\/posts\/clean-stale-data-with-ttl-in-nebula-graph_\/'"><img src=https://user-images.githubusercontent.com/38887077/77512987-09256800-6eaf-11ea-9b41-e8b87ab51fe8.png alt="How Nebula Graph Automatically Cleans Stale Data with TTL" width=220px height=150px><div class=carousel-caption>How Nebula Graph Automatically Cleans Stale Data with TTL</div></div><div class=item onclick="location.href='\/en\/posts\/github-action-automating-project-process\/'"><img src=https://user-images.githubusercontent.com/38887077/76831941-482a3c80-6863-11ea-9795-009eaa50fc0e.png alt="Automating Your Project Processes with Github Actions" width=220px height=150px><div class=carousel-caption>Automating Your Project Processes with Github Actions</div></div></div><a class="left carousel-control" href=#blog-carousel role=button data-slide=prev><span class="glyphicon glyphicon-chevron-left" aria-hidden=true></span><span class=sr-only>Previous</span></a>
+<a class="right carousel-control" href=#blog-carousel role=button data-slide=next><span class="glyphicon glyphicon-chevron-right" aria-hidden=true></span><span class=sr-only>Next</span></a></div><div class=blog-anchors><h3>Contents</h3><nav id=TableOfContents><ul><li><a href=#what-is-kubernetes>What is Kubernetes</a></li><li><a href=#kubernetes-and-databases>Kubernetes and Databases</a></li><li><a href=#nebula-graph-on-kubernetes>Nebula Graph on Kubernetes</a><ul><li><a href=#deploy>Deploy</a></li><li><a href=#components-tobe-deployed>Components to Be Deployed</a></li><li><a href=#prepare-local-disks>Prepare Local Disks</a></li><li><a href=#deploy-local-volume-plugin>Deploy Local Volume Plugin</a></li><li><a href=#deploy-nebula-graph-cluster>Deploy Nebula Graph Cluster</a></li><li><a href=#deploy-ingress-controller>Deploy Ingress-controller</a></li><li><a href=#select-a-node-to-deploy-ingress-controller>Select a Node to Deploy Ingress-controller</a></li><li><a href=#access-nebula-graph-clusterin-kubernetes>Access Nebula Graph Cluster in Kubernetes</a></li></ul></li><li><a href=#faq>FAQ</a></li><li><a href=#references>References</a></li></ul></nav></div><div class=social-share><h3>Share Post</h3><div class=nebula-share-buttons><div class="st-custom-button st-remove-label" data-network=twitter><img alt="twitter-white sharing button" src=https://platform-cdn.sharethis.com/img/twitter-white.svg></div><div class="st-custom-button st-remove-label" data-network=linkedin><img alt="linkedin-white sharing button" src=https://platform-cdn.sharethis.com/img/linkedin-white.svg></div><div class="st-custom-button st-remove-label" data-network=facebook><img alt="facebook-white sharing button" src=https://platform-cdn.sharethis.com/img/facebook-white.svg></div><div class="st-custom-button st-remove-label" data-network=hackernews><img alt="hackernews-white sharing button" src=https://platform-cdn.sharethis.com/img/hackernews-white.svg></div><div class="st-custom-button st-remove-label" data-network=reddit><img alt="reddit-white sharing button" src=https://platform-cdn.sharethis.com/img/reddit-white.svg></div><div class="st-custom-button st-remove-label" data-network=sharethis><img alt="reddit-white sharing button" src=https://platform-cdn.sharethis.com/img/sharethis-white.svg></div></div></div></div></div><img onclick="location.href='#top'" class=go-ahead src=/images/up.png></div><footer class="container-fluid foot-wrap" name=contact_us><div class=container><p align=center class=statement>Nebula Graph will respect your data privacy per our Privacy Policy</p><div class=row><div class="row-content col-lg-4 col-sm-4 col-xs-4"><h3>Community</h3><ul><li><img src=/img/github.png>
+<a href=https://github.com/vesoft-inc/nebula target=_blank>GitHub</a></li><li><img src=/img/forum.png>
+<a href=https://discuss.nebula-graph.io/ target=_blank>Forum</a></li><li><img src=/img/slack.png>
+<a href=https://join.slack.com/t/nebulagraph/shared_invite/enQtNjIzMjQ5MzE2OTQ2LTM0MjY0MWFlODg3ZTNjMjg3YWU5ZGY2NDM5MDhmOGU2OWI5ZWZjZDUwNTExMGIxZTk2ZmQxY2Q2MzM1OWJhMmY# target=_blank>Slack</a></li></ul></div><div class="row-content col-lg-4 col-sm-4 col-xs-4"><h3>Follow Us</h3><ul><li><img src=/img/twitter.png>
+<a href=https://twitter.com/NebulaGraph title=Twitter data-toggle=modal target=_blank data-target>Twitter</a></li><li><img src=/img/weibo.png>
+<a href=https://weibo.com/nebulagraph title=WeiBo data-toggle=modal target=_blank data-target>WeiBo</a></li><li><img src=/img/linkedin.png>
+<a href=https://www.linkedin.com/company/vesoft-nebula-graph/ title=LinkedIn data-toggle=modal target=_blank data-target>LinkedIn</a></li><li><img src=/img/youtube.png>
+<a href=https://www.youtube.com/channel/UC73V8q795eSEMxDX4Pvdwmw title=YouTube data-toggle=modal target=_blank data-target>YouTube</a></li><li><img src=/img/facebook.png>
+<a href=https://www.facebook.com/NebulaGraph/ title=FaceBook data-toggle=modal target=_blank data-target>FaceBook</a></li><li><img src=/img/gongzhonghao.png>
+<a href title="Official Accounts" data-toggle=modal target=_blank data-target=#myGongzhonghaoModal>Official Accounts</a></li></ul></div><div class="contactus row-content col-lg-4 col-sm-4 col-xs-4"><h3>Contact Us</h3><ul><li><img src=/img/iphone.png>
+<a href data-toggle=modal target=_blank data-target>(+86) 0571-28120658</a></li><li><img src=/img/email.png>
+<a href=mailto:info@vesoft.com data-toggle=modal target=_blank data-target>info@vesoft.com</a></li><li><img src=/img/weixin.png>
+<a href data-toggle=modal target=_blank data-target=#myModal>WeChat</a></li></ul></div></div></div><p align=left style=font-size:16px><img src=/images/VEsoft.png style=margin-right:10px> Copyright &copy;2020 VESoft Inc</p><div class="modal fade" id=myGongzhonghaoModal tabindex=-1 role=dialog aria-labelledby=myModalLabel aria-hidden=true><div class=modal-dialog><div class=modal-content><div class="modal-body wechat"><img src=/images/gonggonghaoCODE.jpg></div><div class=modal-footer><button type=button class="btn btn-default" data-dismiss=modal>close</button></div></div></div></div><div class="modal fade" id=myModal tabindex=-1 role=dialog aria-labelledby=myModalLabel aria-hidden=true><div class=modal-dialog><div class=modal-content><div class="modal-body wechat"><img src=/images/wechat.png></div><div class=modal-footer><button type=button class="btn btn-default" data-dismiss=modal>close</button></div></div></div></div></footer></main><div id=J-star-popup class=nebula-star-popup></div><script src=/js/jquery.js></script><script src=/js/bootstrap.min.js></script><script src=/js/jquery.easing.min.js></script><script src=/js/jquery.fittext.js></script><script src=/js/wow.min.js></script><script type=text/javascript src="https://platform-api.sharethis.com/js/sharethis.js#property=5e7c2cc315c7990012ae38bc&product=inline-share-buttons" async></script><script src=/js/creative.js></script><script async defer src=https://buttons.github.io/buttons.js></script><script src=/js/init.js></script><script type=text/javascript>DiscourseEmbed={discourseUrl:'https://discuss.nebula-graph.io/',discourseEmbedUrl:"https:\/\/nebula-graph.io\/en\/posts\/how-to-deploy-nebula-graph-in-kubernetes\/"};(function(){var d=document.createElement('script');d.type='text/javascript';d.async=true;d.src=DiscourseEmbed.discourseUrl+'javascripts/embed.js';(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(d);})();</script></body></html>

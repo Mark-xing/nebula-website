@@ -1,0 +1,58 @@
+.single-side-bar .nebula-share-buttons {
+  width: 32px;
+}
+
+.single-side-bar .nebula-share-buttons > .st-custom-button {
+  display: inline-block;
+  position: relative;
+  top: 0;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  border-radius: 50%;
+  padding: 0 8px;
+  border: 1px solid #eee;
+  white-space: nowrap;
+  text-align: center;
+  cursor: pointer;
+}
+
+.single-side-bar .nebula-share-buttons > .st-custom-button > img {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  top: 8px;
+  vertical-align: top;
+}
+
+.single-side-bar .nebula-share-buttons > .st-custom-button + .st-custom-button {
+  margin-top: 6px;
+}
+
+.single-side-bar .blog-anchors {
+  margin-top: 25px;
+  overflow: hidden;
+}
+
+.single-side-bar .blog-anchors > h3 {
+  margin-top: 0px;
+}
+
+.single-side-bar .blog-anchors ul {
+  margin-bottom: 0px;
+}
+
+.single-side-bar .blog-anchors li {
+  line-height: 1.5;
+}
+
+.single-side-bar ul li > a {
+  color: #333333;
+}
+
+@media(max-width: 768px) {
+  .blog-anchors {
+    display: none;
+  }
+}

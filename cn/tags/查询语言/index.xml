@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>查询语言 on Nebula Graph - An Open Source, Distributed and High Performant Graph Database</title><link>https://nebula-graph.io/cn/tags/%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80/</link><description>Recent content in 查询语言 on Nebula Graph - An Open Source, Distributed and High Performant Graph Database</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 03 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://nebula-graph.io/cn/tags/%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80/index.xml" rel="self" type="application/rss+xml"/><item><title>一文了解各大图数据库查询语言 | 操作入门篇</title><link>https://nebula-graph.io/cn/posts/graph-query-language-comparison-cypher-gremlin-ngql/</link><pubDate>Tue, 03 Mar 2020 00:00:00 +0000</pubDate><guid>https://nebula-graph.io/cn/posts/graph-query-language-comparison-cypher-gremlin-ngql/</guid><description>文章的开头我们先来看下什么是图数据库，根据维基百科的定义：图数据库是使用图结构进行语义查询的数据库，它使用节点、边和属性来表示和存储数据。
+虽然和关系型数据库存储的结构不同（关系型数据库为表结构，图数据库为图结构），但不计各自的性能问题，关系型数据库可以通过递归查询或者组合其他 SQL 语句（Join）完成图查询语言查询节点关系操作。得益于 1987 年 SQL 成为国际标准化组织（ISO）标准，关系型数据库行业得到了很好的发展。同 60、70 年代的关系型数据库类似，图数据库这个领域的查询语言目前也没有统一标准，虽然 19 年 9 月经过国际 SQL 标准委员会投票表决，决定将图查询语言（Graph Query Language）纳为一种新的数据库查询语言，但 GQL 的制定仍需要一段时间。
+介于市面上没有统一的图查询语言标准，在本文中我们选取市面上主流的几款图查询语言来分析一波用法，由于篇幅原因本文旨在简单介绍图查询语言和常规用法，更详细的内容将在进阶篇中讲述。
+图查询语言·介绍 图查询语言 Gremlin Gremlin 是 Apache ThinkerPop 框架下的图遍历语言。Gremlin 可以是声明性的也可以是命令性的。虽然 Gremlin 是基于 Groovy 的，但具有许多语言变体，允许开发人员以 Java、JavaScript、Python、Scala、Clojure 和 Groovy 等许多现代编程语言原生编写 Gremlin 查询。
+支持图数据库：Janus Graph、InfiniteGraph、Cosmos DB、DataStax Enterprise(5.0+) 、Amazon Neptune
+图查询语言 Cypher Cypher 是一个描述性的图形查询语言，允许不必编写图形结构的遍历代码对图形存储有表现力和效率的查询，和 SQL 很相似，Cypher 语言的关键字不区分大小写，但是属性值，标签，关系类型和变量是区分大小写的。
+支持图数据库： Neo4j、RedisGraph
+图查询语言 nGQL nGQL 是一种类 SQL 的声明型的文本查询语言，nGQL 同样是关键词大小写不敏感的查询语言，目前支持模式匹配、聚合运算、图计算，可无嵌入组合语句。
+支持图数据库：Nebula Graph
+图查询语言·术语篇 在比较这 3 个图查询语言之前，我们先来看看他们各自的术语，如果你翻阅他们的文档会经常见到下面这些“关键字”，在这里我们不讲用法，只看这些图数据库常用概念在这 3 个图数据库文档中的叫法。</description></item></channel></rss>

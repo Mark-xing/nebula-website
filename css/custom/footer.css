@@ -1,0 +1,110 @@
+.foot-wrap {
+    background-color: #000;
+    background-image: url("../../img/footer_bg.png");
+    background-repeat:no-repeat;
+    background-position:bottom;
+    background-size: 100%;
+    color:rgba(255, 255, 255, 1);
+    font-family:"PingFangSC-Regular,PingFang SC";
+}
+
+.row-content >h3 {
+    opacity: .8;
+    font-size: 18px;
+    font-weight: 600;
+    font-family:"PingFangSC-Regular,PingFang SC";
+    line-height: 24px;
+    text-align: center;
+    margin: 10px 0 10px 34px;
+}
+
+.statement{
+    font-size:16px;
+    line-height:30px;
+    letter-spacing:1px;
+    padding: 30px 0 20px;
+    text-align: center;
+}
+.row-content h3{
+    text-align: left;
+    padding-left: 20%;
+}
+
+.row-content .row-content-text {
+    color: #878B91;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: left;
+    margin: 40px 0 30px 34px;
+}
+
+.row-content >ul {
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 0;
+}
+
+.row-content >ul >li {
+    list-style: none;
+    line-height: 40px;
+    text-align: left;
+    padding-left: 20%;
+    font-weight:400;
+}
+.row-content>ul>li  img{
+    margin-right: 10px;
+}
+.row-content >ul >li >a {
+    font-family:"PingFangSC-Regular,PingFang SC";
+    color: hsla(0,0%,100%,.9);
+    text-decoration: none !important;
+}
+.row-content >ul >li > a:hover {
+    color: #0080FF;
+}
+
+.wechat {
+    text-align: center;
+}
+.wechat img{
+    width: 100%;
+    max-width: 350px;
+}
+.icon-btn{
+    padding: 0 !important;
+}
+@media(max-width: 768px) {
+    .statement{
+        padding: 20px 0 0;
+    }
+    .row-content h3{
+        font-size: 16px;
+        padding-left: 0;
+        text-align: center;
+    }
+    .row-content .row-content-text {
+        font-size: 14px;
+        text-align: center;
+        margin: 20px 0;
+    }
+    .row-content >ul{
+        padding: 0;
+        font-size: 14px;
+    }
+    .row-content>ul li {
+        text-align: center;
+        padding-left: 0;
+    }
+    .row-content>ul>li img {
+        margin-right: 2px;
+    }
+    .row-content>h3 {
+        margin-top: 20px;
+    }
+    .row-content{
+        width: 100%;
+    }
+    .contactus{
+        margin-bottom: 10px;
+    }
+}

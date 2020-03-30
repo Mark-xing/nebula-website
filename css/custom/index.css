@@ -1,0 +1,85 @@
+/* style defined by ourselves */
+@import url('./nav.css');
+@import url('./header.css');
+@import url('./footer.css');
+@import url('./list.css');
+@import url('./single.css');
+@import url('./features.css');
+@import url('./latestPosts.css');
+@import url('./tags.css');
+@import url('./listSideBar.css');
+@import url('./carousel.css');
+@import url('./asideLinks.css');
+@import url('./singleSideBar.css');
+
+@font-face {
+    font-family: "PingFangSC-Regular,PingFang SC";
+    src: url('../fonts/PingFang-Medium.ttf')
+}
+
+main {
+  height: 100%;
+  width: 100%;
+}
+
+.go-ahead {
+  position: fixed;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  bottom: 15%;
+  right: 20px;
+  cursor: pointer;
+}
+
+.nebula-star-popup {
+  position: fixed;
+  bottom: 10px;
+  right: 190px;
+  z-index: 100;
+}
+
+.nebula-star-popup .popover {
+  width: 240px;
+  box-shadow: none;
+  border: none;
+  background: #F5F5F5;
+}
+
+.nebula-star-popup .popover .popover-content {
+  padding: 12px 32px;
+}
+
+.nebula-star-popup .popover .item p {
+  margin: 0;
+  color: #060812;
+  font-size: 16px;
+}
+
+.nebula-star-popup .popover .item p .emoj {
+  margin-right: 16px;
+}
+
+.nebula-star-popup .popover .item a {
+  color: #060812;
+  text-decoration: underline;
+}
+
+.nebula-star-popup .popover .arrow {
+  display: none;
+}
+
+.nebula-star-popup .popover-content .popup-logo {
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  right: -58px;
+  bottom: 0px;
+}
+
+.nebula-star-popup .glyphicon-remove {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  cursor: pointer;
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>产品讲解 on Nebula Graph - An Open Source, Distributed and High Performant Graph Database</title><link>https://nebula-graph.io/cn/tags/%E4%BA%A7%E5%93%81%E8%AE%B2%E8%A7%A3/</link><description>Recent content in 产品讲解 on Nebula Graph - An Open Source, Distributed and High Performant Graph Database</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Wed, 25 Dec 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://nebula-graph.io/cn/tags/%E4%BA%A7%E5%93%81%E8%AE%B2%E8%A7%A3/index.xml" rel="self" type="application/rss+xml"/><item><title>Github Statistics 一个基于 React 的 GitHub 数据统计工具</title><link>https://nebula-graph.io/cn/posts/introduction-to-react-based-github-statistics/</link><pubDate>Wed, 25 Dec 2019 00:00:00 +0000</pubDate><guid>https://nebula-graph.io/cn/posts/introduction-to-react-based-github-statistics/</guid><description>V 站曾经有个热帖说为何我的开源项目只有 Fork 没有 Star，楼下有个热评说开源项目关注的不应该是 Commit 数据吗？先不论 Star、Fork 和 Commit，issue 、pr 也应是一个开源项目社区关注的数据。
+下面我们来看看市面上有哪些 GitHub 数据统计工具
+GitHub Star 数据统计工具 Chrome 插件—— Star History 顾名思义你可以通过 Star History 这个项目看到一个项目的趋势增长，安装上此插件之后你可以直接在某个开源项目主页，如下图所示，一键操作看 star 增长趋势无烦恼。
+当然它也有在线版：https://star-history.t9t.io/ 可以戳这个链接体验。
+在线版 —— StarTrack-js StarTrack 和 Star History 类似也是一个 Star 统计工具，操作稍繁琐，需要填入该项目所有者的用户名及项目名，下图以 VEsoft-inc 的 Nebula 项目为例：
+除了简单的 Star 趋势图，StarTrack 还为你统计了这个项目的 Star 总数、开源时间及每日获得 Star 数等维度数据。
+GitHub 数据统计工具—— Github Statistics 不只是 Fork 数和 Commit 数，统计 issue 数的工具在 Google 搜索也是查无此项（如果你有知道此类工具欢迎在评论文留言 👏），GitHub Statistics 是据我所知唯一的可以统计某个开源项目的指标数，包括 GitHub Star、Fork、Commit、issue 和 pr 等数据的工具，当然 GitHub Statistics 也支持你查看项目的 Release 信息，在线体验：https://vesoft-inc.</description></item><item><title>COSCon'19 | 如何设计新一代的图数据库 Nebula</title><link>https://nebula-graph.io/cn/posts/coscon-2019-nebula-graph-database/</link><pubDate>Tue, 12 Nov 2019 00:00:00 +0000</pubDate><guid>https://nebula-graph.io/cn/posts/coscon-2019-nebula-graph-database/</guid><description>11 月 2 号 - 11 月 3 号，以“大爱无疆，开源无界”为主题的 2019 中国开源年会（COSCon&amp;rsquo;19）正式启动，大会以开源治理、国际接轨、社区发展和开源项目为切入点同全球开源爱好者们共同交流开源。
+作为图数据库技术的代表，Nebula Graph 总监——吴敏在本次大会上将会讲述了大规模分布式图数据库设计思考和实践。在信息爆发式增长和内容平台遍地开花的信息时代，图数据库在当中扮演了什么样的角色？同传统数据库相比，图数据库又有什么优势？图数据库开发需要哪些新技术？就此，开源社特访吴敏来分享下图数据库主题内容，从图数据 Nebula 的研发开始，就传统数据库面临的挑战，开源模式的优势，Nebula 的社区开展和产品规划等问题进行深入解析。
+About Nebula 总监&amp;ndash;吴敏 开源社：Hi，吴敏，先和大家介绍下自己。 大家好，我是吴敏，VEsoft 总监，博士毕业于浙江大学。 曾就职于阿里云、蚂蚁金服，从事分布式图数据库以及云存储相关工作。
+开源社：谈谈您在 COSCon&amp;rsquo;19 上的分享话题。 随着抖音、小红书等社交内容平台的爆红诞生了一种基于社交关系网路的推荐需求，而以垂直领域作为切入点的知识图谱过去两年的“爆火”，传统数据库在处理社交推荐、风控、知识图谱方面的性能缺陷，图数据库的研发应运而生。
+本演讲开篇将陈述图数据库行业现状，让你对图数据库存储的数据及对场景有所了解，再从开源的分布式图数据库 Nebula Graph 切入深度讲解大规模分布式图数据库应该如何设计存储、计算及架构，最后讲述开源对图数据库开发的影响。
+内容大纲
+图数据库概述及应用 Nebula Graph 设计介绍 技术细节 开源社区及服务 开源社：哪些人可以应该了解这个内容？ 对图数据库有兴趣，或是有推荐、风控、知识图谱等业务场景需求的人。
+Nebula 研发之旅 开源社：为什么给图数据库取名 Nebula ？ Nebula 是星云的意思，很大嘛，也是漫威宇宙里面漂亮的星云小姐姐。对了，Nebula的发音是：[ˈnɛbjələ]
+开源社：现在数据库领域百花齐放，国产的 OceanBase 和 TiDB 都发展得不错，为什么还要研发 Nebula 这样的图数据库？ OceanBase、TiDB 这类 NewSQL 最近发展势头很强劲，他们的出现更多的是对传统单机的关系型数据库在可用性的补充。Nebula 聚焦在图数据库这一领域，也是近年来在数据库各分支中增长最为快速的领域。图数据库使用图（或者网）的方式很直接、自然的表达现实世界的关系: 用节点来表示实体，边来表示关联关系，everything is connected。能高效的提供图检索，提供专业的分析算法、工具，比如 ShortestPath、PageRank、标签传播等等。
+开源社：图数据库应用场景有哪些？ 典型的应用场景有社交网络，金融风控，推荐引擎，知识图谱等。
+社交网络，比如，推荐一条最短路径让我结识迪纳热巴，还可以加上筛选条件，路径中的每个人都是单身女性。
+金融风控场景，比如，去查一个信用卡反套现的网络。很典型的一个场景，A 转账到 B，B 转账到 C，C 又转回给 A 即是一个典型的闭环。对于这样的闭环，这类查询在图数据库大规模应用之前，大部分都是采用离线计算的方式去查找，但是离线场景很难去控制当前发生的这笔交易。一个信用卡交易或者在线贷款，整个作业流程很长，而在反套现这块的审核时间又限制在毫秒级，这就是图数据库非常大的一个应用场景。</description></item></channel></rss>

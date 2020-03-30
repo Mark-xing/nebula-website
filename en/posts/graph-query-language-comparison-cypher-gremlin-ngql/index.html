@@ -1,0 +1,343 @@
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=author content="Nebula Graph"><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="@NebulaGraph"><meta name=twitter:creator content="@NebulaGraph"><meta name=twitter:domain content="nebula-graph.io"><meta name=twitter:title content="Graph Query Language Comparison Series - Gremlin vs Cypher vs nGQL"><meta property="twitter:title" content="Graph Query Language Comparison Series - Gremlin vs Cypher vs nGQL"><meta name=twitter:description content="Graph users have to learn different graph query languages using different graph databases due to the lack of international standard of the graph query language. Check this post out for a comparison of the basic operations among Cypher, Gremlin, and nGQL."><meta name=og:description content="Graph users have to learn different graph query languages using different graph databases due to the lack of international standard of the graph query language. Check this post out for a comparison of the basic operations among Cypher, Gremlin, and nGQL."><meta name=twitter:image content="https://nebula-graph.io/en/posts/graph-query-language-comparison-cypher-gremlin-ngql/ngql_hu7ca0ad005810143b0a14319d9b893d04_61815_600x0_resize_box_2.png"><meta name=og:image content="https://nebula-graph.io/en/posts/graph-query-language-comparison-cypher-gremlin-ngql/ngql_hu7ca0ad005810143b0a14319d9b893d04_61815_600x0_resize_box_2.png"><meta name=description content="Graph users have to learn different graph query languages using different graph databases due to the lack of international standard of the graph query language. Check this post out for a comparison of the basic operations among Cypher, Gremlin, and nGQL."><meta name=generator content="Hugo 0.65.3"><title>Graph Query Language Comparison Series - Gremlin vs Cypher vs nGQL</title><link rel="shortcut icon" href=/favicon.ico><link rel=stylesheet href=/css/bootstrap.min.css type=text/css><link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel=stylesheet type=text/css><link href="//fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic" rel=stylesheet type=text/css><link rel=stylesheet href=/font-awesome/css/font-awesome.min.css type=text/css><link rel=stylesheet href=/css/creative.css type=text/css><link rel=stylesheet href=/css/modals.css type=text/css><link rel=stylesheet href=/css/animate.min.css type=text/css><link rel=stylesheet href=/css/custom/index.css type=text/css><!--[if lt IE 9]><script src=https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js></script><script src=https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js></script><![endif]--><script src=/js/jquery.js></script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-60523578-5"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config','UA-60523578-5');</script></head><body id=page-top><nav id=mainNav class="navbar navbar-default navbar-fixed-top"><div class=container-fluid><div class=navbar-header><div class=github-star><a class=github-button href=https://github.com/vesoft-inc/nebula data-icon=octicon-star data-show-count=true aria-label="Star vesoft-inc/nebula on GitHub">Star</a></div><button type=button class="navbar-toggle collapsed" data-toggle=collapse data-target=#bs-example-navbar-collapse-1>
+<span class=sr-only>Toggle navigation</span>
+<span class=icon-bar></span><span class=icon-bar></span><span class=icon-bar></span></button>
+<a class="navbar-brand page-scroll" href=/></a></div><div class="collapse navbar-collapse" id=bs-example-navbar-collapse-1><ul class="nav navbar-nav" id=nav><li class=github-star id=github-star><a class=github-button href=https://github.com/vesoft-inc/nebula data-size=large data-show-count=true aria-label="Star vesoft-inc/nebula on GitHub">Star</a></li><li><a href=https://docs.nebula-graph.io/ target=_blank>Docs</a></li><li><a href=/en/posts target>Blog</a></li><li><a href=https://discuss.nebula-graph.io/ target=_blank>Forum</a></li><li><a href=#contact_us target onclick=contactUsClick()>Contact Us</a></li><li class="dropdown navbar-right"><a class=dropdown-toggle data-toggle=dropdown href=# role=button aria-haspopup=true aria-expanded=false><img src=/images/language120x120.png>
+<span class=caret></span></a><ul class=dropdown-menu><li class=nav-item><a class=dropdown-item href=/en target>English</a></li><li class=nav-item><a class=dropdown-item href=/cn target>中文</a></li></ul></li><li id=navbar-right><a href=https://github.com/vesoft-inc/nebula-web-docker target=_blank>Nebula Studio</a></li></ul></div></div></nav><script>function contactUsClick(){$('html,body').animate({scrollTop:document.documentElement.scrollHeight},800)
+return false;}</script><main id=top class=blog-detail><div class=wrapper><div class=inner><section class=blog-content><h1>Graph Query Language Comparison Series - Gremlin vs Cypher vs nGQL</h1><div class=blog-metas><div class=meta><img src=/images/writer.png width=16px height=16px>
+<span>Steam, Amber, Jude</span></div><div class=meta><img src=/images/calendar.png width=16px height=16px>
+<span>2020-03-03</span></div><div class="tags meta"><img src=/images/tag.png width=16px height=16px>
+<a href=/en//tags/Graph-Database>Graph-Database</a><a href=/en//tags/Graph-Query-Language>Graph-Query-Language</a></div></div><p>In September 2019, <a href=https://www.gqlstandards.org/home>Graph Query Language</a> is accepted as a new database query language in a vote by the International SQL Standards Committee, the unification of GQL takes time. </p><p><img src=https://user-images.githubusercontent.com/38887077/75741236-f357d380-5d44-11ea-8c43-65283b49bbef.png alt=image></p><p>In this post, we&rsquo;ve selected some mainstream graph query languages and compared the CRUD usage in these languages respectively.</p><h2 id=which-graph-query-languages-to-be-compared>Which Graph Query Languages to Be Compared</h2><p><img src=https://user-images.githubusercontent.com/38887077/75741240-f5ba2d80-5d44-11ea-80f6-f44d39fff43a.png alt=image></p><h3 id=gremlin>Gremlin</h3><p><a href=https://tinkerpop.apache.org/gremlin.html>Gremlin</a> is a graph traversal language developed by Apache TinkerPop and has been adopted by a lot of graph database solutions. It can be either <strong>declarative</strong> or <strong>imperative</strong>.</p><p>Gremlin is Groovy-based, but has many language variants that allow developers to <strong>write Gremlin queries natively</strong> in many modern programming languages such as Java, JavaScript, Python, Scala, Clojure and Groovy.</p><p><strong>Supported graph databases</strong>: Janus Graph, InfiniteGraph, Cosmos DB, DataStax Enterprise(5.0+) and Amazon Neptune.</p><h3 id=cypher>Cypher</h3><p><a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=13&cad=rja&uact=8&ved=2ahUKEwi5-ZfEtfvnAhWSad4KHTDpClwQFjAMegQIBRAB&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FCypher&usg=AOvVaw3rCtDns3Bbr5mIuBpSN4hr">Cypher</a> is a declarative graph query language that allows expressive and efficient data querying in a property graph.</p><p>The language was designed with the power and capability of SQL. The keywords of the Cypher language are not case sensitive, but attributes, labels, relationship types and variables are case sensitive.</p><p><strong>Supported graph databases</strong>: Neo4j, AgensGraph and RedisGraph</p><h3 id=ngql>nGQL</h3><p><strong>Nebula Graph</strong> introduces its own query language, <a href=https://github.com/vesoft-inc/nebula/blob/master/docs/manual-EN/1.overview/1.concepts/2.nGQL-overview.md>nGQL</a>, which is a declarative, textual query language like SQL, but designed for graphs.</p><p>The keywords of the nGQL language are case sensitive and it support statement composition so that there&rsquo;s no need for statement embedding.</p><p><strong>Support graph databases</strong>: Nebula Graph</p><h2 id=terms-comparison>Terms Comparison</h2><p>Before comparing the three graph query languages, let&rsquo;s take a look at their terms and concepts first. The table below explains how these languages define nodes and edges:</p><table><thead><tr><th>Graph Terms</th><th>Gremlin</th><th>Cypher</th><th>nGQL</th></tr></thead><tbody><tr><td>Vertex</td><td>Vertex</td><td>Node</td><td>Vertex</td></tr><tr><td>Edge</td><td>Edge</td><td>Relationship</td><td>Edge</td></tr><tr><td>Vertex Type</td><td>Label</td><td>Label</td><td>Tag</td></tr><tr><td>Edge Type</td><td>label</td><td>RelationshipType</td><td>edge type</td></tr><tr><td>Vertex ID</td><td>vid</td><td>id(n)</td><td>vid</td></tr><tr><td>Edge ID</td><td>eid</td><td>id(r)</td><td>\</td></tr><tr><td>Insert</td><td>add</td><td>create</td><td>insert</td></tr><tr><td>Delete</td><td>drop</td><td>delete</td><td>delete / drop</td></tr><tr><td>Update</td><td>setProperty</td><td>set</td><td>update</td></tr></tbody></table><h2 id=syntax-comparison--crud>Syntax Comparison - CRUD</h2><p>After understanding the common terms in Gremlin, Cypher, and nGQL, let&rsquo;s take a look at the general syntax of these graph query languages.</p><p>This section will walk you through the basic CRUD syntax for Gremlin, Cypher and nGQL respectively.</p><h3 id=graph>Graph</h3><p>Refer to the following example on how to create a graph space. We omitted Cypher since you don&rsquo;t need to create a graph space before you can add any data to the graph databases.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#75715e># Create a graph that Gremlin can traverse</span>
+g <span style=color:#f92672>=</span> TinkerGraph.open<span style=color:#f92672>()</span>.traversal<span style=color:#f92672>()</span>
+
+<span style=color:#75715e># Create a graph space in nGQL</span>
+CREATE SPACE gods
+</code></pre></div><h3 id=vertex>Vertex</h3><p>We all know that graph consists of nodes and edges. A node in Cypher is called a vertex in Gremlin and nGQL. And an edge is the connection among two nodes.</p><p>Refer to the following example on inserting new vertex in these query languages respectively.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#75715e># Insert vertex in Gremlin</span>
+g.addV<span style=color:#f92672>(</span>vertexLabel<span style=color:#f92672>)</span>.property<span style=color:#f92672>()</span>
+
+<span style=color:#75715e># Insert vertex in Cypher</span>
+CREATE <span style=color:#f92672>(</span>:nodeLabel <span style=color:#f92672>{</span>property<span style=color:#f92672>})</span>
+
+<span style=color:#75715e># Insert vertex in nGQL</span>
+INSERT VERTEX tagName <span style=color:#f92672>(</span>propNameList<span style=color:#f92672>)</span> VALUES vid:<span style=color:#f92672>(</span>tagKey propValue<span style=color:#f92672>)</span>
+</code></pre></div><h4 id=vertex-type>Vertex Type</h4><p>The nodes/vertices can have types. They are called <code>labels</code> in Gremlin and Cypher , and <code>tags</code> in nGQL.</p><p>A vertex type can have multiple properties. For example, vertex type <em>Person</em> have two properties, i.e. <em>name</em> and <em>age</em>.</p><p><img src=https://user-images.githubusercontent.com/38887077/75741241-f8b51e00-5d44-11ea-8a39-b02a88de44a3.png alt=image></p><h5 id=create-vertex-type>Create Vertex Type</h5><p>Refer to the following example on vertex type creation. We omitted Cypher since you don&rsquo;t need a label before inserting data.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#75715e># Create vertex type in Gremlin</span>
+g.addV<span style=color:#f92672>(</span>vertexLabel<span style=color:#f92672>)</span>.property<span style=color:#f92672>()</span>
+
+<span style=color:#75715e># Create vertex type in nGQL</span>
+CREATE tagName<span style=color:#f92672>(</span>PropNameList<span style=color:#f92672>)</span>
+</code></pre></div><p>Note that Gremlin and nGQL both support <code>IF NOT EXISTS</code>. This keyword automatically detects if the corresponding vertex type exists. If it does not exist, a new one is created. Otherwise, no vertex type is created.</p><h5 id=show-vertex-types>Show Vertex Types</h5><p>When the vertex types are created, you can show them with the following queries. They will list all the labels/tags rather than certain labels/tags.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#75715e># Show vertex types in Gremlin</span>
+g.V<span style=color:#f92672>()</span>.label<span style=color:#f92672>()</span>.dedup<span style=color:#f92672>()</span>;
+
+<span style=color:#75715e># Show vertex types in Cypher method 1</span>
+MATCH <span style=color:#f92672>(</span>n<span style=color:#f92672>)</span> 
+RETURN DISTINCT labels<span style=color:#f92672>(</span>n<span style=color:#f92672>)</span>
+<span style=color:#75715e># Show vertex types in Cypher method 2</span>
+CALL db.labels<span style=color:#f92672>()</span>;
+
+<span style=color:#75715e># Show vertex types in nGQL</span>
+SHOW TAGS
+</code></pre></div><h4 id=crud-on-vertices>CRUD on Vertices</h4><p>This section introduces the basic CRUD operations on vertices using the three query languages.</p><h5 id=insert-vertices>Insert Vertices</h5><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#75715e># Insert vertex of certain type in Gremlin</span>
+g.addV<span style=color:#f92672>(</span>String vertexLabel<span style=color:#f92672>)</span>.property<span style=color:#f92672>()</span>
+
+<span style=color:#75715e># Insert vertex of certain type in Cypher</span>
+CREATE <span style=color:#f92672>(</span>node:label<span style=color:#f92672>)</span> 
+
+<span style=color:#75715e># Insert vertex of certain type in nGQL</span>
+INSERT VERTEX &lt;tag_name&gt; <span style=color:#f92672>(</span>prop_name_list<span style=color:#f92672>)</span> VALUES &lt;vid&gt;:<span style=color:#f92672>(</span>prop_value_list<span style=color:#f92672>)</span>
+</code></pre></div><h5 id=get-vertices>Get Vertices</h5><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#75715e># Fetch vertices in Gremlin</span>
+g.V<span style=color:#f92672>(</span>&lt;vid&gt;<span style=color:#f92672>)</span>
+
+<span style=color:#75715e># Fetch vertices in Cypher</span>
+MATCH <span style=color:#f92672>(</span>n<span style=color:#f92672>)</span> 
+WHERE condition
+RETURN properties<span style=color:#f92672>(</span>n<span style=color:#f92672>)</span>
+
+<span style=color:#75715e># Fetch vertices in nGQL</span>
+FETCH PROP ON &lt;tag_name&gt; &lt;vid&gt;
+</code></pre></div><h5 id=delete-vertices>Delete Vertices</h5><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#75715e># Delete vertex in Gremlin</span>
+g.V<span style=color:#f92672>(</span>&lt;vid&gt;<span style=color:#f92672>)</span>.drop<span style=color:#f92672>()</span>
+
+<span style=color:#75715e># Delete a vertex in Cypher</span>
+MATCH <span style=color:#f92672>(</span>node:label<span style=color:#f92672>)</span> 
+DETACH DELETE node
+
+<span style=color:#75715e># Delete vertex in nGQL</span>
+DELETE VERTEX &lt;vid&gt;
+</code></pre></div><h5 id=update-a-vertexs-property>Update a Vertex&rsquo;s Property</h5><p>This section shows you how to update properties for vertex.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#75715e># Update vertex in Gremlin</span>
+g.V<span style=color:#f92672>(</span>&lt;vid&gt;<span style=color:#f92672>)</span>.property<span style=color:#f92672>()</span>
+
+<span style=color:#75715e># Update vertex in Cypher</span>
+SET n.prop <span style=color:#f92672>=</span> V
+
+<span style=color:#75715e># Update vertex in nGQL</span>
+UPDATE VERTEX &lt;vid&gt; SET &lt;update_columns&gt;
+</code></pre></div><p>Both Cypher and nGQL use keyword <code>SET</code> to set the vertex type, except that the <code>UPDATE</code> keyword is added in nGQL to identify the operation. The operation of Gremlin is similar to the above-mentioned fetching vertex, except that it adds operations for changing property.</p><h3 id=edges>Edges</h3><p>This section introduces the basic CRUD operations on edges.</p><h4 id=edge-types>Edge Types</h4><p>Like vertices, edges can also have types.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#75715e># Create an edge type in Gremlin</span>
+g.edgeLabel<span style=color:#f92672>()</span>
+
+<span style=color:#75715e># Create an edge type in nGQL</span>
+CREATE EDGE edgeTypeName<span style=color:#f92672>(</span>propNameList<span style=color:#f92672>)</span>
+</code></pre></div><h4 id=crud-on-edges>CRUD on Edges</h4><h5 id=insert-edges-of-certain-types>Insert Edges of Certain Types</h5><p>Inserting an edge is similar to inserting vertices. Cypher uses <code>-[]-></code> and and nGQL uses <code>-></code> to represent edges respectively. Gremlin uses the keyword <code>to()</code> to indicate edge direction.</p><p>Edges are by default directed in the three languages. The chart on the left below is a directed edge while the one on the right is an undirected edge.</p><p><img src=https://user-images.githubusercontent.com/38887077/75741248-fbb00e80-5d44-11ea-9c80-0c11fd41a277.png alt=image></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#75715e># Insert edge of certain type in Gremlin</span>
+g.addE<span style=color:#f92672>(</span>String edgeLabel<span style=color:#f92672>)</span>.from<span style=color:#f92672>(</span>v1<span style=color:#f92672>)</span>.to<span style=color:#f92672>(</span>v2<span style=color:#f92672>)</span>.property<span style=color:#f92672>()</span>
+
+<span style=color:#75715e># Insert edge of certain type in Cypher</span>
+CREATE <span style=color:#f92672>(</span>&lt;node1-name&gt;:&lt;label1-name&gt;<span style=color:#f92672>)</span>-
+  <span style=color:#f92672>[(</span>&lt;relationship-name&gt;:&lt;relationship-label-name&gt;<span style=color:#f92672>)]</span>
+  -&gt;<span style=color:#f92672>(</span>&lt;node2-name&gt;:&lt;label2-name&gt;<span style=color:#f92672>)</span>
+
+<span style=color:#75715e># Insert edge of certain type in nGQL</span>
+INSERT EDGE &lt;edge_name&gt; <span style=color:#f92672>(</span> &lt;prop_name_list&gt; <span style=color:#f92672>)</span> VALUES &lt;src_vid&gt; -&gt; &lt;dst_vid&gt;: <span style=color:#f92672>(</span> &lt;prop_value_list&gt; <span style=color:#f92672>)</span>
+</code></pre></div><h5 id=delete-edges>Delete Edges</h5><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#75715e># Delete edge in Gremlin</span>
+g.E<span style=color:#f92672>(</span>&lt;eid&gt;<span style=color:#f92672>)</span>.drop<span style=color:#f92672>()</span>
+
+<span style=color:#75715e># Delete edge in Cypher</span>
+MATCH <span style=color:#f92672>(</span>&lt;node1-name&gt;:&lt;label1-name&gt;<span style=color:#f92672>)</span>-<span style=color:#f92672>[</span>r:relationship-label-name<span style=color:#f92672>]</span>-&gt;<span style=color:#f92672>()</span>
+DELETE r
+
+<span style=color:#75715e># Delete edge in nGQL</span>
+DELETE EDGE &lt;edge_type&gt; &lt;src_vid&gt; -&gt; &lt;dst_vid&gt;
+</code></pre></div><h5 id=fetch-edges>Fetch Edges</h5><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#75715e># Fetch edges in Gremlin</span>
+g.E<span style=color:#f92672>(</span>&lt;eid&gt;<span style=color:#f92672>)</span>
+
+<span style=color:#75715e># Fetch edges in Cypher</span>
+MATCH <span style=color:#f92672>(</span>n<span style=color:#f92672>)</span>-<span style=color:#f92672>[</span>r:label<span style=color:#f92672>]</span>-&gt;<span style=color:#f92672>()</span>
+WHERE condition
+RETURN properties<span style=color:#f92672>(</span>r<span style=color:#f92672>)</span>
+
+<span style=color:#75715e># Fetch edges in nGQL</span>
+FETCH PROP ON &lt;edge_name&gt; &lt;src_vid&gt; -&gt; &lt;dst_vid&gt;
+</code></pre></div><h3 id=other-operations>Other Operations</h3><p>In addition to the common CRUD on vertices and edges, we will also show you some combined queries in the three graph query languages.</p><h4 id=traverse-edges>Traverse edges</h4><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#75715e># Traverse edges with specified vertices in Gremlin</span>
+g.V<span style=color:#f92672>(</span>&lt;vid&gt;<span style=color:#f92672>)</span>.outE<span style=color:#f92672>(</span>&lt;edge&gt;<span style=color:#f92672>)</span>
+
+<span style=color:#75715e># Traverse edges with specified vertices in Cypher</span>
+Match <span style=color:#f92672>(</span>n<span style=color:#f92672>)</span>-&gt;<span style=color:#f92672>[</span>r:label<span style=color:#f92672>]</span>-&gt;<span style=color:#f92672>[]</span>
+WHERE id<span style=color:#f92672>(</span>n<span style=color:#f92672>)</span> <span style=color:#f92672>=</span> vid
+RETURN r
+
+<span style=color:#75715e># Traverse edges with specified vertices in nGQL</span>
+GO FROM &lt;vid&gt; OVER &lt;edge&gt;
+</code></pre></div><h4 id=traverse-edges-reversely>Traverse edges reversely</h4><p>In reverse traverse, Gremlin uses <code>in</code> to indicate reversion, Cypher uses <code>&lt;-</code>. nGQL uses keyword <code>REVERSELY</code>.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#75715e># Traverse edges reversely with specified vertices Gremlin</span>
+g.V<span style=color:#f92672>(</span>&lt;vid&gt;<span style=color:#f92672>)</span>.in<span style=color:#f92672>(</span>&lt;edge&gt;<span style=color:#f92672>)</span>
+
+<span style=color:#75715e># Traverse edges reversely with specified vertices Cypher</span>
+MATCH <span style=color:#f92672>(</span>n<span style=color:#f92672>)</span>&lt;-<span style=color:#f92672>[</span>r:label<span style=color:#f92672>]</span>-<span style=color:#f92672>()</span>
+
+<span style=color:#75715e># Traverse edges reversely with specified vertices nGQL</span>
+GO FROM &lt;vid&gt;  OVER &lt;edge&gt; REVERSELY
+</code></pre></div><h4 id=traverse-edges-bidirectionally>Traverse edges bidirectionally</h4><p>If the edge direction is <a href="https://www.google.com/search?q=irrelevant&spell=1&sa=X&ved=2ahUKEwjR1fPGovvnAhUsIDQIHXSzDRIQkeECKAB6BAgOECs">irrelevant</a> (either direction is acceptable),  Gremlin uses <code>bothE()</code>, Cypher use <code>-[]-</code>, and nGQL use keyword <code>BIDIRECT</code> .</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#75715e># Traverse edges reversely with specified vertices Gremlin</span>
+g.V<span style=color:#f92672>(</span>&lt;vid&gt;<span style=color:#f92672>)</span>.bothE<span style=color:#f92672>(</span>&lt;edge&gt;<span style=color:#f92672>)</span>
+
+<span style=color:#75715e># Traverse edges reversely with specified vertices Cypher</span>
+MATCH <span style=color:#f92672>(</span>n<span style=color:#f92672>)</span>-<span style=color:#f92672>[</span>r:label<span style=color:#f92672>]</span>-<span style=color:#f92672>()</span>
+
+<span style=color:#75715e># Traverse edges reversely with specified vertices nGQL</span>
+GO FROM &lt;vid&gt;  OVER &lt;edge&gt; BIDIRECT
+</code></pre></div><h4 id=query-n-hops-along-specified-edge>Query N hops along specified edge</h4><p>Gremlin and nGQL use <code>times</code> and <code>STEP</code> respectively to represent N hops. Cypher uses <code>relationship*N</code>.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#75715e># Query N hops along specified edge in Gremlin</span>
+g.V<span style=color:#f92672>(</span>&lt;vid&gt;<span style=color:#f92672>)</span>.repeat<span style=color:#f92672>(</span>out<span style=color:#f92672>(</span>&lt;edge&gt;<span style=color:#f92672>))</span>.times<span style=color:#f92672>(</span>N<span style=color:#f92672>)</span>
+
+<span style=color:#75715e># Query N hops along specified edge in Cypher</span>
+MATCH <span style=color:#f92672>(</span>n<span style=color:#f92672>)</span>-<span style=color:#f92672>[</span>r:label*N<span style=color:#f92672>]</span>-&gt;<span style=color:#f92672>()</span>
+WHERE condition
+RETURN r
+
+<span style=color:#75715e># Query N hops along specified edge in nGQL</span>
+GO N STEPS FROM &lt;vid&gt; OVER &lt;edge&gt;
+</code></pre></div><h4 id=find-paths-between-two-vertices>Find paths between two vertices</h4><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#75715e># Find paths between two vertices in Gremlin</span>
+g.V<span style=color:#f92672>(</span>&lt;vid&gt;<span style=color:#f92672>)</span>.repeat<span style=color:#f92672>(</span>out<span style=color:#f92672>())</span>.until<span style=color:#f92672>(</span>&lt;vid&gt;<span style=color:#f92672>)</span>.path<span style=color:#f92672>()</span>
+
+<span style=color:#75715e># Find paths between two vertices in Cypher</span>
+MATCH p <span style=color:#f92672>=(</span>a<span style=color:#f92672>)</span>-<span style=color:#f92672>[</span>.*<span style=color:#f92672>]</span>-&gt;<span style=color:#f92672>(</span>b<span style=color:#f92672>)</span>
+WHERE condition
+RETURN p
+
+<span style=color:#75715e># Find paths between two vertices in nGQL</span>
+FIND ALL PATH FROM &lt;vid&gt; TO &lt;vid&gt; OVER *
+</code></pre></div><h2 id=example-queries>Example queries</h2><p>This section introduces some demonstration queries.</p><h3 id=demo-model-the-graphs-of-gods>Demo model: The Graphs of Gods</h3><p>The examples in this section make extensive use of the toy graph distributed with <a href=https://janusgraph.org/>Janus Graph</a> called <em><a href=https://docs.janusgraph.org/#getting-started>The Graphs of Gods</a>, <em>as diagrammed below</em>.</em></p><p>This example describes the relationships between the beings and places of the Roman pantheon.</p><p><img src=https://user-images.githubusercontent.com/38887077/75741255-ffdc2c00-5d44-11ea-9da6-b15327f03ad4.png alt=image></p><h3 id=inserting-data>Inserting data</h3><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># Inserting vertices</span>
+<span style=color:#75715e>## nGQL</span>
+nebula&gt; INSERT VERTEX character<span style=color:#f92672>(</span>name, age, type<span style=color:#f92672>)</span> VALUES hash<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;saturn&#34;</span><span style=color:#f92672>)</span>:<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;saturn&#34;</span>, 10000, <span style=color:#e6db74>&#34;titan&#34;</span><span style=color:#f92672>)</span>, hash<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;jupiter&#34;</span><span style=color:#f92672>)</span>:<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;jupiter&#34;</span>, 5000, <span style=color:#e6db74>&#34;god&#34;</span><span style=color:#f92672>)</span>;
+<span style=color:#75715e>## Gremlin</span>
+gremlin&gt; saturn <span style=color:#f92672>=</span> g.addV<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;character&#34;</span><span style=color:#f92672>)</span>.property<span style=color:#f92672>(</span>T.id, 1<span style=color:#f92672>)</span>.property<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;name&#39;</span>, <span style=color:#e6db74>&#39;saturn&#39;</span><span style=color:#f92672>)</span>.property<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;age&#39;</span>, 10000<span style=color:#f92672>)</span>.property<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;type&#39;</span>, <span style=color:#e6db74>&#39;titan&#39;</span><span style=color:#f92672>)</span>.next<span style=color:#f92672>()</span>;
+<span style=color:#f92672>==</span>&gt;v<span style=color:#f92672>[</span>1<span style=color:#f92672>]</span>
+gremlin&gt; jupiter <span style=color:#f92672>=</span> g.addV<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;character&#34;</span><span style=color:#f92672>)</span>.property<span style=color:#f92672>(</span>T.id, 2<span style=color:#f92672>)</span>.property<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;name&#39;</span>, <span style=color:#e6db74>&#39;jupiter&#39;</span><span style=color:#f92672>)</span>.property<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;age&#39;</span>, 5000<span style=color:#f92672>)</span>.property<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;type&#39;</span>, <span style=color:#e6db74>&#39;god&#39;</span><span style=color:#f92672>)</span>.next<span style=color:#f92672>()</span>;
+<span style=color:#f92672>==</span>&gt;v<span style=color:#f92672>[</span>2<span style=color:#f92672>]</span>
+gremlin&gt; prometheus <span style=color:#f92672>=</span> g.addV<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;character&#34;</span><span style=color:#f92672>)</span>.property<span style=color:#f92672>(</span>T.id, 31<span style=color:#f92672>)</span>.property<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;name&#39;</span>,  <span style=color:#e6db74>&#39;prometheus&#39;</span><span style=color:#f92672>)</span>.property<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;age&#39;</span>, 1000<span style=color:#f92672>)</span>.property<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;type&#39;</span>, <span style=color:#e6db74>&#39;god&#39;</span><span style=color:#f92672>)</span>.next<span style=color:#f92672>()</span>;
+<span style=color:#f92672>==</span>&gt;v<span style=color:#f92672>[</span>31<span style=color:#f92672>]</span>
+gremlin&gt; jesus <span style=color:#f92672>=</span> g.addV<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;character&#34;</span><span style=color:#f92672>)</span>.property<span style=color:#f92672>(</span>T.id, 32<span style=color:#f92672>)</span>.property<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;name&#39;</span>,  <span style=color:#e6db74>&#39;jesus&#39;</span><span style=color:#f92672>)</span>.property<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;age&#39;</span>, 5000<span style=color:#f92672>)</span>.property<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;type&#39;</span>, <span style=color:#e6db74>&#39;god&#39;</span><span style=color:#f92672>)</span>.next<span style=color:#f92672>()</span>;
+<span style=color:#f92672>==</span>&gt;v<span style=color:#f92672>[</span>32<span style=color:#f92672>]</span>
+<span style=color:#75715e>## Cypher</span>
+cypher&gt; CREATE <span style=color:#f92672>(</span>src:character <span style=color:#f92672>{</span>name:<span style=color:#e6db74>&#34;saturn&#34;</span>, age: 10000, type:<span style=color:#e6db74>&#34;titan&#34;</span><span style=color:#f92672>})</span>
+cypher&gt; CREATE <span style=color:#f92672>(</span>dst:character <span style=color:#f92672>{</span>name:<span style=color:#e6db74>&#34;jupiter&#34;</span>, age: 5000, type:<span style=color:#e6db74>&#34;god&#34;</span><span style=color:#f92672>})</span>
+
+<span style=color:#75715e># Inserting edges</span>
+<span style=color:#75715e>## nGQL</span>
+nebula&gt; INSERT EDGE father<span style=color:#f92672>()</span> VALUES hash<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;jupiter&#34;</span><span style=color:#f92672>)</span>-&gt;hash<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;saturn&#34;</span><span style=color:#f92672>)</span>:<span style=color:#f92672>()</span>;
+<span style=color:#75715e>## Gremlin</span>
+gremlin&gt; g.addE<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;father&#34;</span><span style=color:#f92672>)</span>.from<span style=color:#f92672>(</span>jupiter<span style=color:#f92672>)</span>.to<span style=color:#f92672>(</span>saturn<span style=color:#f92672>)</span>.property<span style=color:#f92672>(</span>T.id, 13<span style=color:#f92672>)</span>;
+<span style=color:#f92672>==</span>&gt;e<span style=color:#f92672>[</span>13<span style=color:#f92672>][</span>2-father-&gt;1<span style=color:#f92672>]</span>
+<span style=color:#75715e>## Cypher</span>
+cypher&gt; CREATE <span style=color:#f92672>(</span>src<span style=color:#f92672>)</span>-<span style=color:#f92672>[</span>rel:father<span style=color:#f92672>]</span>-&gt;<span style=color:#f92672>(</span>dst<span style=color:#f92672>)</span>
+</code></pre></div><h3 id=deleting>Deleting</h3><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># nGQL</span>
+nebula&gt; DELETE VERTEX hash<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;prometheus&#34;</span><span style=color:#f92672>)</span>;
+<span style=color:#75715e># Gremlin</span>
+gremlin&gt; g.V<span style=color:#f92672>(</span>prometheus<span style=color:#f92672>)</span>.drop<span style=color:#f92672>()</span>;
+<span style=color:#75715e># Cypher</span>
+cypher&gt; MATCH <span style=color:#f92672>(</span>n:character <span style=color:#f92672>{</span>name:<span style=color:#e6db74>&#34;prometheus&#34;</span><span style=color:#f92672>})</span> DETACH DELETE n 
+</code></pre></div><h3 id=updating>Updating</h3><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># nGQL</span>
+nebula&gt; UPDATE VERTEX hash<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;jesus&#34;</span><span style=color:#f92672>)</span> SET character.type <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;titan&#39;</span>;
+<span style=color:#75715e># Gremlin</span>
+gremlin&gt; g.V<span style=color:#f92672>(</span>jesus<span style=color:#f92672>)</span>.property<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;age&#39;</span>, 6000<span style=color:#f92672>)</span>;
+<span style=color:#f92672>==</span>&gt;v<span style=color:#f92672>[</span>32<span style=color:#f92672>]</span>
+<span style=color:#75715e># Cypher</span>
+cypher&gt; MATCH <span style=color:#f92672>(</span>n:character <span style=color:#f92672>{</span>name:<span style=color:#e6db74>&#34;jesus&#34;</span><span style=color:#f92672>})</span> SET n.type <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;titan&#39;</span>;
+</code></pre></div><h3 id=fetchingreading>Fetching/Reading</h3><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># nGQL</span>
+nebula&gt; FETCH PROP ON character hash<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;saturn&#34;</span><span style=color:#f92672>)</span>;
+<span style=color:#f92672>===================================================</span>
+| character.name | character.age | character.type |
+<span style=color:#f92672>===================================================</span>
+| saturn         | <span style=color:#ae81ff>10000</span>         | titan          |
+---------------------------------------------------
+<span style=color:#75715e># Gremlin</span>
+gremlin&gt; g.V<span style=color:#f92672>(</span>saturn<span style=color:#f92672>)</span>.valueMap<span style=color:#f92672>()</span>;
+<span style=color:#f92672>==</span>&gt;<span style=color:#f92672>[</span>name:<span style=color:#f92672>[</span>saturn<span style=color:#f92672>]</span>,type:<span style=color:#f92672>[</span>titan<span style=color:#f92672>]</span>,age:<span style=color:#f92672>[</span>10000<span style=color:#f92672>]]</span>
+<span style=color:#75715e># Cypher</span>
+cypher&gt; MATCH <span style=color:#f92672>(</span>n:character <span style=color:#f92672>{</span>name:<span style=color:#e6db74>&#34;saturn&#34;</span><span style=color:#f92672>})</span> RETURN properties<span style=color:#f92672>(</span>n<span style=color:#f92672>)</span>
+  ╒════════════════════════════════════════════╕
+  │<span style=color:#e6db74>&#34;properties(n)&#34;</span>                             │
+  ╞════════════════════════════════════════════╡
+  │<span style=color:#f92672>{</span><span style=color:#e6db74>&#34;name&#34;</span>:<span style=color:#e6db74>&#34;saturn&#34;</span>,<span style=color:#e6db74>&#34;type&#34;</span>:<span style=color:#e6db74>&#34;titan&#34;</span>,<span style=color:#e6db74>&#34;age&#34;</span>:10000<span style=color:#f92672>}</span>│
+  └────────────────────────────────────────────┘
+</code></pre></div><h3 id=finding-the-name-of-herculess-father>Finding the name of Hercules&rsquo;s Father</h3><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># nGQL</span>
+nebula&gt;  LOOKUP ON character WHERE character.name <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;hercules&#39;</span> | <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>      -&gt; GO FROM $-.VertexID OVER father YIELD $$.character.name;
+<span style=color:#f92672>=====================</span>
+| $$.character.name |
+<span style=color:#f92672>=====================</span>
+| jupiter           |
+---------------------
+<span style=color:#75715e># Gremlin</span>
+gremlin&gt; g.V<span style=color:#f92672>()</span>.hasLabel<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;character&#39;</span><span style=color:#f92672>)</span>.has<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;name&#39;</span>,<span style=color:#e6db74>&#39;hercules&#39;</span><span style=color:#f92672>)</span>.out<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;father&#39;</span><span style=color:#f92672>)</span>.values<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;name&#39;</span><span style=color:#f92672>)</span>;
+<span style=color:#f92672>==</span>&gt;jupiter
+<span style=color:#75715e># Cypher</span>
+cypher&gt; MATCH <span style=color:#f92672>(</span>src:character<span style=color:#f92672>{</span>name:<span style=color:#e6db74>&#34;hercules&#34;</span><span style=color:#f92672>})</span>-<span style=color:#f92672>[</span>:father<span style=color:#f92672>]</span>-&gt;<span style=color:#f92672>(</span>dst:character<span style=color:#f92672>)</span> RETURN dst.name
+      ╒══════════╕
+      │<span style=color:#e6db74>&#34;dst.name&#34;</span>│
+      ╞══════════╡
+      │<span style=color:#e6db74>&#34;jupiter&#34;</span> │
+      └──────────┘
+</code></pre></div><h3 id=finding-the-name-of-herculess-grandfather>Finding the name of Hercules&rsquo;s Grandfather</h3><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># nGQL</span>
+nebula&gt; LOOKUP ON character WHERE character.name <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;hercules&#39;</span> | <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>     -&gt; GO <span style=color:#ae81ff>2</span> STEPS FROM $-.VertexID OVER father YIELD $$.character.name;
+<span style=color:#f92672>=====================</span>
+| $$.character.name |
+<span style=color:#f92672>=====================</span>
+| saturn            |
+---------------------
+<span style=color:#75715e># Gremlin</span>
+gremlin&gt; g.V<span style=color:#f92672>()</span>.hasLabel<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;character&#39;</span><span style=color:#f92672>)</span>.has<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;name&#39;</span>,<span style=color:#e6db74>&#39;hercules&#39;</span><span style=color:#f92672>)</span>.out<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;father&#39;</span><span style=color:#f92672>)</span>.out<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;father&#39;</span><span style=color:#f92672>)</span>.values<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;name&#39;</span><span style=color:#f92672>)</span>;
+<span style=color:#f92672>==</span>&gt;saturn
+<span style=color:#75715e># Cypher</span>
+cypher&gt; MATCH <span style=color:#f92672>(</span>src:character<span style=color:#f92672>{</span>name:<span style=color:#e6db74>&#34;hercules&#34;</span><span style=color:#f92672>})</span>-<span style=color:#f92672>[</span>:father*2<span style=color:#f92672>]</span>-&gt;<span style=color:#f92672>(</span>dst:character<span style=color:#f92672>)</span> RETURN dst.name
+      ╒══════════╕
+      │<span style=color:#e6db74>&#34;dst.name&#34;</span>│
+      ╞══════════╡
+      │<span style=color:#e6db74>&#34;saturn&#34;</span>  │
+      └──────────┘
+</code></pre></div><h3 id=find-the-characters-with-age--100>Find the characters with age > 100</h3><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># nGQL</span>
+nebula&gt; LOOKUP ON character WHERE character.age &gt; <span style=color:#ae81ff>100</span> YIELD character.name, character.age;
+<span style=color:#f92672>=========================================================</span>
+| VertexID             | character.name | character.age |
+<span style=color:#f92672>=========================================================</span>
+| <span style=color:#ae81ff>6761447489613431910</span>  | pluto          | <span style=color:#ae81ff>4000</span>          |
+---------------------------------------------------------
+| -5860788569139907963 | neptune        | <span style=color:#ae81ff>4500</span>          |
+---------------------------------------------------------
+| <span style=color:#ae81ff>4863977009196259577</span>  | jupiter        | <span style=color:#ae81ff>5000</span>          |
+---------------------------------------------------------
+| -4316810810681305233 | saturn         | <span style=color:#ae81ff>10000</span>         |
+---------------------------------------------------------
+<span style=color:#75715e># Gremlin</span>
+gremlin&gt; g.V<span style=color:#f92672>()</span>.hasLabel<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;character&#39;</span><span style=color:#f92672>)</span>.has<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;age&#39;</span>,gt<span style=color:#f92672>(</span>100<span style=color:#f92672>))</span>.values<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;name&#39;</span><span style=color:#f92672>)</span>;
+<span style=color:#f92672>==</span>&gt;saturn
+<span style=color:#f92672>==</span>&gt;jupiter
+<span style=color:#f92672>==</span>&gt;neptune
+<span style=color:#f92672>==</span>&gt;pluto
+<span style=color:#75715e># Cypher</span>
+cypher&gt; MATCH <span style=color:#f92672>(</span>src:character<span style=color:#f92672>)</span> WHERE src.age &gt; <span style=color:#ae81ff>100</span> RETURN src.name
+      ╒═══════════╕
+      │<span style=color:#e6db74>&#34;src.name&#34;</span> │
+      ╞═══════════╡
+      │  <span style=color:#e6db74>&#34;saturn&#34;</span> │
+      ├───────────┤
+      │ <span style=color:#e6db74>&#34;jupiter&#34;</span> │
+      ├───────────┤
+      │ <span style=color:#e6db74>&#34;neptune&#34;</span> │
+      │───────────│
+      │  <span style=color:#e6db74>&#34;pluto&#34;</span>  │
+      └───────────┘
+</code></pre></div><h3 id=find-who-are-plutos-cohabitants-excluding-pluto-himself>Find who are Pluto&rsquo;s cohabitants, excluding Pluto himself</h3><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># nGQL</span>
+nebula&gt;  GO FROM hash<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;pluto&#34;</span><span style=color:#f92672>)</span> OVER lives YIELD lives._dst AS place | GO FROM $-.place OVER lives REVERSELY WHERE <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>$$.character.name !<span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;pluto&#34;</span> YIELD $$.character.name AS cohabitants;
+<span style=color:#f92672>===============</span>
+| cohabitants |
+<span style=color:#f92672>===============</span>
+| cerberus    |
+---------------
+<span style=color:#75715e># Gremlin</span>
+gremlin&gt; g.V<span style=color:#f92672>(</span>pluto<span style=color:#f92672>)</span>.out<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;lives&#39;</span><span style=color:#f92672>)</span>.in<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;lives&#39;</span><span style=color:#f92672>)</span>.where<span style=color:#f92672>(</span>is<span style=color:#f92672>(</span>neq<span style=color:#f92672>(</span>pluto<span style=color:#f92672>)))</span>.values<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;name&#39;</span><span style=color:#f92672>)</span>;
+<span style=color:#f92672>==</span>&gt;cerberus
+<span style=color:#75715e># Cypher</span>
+cypher&gt; MATCH <span style=color:#f92672>(</span>src:character<span style=color:#f92672>{</span>name:<span style=color:#e6db74>&#34;pluto&#34;</span><span style=color:#f92672>})</span>-<span style=color:#f92672>[</span>:lives<span style=color:#f92672>]</span>-&gt;<span style=color:#f92672>()</span>&lt;-<span style=color:#f92672>[</span>:lives<span style=color:#f92672>]</span>-<span style=color:#f92672>(</span>dst:character<span style=color:#f92672>)</span> RETURN dst.name
+      ╒══════════╕
+      │<span style=color:#e6db74>&#34;dst.name&#34;</span>│
+      ╞══════════╡
+      │<span style=color:#e6db74>&#34;cerberus&#34;</span>│
+      └──────────┘
+</code></pre></div><h3 id=plutos-brothers>Pluto&rsquo;s Brothers</h3><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># which brother lives in which place?</span>
+<span style=color:#75715e>## nGQL</span>
+nebula&gt; GO FROM hash<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;pluto&#34;</span><span style=color:#f92672>)</span> OVER brother YIELD brother._dst AS god | <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>GO FROM $-.god OVER lives YIELD $^.character.name AS Brother, $$.location.name AS Habitations;
+<span style=color:#f92672>=========================</span>
+| Brother | Habitations |
+<span style=color:#f92672>=========================</span>
+| jupiter | sky         |
+-------------------------
+| neptune | sea         |
+-------------------------
+<span style=color:#75715e>## Gremlin</span>
+gremlin&gt; g.V<span style=color:#f92672>(</span>pluto<span style=color:#f92672>)</span>.out<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;brother&#39;</span><span style=color:#f92672>)</span>.as<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;god&#39;</span><span style=color:#f92672>)</span>.out<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;lives&#39;</span><span style=color:#f92672>)</span>.as<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;place&#39;</span><span style=color:#f92672>)</span>.select<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;god&#39;</span>,<span style=color:#e6db74>&#39;place&#39;</span><span style=color:#f92672>)</span>.by<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;name&#39;</span><span style=color:#f92672>)</span>;
+<span style=color:#f92672>==</span>&gt;<span style=color:#f92672>[</span>god:jupiter, place:sky<span style=color:#f92672>]</span>
+<span style=color:#f92672>==</span>&gt;<span style=color:#f92672>[</span>god:neptune, place:sea<span style=color:#f92672>]</span>
+<span style=color:#75715e>## Cypher</span>
+cypher&gt; MATCH <span style=color:#f92672>(</span>src:Character<span style=color:#f92672>{</span>name:<span style=color:#e6db74>&#34;pluto&#34;</span><span style=color:#f92672>})</span>-<span style=color:#f92672>[</span>:brother<span style=color:#f92672>]</span>-&gt;<span style=color:#f92672>(</span>bro:Character<span style=color:#f92672>)</span>-<span style=color:#f92672>[</span>:lives<span style=color:#f92672>]</span>-&gt;<span style=color:#f92672>(</span>dst<span style=color:#f92672>)</span>
+RETURN bro.name, dst.name
+      ╒═════════════════════════╕
+      │<span style=color:#e6db74>&#34;bro.name&#34;</span>    │<span style=color:#e6db74>&#34;dst.name&#34;</span>│
+      ╞═════════════════════════╡
+      │ <span style=color:#e6db74>&#34;jupiter&#34;</span>    │  <span style=color:#e6db74>&#34;sky&#34;</span>   │
+      ├─────────────────────────┤
+      │ <span style=color:#e6db74>&#34;neptune&#34;</span>    │ <span style=color:#e6db74>&#34;sea&#34;</span>    │
+      └─────────────────────────┘
+</code></pre></div><p>In addition to the basic operations in the three graph query languages, we will work on another piece of comparison of advanced operations in these languages. Stay tuned!</p><blockquote class=star-ads><span>Do you like this post? If yes, just give me a</span>
+<span class="glyphicon glyphicon-star"></span><span>star:</span>
+<a href=https://github.com/vesoft-inc/nebula>https://github.com/vesoft-inc/nebula</a></blockquote><ul class=blog-footer><li><img src=/images/tag.png>
+<a href=/en/tags/Graph-Database>Graph-Database</a>
+<a href=/en/tags/Graph-Query-Language>Graph-Query-Language</a></li><li class="nebula-share st-btn"><img src=/images/share.png>
+<span>Share Post</span><ul class=blog-footer-share-links><li class=st-custom-button data-network=twitter><img alt="twitter-white sharing button" src=https://platform-cdn.sharethis.com/img/twitter-white.svg>
+<span class=st-label>Twitter</span></li><li class=st-custom-button data-network=linkedin><img alt="twitter-white sharing button" src=https://platform-cdn.sharethis.com/img/linkedin-white.svg>
+<span class=st-label>Linkedin</span></li><li class=st-custom-button data-network=facebook><img alt="twitter-white sharing button" src=https://platform-cdn.sharethis.com/img/facebook-white.svg>
+<span class=st-label>Facebook</span></li><li class=st-custom-button data-network=sharethis><img alt="twitter-white sharing button" src=https://platform-cdn.sharethis.com/img/sharethis-white.svg>
+<span class=st-label>Others</span></li></ul></li><li onclick="location.href='\/en\/posts'"><img src=/images/blog.png>
+<a href=/en/posts>Back to blog home</a></li><li onclick="location.href='https:\/\/nebula-graph.io/en/posts/index.xml'"><img src=/images/rss.png>
+<a onclick="window.open('https:\/\/nebula-graph.io/en/posts/index.xml')" href>RSS</a></li></ul><div id=discourse-comments></div></section><div class=single-side-bar><div class=tags-block><h3 class="glyphicon glyphicon-tag">Tags</h3><ul class=blog-tags><li class=col-md-12><a href=/en/posts class=active>All</a></li><li><a href=/en/tags/architecture>architecture</a></li><li><a href=/en/tags/community>community</a></li><li><a href=/en/tags/deployment>deployment</a></li><li><a href=/en/tags/dev-log>dev-log</a></li><li><a href=/en/tags/features>features</a></li><li><a href=/en/tags/graph-database>graph-database</a></li><li><a href=/en/tags/graph-query-language class=active>graph-query-language</a></li><li><a href=/en/tags/performance>performance</a></li><li><a href=/en/tags/release-notes>release-notes</a></li><li><a href=/en/tags/system-testing>system-testing</a></li><li><a href=/en/tags/tools>tools</a></li><li><a href=/en/tags/use-cases>use-cases</a></li></ul></div><div id=blog-carousel class="carousel slide" data-ride=carousel><ol class=carousel-indicators><li data-target=#blog-carousel data-slide-to=0 class=active></li><li data-target=#blog-carousel data-slide-to=1></li></ol><div class=carousel-inner role=listbox><div class="item active" onclick="location.href='\/en\/posts\/clean-stale-data-with-ttl-in-nebula-graph_\/'"><img src=https://user-images.githubusercontent.com/38887077/77512987-09256800-6eaf-11ea-9b41-e8b87ab51fe8.png alt="How Nebula Graph Automatically Cleans Stale Data with TTL" width=220px height=150px><div class=carousel-caption>How Nebula Graph Automatically Cleans Stale Data with TTL</div></div><div class=item onclick="location.href='\/en\/posts\/github-action-automating-project-process\/'"><img src=https://user-images.githubusercontent.com/38887077/76831941-482a3c80-6863-11ea-9795-009eaa50fc0e.png alt="Automating Your Project Processes with Github Actions" width=220px height=150px><div class=carousel-caption>Automating Your Project Processes with Github Actions</div></div></div><a class="left carousel-control" href=#blog-carousel role=button data-slide=prev><span class="glyphicon glyphicon-chevron-left" aria-hidden=true></span><span class=sr-only>Previous</span></a>
+<a class="right carousel-control" href=#blog-carousel role=button data-slide=next><span class="glyphicon glyphicon-chevron-right" aria-hidden=true></span><span class=sr-only>Next</span></a></div><div class=blog-anchors><h3>Contents</h3><nav id=TableOfContents><ul><li><a href=#which-graph-query-languages-to-be-compared>Which Graph Query Languages to Be Compared</a><ul><li><a href=#gremlin>Gremlin</a></li><li><a href=#cypher>Cypher</a></li><li><a href=#ngql>nGQL</a></li></ul></li><li><a href=#terms-comparison>Terms Comparison</a></li><li><a href=#syntax-comparison--crud>Syntax Comparison - CRUD</a><ul><li><a href=#graph>Graph</a></li><li><a href=#vertex>Vertex</a></li><li><a href=#edges>Edges</a></li><li><a href=#other-operations>Other Operations</a></li></ul></li><li><a href=#example-queries>Example queries</a><ul><li><a href=#demo-model-the-graphs-of-gods>Demo model: The Graphs of Gods</a></li><li><a href=#inserting-data>Inserting data</a></li><li><a href=#deleting>Deleting</a></li><li><a href=#updating>Updating</a></li><li><a href=#fetchingreading>Fetching/Reading</a></li><li><a href=#finding-the-name-of-herculess-father>Finding the name of Hercules&rsquo;s Father</a></li><li><a href=#finding-the-name-of-herculess-grandfather>Finding the name of Hercules&rsquo;s Grandfather</a></li><li><a href=#find-the-characters-with-age--100>Find the characters with age > 100</a></li><li><a href=#find-who-are-plutos-cohabitants-excluding-pluto-himself>Find who are Pluto&rsquo;s cohabitants, excluding Pluto himself</a></li><li><a href=#plutos-brothers>Pluto&rsquo;s Brothers</a></li></ul></li></ul></nav></div><div class=social-share><h3>Share Post</h3><div class=nebula-share-buttons><div class="st-custom-button st-remove-label" data-network=twitter><img alt="twitter-white sharing button" src=https://platform-cdn.sharethis.com/img/twitter-white.svg></div><div class="st-custom-button st-remove-label" data-network=linkedin><img alt="linkedin-white sharing button" src=https://platform-cdn.sharethis.com/img/linkedin-white.svg></div><div class="st-custom-button st-remove-label" data-network=facebook><img alt="facebook-white sharing button" src=https://platform-cdn.sharethis.com/img/facebook-white.svg></div><div class="st-custom-button st-remove-label" data-network=hackernews><img alt="hackernews-white sharing button" src=https://platform-cdn.sharethis.com/img/hackernews-white.svg></div><div class="st-custom-button st-remove-label" data-network=reddit><img alt="reddit-white sharing button" src=https://platform-cdn.sharethis.com/img/reddit-white.svg></div><div class="st-custom-button st-remove-label" data-network=sharethis><img alt="reddit-white sharing button" src=https://platform-cdn.sharethis.com/img/sharethis-white.svg></div></div></div></div></div><img onclick="location.href='#top'" class=go-ahead src=/images/up.png></div><footer class="container-fluid foot-wrap" name=contact_us><div class=container><p align=center class=statement>Nebula Graph will respect your data privacy per our Privacy Policy</p><div class=row><div class="row-content col-lg-4 col-sm-4 col-xs-4"><h3>Community</h3><ul><li><img src=/img/github.png>
+<a href=https://github.com/vesoft-inc/nebula target=_blank>GitHub</a></li><li><img src=/img/forum.png>
+<a href=https://discuss.nebula-graph.io/ target=_blank>Forum</a></li><li><img src=/img/slack.png>
+<a href=https://join.slack.com/t/nebulagraph/shared_invite/enQtNjIzMjQ5MzE2OTQ2LTM0MjY0MWFlODg3ZTNjMjg3YWU5ZGY2NDM5MDhmOGU2OWI5ZWZjZDUwNTExMGIxZTk2ZmQxY2Q2MzM1OWJhMmY# target=_blank>Slack</a></li></ul></div><div class="row-content col-lg-4 col-sm-4 col-xs-4"><h3>Follow Us</h3><ul><li><img src=/img/twitter.png>
+<a href=https://twitter.com/NebulaGraph title=Twitter data-toggle=modal target=_blank data-target>Twitter</a></li><li><img src=/img/weibo.png>
+<a href=https://weibo.com/nebulagraph title=WeiBo data-toggle=modal target=_blank data-target>WeiBo</a></li><li><img src=/img/linkedin.png>
+<a href=https://www.linkedin.com/company/vesoft-nebula-graph/ title=LinkedIn data-toggle=modal target=_blank data-target>LinkedIn</a></li><li><img src=/img/youtube.png>
+<a href=https://www.youtube.com/channel/UC73V8q795eSEMxDX4Pvdwmw title=YouTube data-toggle=modal target=_blank data-target>YouTube</a></li><li><img src=/img/facebook.png>
+<a href=https://www.facebook.com/NebulaGraph/ title=FaceBook data-toggle=modal target=_blank data-target>FaceBook</a></li><li><img src=/img/gongzhonghao.png>
+<a href title="Official Accounts" data-toggle=modal target=_blank data-target=#myGongzhonghaoModal>Official Accounts</a></li></ul></div><div class="contactus row-content col-lg-4 col-sm-4 col-xs-4"><h3>Contact Us</h3><ul><li><img src=/img/iphone.png>
+<a href data-toggle=modal target=_blank data-target>(+86) 0571-28120658</a></li><li><img src=/img/email.png>
+<a href=mailto:info@vesoft.com data-toggle=modal target=_blank data-target>info@vesoft.com</a></li><li><img src=/img/weixin.png>
+<a href data-toggle=modal target=_blank data-target=#myModal>WeChat</a></li></ul></div></div></div><p align=left style=font-size:16px><img src=/images/VEsoft.png style=margin-right:10px> Copyright &copy;2020 VESoft Inc</p><div class="modal fade" id=myGongzhonghaoModal tabindex=-1 role=dialog aria-labelledby=myModalLabel aria-hidden=true><div class=modal-dialog><div class=modal-content><div class="modal-body wechat"><img src=/images/gonggonghaoCODE.jpg></div><div class=modal-footer><button type=button class="btn btn-default" data-dismiss=modal>close</button></div></div></div></div><div class="modal fade" id=myModal tabindex=-1 role=dialog aria-labelledby=myModalLabel aria-hidden=true><div class=modal-dialog><div class=modal-content><div class="modal-body wechat"><img src=/images/wechat.png></div><div class=modal-footer><button type=button class="btn btn-default" data-dismiss=modal>close</button></div></div></div></div></footer></main><div id=J-star-popup class=nebula-star-popup></div><script src=/js/jquery.js></script><script src=/js/bootstrap.min.js></script><script src=/js/jquery.easing.min.js></script><script src=/js/jquery.fittext.js></script><script src=/js/wow.min.js></script><script type=text/javascript src="https://platform-api.sharethis.com/js/sharethis.js#property=5e7c2cc315c7990012ae38bc&product=inline-share-buttons" async></script><script src=/js/creative.js></script><script async defer src=https://buttons.github.io/buttons.js></script><script src=/js/init.js></script><script type=text/javascript>DiscourseEmbed={discourseUrl:'https://discuss.nebula-graph.io/',discourseEmbedUrl:"https:\/\/nebula-graph.io\/en\/posts\/graph-query-language-comparison-cypher-gremlin-ngql\/"};(function(){var d=document.createElement('script');d.type='text/javascript';d.async=true;d.src=DiscourseEmbed.discourseUrl+'javascripts/embed.js';(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(d);})();</script></body></html>

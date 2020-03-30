@@ -1,0 +1,292 @@
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=author content="Nebula Graph"><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="@NebulaGraph"><meta name=twitter:creator content="@NebulaGraph"><meta name=twitter:domain content="nebula-graph.io"><meta name=twitter:title content="Dev Log | How to Release jar Package to the Maven Central Repository"><meta property="twitter:title" content="Dev Log | How to Release jar Package to the Maven Central Repository"><meta name=twitter:description content="This post is a step-by-step guide showing you how to release a Jar package to the Maven central repository."><meta name=og:description content="This post is a step-by-step guide showing you how to release a Jar package to the Maven central repository."><meta name=twitter:image content="https://nebula-graph.io/en/posts/maven/maven_hu957ddad42769fe82f7e2192eaa13d5d8_196631_600x0_resize_q75_box.jpeg"><meta name=og:image content="https://nebula-graph.io/en/posts/maven/maven_hu957ddad42769fe82f7e2192eaa13d5d8_196631_600x0_resize_q75_box.jpeg"><meta name=description content="This post is a step-by-step guide showing you how to release a Jar package to the Maven central repository."><meta name=generator content="Hugo 0.65.3"><title>Dev Log | How to Release jar Package to the Maven Central Repository</title><link rel="shortcut icon" href=/favicon.ico><link rel=stylesheet href=/css/bootstrap.min.css type=text/css><link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel=stylesheet type=text/css><link href="//fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic" rel=stylesheet type=text/css><link rel=stylesheet href=/font-awesome/css/font-awesome.min.css type=text/css><link rel=stylesheet href=/css/creative.css type=text/css><link rel=stylesheet href=/css/modals.css type=text/css><link rel=stylesheet href=/css/animate.min.css type=text/css><link rel=stylesheet href=/css/custom/index.css type=text/css><!--[if lt IE 9]><script src=https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js></script><script src=https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js></script><![endif]--><script src=/js/jquery.js></script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-60523578-5"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config','UA-60523578-5');</script></head><body id=page-top><nav id=mainNav class="navbar navbar-default navbar-fixed-top"><div class=container-fluid><div class=navbar-header><div class=github-star><a class=github-button href=https://github.com/vesoft-inc/nebula data-icon=octicon-star data-show-count=true aria-label="Star vesoft-inc/nebula on GitHub">Star</a></div><button type=button class="navbar-toggle collapsed" data-toggle=collapse data-target=#bs-example-navbar-collapse-1>
+<span class=sr-only>Toggle navigation</span>
+<span class=icon-bar></span><span class=icon-bar></span><span class=icon-bar></span></button>
+<a class="navbar-brand page-scroll" href=/></a></div><div class="collapse navbar-collapse" id=bs-example-navbar-collapse-1><ul class="nav navbar-nav" id=nav><li class=github-star id=github-star><a class=github-button href=https://github.com/vesoft-inc/nebula data-size=large data-show-count=true aria-label="Star vesoft-inc/nebula on GitHub">Star</a></li><li><a href=https://docs.nebula-graph.io/ target=_blank>Docs</a></li><li><a href=/en/posts target>Blog</a></li><li><a href=https://discuss.nebula-graph.io/ target=_blank>Forum</a></li><li><a href=#contact_us target onclick=contactUsClick()>Contact Us</a></li><li class="dropdown navbar-right"><a class=dropdown-toggle data-toggle=dropdown href=# role=button aria-haspopup=true aria-expanded=false><img src=/images/language120x120.png>
+<span class=caret></span></a><ul class=dropdown-menu><li class=nav-item><a class=dropdown-item href=/en target>English</a></li><li class=nav-item><a class=dropdown-item href=/cn target>中文</a></li></ul></li><li id=navbar-right><a href=https://github.com/vesoft-inc/nebula-web-docker target=_blank>Nebula Studio</a></li></ul></div></div></nav><script>function contactUsClick(){$('html,body').animate({scrollTop:document.documentElement.scrollHeight},800)
+return false;}</script><main id=top class=blog-detail><div class=wrapper><div class=inner><section class=blog-content><h1>Dev Log | How to Release jar Package to the Maven Central Repository</h1><div class=blog-metas><div class=meta><img src=/images/writer.png width=16px height=16px>
+<span>Jude</span></div><div class=meta><img src=/images/calendar.png width=16px height=16px>
+<span>2019-12-16</span></div><div class="tags meta"><img src=/images/tag.png width=16px height=16px>
+<a href=/en//tags/Dev-Log>Dev-Log</a></div></div><h2 id=summary>Summary</h2><p>The Maven Central Repository does not support uploading jar packages directly, so you need to release them to some designated third-party Maven repositories, such as the Sonatype OSSRH repository, and then synchronize the jar packages to Maven through this repository. This article details the entire release, synchronization process.</p><h2 id=create-a-sonatype-account>Create a Sonatype Account</h2><p>Click <a href=https://issues.sonatype.org/secure/Signup!default.jspa>here</a> to create an Sonatype account. Sonatype uses JIRA, a project management software provided by Atlassian, to manage the OSSRH repository.</p><h2 id=creating-a-new-project-issue-to-release-components>Creating a New Project Issue to Release Components</h2><p>The first step to  commit a &ldquo;component release request&rdquo; is to create an issue on the <a href=https://issues.sonatype.org/secure/Dashboard.jspa>JIRA Dashborad</a>. Click the <code>Create</code> button shown is the picture:</p><p><img src=https://user-images.githubusercontent.com/56643819/72579532-54058b00-3914-11ea-9457-ccf381bea0ba.png alt=image></p><p>Choose/type the project you want to create. Then choose an Issue Type. Put your Group ID in the summary and groupId fields.</p><p>Please be very careful with the Group ID which generally comes with a domain, because it will affect other components. Here we use domain com.vesoft.</p><p>Sonatype requests domain verification, so please verify via one of the following methods:</p><ul><li>Add a JIRA number record to your DNS</li><li>Setup a redirect to your Github page</li></ul><p>If you do not have any domains, please refer to this link: <a href=http://central.sonatype.org/pages/choosing-your-coordinates.html>http://central.sonatype.org/pages/choosing-your-coordinates.html</a></p><ul><li>Choose a Group ID with project hosting information, such as io.github.facebook or com.github.facebook</li><li>Another recommended way is to use the free managed security reporting services<ul><li>Use <a href=https://hackerone.com/central-security-project/reports/new>https://hackerone.com/central-security-project/reports/new</a> as the security protection of your project. Then the Sonatype staffs will take care the left things for you.</li></ul></li></ul><h2 id=waiting-for-someone-from-sonatype-to-reply>Waiting for Someone From Sonatype to Reply</h2><p>It will take some time to review the issue due to the time difference. If your issue is approved, you will receive an email notification and a comment from the Sonatype staff under your issue. The comment looks like the follows:</p><blockquote><p>Configuration has been prepared, now you can:
+Deploy snapshot artifacts into repository <a href=https://oss.sonatype.org/content/repositories/snapshots>https://oss.sonatype.org/content/repositories/snapshots</a>
+Deploy release artifacts into the staging repository <a href=https://oss.sonatype.org/service/local/staging/>https://oss.sonatype.org/service/local/staging/</a> deploy/maven2
+Promote staged artifacts into repository &lsquo;Releases&rsquo;
+Download snapshot and release artifacts from group <a href=https://oss.sonatype.org/content/groups/public>https://oss.sonatype.org/content/groups/public</a>
+Download snapshot, release and staged artifacts from staging group <a href=https://oss.sonatype.org/content/groups/staging>https://oss.sonatype.org/content/groups/staging</a>
+please comment on this ticket when you promoted your first release, thanks</p></blockquote><h2 id=use-gpg-to-create-key>Use GPG to Create Key</h2><h3 id=creating-a-gpg-key>Creating a GPG Key</h3><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>&gt; gpg --gen-key
+</code></pre></div><p>Select the encryption method:</p><ul><li>RSA and RSA (default)</li><li>DSA and Elgamal</li><li>DSA (sign only)</li><li>RSA (sign only)</li></ul><p>The first is selected by default. After selection, you need to enter the user name, email address, and Passphase, it&rsquo;s equivalent to the keystore password.</p><h3 id=view-public-key>View Public Key</h3><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>&gt; gpg --list-keys
+
+xxx/.gnupg/pubring.gpg
+---------------------------------
+pub   2048R/xxxx 2019-12-02
+uid   $YOUR_UID &lt;$YOUR_EMAIL&gt;
+sub   2048R/**** 2019-12-02
+</code></pre></div><p>The public key ID is XXXXXX. You will use it soon.</p><h3 id=upload-the-public-key-to-the-pgp-key-server>Upload the Public Key to the PGP Key Server</h3><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>gpg --keyserver hkp://keys.gnupg.net:11371 --send-keys xxxx
+</code></pre></div><p>Check if the upload is successful.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>&gt; gpg --keyserver hkp://keys.gnupg.net:11371 --recv-keys xxxx
+
+gpg: 下载密钥‘xxxx’，从 hkp 服务器 keys.gnupg.net
+gpg: 密钥 xxxx：“$YOUR_UID &lt;$YOUR_EMAIL&gt;”未改变
+gpg: 合计被处理的数量：1
+gpg: 未改变：1
+</code></pre></div><p>NOTE:</p><ul><li>Fill in the public key ID based on your situation</li><li>Key server <code>pool.sks-keyservers.net</code> does not works well due to the failure in verification and the obtainment. Maven supports two key servers:  <a href=http://keys.gnupg.net:11371/>http://keys.gnupg.net:11371</a> and <a href=http://pool.sks-keyservers.net:11371/>http://pool.sks-keyservers.net:11371</a></li><li>We use hkp protocol instead of HTTP protocol</li><li><strong>You also need to add the port number</strong></li></ul><p>The local private key is used to digitally sign the uploaded component, and the user downloading the component can verify the signature through the uploaded public key. It is necessary to verify whether the component was uploaded by the account holder himself, because there is a possibility that the component can be modified.</p><h2 id=modify-the-maven-configuration-files>Modify the Maven Configuration Files</h2><p>Modify the Maven Configuration File. To modify Maven, you need to modify the <code>setting.xml</code> file and the <code>pom.xml</code> file of your project.</p><h3 id=configure-the-setting-xml-file>Configure the setting. xml File</h3><p>Modify the <code>~/.m2/setting.xml</code> file.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=color:#f92672>&lt;settings</span> <span style=color:#a6e22e>xmlns=</span><span style=color:#e6db74>&#34;http://maven.apache.org/SETTINGS/1.0.0&#34;</span>
+          <span style=color:#a6e22e>xmlns:xsi=</span><span style=color:#e6db74>&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+          <span style=color:#a6e22e>xsi:schemaLocation=</span><span style=color:#e6db74>&#34;http://maven.apache.org/SETTINGS/1.0.0
+</span><span style=color:#e6db74>                      http://maven.apache.org/xsd/settings-1.0.0.xsd&#34;</span><span style=color:#f92672>&gt;</span>
+    <span style=color:#f92672>&lt;servers&gt;</span>
+      ...
+        <span style=color:#f92672>&lt;server&gt;</span>
+            <span style=color:#f92672>&lt;id&gt;</span>snapshots<span style=color:#f92672>&lt;/id&gt;</span>
+            <span style=color:#f92672>&lt;username&gt;</span>$USER_NAME<span style=color:#f92672>&lt;/username&gt;</span>
+            <span style=color:#f92672>&lt;password&gt;</span>$YOUR_PASSWORD<span style=color:#f92672>&lt;/password&gt;</span>
+        <span style=color:#f92672>&lt;/server&gt;</span>
+        <span style=color:#f92672>&lt;server&gt;</span>
+            <span style=color:#f92672>&lt;id&gt;</span>release<span style=color:#f92672>&lt;/id&gt;</span>
+            <span style=color:#f92672>&lt;username&gt;</span>$USER_NAME<span style=color:#f92672>&lt;/username&gt;</span>
+            <span style=color:#f92672>&lt;password&gt;</span>$YOUR_PASSWORD<span style=color:#f92672>&lt;/password&gt;</span>
+        <span style=color:#f92672>&lt;/server&gt;</span>
+    <span style=color:#f92672>&lt;/servers&gt;</span>
+
+<span style=color:#f92672>&lt;/settings&gt;</span>
+</code></pre></div><p>Replace the  <code>USER_NAME</code> and <code>YOUR_PASSWORD</code> to your own Sonatype user name and password. You will use the ID here in the <code>pom.xml</code> file.</p><h3 id=configure-the-pom-xml-file>Configure the pom. xml File</h3><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=color:#f92672>&lt;project&gt;</span>
+    ...
+
+    <span style=color:#75715e>&lt;!-- More Project Information --&gt;</span>
+    <span style=color:#f92672>&lt;name&gt;</span>nebula-java<span style=color:#f92672>&lt;/name&gt;</span>
+    <span style=color:#f92672>&lt;description&gt;</span>Nebula Java Client<span style=color:#f92672>&lt;/description&gt;</span>
+    <span style=color:#f92672>&lt;url&gt;</span>https://github.com/vesoft-inc/nebula-java<span style=color:#f92672>&lt;/url&gt;</span>
+    <span style=color:#f92672>&lt;scm&gt;</span>
+        <span style=color:#f92672>&lt;connection&gt;</span>scm:git:https://github.com/vesoft-inc/nebula<span style=color:#f92672>&lt;/connection&gt;</span>
+        <span style=color:#f92672>&lt;url&gt;</span>https://github.com/vesoft-inc/nebula<span style=color:#f92672>&lt;/url&gt;</span>
+        <span style=color:#f92672>&lt;developerConnection&gt;</span>scm:git:https://github.com/vesoft-inc/nebula<span style=color:#f92672>&lt;/developerConnection&gt;</span>
+    <span style=color:#f92672>&lt;/scm&gt;</span>
+    <span style=color:#f92672>&lt;licenses&gt;</span>
+        <span style=color:#f92672>&lt;license&gt;</span>
+            <span style=color:#f92672>&lt;name&gt;</span>Apache License, Version 2.0<span style=color:#f92672>&lt;/name&gt;</span>
+            <span style=color:#f92672>&lt;url&gt;</span>https://www.apache.org/licenses/LICENSE-2.0.txt<span style=color:#f92672>&lt;/url&gt;</span>
+            <span style=color:#f92672>&lt;distribution&gt;</span>repo<span style=color:#f92672>&lt;/distribution&gt;</span>
+            <span style=color:#f92672>&lt;comments&gt;</span>license<span style=color:#f92672>&lt;/comments&gt;</span>
+        <span style=color:#f92672>&lt;/license&gt;</span>
+    <span style=color:#f92672>&lt;/licenses&gt;</span>
+
+    ...
+    <span style=color:#f92672>&lt;profiles&gt;</span>
+        <span style=color:#f92672>&lt;profile&gt;</span>
+            <span style=color:#f92672>&lt;id&gt;</span>release<span style=color:#f92672>&lt;/id&gt;</span>
+            <span style=color:#f92672>&lt;build&gt;</span>
+                <span style=color:#f92672>&lt;plugins&gt;</span>
+                    <span style=color:#75715e>&lt;!-- Source --&gt;</span>
+                    <span style=color:#f92672>&lt;plugin&gt;</span>
+                        <span style=color:#f92672>&lt;groupId&gt;</span>org.apache.maven.plugins<span style=color:#f92672>&lt;/groupId&gt;</span>
+                        <span style=color:#f92672>&lt;artifactId&gt;</span>maven-source-plugin<span style=color:#f92672>&lt;/artifactId&gt;</span>
+                        <span style=color:#f92672>&lt;executions&gt;</span>
+                            <span style=color:#f92672>&lt;execution&gt;</span>
+                                <span style=color:#f92672>&lt;id&gt;</span>attach-sources<span style=color:#f92672>&lt;/id&gt;</span>
+                                <span style=color:#f92672>&lt;goals&gt;</span>
+                                    <span style=color:#f92672>&lt;goal&gt;</span>jar<span style=color:#f92672>&lt;/goal&gt;</span>
+                                <span style=color:#f92672>&lt;/goals&gt;</span>
+                            <span style=color:#f92672>&lt;/execution&gt;</span>
+                        <span style=color:#f92672>&lt;/executions&gt;</span>
+                    <span style=color:#f92672>&lt;/plugin&gt;</span>
+                    <span style=color:#75715e>&lt;!-- Javadoc --&gt;</span>
+                    <span style=color:#f92672>&lt;plugin&gt;</span>
+                        <span style=color:#f92672>&lt;groupId&gt;</span>org.apache.maven.plugins<span style=color:#f92672>&lt;/groupId&gt;</span>
+                        <span style=color:#f92672>&lt;artifactId&gt;</span>maven-javadoc-plugin<span style=color:#f92672>&lt;/artifactId&gt;</span>
+                        <span style=color:#f92672>&lt;version&gt;</span>3.1.1<span style=color:#f92672>&lt;/version&gt;</span>
+                        <span style=color:#f92672>&lt;configuration&gt;</span>
+                            <span style=color:#f92672>&lt;excludePackageNames&gt;</span>com.facebook.thrift:com.facebook.thrift.*<span style=color:#f92672>&lt;/excludePackageNames&gt;</span>
+                        <span style=color:#f92672>&lt;/configuration&gt;</span>
+                        <span style=color:#f92672>&lt;executions&gt;</span>
+                            <span style=color:#f92672>&lt;execution&gt;</span>
+                                <span style=color:#f92672>&lt;id&gt;</span>attach-javadocs<span style=color:#f92672>&lt;/id&gt;</span>
+                                <span style=color:#f92672>&lt;phase&gt;</span>package<span style=color:#f92672>&lt;/phase&gt;</span>
+                                <span style=color:#f92672>&lt;goals&gt;</span>
+                                    <span style=color:#f92672>&lt;goal&gt;</span>jar<span style=color:#f92672>&lt;/goal&gt;</span>
+                                <span style=color:#f92672>&lt;/goals&gt;</span>
+                                <span style=color:#f92672>&lt;configuration&gt;</span>
+                                    <span style=color:#f92672>&lt;doclint&gt;</span>none<span style=color:#f92672>&lt;/doclint&gt;</span>
+                                <span style=color:#f92672>&lt;/configuration&gt;</span>
+                            <span style=color:#f92672>&lt;/execution&gt;</span>
+                        <span style=color:#f92672>&lt;/executions&gt;</span>
+                    <span style=color:#f92672>&lt;/plugin&gt;</span>
+                    <span style=color:#75715e>&lt;!-- GPG --&gt;</span>
+                    <span style=color:#f92672>&lt;plugin&gt;</span>
+                        <span style=color:#f92672>&lt;groupId&gt;</span>org.apache.maven.plugins<span style=color:#f92672>&lt;/groupId&gt;</span>
+                        <span style=color:#f92672>&lt;artifactId&gt;</span>maven-gpg-plugin<span style=color:#f92672>&lt;/artifactId&gt;</span>
+                        <span style=color:#f92672>&lt;version&gt;</span>1.6<span style=color:#f92672>&lt;/version&gt;</span>
+                        <span style=color:#f92672>&lt;executions&gt;</span>
+                            <span style=color:#f92672>&lt;execution&gt;</span>
+                                <span style=color:#f92672>&lt;phase&gt;</span>verify<span style=color:#f92672>&lt;/phase&gt;</span>
+                                <span style=color:#f92672>&lt;goals&gt;</span>
+                                    <span style=color:#f92672>&lt;goal&gt;</span>sign<span style=color:#f92672>&lt;/goal&gt;</span>
+                                <span style=color:#f92672>&lt;/goals&gt;</span>
+                            <span style=color:#f92672>&lt;/execution&gt;</span>
+                        <span style=color:#f92672>&lt;/executions&gt;</span>
+                    <span style=color:#f92672>&lt;/plugin&gt;</span>
+                <span style=color:#f92672>&lt;/plugins&gt;</span>
+            <span style=color:#f92672>&lt;/build&gt;</span>
+            <span style=color:#f92672>&lt;distributionManagement&gt;</span>
+                <span style=color:#f92672>&lt;repository&gt;</span>
+                    <span style=color:#f92672>&lt;id&gt;</span>release<span style=color:#f92672>&lt;/id&gt;</span>
+                    <span style=color:#f92672>&lt;url&gt;</span>https://oss.sonatype.org/service/local/staging/deploy/maven2/<span style=color:#f92672>&lt;/url&gt;</span>
+                <span style=color:#f92672>&lt;/repository&gt;</span>
+                <span style=color:#f92672>&lt;snapshotRepository&gt;</span>
+                    <span style=color:#f92672>&lt;id&gt;</span>snapshots<span style=color:#f92672>&lt;/id&gt;</span>
+                    <span style=color:#f92672>&lt;url&gt;</span>https://oss.sonatype.org/content/repositories/snapshots/<span style=color:#f92672>&lt;/url&gt;</span>
+                <span style=color:#f92672>&lt;/snapshotRepository&gt;</span>
+            <span style=color:#f92672>&lt;/distributionManagement&gt;</span>
+        <span style=color:#f92672>&lt;/profile&gt;</span>
+    <span style=color:#f92672>&lt;/profiles&gt;</span>
+    ...
+<span style=color:#f92672>&lt;/project&gt;</span>
+</code></pre></div><ul><li>The <code>pom.xml</code> file must include basic information like: <code>name</code>, <code>description</code>, <code>url</code>, <code>licenses</code>, <code>developers</code>, <code>scm</code></li><li><strong>To publish maven, you must have a documentation package and a source package in addition to the jar.</strong> Therefore, pom needs to add <code>maven-javadoc-plugin</code> and <code>maven-source-plugin</code>. For example:</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml>com-vesoft-client
+|-- pom.xml
+|-- src\
+`-- target
+    `-- attach-source-javadoc-1.0-SNAPSHOT.jar
+    `-- attach-source-javadoc-1.0-SNAPSHOT-javadoc.jar
+    `-- attach-source-javadoc-1.0-SNAPSHOT-sources.jar
+</code></pre></div><ul><li>The release and building request key encryption, so pom needs to add the <code>maven-gpg-plugin</code>.</li></ul><h3 id=multi-module-project-configuration>Multi-Module Project Configuration</h3><p><code>nebula-java</code> is a multi-module project.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=color:#f92672>&lt;modules&gt;</span>
+    <span style=color:#f92672>&lt;module&gt;</span>client<span style=color:#f92672>&lt;/module&gt;</span>
+    <span style=color:#f92672>&lt;module&gt;</span>examples<span style=color:#f92672>&lt;/module&gt;</span>
+<span style=color:#f92672>&lt;/modules&gt;</span>
+</code></pre></div><p>To upload Client, please upload the parent <code>pom.xl</code> or the Client cannot find the dependencies. However, we don&rsquo;t want to upload the examples module thus making the following changes:</p><ul><li>Project information like <code>name</code>, <code>description</code>, <code>url</code>, <code>licenses</code>, <code>developers</code>, <code>scm</code> and <code>maven-gpg-plugin</code> are placed in the parent&rsquo;s <code>pom.xml</code> file.</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=color:#f92672>&lt;project&gt;</span>
+  ...
+    <span style=color:#f92672>&lt;name&gt;</span>nebula-java<span style=color:#f92672>&lt;/name&gt;</span>
+    <span style=color:#f92672>&lt;description&gt;</span>Nebula Java Client<span style=color:#f92672>&lt;/description&gt;</span>
+    <span style=color:#f92672>&lt;url&gt;</span>https://github.com/vesoft-inc/nebula-java<span style=color:#f92672>&lt;/url&gt;</span>
+    <span style=color:#f92672>&lt;scm&gt;</span>
+        <span style=color:#f92672>&lt;connection&gt;</span>scm:git:https://github.com/vesoft-inc/nebula<span style=color:#f92672>&lt;/connection&gt;</span>
+        <span style=color:#f92672>&lt;url&gt;</span>https://github.com/vesoft-inc/nebula<span style=color:#f92672>&lt;/url&gt;</span>
+        <span style=color:#f92672>&lt;developerConnection&gt;</span>scm:git:https://github.com/vesoft-inc/nebula<span style=color:#f92672>&lt;/developerConnection&gt;</span>
+    <span style=color:#f92672>&lt;/scm&gt;</span>
+    <span style=color:#f92672>&lt;licenses&gt;</span>
+        <span style=color:#f92672>&lt;license&gt;</span>
+            <span style=color:#f92672>&lt;name&gt;</span>Apache License, Version 2.0<span style=color:#f92672>&lt;/name&gt;</span>
+            <span style=color:#f92672>&lt;url&gt;</span>https://www.apache.org/licenses/LICENSE-2.0.txt<span style=color:#f92672>&lt;/url&gt;</span>
+            <span style=color:#f92672>&lt;distribution&gt;</span>repo<span style=color:#f92672>&lt;/distribution&gt;</span>
+            <span style=color:#f92672>&lt;comments&gt;</span>license<span style=color:#f92672>&lt;/comments&gt;</span>
+        <span style=color:#f92672>&lt;/license&gt;</span>
+    <span style=color:#f92672>&lt;/licenses&gt;</span>
+
+    <span style=color:#f92672>&lt;developers&gt;</span>
+        <span style=color:#f92672>&lt;developer&gt;</span>
+            <span style=color:#f92672>&lt;id&gt;</span>$ID<span style=color:#f92672>&lt;/id&gt;</span>
+            <span style=color:#f92672>&lt;name&gt;</span>$NAME<span style=color:#f92672>&lt;/name&gt;</span>
+            <span style=color:#f92672>&lt;email&gt;</span>$EMAIL<span style=color:#f92672>&lt;/email&gt;</span>
+            <span style=color:#f92672>&lt;organization&gt;</span>vesoft<span style=color:#f92672>&lt;/organization&gt;</span>
+            <span style=color:#f92672>&lt;roles&gt;</span>
+                <span style=color:#f92672>&lt;role&gt;</span>architect<span style=color:#f92672>&lt;/role&gt;</span>
+                <span style=color:#f92672>&lt;role&gt;</span>developer<span style=color:#f92672>&lt;/role&gt;</span>
+            <span style=color:#f92672>&lt;/roles&gt;</span>
+        <span style=color:#f92672>&lt;/developer&gt;</span>
+    <span style=color:#f92672>&lt;/developers&gt;</span>
+
+    <span style=color:#f92672>&lt;distributionManagement&gt;</span>
+        <span style=color:#f92672>&lt;repository&gt;</span>
+            <span style=color:#f92672>&lt;id&gt;</span>release<span style=color:#f92672>&lt;/id&gt;</span>
+            <span style=color:#f92672>&lt;url&gt;</span>https://oss.sonatype.org/service/local/staging/deploy/maven2/<span style=color:#f92672>&lt;/url&gt;</span>
+        <span style=color:#f92672>&lt;/repository&gt;</span>
+        <span style=color:#f92672>&lt;snapshotRepository&gt;</span>
+            <span style=color:#f92672>&lt;id&gt;</span>snapshots<span style=color:#f92672>&lt;/id&gt;</span>
+            <span style=color:#f92672>&lt;url&gt;</span>https://oss.sonatype.org/content/repositories/snapshots/<span style=color:#f92672>&lt;/url&gt;</span>
+        <span style=color:#f92672>&lt;/snapshotRepository&gt;</span>
+    <span style=color:#f92672>&lt;/distributionManagement&gt;</span>
+
+    <span style=color:#f92672>&lt;build&gt;</span>
+        <span style=color:#f92672>&lt;plugins&gt;</span>
+            <span style=color:#f92672>&lt;plugin&gt;</span>
+                <span style=color:#f92672>&lt;groupId&gt;</span>org.apache.maven.plugins<span style=color:#f92672>&lt;/groupId&gt;</span>
+                <span style=color:#f92672>&lt;artifactId&gt;</span>maven-gpg-plugin<span style=color:#f92672>&lt;/artifactId&gt;</span>
+                <span style=color:#f92672>&lt;version&gt;</span>1.6<span style=color:#f92672>&lt;/version&gt;</span>
+                <span style=color:#f92672>&lt;executions&gt;</span>
+                    <span style=color:#f92672>&lt;execution&gt;</span>
+                        <span style=color:#f92672>&lt;phase&gt;</span>verify<span style=color:#f92672>&lt;/phase&gt;</span>
+                        <span style=color:#f92672>&lt;goals&gt;</span>
+                            <span style=color:#f92672>&lt;goal&gt;</span>sign<span style=color:#f92672>&lt;/goal&gt;</span>
+                        <span style=color:#f92672>&lt;/goals&gt;</span>
+                    <span style=color:#f92672>&lt;/execution&gt;</span>
+                <span style=color:#f92672>&lt;/executions&gt;</span>
+            <span style=color:#f92672>&lt;/plugin&gt;</span>
+        <span style=color:#f92672>&lt;/plugins&gt;</span>
+    <span style=color:#f92672>&lt;/build&gt;</span>
+  <span style=color:#f92672>&lt;/project&gt;</span>
+</code></pre></div><ul><li>Add <code>maven-javadoc-plugin</code>, <code>maven-source-plugin</code> and <code>maven-deploy-plugin</code> in Java Client&rsquo;s <code>pom.xml</code> file.</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=color:#f92672>&lt;plugins&gt;</span>
+  ......
+    <span style=color:#f92672>&lt;plugin&gt;</span>
+        <span style=color:#f92672>&lt;groupId&gt;</span>org.apache.maven.plugins<span style=color:#f92672>&lt;/groupId&gt;</span>
+        <span style=color:#f92672>&lt;artifactId&gt;</span>maven-source-plugin<span style=color:#f92672>&lt;/artifactId&gt;</span>
+        <span style=color:#f92672>&lt;executions&gt;</span>
+            <span style=color:#f92672>&lt;execution&gt;</span>
+                <span style=color:#f92672>&lt;id&gt;</span>attach-sources<span style=color:#f92672>&lt;/id&gt;</span>
+                <span style=color:#f92672>&lt;goals&gt;</span>
+                    <span style=color:#f92672>&lt;goal&gt;</span>jar<span style=color:#f92672>&lt;/goal&gt;</span>
+                <span style=color:#f92672>&lt;/goals&gt;</span>
+            <span style=color:#f92672>&lt;/execution&gt;</span>
+        <span style=color:#f92672>&lt;/executions&gt;</span>
+    <span style=color:#f92672>&lt;/plugin&gt;</span>
+    <span style=color:#f92672>&lt;plugin&gt;</span>
+        <span style=color:#f92672>&lt;groupId&gt;</span>org.apache.maven.plugins<span style=color:#f92672>&lt;/groupId&gt;</span>
+        <span style=color:#f92672>&lt;artifactId&gt;</span>maven-javadoc-plugin<span style=color:#f92672>&lt;/artifactId&gt;</span>
+        <span style=color:#f92672>&lt;version&gt;</span>3.1.1<span style=color:#f92672>&lt;/version&gt;</span>
+        <span style=color:#f92672>&lt;configuration&gt;</span>
+            <span style=color:#f92672>&lt;excludePackageNames&gt;</span>com.facebook.thrift:com.facebook.thrift.*<span style=color:#f92672>&lt;/excludePackageNames&gt;</span>
+        <span style=color:#f92672>&lt;/configuration&gt;</span>
+        <span style=color:#f92672>&lt;executions&gt;</span>
+            <span style=color:#f92672>&lt;execution&gt;</span>
+                <span style=color:#f92672>&lt;id&gt;</span>attach-javadocs<span style=color:#f92672>&lt;/id&gt;</span>
+                <span style=color:#f92672>&lt;phase&gt;</span>package<span style=color:#f92672>&lt;/phase&gt;</span>
+                <span style=color:#f92672>&lt;goals&gt;</span>
+                    <span style=color:#f92672>&lt;goal&gt;</span>jar<span style=color:#f92672>&lt;/goal&gt;</span>
+                <span style=color:#f92672>&lt;/goals&gt;</span>
+                <span style=color:#f92672>&lt;configuration&gt;</span>
+                    <span style=color:#f92672>&lt;doclint&gt;</span>none<span style=color:#f92672>&lt;/doclint&gt;</span>
+                <span style=color:#f92672>&lt;/configuration&gt;</span>
+            <span style=color:#f92672>&lt;/execution&gt;</span>
+        <span style=color:#f92672>&lt;/executions&gt;</span>
+    <span style=color:#f92672>&lt;/plugin&gt;</span>
+    <span style=color:#f92672>&lt;plugin&gt;</span>
+        <span style=color:#f92672>&lt;groupId&gt;</span>org.apache.maven.plugins<span style=color:#f92672>&lt;/groupId&gt;</span>
+        <span style=color:#f92672>&lt;artifactId&gt;</span>maven-deploy-plugin<span style=color:#f92672>&lt;/artifactId&gt;</span>
+        <span style=color:#f92672>&lt;executions&gt;</span>
+            <span style=color:#f92672>&lt;execution&gt;</span>
+                <span style=color:#f92672>&lt;id&gt;</span>default-deploy<span style=color:#f92672>&lt;/id&gt;</span>
+                <span style=color:#f92672>&lt;phase&gt;</span>deploy<span style=color:#f92672>&lt;/phase&gt;</span>
+            <span style=color:#f92672>&lt;/execution&gt;</span>
+        <span style=color:#f92672>&lt;/executions&gt;</span>
+    <span style=color:#f92672>&lt;/plugin&gt;</span>
+<span style=color:#f92672>&lt;/plugins&gt;</span>
+</code></pre></div><p>Declare skip deploy in example module&rsquo;s <code>pom.xml</code> file.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=color:#f92672>&lt;plugins&gt;</span>
+  ......
+    <span style=color:#f92672>&lt;plugin&gt;</span>
+        <span style=color:#f92672>&lt;groupId&gt;</span>org.apache.maven.plugins<span style=color:#f92672>&lt;/groupId&gt;</span>
+        <span style=color:#f92672>&lt;artifactId&gt;</span>maven-deploy-plugin<span style=color:#f92672>&lt;/artifactId&gt;</span>
+        <span style=color:#f92672>&lt;configuration&gt;</span>
+            <span style=color:#f92672>&lt;skip&gt;</span>true<span style=color:#f92672>&lt;/skip&gt;</span>
+        <span style=color:#f92672>&lt;/configuration&gt;</span>
+    <span style=color:#f92672>&lt;/plugin&gt;</span>
+<span style=color:#f92672>&lt;/plugins&gt;</span>
+</code></pre></div><p>Q: Why is <code>maven-gpg-plugin</code> placed in the parent&rsquo;s <code>pom.xml</code>, while<code>maven-javadoc-plugin</code> and <code>maven-source-plugin</code> plugins are placed in the client&rsquo;s <code>pom.xml</code>?</p><p>A: Because all the uploaded components need to be encrypted, including the parent&rsquo;s <code>pom.xml</code>; and only the client needs to upload javadoc and source, so <code>maven-javadoc-plugin</code> and <code>maven-source-plugin</code> plugins are put in Client.</p><h2 id=upload-components-to-the-oss-cloud>Upload Components to the OSS Cloud</h2><p>Run the following command in the <code>nebula-java/</code> directory:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml>&gt; mvn clean deploy -DpomFile=pom.xml
+</code></pre></div><blockquote><p>NOTE: If you do not add -DpomFile, there will be no <code>pom.xml</code> of parent in the uploaded file.</p></blockquote><h2 id=publish-components-in-the-oss-cloud>Publish Components in the OSS Cloud</h2><p>Sign in <a href=https://oss.sonatype.org/#stagingRepositories>https://oss.sonatype.org/#stagingRepositories</a> with your Sonatype account to check the uploaded components. They are currently placed in the Staging repository. You can perform fuzzy searches to locate the components you uploaded.</p><p>At this moment, the status of the component is <code>open</code>, choose it then click the <code>close</code> button. The system will automatically verify wether the component meets the requested needs. (Happy persons are all alike, every unhappy person is unhappy in his own way. You may encounter with various errors, so good luck!)</p><p>When the verification is done, the status turns to <code>Closed</code>.</p><p><img src=https://user-images.githubusercontent.com/56643819/72579626-9f1f9e00-3914-11ea-80a8-f21d7a40ac22.png alt=image></p><p>Finally, click <code>Release</code> to release the component.</p><p><img src=https://user-images.githubusercontent.com/56643819/72579649-afd01400-3914-11ea-92e4-0892fca416e9.png alt=image></p><p>Refresh your page to view the latest status.</p><h2 id=notifying-sonatype-that-the-components-have-been-published-successfully>Notifying Sonatype That the Components Have Been Published Successfully</h2><p>Add a comment under the JIRA issue mentioned above to inform the Sonatype staffs that the components are released successfully so they can review them. Once released, the issue will be closed.</p><h2 id=waiting-for-component-approval>Waiting for Component Approval</h2><p>You just wait for the approval.</p><h2 id=search-for-components-from-the-central-warehouse>Search for Components From the Central Warehouse</h2><p>After about ten minutes, you can find the newly released component here <a href=https://repo1.maven.org/maven2>https://repo1.maven.org/maven2</a>, which can be used directly in the <code>pom.xml</code> file. ~~ 👏👏</p><p>Your central repository (link: <a href=http://search.maven.org/>http://search.maven.org/</a>) becomes accessible after the synchronization is completed in about 2 hours.</p><p>Once you have successfully released the components for the first time. You don&rsquo;t need to bother to repeat the whole process again, rather, you can use the Group ID directly to implement new releases.</p><h2 id=new-release-guide>New Release Guide</h2><p>Process on releasing components with the same Group ID:</p><ul><li>Edit the <code>settings.xml</code> file and the <code>pom.xml</code> file according to the preceding session;</li><li>Upload Your Deployment;</li><li>Close and release the components at <a href=https://oss.sonatype.org/;>https://oss.sonatype.org/;</a></li><li>Wait for the sync (about 2 hours)</li></ul><p>Tips: Modification and deletion are not supported in the published releases.</p><h2 id=github-repository>GitHub Repository</h2><p>More details on <strong>Nebula Graph</strong> please refer to our GitHub <a href=https://github.com/vesoft-inc/nebula>Repository</a>. We appreciate your issues or prs. If you like us, please give us a star.</p><blockquote class=star-ads><span>Do you like this post? If yes, just give me a</span>
+<span class="glyphicon glyphicon-star"></span><span>star:</span>
+<a href=https://github.com/vesoft-inc/nebula>https://github.com/vesoft-inc/nebula</a></blockquote><ul class=blog-footer><li><img src=/images/tag.png>
+<a href=/en/tags/Dev-Log>Dev-Log</a></li><li class="nebula-share st-btn"><img src=/images/share.png>
+<span>Share Post</span><ul class=blog-footer-share-links><li class=st-custom-button data-network=twitter><img alt="twitter-white sharing button" src=https://platform-cdn.sharethis.com/img/twitter-white.svg>
+<span class=st-label>Twitter</span></li><li class=st-custom-button data-network=linkedin><img alt="twitter-white sharing button" src=https://platform-cdn.sharethis.com/img/linkedin-white.svg>
+<span class=st-label>Linkedin</span></li><li class=st-custom-button data-network=facebook><img alt="twitter-white sharing button" src=https://platform-cdn.sharethis.com/img/facebook-white.svg>
+<span class=st-label>Facebook</span></li><li class=st-custom-button data-network=sharethis><img alt="twitter-white sharing button" src=https://platform-cdn.sharethis.com/img/sharethis-white.svg>
+<span class=st-label>Others</span></li></ul></li><li onclick="location.href='\/en\/posts'"><img src=/images/blog.png>
+<a href=/en/posts>Back to blog home</a></li><li onclick="location.href='https:\/\/nebula-graph.io/en/posts/index.xml'"><img src=/images/rss.png>
+<a onclick="window.open('https:\/\/nebula-graph.io/en/posts/index.xml')" href>RSS</a></li></ul><div id=discourse-comments></div></section><div class=single-side-bar><div class=tags-block><h3 class="glyphicon glyphicon-tag">Tags</h3><ul class=blog-tags><li class=col-md-12><a href=/en/posts class=active>All</a></li><li><a href=/en/tags/architecture>architecture</a></li><li><a href=/en/tags/community>community</a></li><li><a href=/en/tags/deployment>deployment</a></li><li><a href=/en/tags/dev-log>dev-log</a></li><li><a href=/en/tags/features>features</a></li><li><a href=/en/tags/graph-database>graph-database</a></li><li><a href=/en/tags/graph-query-language>graph-query-language</a></li><li><a href=/en/tags/performance>performance</a></li><li><a href=/en/tags/release-notes>release-notes</a></li><li><a href=/en/tags/system-testing>system-testing</a></li><li><a href=/en/tags/tools>tools</a></li><li><a href=/en/tags/use-cases>use-cases</a></li></ul></div><div id=blog-carousel class="carousel slide" data-ride=carousel><ol class=carousel-indicators><li data-target=#blog-carousel data-slide-to=0 class=active></li><li data-target=#blog-carousel data-slide-to=1></li></ol><div class=carousel-inner role=listbox><div class="item active" onclick="location.href='\/en\/posts\/clean-stale-data-with-ttl-in-nebula-graph_\/'"><img src=https://user-images.githubusercontent.com/38887077/77512987-09256800-6eaf-11ea-9b41-e8b87ab51fe8.png alt="How Nebula Graph Automatically Cleans Stale Data with TTL" width=220px height=150px><div class=carousel-caption>How Nebula Graph Automatically Cleans Stale Data with TTL</div></div><div class=item onclick="location.href='\/en\/posts\/github-action-automating-project-process\/'"><img src=https://user-images.githubusercontent.com/38887077/76831941-482a3c80-6863-11ea-9795-009eaa50fc0e.png alt="Automating Your Project Processes with Github Actions" width=220px height=150px><div class=carousel-caption>Automating Your Project Processes with Github Actions</div></div></div><a class="left carousel-control" href=#blog-carousel role=button data-slide=prev><span class="glyphicon glyphicon-chevron-left" aria-hidden=true></span><span class=sr-only>Previous</span></a>
+<a class="right carousel-control" href=#blog-carousel role=button data-slide=next><span class="glyphicon glyphicon-chevron-right" aria-hidden=true></span><span class=sr-only>Next</span></a></div><div class=blog-anchors><h3>Contents</h3><nav id=TableOfContents><ul><li><a href=#summary>Summary</a></li><li><a href=#create-a-sonatype-account>Create a Sonatype Account</a></li><li><a href=#creating-a-new-project-issue-to-release-components>Creating a New Project Issue to Release Components</a></li><li><a href=#waiting-for-someone-from-sonatype-to-reply>Waiting for Someone From Sonatype to Reply</a></li><li><a href=#use-gpg-to-create-key>Use GPG to Create Key</a><ul><li><a href=#creating-a-gpg-key>Creating a GPG Key</a></li><li><a href=#view-public-key>View Public Key</a></li><li><a href=#upload-the-public-key-to-the-pgp-key-server>Upload the Public Key to the PGP Key Server</a></li></ul></li><li><a href=#modify-the-maven-configuration-files>Modify the Maven Configuration Files</a><ul><li><a href=#configure-the-setting-xml-file>Configure the setting. xml File</a></li><li><a href=#configure-the-pom-xml-file>Configure the pom. xml File</a></li><li><a href=#multi-module-project-configuration>Multi-Module Project Configuration</a></li></ul></li><li><a href=#upload-components-to-the-oss-cloud>Upload Components to the OSS Cloud</a></li><li><a href=#publish-components-in-the-oss-cloud>Publish Components in the OSS Cloud</a></li><li><a href=#notifying-sonatype-that-the-components-have-been-published-successfully>Notifying Sonatype That the Components Have Been Published Successfully</a></li><li><a href=#waiting-for-component-approval>Waiting for Component Approval</a></li><li><a href=#search-for-components-from-the-central-warehouse>Search for Components From the Central Warehouse</a></li><li><a href=#new-release-guide>New Release Guide</a></li><li><a href=#github-repository>GitHub Repository</a></li></ul></nav></div><div class=social-share><h3>Share Post</h3><div class=nebula-share-buttons><div class="st-custom-button st-remove-label" data-network=twitter><img alt="twitter-white sharing button" src=https://platform-cdn.sharethis.com/img/twitter-white.svg></div><div class="st-custom-button st-remove-label" data-network=linkedin><img alt="linkedin-white sharing button" src=https://platform-cdn.sharethis.com/img/linkedin-white.svg></div><div class="st-custom-button st-remove-label" data-network=facebook><img alt="facebook-white sharing button" src=https://platform-cdn.sharethis.com/img/facebook-white.svg></div><div class="st-custom-button st-remove-label" data-network=hackernews><img alt="hackernews-white sharing button" src=https://platform-cdn.sharethis.com/img/hackernews-white.svg></div><div class="st-custom-button st-remove-label" data-network=reddit><img alt="reddit-white sharing button" src=https://platform-cdn.sharethis.com/img/reddit-white.svg></div><div class="st-custom-button st-remove-label" data-network=sharethis><img alt="reddit-white sharing button" src=https://platform-cdn.sharethis.com/img/sharethis-white.svg></div></div></div></div></div><img onclick="location.href='#top'" class=go-ahead src=/images/up.png></div><footer class="container-fluid foot-wrap" name=contact_us><div class=container><p align=center class=statement>Nebula Graph will respect your data privacy per our Privacy Policy</p><div class=row><div class="row-content col-lg-4 col-sm-4 col-xs-4"><h3>Community</h3><ul><li><img src=/img/github.png>
+<a href=https://github.com/vesoft-inc/nebula target=_blank>GitHub</a></li><li><img src=/img/forum.png>
+<a href=https://discuss.nebula-graph.io/ target=_blank>Forum</a></li><li><img src=/img/slack.png>
+<a href=https://join.slack.com/t/nebulagraph/shared_invite/enQtNjIzMjQ5MzE2OTQ2LTM0MjY0MWFlODg3ZTNjMjg3YWU5ZGY2NDM5MDhmOGU2OWI5ZWZjZDUwNTExMGIxZTk2ZmQxY2Q2MzM1OWJhMmY# target=_blank>Slack</a></li></ul></div><div class="row-content col-lg-4 col-sm-4 col-xs-4"><h3>Follow Us</h3><ul><li><img src=/img/twitter.png>
+<a href=https://twitter.com/NebulaGraph title=Twitter data-toggle=modal target=_blank data-target>Twitter</a></li><li><img src=/img/weibo.png>
+<a href=https://weibo.com/nebulagraph title=WeiBo data-toggle=modal target=_blank data-target>WeiBo</a></li><li><img src=/img/linkedin.png>
+<a href=https://www.linkedin.com/company/vesoft-nebula-graph/ title=LinkedIn data-toggle=modal target=_blank data-target>LinkedIn</a></li><li><img src=/img/youtube.png>
+<a href=https://www.youtube.com/channel/UC73V8q795eSEMxDX4Pvdwmw title=YouTube data-toggle=modal target=_blank data-target>YouTube</a></li><li><img src=/img/facebook.png>
+<a href=https://www.facebook.com/NebulaGraph/ title=FaceBook data-toggle=modal target=_blank data-target>FaceBook</a></li><li><img src=/img/gongzhonghao.png>
+<a href title="Official Accounts" data-toggle=modal target=_blank data-target=#myGongzhonghaoModal>Official Accounts</a></li></ul></div><div class="contactus row-content col-lg-4 col-sm-4 col-xs-4"><h3>Contact Us</h3><ul><li><img src=/img/iphone.png>
+<a href data-toggle=modal target=_blank data-target>(+86) 0571-28120658</a></li><li><img src=/img/email.png>
+<a href=mailto:info@vesoft.com data-toggle=modal target=_blank data-target>info@vesoft.com</a></li><li><img src=/img/weixin.png>
+<a href data-toggle=modal target=_blank data-target=#myModal>WeChat</a></li></ul></div></div></div><p align=left style=font-size:16px><img src=/images/VEsoft.png style=margin-right:10px> Copyright &copy;2020 VESoft Inc</p><div class="modal fade" id=myGongzhonghaoModal tabindex=-1 role=dialog aria-labelledby=myModalLabel aria-hidden=true><div class=modal-dialog><div class=modal-content><div class="modal-body wechat"><img src=/images/gonggonghaoCODE.jpg></div><div class=modal-footer><button type=button class="btn btn-default" data-dismiss=modal>close</button></div></div></div></div><div class="modal fade" id=myModal tabindex=-1 role=dialog aria-labelledby=myModalLabel aria-hidden=true><div class=modal-dialog><div class=modal-content><div class="modal-body wechat"><img src=/images/wechat.png></div><div class=modal-footer><button type=button class="btn btn-default" data-dismiss=modal>close</button></div></div></div></div></footer></main><div id=J-star-popup class=nebula-star-popup></div><script src=/js/jquery.js></script><script src=/js/bootstrap.min.js></script><script src=/js/jquery.easing.min.js></script><script src=/js/jquery.fittext.js></script><script src=/js/wow.min.js></script><script type=text/javascript src="https://platform-api.sharethis.com/js/sharethis.js#property=5e7c2cc315c7990012ae38bc&product=inline-share-buttons" async></script><script src=/js/creative.js></script><script async defer src=https://buttons.github.io/buttons.js></script><script src=/js/init.js></script><script type=text/javascript>DiscourseEmbed={discourseUrl:'https://discuss.nebula-graph.io/',discourseEmbedUrl:"https:\/\/nebula-graph.io\/en\/posts\/maven\/"};(function(){var d=document.createElement('script');d.type='text/javascript';d.async=true;d.src=DiscourseEmbed.discourseUrl+'javascripts/embed.js';(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(d);})();</script></body></html>
