@@ -26,6 +26,6 @@
       container: '#J-star-popup',
       placement: 'top',
     }).popover('show');
-  }, 1000);
+  }, 1000 * 30);
 
 })()
