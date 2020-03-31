@@ -159,7 +159,7 @@
   position: absolute;
   top: 20px;
   left: 0px;
-  width: 100px;
+  width: 100%;
   border: 1px solid #eee;
   display: none;
   list-style: none;
