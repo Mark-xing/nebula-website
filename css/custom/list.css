@@ -16,7 +16,7 @@
 }
 
 .blog-list .wrapper .inner {
-  margin: auto;
+  margin: 0 auto;
   display: flex;
 }
 
