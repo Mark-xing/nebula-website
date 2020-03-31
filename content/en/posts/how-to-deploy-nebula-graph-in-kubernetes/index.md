@@ -2,8 +2,9 @@
 title: "How to Deploy Nebula Graph on Kubernetes"
 date: 2020-02-27
 description: "This post gives a brief introduction of what Kubernetes is and provides a step-by-step guide to deploying Nebula Graph on Kubernetes, aka k8s."
+author: "FlyCat"
+tags: ["Deployment"]
 ---
-# How to Deploy Nebula Graph on Kubernetes
 
 ## What is Kubernetes
 

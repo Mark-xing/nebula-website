@@ -2,9 +2,9 @@
 title: 图数据库 Nebula Graph 的安装部署
 date: 2019-08-20
 description: "Nebula Graph 提供两种部署方式：单机和集群，本文将带你实践一番图数据库的安装部署"
+tags: ["部署", "编译"]
+author: 伊兴路
 ---
-
-# 图数据库 Nebula Graph 的安装部署
 
 ![deployment](https://nebula-blog.azureedge.net/nebula-blog/Deployment01.jpg)
 
@@ -193,4 +193,7 @@ storaged 也是使用的 raft 协议保证高可用，在数据迁移时会与 m
     Got 1 rows (Time spent: 3511/4024 us)
 ```
 
+### 推荐阅读
 
+- [使用 Docker 构建 Nebula Graph 源码](https://nebula-graph.io/cn/posts/build-nebula-graph-source-code-with-docker/)
+- [Kubernetes 部署 Nebula 图数据库集群](https://nebula-graph.io/cn/posts/how-to-deploy-nebula-graph-in-kubernetes/)

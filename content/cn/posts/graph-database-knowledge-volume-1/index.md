@@ -2,9 +2,9 @@
 title: "聊聊图数据库和图数据库的小知识"
 date: 2019-08-23
 description: "本文整理于图数据库 Nebula Graph 交流群中对图数据库的零碎知识，作为对图数据库知识的补充。本文分为小知识及 Q&A 两部分。"
+tags: ["图数据库知识"]
+author: 清蒸
 ---
-
-# 聊聊图数据库和图数据库的小知识
 
 ![graph database vol01](https://nebula-blog.azureedge.net/nebula-blog/Knowledge0101.png)
 
@@ -198,3 +198,9 @@ Sherman：说一下个人理解，我觉得知识图谱的场景一般是需要�
 ### 参考资料
 
 - [图数据库 - 维基百科](https://zh.wikipedia.org/wiki/%E5%9B%BE%E6%95%B0%E6%8D%AE%E5%BA%93)
+
+## 推荐阅读
+
+- [Nebula Graph 技术总监陈恒：图数据库怎么和深度学习框架进行结合？](https://nebula-graph.io/cn/posts/integrate-graph-database-with-deep-learning-framework/)
+- [聊聊图数据库和图数据库的小知识 Vol.02](https://nebula-graph.io/cn/posts/graph-database-knowledge-volume-2/)
+- [图数据库爱好者的聚会在谈论什么？](https://nebula-graph.io/cn/posts/graph-database-fans-chat/)

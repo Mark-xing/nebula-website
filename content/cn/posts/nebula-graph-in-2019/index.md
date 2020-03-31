@@ -2,9 +2,9 @@
 title: "Nebula Graph in 2019：It's Worth the Effort"
 date: 2019-12-27
 description: "在 2019 年 5 月，我们开源了，有了自己的图数据库社区，Nebula Graph 经历了从 0 到 1 的过程，从 alpha 到 v1.0.0-rc2 我们一直在变得更好。"
+tags: ["社区"]
+author: Nebula
 ---
-
-# Nebula Graph in 2019：It's Worth the Effort
 
 ![Nebula in 2019 15 23 54](https://nebula-blog.azureedge.net/nebula-blog/Nebulain201901.png)
 
@@ -83,7 +83,9 @@ It's Worth the Effort，我们只要坚持做正确的事情，分享会带来�
 
 ## 星云·小剧场
 
-**为什么给图数据库取名 Nebula ？** <br />Nebula 是星云的意思，很大嘛，也是漫威宇宙里面漂亮的星云小姐姐。对了，Nebula的发音是：[ˈnɛbjələ]。
+**为什么给图数据库取名 Nebula ？** 
+
+Nebula 是星云的意思，很大嘛，也是漫威宇宙里面漂亮的星云小姐姐。对了，Nebula的发音是：[ˈnɛbjələ]。
 
 ![image](https://nebula-blog.azureedge.net/nebula-blog/Nebulain201904.png)
 

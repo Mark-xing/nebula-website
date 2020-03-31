@@ -2,9 +2,9 @@
 title: "使用图数据库 Nebula Graph 数据导入快速体验知识图谱 OwnThink"
 date: 2019-11-26
 description: "本文介绍如何将知识图谱数据快速导入图数据库 Nebula Graph 中并做简单的 CRUD"
+tags: ["应用实践"]
+author: 王杰
 ---
-
-# 使用图数据库 Nebula Graph 数据导入快速体验知识图谱 OwnThink
 
 ![](https://nebula-blog.azureedge.net/nebula-blog/OwnThink01.png)
 
@@ -12,7 +12,7 @@ description: "本文介绍如何将知识图谱数据快速导入图数据库 Ne
 
 本文由 Nebula Graph 实习生@王杰贡献。
 
-最近 [@Yener](https://my.oschina.net/yener) 开源了史上最大规模的中文知识图谱——[OwnThink](https://www.ownthink.com/)（链接：[https://github.com/ownthink/KnowledgeGraphData](https://github.com/ownthink/KnowledgeGraphData) ），数据量为 1.4 亿条。
+最近 @Yener 开源了史上最大规模的中文知识图谱——[OwnThink](https://www.ownthink.com/)（链接：[https://github.com/ownthink/KnowledgeGraphData](https://github.com/ownthink/KnowledgeGraphData) ），数据量为 1.4 亿条。
 
 本文介绍如何将这份数据快速导入图数据库 Nebula Graph，全过程大约需要 30 分钟。
 

@@ -2,17 +2,16 @@
 title: "前端 Docker 镜像体积优化"
 date: 2020-02-11
 description: "本文主要来讲述下开源的分布式图数据库 Nebula Graph 是如何将 Docker 应用到可视化界面中，并将镜像体积从 1.3G 减到 0.3G 。"
-tags: ["最佳实践"]
+tags: ["性能"]
 author: Jerry
 ---
-
-# 前端 Docker 镜像体积优化
 
 ![Docker](https://nebula-blog.azureedge.net/nebula-blog/DockerImage01.png)
 
 如果 2019 年技术圈有十大流行词，**容器化**肯定占有一席之地，随着 Docker 的风靡，前端领域应用到 Docker 的场景也越来越多，本文主要来讲述下开源的分布式图数据库 Nebula Graph 是如何将 Docker 应用到可视化界面中。
 
 ## 为什么要用 Docker
+
 对于前端日常开发而言，有时也会用到 Docker，结合到 [Nebula Graph Studio](https://github.com/vesoft-inc/nebula-web-docker/blob/master/README.md) （分布式图数据库 Nebula Graph 的图形界面工具）使用 Docker 主要基于以下考虑:
 
 - **统一运行环境**：我们的工具背后有好几个服务组合在一起，诸如不同技术栈的现有服务，纯前端的静态资源。
@@ -20,6 +19,7 @@ author: Jerry
 - **快速部署**：团队本就提供有 [Nebula镜像版本](https://github.com/vesoft-inc/nebula-docker-compose) 实践，给了我们前端一些参考和借鉴。
 
 ## Docker 镜像的构建
+
 既然要使用 Docker 来承载我们的应用，就得将项目进行镜像构建。与所有 build 镜像类似，需要配置一份命名为[Dockerfile ](https://docs.docker.com/engine/reference/builder/)的文件，文件是一些步骤的描述，简单来说就是把项目复制到镜像里，并设置好启动方式：
 
 ```shell
@@ -110,4 +110,5 @@ RUN npm install && npm run build
 以上只作为一个线索参考，更多前端常规的优化步骤，都可以迁移至镜像中进行，毕竟和我们本地开发一样，镜像构建也是一个运行代码的环境嘛。
 
 ## 小结
+
 以上便是我在此次使用 Docker 镜像来运行我们 [Nebula Studio](https://github.com/vesoft-inc/nebula-web-docker/blob/master/README.md) 所用到的一些优化镜像体积的方法，希望能给需要的人一些帮助和参考，可能还有一些认识不准确的地方，欢迎指出，同样欢迎你来试用 Nebula Graph Studio：[https://github.com/vesoft-inc/nebula-web-docker](https://github.com/vesoft-inc/nebula-web-docker) 

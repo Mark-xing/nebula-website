@@ -1,10 +1,10 @@
 ---
 title: "图数据库爱好者的聚会在谈论什么？"
 date: 2019-09-12
-description: "本次分享主要介绍了 Nebula Graph 的特性，以及新上线的[《使用 Docker 构建 Nebula Graph》"
+description: "本次分享主要介绍了 Nebula Graph 的特性，以及新上线的《使用 Docker 构建 Nebula Graph》"
+tags: ["图数据库知识"]
+author: 吴敏
 ---
-
-# 图数据库爱好者的聚会在谈论什么？
 
 ![graph database](https://nebula-blog.azureedge.net/nebula-blog/FansChat01.png)
 
@@ -100,4 +100,8 @@ description: "本次分享主要介绍了 Nebula Graph 的特性，以及新上�
 
 > 微博：https://weibo.com/nebulagraph
 
+## 推荐阅读
 
+- [聊聊图数据库和图数据库的小知识](https://nebula-graph.io/cn/posts/graph-database-knowledge-volume-1/)
+- [Nebula Graph 技术总监陈恒：图数据库怎么和深度学习框架进行结合？](https://nebula-graph.io/cn/posts/integrate-graph-database-with-deep-learning-framework/)
+- [聊聊图数据库和图数据库的小知识 Vol.02](https://nebula-graph.io/cn/posts/graph-database-knowledge-volume-2/)

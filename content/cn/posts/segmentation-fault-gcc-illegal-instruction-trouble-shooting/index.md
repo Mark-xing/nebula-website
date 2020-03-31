@@ -2,9 +2,9 @@
 title: "Dev 日志 | 一次 Segmentation Fault 和 GCC Illegal Instruction 编译问题排查"
 date: 2019-11-20
 description: "笔者最近在重新整理和编译 Nebula Graph 的第三方依赖，选出两个比较有意思的问题给大家分享一下"
+tags: ["开发日志","编译"]
+author: 甘雨
 ---
-
-# Dev 日志 | 一次 Segmentation Fault 和 GCC Illegal Instruction 编译问题排查
 
 ![image](https://nebula-blog.azureedge.net/nebula-blog/GCC01.png)
 

@@ -1,10 +1,9 @@
 .blog-detail {
   height: 100%;
-  padding-top: 50px;
+  padding-top: 60px;
   background-image: url('../../img/header.png');
 }
 
-.blog-detail .blog-content h1[id]::before,
 .blog-detail .blog-content h2[id]::before,
 .blog-detail .blog-content h3[id]::before,
 .blog-detail .blog-content h4[id]::before,
@@ -29,6 +28,38 @@
 
 .blog-detail .wrapper .inner .blog-content {
   flex: 1;
+  width: 100%;
+}
+
+.blog-detail .wrapper .inner .blog-content .blog-metas {
+  display: flex;
+  margin: 20px 0;
+}
+
+.blog-detail .wrapper .inner .blog-content .blog-metas .meta {
+  margin-right: 20px;
+}
+
+.blog-detail .wrapper .inner .blog-content .blog-metas .meta > img {
+  width: 16px;
+  height: 16px;
+}
+
+.blog-detail .wrapper .inner .blog-content .blog-metas .meta > a {
+  display: inline-block;
+  color: #060812;
+  line-height: 20px;
+  font-size: 14px;
+  padding: 0 3px;
+}
+
+.blog-detail .wrapper .inner .blog-content .blog-metas .meta > a + a {
+  border-left: 1px solid #131831;
+}
+
+.blog-detail .wrapper .inner .blog-content blockquote {
+  border-left: 4px solid #0080ff;
+  padding: 4px 10px;
 }
 
 .blog-detail .wrapper .inner .blog-content a {
@@ -51,7 +82,8 @@
 }
 
 .blog-content h1 {
-  font-size: 32px;
+  font-size: 32px !important;
+  line-height: 48px;
 }
 
 .blog-content h2 {
@@ -68,11 +100,6 @@
 
 .blog-content p {
   font-size: 16px;
-}
-
-.blog-detail .star-ads {
-  border-left: 4px solid #0080FF;
-  padding: 4px;
 }
 
 .blog-content th, .blog-content td {
@@ -103,7 +130,7 @@
 .blog-detail .single-side-bar {
   list-style: none;
   width: 230px; 
-  padding: 10px;
+  padding: 5px 10px 10px 10px;
 }
 
 .blog-detail .blog-footer {
@@ -132,7 +159,8 @@
   position: absolute;
   top: 20px;
   left: 0px;
-  width: 100px;
+  width: 120px;
+  text-align: center;
   border: 1px solid #eee;
   display: none;
   list-style: none;
@@ -170,16 +198,24 @@
   }
   .blog-detail .blog-content {
     margin: auto;
-    padding: 36px 36px 100px 36px;
+    padding: 0px 36px 100px 36px;
   }
 }
 
 @media(max-width: 959px) {
+  .blog-detail {
+    padding-top: 50px;
+  }
   .blog-detail .single-side-bar {
     display: none;
   }
   .blog-detail .blog-content {
     padding: 0 24px 60px 24px;
+  }
+
+
+  .blog-detail .wrapper .inner .blog-content .blog-metas {
+    display: none;
   }
 
   h1 {
@@ -207,6 +243,5 @@
   .blog-detail .single-side-bar {
     list-style: none;
     width: 300px; 
-    padding: 10px;
   }
 }

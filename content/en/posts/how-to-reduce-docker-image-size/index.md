@@ -2,9 +2,9 @@
 title: "How to Reduce Docker Image Size"
 date: 2020-02-11
 description: "This post shows you several ways to reduce Docker image size. These tips helped Nebula Graph devs reduce the image from 1.3G to 0.3G."
+author: "Jerry"
+tags: ["Performance"]
 ---
-
-# How to Reduce Docker Image Size
 
 ![Docker](https://user-images.githubusercontent.com/56643819/74205747-8dcb7680-4cb3-11ea-97c0-7c8bf36dd0e1.png)
 

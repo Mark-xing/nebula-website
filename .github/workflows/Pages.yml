@@ -1,0 +1,27 @@
+name: Publish docs via GitHub Pages
+on:
+  push:
+    branches:
+      - jerry-dev
+      - website2.0
+
+
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.65.3'
+
+      - name: Build
+        run: hugo --baseURL="/nebula-website/" --minify -d nebula-website
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.DEPLOY_TOKEN }}
+          publish_dir: ./nebula-website

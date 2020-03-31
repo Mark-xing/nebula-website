@@ -2,8 +2,9 @@
 title: "图数据库 Nebula Graph RC3 Release Note"
 date: 2020-02-07
 description: "本次 RC3 主要新增 dump_tools 工具，导出指定条件的数据；发布 GUI 工具 Nebula Graph Studio；新增扫描点边接口，对接 OLAP…"
+tags: ["Release-Note"]
+author: Jude
 ---
-# 图数据库 Nebula Graph RC3 Release Note
 
 ![Release note](https://nebula-blog.azureedge.net/nebula-blog/RC301.png)
 
@@ -63,3 +64,9 @@ description: "本次 RC3 主要新增 dump_tools 工具，导出指定条件的�
 - 增强 Nebula Graph Studio 功能
 
 最后是 Nebula 的 GitHub 地址，欢迎大家试用，有什么问题可以向我们提 issue。GitHub 地址：[https://github.com/vesoft-inc/nebula](https://0x7.me/zhihu2github)；加入 Nebula Graph 交流群，请联系 Nebula Graph 官方小助手微信号：NebulaGraphbot
+
+## 推荐阅读
+
+- [图数据库 Nebula Graph v.1.0.0-beta 已上线](https://nebula-graph.io/cn/posts/nebula-graph-beta-release-note/)
+- [图数据库 Nebula Graph RC1 Release Note](https://nebula-graph.io/cn/posts/nebula-graph-rc1-release-note/)
+- [分布式图数据库 Nebula RC2 发布：增强了 CSV Importer 功能](https://nebula-graph.io/cn/posts/nebula-graph-rc2-release-note/)

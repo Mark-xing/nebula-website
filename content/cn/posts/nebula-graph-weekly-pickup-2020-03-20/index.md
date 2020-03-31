@@ -2,8 +2,9 @@
 title: "Pick of the Week'20 | 第 12 周看点--Nebula csv 数据导入你该知道的事项"
 date: 2020-03-20
 description: "本周看点：社区用户和 Nebula Graph 官方共同发布《Nebula csv 数据导入（go-importer) 你该知道的事项》，在产品方面支持 ACL…"
+tags: ["社区","产品动态"]
+author: 清蒸
 ---
-# Pick of the Week'20 | 第 12 周看点--Nebula csv 数据导入你该知道的事项
 
 ![每周看点](https://nebula-blog.azureedge.net/nebula-blog/PotW.png)
 
@@ -54,12 +55,12 @@ Pick of the Week 每周会从官方论坛、微博、知乎、微信群、微信
 
 ## 推荐阅读
 
-- [使用 Github Action 进行前端自动化发布](https://zhuanlan.zhihu.com/p/113802493)
+- [使用 Github Action 进行前端自动化发布](https://nebula-graph.io/cn/posts/github-action-automating-project-process/)
   - 推荐理由：说起自动化，无论是在公司还是我们个人的项目中，都会用到或者编写一些工具来帮助我们去处理琐碎重复的工作，以节约时间提升效率，尤其是我们做前端开发会涉及诸如构建、部署、单元测试等这些开发工作流中重复的事项，本篇文章就是介绍如何利用 GitHub 提供的 Actions 来完成我们前端的发布自动化。
 - 往期 Pick of the Week
-  - [Pick of the Week'20 | 第 11 周看点--图数据库的蓄水池](https://zhuanlan.zhihu.com/p/112948108)
-  - [Pick of the Week'20 | 第 10 周看点--HN 热烈讨论的图查询语言](https://zhuanlan.zhihu.com/p/111860818)
-  - [Pick of the Week'20 | 第 9 周看点--2020 H1 RoadMap 发布](https://zhuanlan.zhihu.com/p/109758008)
+  - [Pick of the Week'20 | 第 11 周看点--图数据库的蓄水池](https://nebula-graph.io/cn/posts/nebula-graph-weekly-pickup-2020-03-13/)
+  - [Pick of the Week'20 | 第 10 周看点--HN 热烈讨论的图查询语言](https://nebula-graph.io/cn/posts/nebula-graph-weekly-pickup-2020-03-06/)
+  - [Pick of the Week'20 | 第 9 周看点--2020 H1 RoadMap 发布](https://nebula-graph.io/cn/posts/nebula-graph-weekly-pickup-2020-02-28/)
 
 本期 Pick of the Week 就此完毕，如果你对本周看点或 Nebula Graph 有任何建议，欢迎前去 GitHub：[https://github.com/vesoft-inc/nebula](https://github.com/vesoft-inc/nebula) 或者官方论坛：[https://discuss.nebula-graph.io/](https://discuss.nebula-graph.io/) 向我们提出。若你想加入图数据库交流群，请添加 Nebula 小助手微信：NebulaGraphbot 
 

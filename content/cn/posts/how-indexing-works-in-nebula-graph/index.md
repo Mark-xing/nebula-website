@@ -2,12 +2,14 @@
 title: "分布式图数据库 Nebula Graph 的 Index 实践"
 date: 2020-03-12
 description: "索引是数据库系统中不可或缺的一个功能，数据库索引好比是书的目录，能加快数据库的查询速度，其实质是数据库管理系统中一个排序的数据结构。不同的数据库系统有不同的排序结构..."
+tags: ["特性讲解"]
+author: sky
 ---
-# 分布式图数据库 Nebula Graph 的 Index 实践
 
 ![](https://nebula-blog.azureedge.net/nebula-blog/Index01.png)
 
 ## 导读
+
 索引是数据库系统中不可或缺的一个功能，数据库索引好比是书的目录，能加快数据库的查询速度，其实质是数据库管理系统中一个排序的数据结构。不同的数据库系统有不同的排序结构，目前常见的索引实现类型如 B-Tree index、B+-Tree index、B*-Tree index、Hash index、Bitmap index、Inverted index 等等，各种索引类型都有各自的排序算法。
 
 虽然索引可以带来更高的查询性能，但是也存在一些缺点，例如：
@@ -287,6 +289,11 @@ Thu Feb 20 12:50:36 2020
 ```
 
 索引的介绍就到此为止了，如果你对图数据库 Nebula Graph 的索引有更多的功能要求或者建议反馈，欢迎去 GitHub：[https://github.com/vesoft-inc/nebula](https://github.com/vesoft-inc/nebula) issue 区向我们提 issue 或者前往官方论坛：[https://discuss.nebula-graph.io/](https://discuss.nebula-graph.io/) 的 `Feedback`  分类下提建议 👏
+
+## 推荐阅读
+
+- [分布式图数据库 Nebula Graph 中的集群快照实践](https://nebula-graph.io/cn/posts/introduction-to-snapshot-in-nebula-graph/)
+- [图数据库 Nebula Graph TTL 特性](https://nebula-graph.io/cn/posts/clean-stale-data-with-ttl-in-nebula-graph/)
 
 > 作者有话说：Hi，我是 bright-starry-sky，是图数据 Nebula Graph 研发工程师，对数据库存储有浓厚的兴趣，希望本次的经验分享能给大家带来帮助，如有不当之处也希望能帮忙纠正，谢谢~
 

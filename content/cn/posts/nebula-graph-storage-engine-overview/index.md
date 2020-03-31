@@ -2,9 +2,9 @@
 title: Nebula 架构剖析系列（一）图数据库的存储设计
 date: 2019-10-15
 description: "在讨论某个数据库时，存储和计算通常是讨论的热点，也是爱好者们了解某个数据库不可或缺的部分，本文主要讲述了存储部分的设计。"
+tags: ["架构剖析"]
+author: 陈恒
 ---
-
-# Nebula 架构剖析系列（一）图数据库的存储设计
 
 ![image](https://nebula-blog.azureedge.net/nebula-blog/Architecture0101.png)
 
@@ -137,6 +137,7 @@ Snapshot 如何与 Raft 流程结合起来，[论文](https://raft.github.io/raf
 
 这篇文章给大家大致介绍了 Nebula Storage 层的整体设计， 由于篇幅原因， 很多细节没有展开讲， 欢迎大家到我们的微信群里提问，加入 Nebula Graph 交流群，请联系 Nebula Graph 官方小助手微信号：NebulaGraphbot。
 
-## 相关阅读
+## 推荐阅读
 
-- [Nebula 架构剖析系列（零）图数据库的整体架构设计](https://zhuanlan.zhihu.com/p/86606151)
+- [Nebula 架构剖析系列（零）图数据库的整体架构设计](https://nebula-graph.io/cn/posts/nebula-graph-architecture-overview/)
+- [Nebula 架构剖析系列（二）图数据库的查询引擎设计](https://nebula-graph.io/cn/posts/nebula-graph-query-engine-overview/)

@@ -2,9 +2,9 @@
 title: "An Introduction to Snapshot in Nebula Graph"
 date: 2020-01-21
 description: "Nebula Graph supports creating cluster snapshots to rebuild cluster and reimport data upon failures. This article introduces its design."
+author: "sky"
+tags: ["Features"]
 ---
-
-# An Introduction to Snapshot in Nebula Graph
 
 ## 1. Overview
 

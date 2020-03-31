@@ -2,8 +2,9 @@
 title: "Pick of the Week'20 | 第 7 周看点--Nebula 论坛上线"
 date: 2020-02-14
 description: "本周看点：Nebula 官方论坛上线、支持 ttl，指定数据的有效期…"
+tags: ["社区","产品动态"]
+author: 清蒸
 ---
-# Pick of the Week'20 | 第 7 周看点--Nebula 论坛上线
 
 ![每周看点](https://nebula-blog.azureedge.net/nebula-blog/PotW.png)
 
@@ -56,12 +57,12 @@ Pick of the Week 每周会从微博、知乎、微信群、微信公众号及 CS
 
 ## 推荐阅读
 
-- [前端 Docker 镜像体积优化](https://zhuanlan.zhihu.com/p/106179140)
+- [前端 Docker 镜像体积优化](https://nebula-graph.io/cn/posts/how-to-reduce-docker-image-size/)
   - 推荐理由：如果 2019 年技术圈有十大流行词，容器化肯定占有一席之地，随着 Docker 的风靡，前端领域应用到 Docker 的场景也越来越多，本文主要来讲述下开源的分布式图数据库 Nebula Graph 是如何将 Docker 应用到可视化界面中，并将 1.3G 的 Docker 镜像优化到 0.3G 的实践经验。
 - 往期 Pick of the Week
-  - [Pick of the Week'20 | 第6周看点--DB-Engine 2 月图数据库排名发榜](https://zhuanlan.zhihu.com/p/105611083)
-  - [Pick of the Week'20| 第3周看点--Nebula Graph Studio 来了](https://zhuanlan.zhihu.com/p/103254777)
-  - [Pick of the Week'20 | 第 2 周看点--Nebula Graph UI 内测中](https://zhuanlan.zhihu.com/p/102166129)
+  - [Pick of the Week'20 | 第 6 周看点--DB-Engine 2 月图数据库排名发榜](https://nebula-graph.io/cn/posts/nebula-graph-weekly-pickup-2020-02-07/)
+  - [Pick of the Week'20| 第 3 周看点--Nebula Graph Studio 来了](https://nebula-graph.io/cn/posts/nebula-graph-weekly-pickup-2020-01-17/)
+  - [Pick of the Week'20 | 第 2 周看点--Nebula Graph UI 内测中](https://nebula-graph.io/cn/posts/nebula-graph-weekly-pickup-2020-01-10/)
 
 本期 Pick of the Week 就此完毕，如果你对本周看点有任何建议，欢迎前去 GitHub：[https://github.com/vesoft-inc/nebula](https://github.com/vesoft-inc/nebula) ，也欢迎在本文或者公众号后台及添加 Nebula 小助手微信号加群交流：NebulaGraphbot 
 

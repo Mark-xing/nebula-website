@@ -30,6 +30,23 @@
   margin-top: 6px;
 }
 
+.single-side-bar .blog-anchors {
+  margin-top: 25px;
+  overflow: hidden;
+}
+
+.single-side-bar .blog-anchors > h3 {
+  margin-top: 0px;
+}
+
+.single-side-bar .blog-anchors ul {
+  margin-bottom: 0px;
+}
+
+.single-side-bar .blog-anchors li {
+  line-height: 1.5;
+}
+
 .single-side-bar ul li > a {
   color: #333333;
 }

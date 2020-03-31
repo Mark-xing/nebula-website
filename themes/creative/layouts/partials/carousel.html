@@ -9,7 +9,7 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
       {{ range $index, $item := $.Page.Site.Params.Carousels }}
-        <div class="item {{if eq $index 0 }}active{{ end }}">
+        <div class="item {{if eq $index 0 }}active{{ end }}" onclick="location.href='{{.link}}'">
           <img src="{{.banner}}" alt="{{.description}}" width="220px" height="150px">
           <div class="carousel-caption">
             {{ .description }}

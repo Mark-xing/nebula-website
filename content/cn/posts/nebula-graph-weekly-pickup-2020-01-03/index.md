@@ -2,9 +2,9 @@
 title: "Pick of the Week'20 | 第 1 周看点--Nebula Graph 上 DB-Engine 图数据库榜单"
 date: 2020-01-03
 description: "本周看点：Nebula 嘉年华直播视频发布，DB-Engine 图数据库榜上 Nebula Graph 榜上有名…"
+tags: ["社区","产品动态"]
+author: 清蒸
 ---
-
-# Pick of the Week'20 | 第 1 周看点--Nebula Graph 上 DB-Engine 图数据库榜单
 
 ![每周看点](https://nebula-blog.azureedge.net/nebula-blog/PotW.png)
 
@@ -62,13 +62,6 @@ Nebula：给定 srcID，edgetype 找目的点，可以直接获取目的点 ID�
 
 
 Nebula：有不同语言的客户端，可以在代码里调用，一月份我们会发布 UI 版，第一版 UI 会提供一个 Docker 运行的方式。
-
-### 推荐阅读
-
-- 往期 Pick of the Week
-  - [Pick of the Week'19 | 第52周看点--Ubuntu 支持 Clang 编译器](https://zhuanlan.zhihu.com/p/99791623)
-  - [Pick of the Week'19 | 第 51 周看点：Nebula 2019 嘉年华报名启动](https://zhuanlan.zhihu.com/p/98515952)
-  - [Pick of the Week'19 | 第 50 周看点--Meta 支持 index](https://zhuanlan.zhihu.com/p/97205378)
 
 本期 Pick of the Week 就此完毕，如果你对本周看点有任何建议，欢迎在本文或者公众号后台及添加 Nebula 小助手微信号加群：NebulaGraphbot 
 

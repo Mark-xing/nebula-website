@@ -2,8 +2,9 @@
 title: "Pick of the Week'20 | 第 9 周看点--2020 H1 RoadMap 发布"
 date: 2020-02-28
 description: "本周看点：Nebula Graph 2020 上半年 RoadMap 发布、Devs 24 小时在官方论坛 On call…"
+tags: ["社区","产品动态"]
+author: 清蒸
 ---
-# Pick of the Week'20 | 第 9 周看点--2020 H1 RoadMap 发布
 
 ![每周看点](https://nebula-blog.azureedge.net/nebula-blog/PotW.png)
 
@@ -97,12 +98,12 @@ LOOKUP ON entity WHERE entity.name == "Amber";
 
 ## 推荐阅读
 
-- [Kubernetes 部署 Nebula 图数据库集群](https://zhuanlan.zhihu.com/p/109228061)
+- [Kubernetes 部署 Nebula 图数据库集群](https://nebula-graph.io/cn/posts/how-to-deploy-nebula-graph-in-kubernetes/)
   - 推荐理由：数据库容器化是最近的一大热点，Kubernetes 能给数据库带来故障恢复、存储管理、负载均衡、水平拓展等好处。而它在图数据库 Nebula Graph 中可以发挥什么作用呢？希望本文能给你一个满意的答案。
 - 往期 Pick of the Week
-  - [Pick of the Week'20 | 第 8 周看点--索引、属性查询已上线](https://zhuanlan.zhihu.com/p/108274450)
-  - [Pick of the Week'20 | 第 7 周看点--Nebula 论坛上线](https://zhuanlan.zhihu.com/p/106925218)
-  - [Pick of the Week'20 | 第 6 周看点--DB-Engine 2 月图数据库排名发榜](https://zhuanlan.zhihu.com/p/105611083)
+  - [Pick of the Week'20 | 第 8 周看点--索引、属性查询已上线](https://nebula-graph.io/cn/posts/nebula-graph-weekly-pickup-2020-02-21/)
+  - [Pick of the Week'20 | 第 7 周看点--Nebula 论坛上线](https://nebula-graph.io/cn/posts/nebula-graph-weekly-pickup-2020-02-14/)
+  - [Pick of the Week'20 | 第 6 周看点--DB-Engine 2 月图数据库排名发榜](https://nebula-graph.io/cn/posts/nebula-graph-weekly-pickup-2020-02-07/)
 
 本期 Pick of the Week 就此完毕，如果你对本周看点有任何建议，欢迎前去 GitHub：[https://github.com/vesoft-inc/nebula](https://github.com/vesoft-inc/nebula) ，也欢迎在本文或者公众号后台及添加 Nebula 小助手微信号加群交流：NebulaGraphbot 
 

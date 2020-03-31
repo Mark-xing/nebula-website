@@ -2,9 +2,9 @@
 title: Nebula 架构剖析系列（零）图数据库的整体架构设计
 date: 2019-10-14
 description: "本文为大家介绍图数据库 Nebula Graph 的整体架构。"
+tags: ["架构剖析"]
+author: Sherman
 ---
-
-# Nebula 架构剖析系列（零）图数据库的整体架构设计
 
 ![image](https://nebula-blog.azureedge.net/nebula-blog/Architecture0001.png)
 
@@ -48,3 +48,8 @@ Storage Service 采用 shared-nothing 的分布式架构设计，每个存储节
 ### 附录
 
 Nebula  Graph GitHub 地址：[https://github.com/vesoft-inc/nebula](https://github.com/vesoft-inc/nebula)  ，加入 Nebula Graph 交流群，请联系 Nebula Graph 官方小助手微信号：NebulaGraphbot
+
+## 推荐阅读
+
+- [Nebula 架构剖析系列（一）图数据库的存储设计](https://nebula-graph.io/cn/posts/nebula-graph-storage-engine-overview/)
+- [Nebula 架构剖析系列（二）图数据库的查询引擎设计](https://nebula-graph.io/cn/posts/nebula-graph-query-engine-overview/)

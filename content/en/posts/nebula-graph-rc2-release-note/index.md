@@ -2,9 +2,9 @@
 title: "Nebula Graph RC2 Release Note"
 date: 2019-12-09
 description: "New features re Nebula Graph’s Query Engine, Storage Engine, and OM tools have come in the RC2 version of Nebula Graph. Check what’s coming."
+author: "Jude"
+tags: ["Release-Notes"]
 ---
-
-# Nebula Graph RC2 Release Note
 
 
 ![rc2](https://user-images.githubusercontent.com/56643819/72578859-51099b00-3912-11ea-8435-3f4d412d004e.png)

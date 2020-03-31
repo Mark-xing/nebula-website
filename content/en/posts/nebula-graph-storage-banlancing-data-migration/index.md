@@ -2,9 +2,9 @@
 title: "Storage Balance and Data Migration"
 date: 2020-02-04
 description: "This post explains in detail how Nebula Graph handles data balancing and data migration at the storage layer."
+author: "Heng Chen"
+tags: ["Features"]
 ---
-
-# Storage Balance and Data Migration
 
 ![image](https://user-images.githubusercontent.com/56643819/73818163-b7098400-4827-11ea-90b9-239d4e1c1285.png)
 

@@ -2,8 +2,9 @@
 title: "Pick of the Week'20 | 第 11 周看点--图数据库的蓄水池"
 date: 2020-03-13
 description: "本周看点：支持蓄水池算法，实现 User Manager，集成了 coverage testing tool…"
+tags: ["社区","产品动态"]
+author: 清蒸
 ---
-# Pick of the Week'20 | 第 11 周看点--图数据库的蓄水池
 
 ![每周看点](https://nebula-blog.azureedge.net/nebula-blog/PotW.png)
 
@@ -63,12 +64,12 @@ Pick of the Week 每周会从官方论坛、微博、知乎、微信群、微信
 
 ## 推荐阅读
 
-- [分布式图数据库 Nebula Graph 的 Index 实践](https://zhuanlan.zhihu.com/p/112626644)
+- [分布式图数据库 Nebula Graph 的 Index 实践](https://nebula-graph.io/cn/posts/how-indexing-works-in-nebula-graph/)
   - 推荐理由：索引是数据库系统中不可或缺的一个功能，数据库索引好比是书的目录，能加快数据库的查询速度，其实质是数据库管理系统中一个排序的数据结构。不同的数据库系统有不同的排序结构，目前常见的索引实现类型如 B-Tree index、B+-Tree index、B*-Tree index、Hash index、Bitmap index、Inverted index 等等，各种索引类型都有各自的排序算法，在本文中 Nebula Graph 解析了下图数据库中的索引。
 - 往期 Pick of the Week
-  - [Pick of the Week'20 | 第 10 周看点--HN 热烈讨论的图查询语言](https://zhuanlan.zhihu.com/p/111860818)
-  - [Pick of the Week'20 | 第 9 周看点--2020 H1 RoadMap 发布](https://zhuanlan.zhihu.com/p/109758008)
-  - [Pick of the Week'20 | 第 8 周看点--索引、属性查询已上线](https://zhuanlan.zhihu.com/p/108274450)
+  - [Pick of the Week'20 | 第 10 周看点--HN 热烈讨论的图查询语言](https://nebula-graph.io/cn/posts/nebula-graph-weekly-pickup-2020-03-06/)
+  - [Pick of the Week'20 | 第 9 周看点--2020 H1 RoadMap 发布](https://nebula-graph.io/cn/posts/nebula-graph-weekly-pickup-2020-02-28/)
+  - [Pick of the Week'20 | 第 8 周看点--索引、属性查询已上线](https://nebula-graph.io/cn/posts/nebula-graph-weekly-pickup-2020-02-21/)
 
 本期 Pick of the Week 就此完毕，如果你对本周看点或 Nebula Graph 有任何建议，欢迎前去 GitHub：[https://github.com/vesoft-inc/nebula](https://github.com/vesoft-inc/nebula) 或者官方论坛：[https://discuss.nebula-graph.io/](https://discuss.nebula-graph.io/) 向我们提出。若你想加入图数据库交流群，请添加 Nebula 小助手微信：NebulaGraphbot 
 

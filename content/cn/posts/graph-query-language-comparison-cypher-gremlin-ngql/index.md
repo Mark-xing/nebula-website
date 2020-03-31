@@ -2,9 +2,9 @@
 title: "一文了解各大图数据库查询语言 | 操作入门篇"
 date: 2020-03-03
 description: "介于市面上没有统一的图查询语言标准，在本文中我们选取市面上主流的几款图查询语言来分析一波用法"
+tags: ["图数据库知识","查询语言"]
+author: "清蒸, 张莹, Jude"
 ---
-
-# 一文了解各大图数据库查询语言 | 操作入门篇
 
 文章的开头我们先来看下什么是图数据库，根据维基百科的定义：**图数据库是使用图结构进行语义查询的数据库，它使用节点、边和属性来表示和存储数据**。
 
@@ -554,3 +554,10 @@ RETURN bro.name, dst.name
       │ "neptune"    │ "sea"    │
       └─────────────────────────┘
 ```
+
+## 推荐阅读
+
+- [聊聊图数据库和图数据库的小知识](https://nebula-graph.io/cn/posts/graph-database-knowledge-volume-1/)
+- [Nebula Graph 技术总监陈恒：图数据库怎么和深度学习框架进行结合？](https://nebula-graph.io/cn/posts/integrate-graph-database-with-deep-learning-framework/)
+- [聊聊图数据库和图数据库的小知识 Vol.02](https://nebula-graph.io/cn/posts/graph-database-knowledge-volume-2/)
+- [图数据库爱好者的聚会在谈论什么？](https://nebula-graph.io/cn/posts/graph-database-fans-chat/)

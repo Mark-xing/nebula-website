@@ -2,8 +2,9 @@
 title: "Pick of the Week'20 | 第 10 周看点--Hacker News 热烈讨论的图查询语言"
 date: 2020-03-06
 description: "本周看点：Hacker News 热帖：Graph query languages: Cypher vs. Gremlin vs. nGQL，产品方面：GO  支持关键词 BIDIRECT  进行双向遍历提供。"
+tags: ["社区","产品动态"]
+author: 清蒸
 ---
-# Pick of the Week'20 | 第 10 周看点--Hacker News 热烈讨论的图查询语言
 
 ![每周看点](https://nebula-blog.azureedge.net/nebula-blog/PotW.png)
 
@@ -76,12 +77,12 @@ Pick of the Week 每周会从官方论坛、微博、知乎、微信群、微信
 
 ## 推荐阅读
 
-- [一文了解各大图数据库查询语言（Gremlin vs Cypher vs nGQL）| 操作入门篇](https://zhuanlan.zhihu.com/p/110995885)
+- [一文了解各大图数据库查询语言（Gremlin vs Cypher vs nGQL）| 操作入门篇](https://nebula-graph.io/cn/posts/graph-query-language-comparison-cypher-gremlin-ngql/)
   - 推荐理由：介于市面上没有统一的图查询语言标准，在本文中我们选取市面上主流的几款图查询语言来分析一波用法，方便你了解到各类图查询语言的区别。
 - 往期 Pick of the Week
-  - [Pick of the Week'20 | 第 9 周看点--2020 H1 RoadMap 发布](https://zhuanlan.zhihu.com/p/109758008)
-  - [Pick of the Week'20 | 第 8 周看点--索引、属性查询已上线](https://zhuanlan.zhihu.com/p/108274450)
-  - [Pick of the Week'20 | 第 7 周看点--Nebula 论坛上线](https://zhuanlan.zhihu.com/p/106925218)
+  - [Pick of the Week'20 | 第 9 周看点--2020 H1 RoadMap 发布](https://nebula-graph.io/cn/posts/nebula-graph-weekly-pickup-2020-02-28/)
+  - [Pick of the Week'20 | 第 8 周看点--索引、属性查询已上线](https://nebula-graph.io/cn/posts/nebula-graph-weekly-pickup-2020-02-21/)
+  - [Pick of the Week'20 | 第 7 周看点--Nebula 论坛上线](https://nebula-graph.io/cn/posts/nebula-graph-weekly-pickup-2020-02-14/)
 
 本期 Pick of the Week 就此完毕，如果你对本周看点或 Nebula Graph 有任何建议，欢迎前去 GitHub：[https://github.com/vesoft-inc/nebula](https://github.com/vesoft-inc/nebula) 或者官方论坛：[https://discuss.nebula-graph.io/](https://discuss.nebula-graph.io/) 向我们提出。若你想加入图数据库交流群，请添加 Nebula 小助手微信：NebulaGraphbot 
 

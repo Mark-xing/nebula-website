@@ -2,9 +2,9 @@
 title: "图数据库 Nebula Graph 在 HBaseCon Asia2019 的分享实录"
 date: 2019-07-28
 description: "本文整理自 Nebula Graph 技术总监参加 HBaseCon Asia2019 的演讲。"
+tags: ["技术演讲"]
+author: 陈恒
 ---
-
-# 图数据库 Nebula Graph 在 HBaseCon Asia2019 的分享实录
 
 > [Nebula Graph](https://github.com/vesoft-inc/nebula)：一个开源的分布式图数据库。作为唯一能够存储万亿个带属性的节点和边的在线图数据库，Nebula Graph 不仅能够在高并发场景下满足毫秒级的低时延查询要求，还能够实现服务高可用且保障数据安全性。
 
@@ -171,3 +171,8 @@ Nebula Graph 的 HBase 版本略微有些不一样，可以看到虚线往下挪
 
 
 上面就是本次 Nebula Graph 参会 HBaseCon Asia2019 的全部内容，最后和大家再说下 Nebula Graph 是完全开源的项目，对于图数据库比较感兴趣的同学可以加 wechat 讨论群，或者在[ GitHub ](https://github.com/vesoft-inc/nebula)上提 Issue，也欢迎大家给我们支持 star 项目。
+
+## 推荐阅读
+
+- [图数据库 Nebula Graph 的数据模型和系统架构设计](https://nebula-graph.io/cn/posts/nebula-graph-data-model-and-system-design/)
+- [Vol.03 nMeetup | 图数据库综述与 Nebula 在图数据库设计的实践](https://nebula-graph.io/cn/posts/nebula-graph-design-in-practice/)

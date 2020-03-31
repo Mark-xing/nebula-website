@@ -2,9 +2,9 @@
 title: 聊聊图数据库和图数据库的小知识 Vol.02 
 date: 2020-01-15
 description: "本文整理于图数据库 Nebula Graph 交流群中对图数据库的零碎知识，作为对图数据库知识的补充。本文分为小知识及 Q&A 两部分。"
+tags: ["图数据库知识"]
+author: 清蒸
 ---
-
-# 聊聊图数据库和图数据库的小知识 Vol.02 
 
 ![about graph database](https://nebula-blog.azureedge.net/nebula-blog/Knowledge0201.png)
 
@@ -119,7 +119,9 @@ A：部署集群时需要设置 Partition 数，比如 1000 个 Partition。插�
 
 ## 推荐阅读
 
-- [#聊聊图数据库和图数据库小知识# Vol.01](https://zhuanlan.zhihu.com/p/79484631)
+- [聊聊图数据库和图数据库的小知识](https://nebula-graph.io/cn/posts/graph-database-knowledge-volume-1/)
+- [Nebula Graph 技术总监陈恒：图数据库怎么和深度学习框架进行结合？](https://nebula-graph.io/cn/posts/integrate-graph-database-with-deep-learning-framework/)
+- [图数据库爱好者的聚会在谈论什么？](https://nebula-graph.io/cn/posts/graph-database-fans-chat/)
 
 ![关注公众号](https://nebula-blog.azureedge.net/nebula-blog/WeChatOffical.png)
 

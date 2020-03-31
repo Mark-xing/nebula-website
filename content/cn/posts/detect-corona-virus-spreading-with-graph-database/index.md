@@ -2,9 +2,9 @@
 title: "从天津百货大楼 5 病例“迷局”见新冠病毒传播路径"
 date: 2020-02-06
 description: "天津某百货大楼内部相继出现 5 例新冠肺炎确诊病例，从起初的 3 个病例来看，似乎找不到任何流行病学上的关联性。在这种背景之下，作为技术人员可以通过什么技术来找寻病例之间的联系呢？"
+tags: ["应用实践"]
+author: "吴敏, 清蒸"
 ---
-
-# 从天津百货大楼 5 病例“迷局”见新冠病毒传播路径
 
 ![nCov.png](https://nebula-blog.azureedge.net/nebula-blog/nCoV01.png)
 
@@ -234,3 +234,7 @@ YIELD $$.person.ID
 ## 参考资料
 - 堪比推理小说！天津百货大楼5病例“迷局”： [http://www.bjd.com.cn/a/202002/03/WS5e37d067e4b002ffe994092e.html](http://www.bjd.com.cn/a/202002/03/WS5e37d067e4b002ffe994092e.html)
 - 图数据库技术 [https://github.com/vesoft-inc/nebula](https://github.com/vesoft-inc/nebula)
+
+## 推荐阅读
+
+- [使用图数据库 Nebula Graph 数据导入快速体验知识图谱 OwnThink](https://nebula-graph.io/cn/posts/import-ownthink-knowledge-graph-data-to-nebula-graph/)

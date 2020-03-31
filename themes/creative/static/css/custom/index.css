@@ -27,7 +27,59 @@ main {
   display: inline-block;
   width: 20px;
   height: 20px;
-  bottom: 10%;
+  bottom: 15%;
   right: 20px;
+  cursor: pointer;
+}
+
+.nebula-star-popup {
+  position: fixed;
+  bottom: 10px;
+  right: 190px;
+  z-index: 100;
+}
+
+.nebula-star-popup .popover {
+  width: 240px;
+  box-shadow: none;
+  border: none;
+  background: #F5F5F5;
+}
+
+.nebula-star-popup .popover .popover-content {
+  padding: 12px 32px;
+}
+
+.nebula-star-popup .popover .item p {
+  margin: 0;
+  color: #060812;
+  font-size: 16px;
+}
+
+.nebula-star-popup .popover .item p .emoj {
+  margin-right: 16px;
+}
+
+.nebula-star-popup .popover .item a {
+  color: #060812;
+  text-decoration: underline;
+}
+
+.nebula-star-popup .popover .arrow {
+  display: none;
+}
+
+.nebula-star-popup .popover-content .popup-logo {
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  right: -58px;
+  bottom: 0px;
+}
+
+.nebula-star-popup .glyphicon-remove {
+  position: absolute;
+  right: 8px;
+  top: 8px;
   cursor: pointer;
 }

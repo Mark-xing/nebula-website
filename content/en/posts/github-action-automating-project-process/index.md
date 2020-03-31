@@ -1,11 +1,10 @@
 ---
 title: "Automating Your Project Processes with Github Actions"
 date: 2020-03-17
-author: Jerry
-tags: ["best-practice", "test"]
 description: "GitHub Action is a great free tool to help automate project workflows on GitHub. This post shares our experience using GitHub Action to automate our website release process."
+author: "Jerry"
+tags: ["Dev-Log"]
 ---
-# Automating Your Project Processes with Github Actions
 
 ![image](https://user-images.githubusercontent.com/38887077/76831941-482a3c80-6863-11ea-9795-009eaa50fc0e.png)
 

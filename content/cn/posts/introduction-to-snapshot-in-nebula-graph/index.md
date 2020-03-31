@@ -2,9 +2,9 @@
 title: "分布式图数据库 Nebula Graph 中的集群快照实践"
 date: 2019-12-06
 description: "当集群处于无法启动或数据失效的状态时，重新搭建集群并重新倒入数据都将是一个繁琐并耗时的工程。针对此问题，Nebula Graph 提供了集群 snapshot 的创建功能。"
+tags: ["特性讲解"]
+author: sky
 ---
-
-# 分布式图数据库 Nebula Graph 中的集群快照实践
 
 ![image](https://nebula-blog.azureedge.net/nebula-blog/Snapshot01.png)
 
@@ -287,5 +287,10 @@ Got 3 rows (Time spent: 907/1495 us)
 ## 7 附录
 
 最后，附上 Nebula Graph GitHub 地址：[https://github.com/vesoft-inc/nebula](https://github.com/vesoft-inc/nebula) 如果你在使用 Nebula Graph 过程中遇到任何问题，欢迎 GitHub 联系我们或者加入微信交流群，请联系微信号：NebulaGraphbot 
+
+## 推荐阅读
+
+- [分布式图数据库 Nebula Graph 的 Index 实践](https://nebula-graph.io/cn/posts/how-indexing-works-in-nebula-graph/)
+- [图数据库 Nebula Graph TTL 特性](https://nebula-graph.io/cn/posts/clean-stale-data-with-ttl-in-nebula-graph/)
 
 ![关注公众号](https://nebula-blog.azureedge.net/nebula-blog/WeChatOffical.png)

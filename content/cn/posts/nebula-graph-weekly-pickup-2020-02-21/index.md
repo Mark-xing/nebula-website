@@ -2,8 +2,9 @@
 title: "Pick of the Week'20 | 第 8 周看点--索引、属性查询已上线"
 date: 2020-02-21
 description: "本周看点：索引和属性查询已上线，可根据属性查询符合条件的点…"
+tags: ["社区","产品动态"]
+author: 清蒸
 ---
-# Pick of the Week'20 | 第 8 周看点--索引、属性查询已上线
 
 ![每周看点](https://nebula-blog.azureedge.net/nebula-blog/PotW.png)
 
@@ -52,16 +53,17 @@ Pick of the Week 每周会从微博、知乎、微信群、微信公众号及 CS
 
 ## 推荐阅读
 
-- [应用 AddressSanitizer 发现程序内存错误](https://zhuanlan.zhihu.com/p/107743901)
+- [应用 AddressSanitizer 发现程序内存错误](https://nebula-graph.io/cn/posts/introduction-to-google-memory-detect-tool-addresssanitizer/)
   - 推荐理由：作为 C/ C++ 工程师，在开发过程中会遇到各类问题，最常见便是内存使用问题，比如，越界，泄漏。过去常用的工具是 Valgrind，但使用 Valgrind 最大问题是它会极大地降低程序运行的速度，初步估计会降低 10 倍运行速度。而 Google 开发的 AddressSanitizer 这个工具很好地解决了 Valgrind 带来性能损失问题，它非常快，只拖慢程序 2 倍速度。
 - 往期 Pick of the Week
-  - [Pick of the Week'20 | 第 7 周看点--Nebula 论坛上线](https://zhuanlan.zhihu.com/p/106925218)
-  - [Pick of the Week'20 | 第 6 周看点--DB-Engine 2 月图数据库排名发榜](https://zhuanlan.zhihu.com/p/105611083)
-  - [Pick of the Week'20 | 第 3 周看点--Nebula Graph Studio 来了](https://zhuanlan.zhihu.com/p/103254777)
+  - [Pick of the Week'20 | 第 7 周看点--Nebula 论坛上线](https://nebula-graph.io/cn/posts/nebula-graph-weekly-pickup-2020-02-14/)
+  - [Pick of the Week'20 | 第 6 周看点--DB-Engine 2 月图数据库排名发榜](https://nebula-graph.io/cn/posts/nebula-graph-weekly-pickup-2020-02-07/)
+  - [Pick of the Week'20| 第 3 周看点--Nebula Graph Studio 来了](https://nebula-graph.io/cn/posts/nebula-graph-weekly-pickup-2020-01-17/)
 
 本期 Pick of the Week 就此完毕，如果你对本周看点有任何建议，欢迎前去 GitHub：[https://github.com/vesoft-inc/nebula](https://github.com/vesoft-inc/nebula) ，也欢迎在本文或者公众号后台及添加 Nebula 小助手微信号加群交流：NebulaGraphbot 
 
 ## 星云·小剧场
+
 **为什么给图数据库取名 Nebula ？**
 
 Nebula 是星云的意思，很大嘛，也是漫威宇宙里面漂亮的星云小姐姐。对了，Nebula的发音是：[ˈnɛbjələ]

@@ -2,8 +2,9 @@
 title: "Kubernetes 部署 Nebula 图数据库集群"
 date: 2020-02-26
 description: "数据库容器化是最近的一大热点，Kubernetes 能给数据库带来故障恢复、存储管理、负载均衡、水平拓展等好处。而它在图数据库 Nebula Graph 中可以发挥什么作用呢？"
+tags: ["部署"]
+author: 徐飞
 ---
-# Kubernetes 部署 Nebula 图数据库集群
 
 ## Kubernetes 是什么
 
@@ -749,4 +750,9 @@ NAME            STATUS   ROLES    AGE   VERSION   INTERNAL-IP    EXTERNAL-IP   O
 - GitHub：[https://github.com/vesoft-inc/nebula](https://github.com/vesoft-inc/nebula)
 - 知乎：[zhihu.com/org/nebulagraph/posts](https://www.zhihu.com/org/nebulagraph/posts)
 - 微博：[weibo.com/nebulagraph](https://weibo.com/nebulagraph)
+
+## 推荐阅读
+
+- [分布式图数据库 Nebula Graph 的 Index 实践](https://nebula-graph.io/cn/posts/how-indexing-works-in-nebula-graph/)
+- [图数据库 Nebula Graph TTL 特性](https://nebula-graph.io/cn/posts/clean-stale-data-with-ttl-in-nebula-graph/)
 

@@ -2,8 +2,9 @@
 title: "Pick of the Week'20 | 第 2 周看点--Nebula Graph UI 内测中"
 date: 2020-01-10
 description: "本周看点：Nebula Graph UI 1.0 版本内测中、Index 支持点边属性创建索引…"
+tags: ["社区","产品动态"]
+author: 清蒸
 ---
-# Pick of the Week'20 | 第 2 周看点--Nebula Graph UI 内测中
 
 ![每周看点](https://nebula-blog.azureedge.net/nebula-blog/PotW.png)
 
@@ -65,11 +66,10 @@ Pick of the Week 每周会从微博、知乎、微信群、微信公众号及 CS
 
 ## 推荐阅读
 
-- [Jepsen 测试框架在图数据库 Nebula Graph 中的实践](https://zhuanlan.zhihu.com/p/101998773)
+- [Jepsen 测试框架在图数据库 Nebula Graph 中的实践](https://nebula-graph.io/cn/posts/practice-jepsen-test-framework-in-nebula-graph/)
   - 推荐理由：能否通过 Jepsen 的测试已成为各个分布式数据库对自身检验的一个标杆，在本篇文章中 Nebula Graph 将详解 Jepsen 组成部分、测试流程及如何将它应用在 Nebula Graph 上，是一篇较全面的 Jepsen 实践文。
 - 往期 Pick of the Week
-  - [Pick of the Week'20 | 第 1 周看点--Nebula Graph 上 DB-Engine 图数据库榜单](https://www.v2ex.com/t/634826#reply0)
-  - [Pick of the Week'19 | 第52周看点--Ubuntu 支持 Clang 编译器](https://zhuanlan.zhihu.com/p/99791623)
+  - [Pick of the Week'20 | 第 1 周看点--Nebula Graph 上 DB-Engine 图数据库榜单](https://nebula-graph.io/cn/posts/nebula-graph-weekly-pickup-2020-01-03/)
 
 本期 Pick of the Week 就此完毕，如果你对本周看点有任何建议，欢迎前去 GitHub：[https://github.com/vesoft-inc/nebula](https://github.com/vesoft-inc/nebula) ，也欢迎在本文或者公众号后台及添加 Nebula 小助手微信号加群交流：NebulaGraphbot 
 

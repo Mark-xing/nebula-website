@@ -2,9 +2,9 @@
 title: "Nebula Graph 技术总监陈恒：图数据库怎么和深度学习框架进行结合？"
 date: 2019-10-10
 description: "Nebula Graph 的技术总监作客开源中国线上问答——高手问答，本文本文整理于他和开源中国小伙伴对图数据库的讨论内容。"
+tags: ["图数据库知识"]
+author: 清蒸
 ---
-
-# Nebula Graph 技术总监陈恒：图数据库怎么和深度学习框架进行结合？
 
 ![online](https://nebula-blog.azureedge.net/nebula-blog/Online01.png)
 
@@ -143,6 +143,12 @@ GitHub 地址：[https://github.com/vesoft-inc/nebula](https://github.com/vesoft
 > 知乎：[https://www.zhihu.com/org/nebulagraph/posts](https://www.zhihu.com/org/nebulagraph/posts)
 
 > 微博：[https://weibo.com/nebulagraph](https://weibo.com/nebulagraph)
+
+### 推荐阅读
+
+- [聊聊图数据库和图数据库的小知识](https://nebula-graph.io/cn/posts/graph-database-knowledge-volume-1/)
+- [聊聊图数据库和图数据库的小知识 Vol.02](https://nebula-graph.io/cn/posts/graph-database-knowledge-volume-2/)
+- [图数据库爱好者的聚会在谈论什么？](https://nebula-graph.io/cn/posts/graph-database-fans-chat/)
 
 
 

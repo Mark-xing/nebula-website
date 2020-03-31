@@ -2,8 +2,9 @@
 title: "使用 Github Action 进行前端自动化发布"
 date: 2020-03-17
 description: "说起自动化，无论是在公司还是我们个人的项目中，都会用到或者编写一些工具来帮助我们去处理琐碎重复的工作，以节约时间提升效率…"
+tags: ["开发日志"]
+author: Jerry
 ---
-# 使用 Github Action 进行前端自动化发布
 
 ![image.png](https://nebula-blog.azureedge.net/nebula-blog/Action01.png)
 

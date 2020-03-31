@@ -2,9 +2,9 @@
 title: "图数据库 Nebula Graph 的数据模型和系统架构设计"
 date: 2019-07-24
 description: "在本文中我们将讲述图数据库 Nebula Graph 的常用概念及系统架构模型"
+tags: ["架构剖析"]
+author: 吴敏
 ---
-
-# 图数据库 Nebula Graph 的数据模型和系统架构设计
 
 > [Nebula Graph](https://0x7.me/osc2github)：一个开源的分布式图数据库。作为唯一能够存储万亿个带属性的节点和边的在线图数据库，Nebula Graph 不仅能够在高并发场景下满足毫秒级的低时延查询要求，还能够实现服务高可用且保障数据安全性。
 
@@ -94,5 +94,6 @@ MetaService 层为有状态的服务，其状态持久化方法与 Storage 层�
 ![image](https://nebula-blog.azureedge.net/nebula-blog/DataModel08.png)
 
 #### 客户端 API & Console
+
 Nebula Graph 提供 C++、Java、Golang 三种语言的客户端，与服务器之间的通信方式为 RPC，采用的通信协议为 Facebook-Thrift。用户也可通过 Linux 上 console 实现对 Nebula Graph 操作。Web 访问方式目前在开发过程中。
 

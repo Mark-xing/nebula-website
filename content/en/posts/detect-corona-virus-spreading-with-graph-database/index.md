@@ -2,8 +2,9 @@
 title: "Detect Corona Virus Spreading With Graph Database Based on a Real Case"
 date: 2020-02-06
 description: "This post provides a possible way to detect the nCov spreading path with graph technology, covering thoughts on modeling and queries."
+author: "Min Wu"
+tags: ["Use-Cases"]
 ---
-# Detect Corona Virus Spreading With Graph Database Based on a Real Case
 
 ![nCov.png](https://user-images.githubusercontent.com/56643819/74227656-e887c100-4cf9-11ea-94a0-8043e0bfc1be.png)
 

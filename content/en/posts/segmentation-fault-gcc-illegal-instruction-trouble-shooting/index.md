@@ -2,9 +2,9 @@
 title: "Compiling Trouble Shooting: Segmentation Fault and GCC Illegal Instruction"
 date: 2020-01-12
 description: "This article shares the trouble shooting steps of two compiling errors: Segmentation fault and illegal instruction."
+author: "Dutor"
+tags: ["Dev-Log"]
 ---
-
-# Compiling Trouble Shooting: Segmentation Fault and GCC Illegal Instruction
 
 Recently I have been re-organizing and re-compiling all third-party dependencies of Nebula Graph, an open-source distributed graph database. And I have come across two interesting issues and would like to share with you.
 

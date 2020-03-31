@@ -2,9 +2,9 @@
 title: "Nebula Contributor | How to Be a GitHub Contributor in Five Minutes"
 date: 2020-02-04
 description: "This article shows you how to contribute to your first open source project in just five minutes."
+author: "Amber"
+tags: ["Community"]
 ---
-
-# Nebula Contributor | How to Be a GitHub Contributor in Five Minutes
 
 Contribute to your first open source project in just five minutes with the help of **Nebula Graph**.
 

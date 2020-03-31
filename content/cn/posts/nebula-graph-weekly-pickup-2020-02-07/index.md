@@ -2,8 +2,9 @@
 title: "Pick of the Week'20 | 第 6 周看点--DB-Engine 2 月图数据库排名发榜"
 date: 2020-02-07
 description: "本周看点：DB-Engine 2020 年 2 月图数据库趋势发布…"
+tags: ["社区","产品动态"]
+author: 清蒸
 ---
-# Pick of the Week'20 | 第 6 周看点--DB-Engine 2 月图数据库排名发榜
 
 ![每周看点](https://nebula-blog.azureedge.net/nebula-blog/PotW.png)
 
@@ -64,14 +65,14 @@ Pick of the Week 每周会从微博、知乎、微信群、微信公众号及 CS
 
 ## 推荐阅读
 
-- [图数据库设计实践 | 存储服务的负载均衡和数据迁移](https://zhuanlan.zhihu.com/p/105206352)
+- [图数据库设计实践 | 存储服务的负载均衡和数据迁移](https://nebula-graph.io/cn/posts/nebula-graph-storage-banlancing-data-migration/)
   - 推荐理由：数据迁移及负载均衡是评估数据库性能的重要指标之一，在本篇文章中，分布式图数据库 Nebula Graph 将分享存储层如何实现数据和服务的负载平衡。
-- [从天津百货大楼 5 病例“迷局”见新冠病毒传播路径](https://zhuanlan.zhihu.com/p/105450240)
+- [从天津百货大楼 5 病例“迷局”见新冠病毒传播路径](https://nebula-graph.io/cn/posts/detect-corona-virus-spreading-with-graph-database/)
   - 推荐理由：天津某百货大楼内部相继出现 5 例新冠肺炎确诊病例，从起初的 3 个病例来看，似乎找不到任何流行病学上的关联性。在这种背景之下，作为技术人员可以通过什么技术来找寻病例之间的联系呢？本文讨论了一种可行方案，带大家一起探讨疫情的传播路径，并找到相关的疑似病例。
 - 往期 Pick of the Week
-  - [Pick of the Week'20| 第3周看点--Nebula Graph Studio 来了](https://zhuanlan.zhihu.com/p/103254777)
-  - [Pick of the Week'20 | 第 2 周看点--Nebula Graph UI 内测中](https://zhuanlan.zhihu.com/p/102166129)
-  - [Pick of the Week'20 | 第 1 周看点--Nebula Graph 上 DB-Engine 图数据库榜单](https://www.v2ex.com/t/634826#reply0)
+  - [Pick of the Week'20| 第3周看点--Nebula Graph Studio 来了](https://nebula-graph.io/cn/posts/nebula-graph-weekly-pickup-2020-01-17/)
+  - [Pick of the Week'20 | 第 2 周看点--Nebula Graph UI 内测中](https://nebula-graph.io/cn/posts/nebula-graph-weekly-pickup-2020-01-10/)
+  - [Pick of the Week'20 | 第 1 周看点--Nebula Graph 上 DB-Engine 图数据库榜单](https://nebula-graph.io/cn/posts/nebula-graph-weekly-pickup-2020-01-03/)
 
 本期 Pick of the Week 就此完毕，如果你对本周看点有任何建议，欢迎前去 GitHub：[https://github.com/vesoft-inc/nebula](https://github.com/vesoft-inc/nebula) ，也欢迎在本文或者公众号后台及添加 Nebula 小助手微信号加群交流：NebulaGraphbot 
 

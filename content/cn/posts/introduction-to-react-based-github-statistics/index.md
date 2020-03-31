@@ -2,9 +2,9 @@
 title: "Github Statistics 一个基于 React 的 GitHub 数据统计工具 "
 date: 2019-12-25
 description: "不论 Star、Fork 和 Commit，issue 、pr 也应该是一个开源项目社区关注的数据。在本文我们将了解到市面上有哪些 GitHub 数据统计工具"
+tags: ["产品讲解"]
+author: 清蒸
 ---
-
-# Github Statistics 一个基于 React 的 GitHub 数据统计工具 
 
 ![GitHub](https://nebula-blog.azureedge.net/nebula-blog/Statistics01.png)
 
@@ -15,6 +15,7 @@ V 站曾经有个热帖说为何我的开源项目只有 Fork 没有 Star，楼�
 ## GitHub Star 数据统计工具
 
 ### Chrome 插件—— Star History
+
 顾名思义你可以通过 [Star History ](https://chrome.google.com/webstore/detail/star-history/iijibbcdddbhokfepbblglfgdglnccfn)这个项目看到一个项目的趋势增长，安装上此插件之后你可以直接在某个开源项目主页，如下图所示，一键操作看 star 增长趋势无烦恼。
 
 ![q](https://nebula-blog.azureedge.net/nebula-blog/Statistics02.gif)
@@ -81,6 +82,7 @@ Star 可以看到这个项目的 `Star 数增长趋势` 、 `日增星` 和 `�
 ![image](https://nebula-blog.azureedge.net/nebula-blog/Statistics12.png)
 
 ## 总结 GitHub Statistics
+
 GitHub Statistics 是一个查看 GitHub 相关指标的工具，如果你在为技术选型苦恼，而你看中的技术栈刚好是开源项目，不妨用它试一试，可以看到开源项目的开发进度、社区活跃度，再也不用担心遇到“闭源”的开源项目了。GitHub Statistics GitHub 地址：[https://github.com/vesoft-inc/github-statistics](https://github.com/vesoft-inc/github-statistics)，在线访问：[https://vesoft-inc.github.io/github-statistics/](https://vesoft-inc.github.io/github-statistics/)
 
 

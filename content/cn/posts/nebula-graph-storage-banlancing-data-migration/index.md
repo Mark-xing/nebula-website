@@ -2,9 +2,9 @@
 title: "图数据库设计实践 | 存储服务的负载均衡和数据迁移"
 date: 2020-02-04
 description: "在本文中我们将着重讲解在存储层如何实现数据和服务的负载平衡。"
+tags: ["架构剖析","特性讲解"]
+author: 陈恒
 ---
-
-# 图数据库设计实践 | 存储服务的负载均衡和数据迁移
 
 ![image](https://nebula-blog.azureedge.net/nebula-blog/Balance01.png)
 
@@ -280,4 +280,5 @@ Got 8 rows (Time spent: 5039/6346 us)
 说明：有颜色为红色说明对应的数值发生变化，如果数值不变，则为黑色。
 
 ## 附录
+
 最后是 Nebula 的 GitHub 地址，欢迎大家试用，有什么问题可以向我们提 issue。GitHub 地址：[https://github.com/vesoft-inc/nebula](https://0x7.me/zhihu2github)

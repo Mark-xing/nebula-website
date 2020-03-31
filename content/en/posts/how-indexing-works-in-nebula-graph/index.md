@@ -2,8 +2,9 @@
 title: "How Indexing Works in Nebula Graph"
 date: 2020-03-12
 description: "Indexing is an indispensible function of graph databases because it can boost query performance. This article explains in detail how indexing works in Nebula Graph, a distributed graph database."
+author: "sky"
+tags: ["Features"]
 ---
-# How Indexing Works in Nebula Graph
 
 ![image](https://user-images.githubusercontent.com/38887077/76482821-4ec64780-6450-11ea-862e-da506f5cdae2.png)
 

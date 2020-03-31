@@ -2,9 +2,9 @@
 title: "Being on Hacker News Front Page Brought Us Much More than Just 300+ Stars on GitHub within 24 hours"
 date: 2020-01-15
 description: "A submission about Nebula Graph has hit the front page of Hacker News. This post explains how, what, and why."
+author: "Jamie"
+tags: ["Community"]
 ---
-
-# Being on Hacker News Front Page Brought Us Much More than Just 300+ Stars on GitHub within 24 hours
 
 Hacker News is said to be the Holy Grail for tech folks. There's one thing that a company, startups in particular, wants desparately: RIGHT traffic for free.
 

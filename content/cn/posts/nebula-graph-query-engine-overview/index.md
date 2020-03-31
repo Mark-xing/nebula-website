@@ -2,9 +2,9 @@
 title: "Nebula 架构剖析系列（二）图数据库的查询引擎设计"
 date: 2019-11-21
 description: "本篇文章将带你了解 Nebula Query Engine 的架构。"
+tags: ["架构剖析"]
+author: Sherman
 ---
-
-# Nebula 架构剖析系列（二）图数据库的查询引擎设计
 
 ![image](https://nebula-blog.azureedge.net/nebula-blog/Architecture0201.png)
 
@@ -57,5 +57,6 @@ Query Engine 最后一步是去执行优化后的执行计划，这步是执行
 
 ## 推荐阅读
 
-- [Nebula 架构剖析系列（零）图数据库的整体架构设计](https://zhuanlan.zhihu.com/p/86606151)
-- [Nebula 架构剖析系列（一）图数据库的存储设计](https://zhuanlan.zhihu.com/p/86811459)
+- [Nebula 架构剖析系列（零）图数据库的整体架构设计](https://nebula-graph.io/cn/posts/nebula-graph-architecture-overview/)
+- [Nebula 架构剖析系列（一）图数据库的存储设计](https://nebula-graph.io/cn/posts/nebula-graph-storage-engine-overview/)
+

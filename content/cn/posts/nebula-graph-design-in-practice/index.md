@@ -2,9 +2,9 @@
 title: "Vol.03 nMeetup | 图数据库综述与 Nebula 在图数据库设计的实践"
 date: 2019-08-10
 description: "从图数据库是什么讲起，到图数据库的设计思路，本文是一个全面的图数据库设计实践分享。"
+tags: ["技术演讲"]
+author: Sherman
 ---
-
-# Vol.03 nMeetup | 图数据库综述与 Nebula 在图数据库设计的实践
 
 > [Nebula Graph](https://github.com/vesoft-inc/nebula)：一个开源的分布式图数据库。作为唯一能够存储万亿个带属性的节点和边的在线图数据库，Nebula Graph 不仅能够在高并发场景下满足毫秒级的低时延查询要求，还能够实现服务高可用且保障数据安全性。
 
@@ -243,3 +243,8 @@ Nebula 对于容错或者说高可用的保证，主要依赖于 Raft 协议。�
 ![image](https://nebula-blog.azureedge.net/nebula-blog/Design25.png)
 
 最后是 Nebula 的 GitHub 地址，欢迎大家试用，有什么问题可以向我们提 issue。GitHub 地址：[https://github.com/vesoft-inc/nebula](https://github.com/vesoft-inc/nebula)
+
+## 推荐阅读
+
+- [图数据库 Nebula Graph 的数据模型和系统架构设计](https://nebula-graph.io/cn/posts/nebula-graph-data-model-and-system-design/)
+- [Nebula Graph 在 HBaseCon Asia2019 的分享实录](https://nebula-graph.io/cn/posts/nebula-graph-in-hbasecon-asia-2019/)

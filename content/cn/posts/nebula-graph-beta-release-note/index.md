@@ -2,9 +2,9 @@
 title: 图数据库 Nebula Graph v.1.0.0-beta 已上线
 date: 2019-08-20
 description: "在 Beta 版本中我们支持了集群部署、新增 Java importer 等内容"
+tags: ["Release-Note"]
+author: Jude
 ---
-
-#  图数据库 Nebula Graph v.1.0.0-beta 已上线
 
 ![beta](https://nebula-blog.azureedge.net/nebula-blog/Beta01.png)
 
@@ -47,4 +47,11 @@ Nebula Graph **v1.0.0-beta** 版本已发布，更新内容如下:
 - 重构运维脚本 nebula.service
 
 ### 附录
+
 最后是 Nebula 的 GitHub 地址，欢迎大家试用，有什么问题可以向我们提 issue。GitHub 地址：[https://github.com/vesoft-inc/nebula](https://github.com/vesoft-inc/nebula)  ；加入 Nebula Graph 交流群，请联系 Nebula Graph 官方小助手微信号：NebulaGraphbot
+
+### 推荐阅读
+
+- [图数据库 Nebula Graph RC1 Release Note](https://nebula-graph.io/cn/posts/nebula-graph-rc1-release-note/)
+- [分布式图数据库 Nebula RC2 发布：增强了 CSV Importer 功能](https://nebula-graph.io/cn/posts/nebula-graph-rc2-release-note/)
+- [图数据库 Nebula Graph RC3 Release Note](https://nebula-graph.io/cn/posts/nebula-graph-rc3-release-note/)

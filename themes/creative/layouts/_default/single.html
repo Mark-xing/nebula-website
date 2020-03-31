@@ -49,8 +49,29 @@
     <div class="wrapper">
       <div class="inner">
         <section class="blog-content">
+          <h1>{{ .Title }}</h1>
+          <div class="blog-metas">
+              {{ with .Params.author }}
+                  <div class="meta">
+                      <img src="/images/writer.png" width="16px" height="16px">
+                      <span>{{.}}</span>
+                  </div>
+              {{ end }}
+              {{ with .Params.date }}
+                  <div class="meta">
+                      <img src="/images/calendar.png" width="16px" height="16px">
+                      <span>{{dateFormat "2006-01-02" .}}</span>
+                  </div>
+              {{ end }}
+              {{ if .Params.tags }}
+                  <div class="tags meta">
+                      <img src="/images/tag.png" width="16px" height="16px">
+                      {{ range .Params.tags }}<a href="{{"/" | relLangURL}}/tags/{{.}}">{{.}}</a>{{ end }}
+                  </div>
+              {{ end }}
+          </div>
           {{- .Content }}
-          <p class="star-ads">
+          <blockquote class="star-ads">
             {{ if eq $.Site.Language.Lang "en" }}
               <span>Do you like this post? If yes, just give me a</span>
               <span class="glyphicon glyphicon-star"></span>
@@ -62,7 +83,7 @@
               <span>star 吧:</span>
               <a href="https://github.com/vesoft-inc/nebula">https://github.com/vesoft-inc/nebula</a>
             {{ end }}
-          </p>
+          </blockquote>
           <ul class="blog-footer">
               {{ with $.Params.tags }}
                 <li>

@@ -2,8 +2,9 @@
 title: "Pick of the Week'20 | 第 3 周看点--Nebula Graph Studio 来了"
 date: 2020-01-17
 description: "本周看点：Index 支持获取给定点的所有属性，Spark Writer 支持将不同数据源数据插入同一 Tag / Edgetype…"
+tags: ["社区","产品动态"]
+author: 清蒸
 ---
-# Pick of the Week'20 | 第 3 周看点--Nebula Graph Studio 来了
 
 ![每周看点](https://nebula-blog.azureedge.net/nebula-blog/PotW.png)
 
@@ -105,11 +106,11 @@ nebula> GO FROM 1 OVER e1 YIELD e1._dst AS id, e1.prop1 AS left_1, $$.tag.prop2 
 
 ## 推荐阅读
 
-- [聊聊图数据库和图数据库的小知识 Vol.02](https://zhuanlan.zhihu.com/p/102704614)
+- [聊聊图数据库和图数据库的小知识 Vol.02](https://nebula-graph.io/cn/posts/graph-database-knowledge-volume-2/)
   - 推荐理由：在本文中讨论了【传统数据库通过设计良好的数据结构是不是可以实现图数据库的功能】、【图数据库会出于什么考虑做存储计算分离】等图数据库设计问题，如果你在设计图数据库，或者分布式数据库不妨来看看 :)
 - 往期 Pick of the Week
-  - [Pick of the Week'20 | 第 2 周看点--Nebula Graph UI 内测中](https://zhuanlan.zhihu.com/p/102166129)
-  - [Pick of the Week'20 | 第 1 周看点--Nebula Graph 上 DB-Engine 图数据库榜单](https://www.v2ex.com/t/634826#reply0)
+  - [Pick of the Week'20 | 第 2 周看点--Nebula Graph UI 内测中](https://nebula-graph.io/cn/posts/nebula-graph-weekly-pickup-2020-01-10/)
+  - [Pick of the Week'20 | 第 1 周看点--Nebula Graph 上 DB-Engine 图数据库榜单](https://nebula-graph.io/cn/posts/nebula-graph-weekly-pickup-2020-01-03/)
 
 本期 Pick of the Week 就此完毕，如果你对本周看点有任何建议，欢迎前去 GitHub：[https://github.com/vesoft-inc/nebula](https://0x7.me/zhihu2github) ，也欢迎在本文或者公众号后台及添加 Nebula 小助手微信号加群交流：NebulaGraphbot 
 

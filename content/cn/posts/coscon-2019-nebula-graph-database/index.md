@@ -2,9 +2,9 @@
 title: COSCon'19 | 如何设计新一代的图数据库 Nebula
 date: 2019-11-12
 description: "开源社特访吴敏来分享下图数据库主题内容，从图数据 Nebula 的研发开始，就传统数据库面临的挑战，开源模式的优势，Nebula 的社区开展和产品规划等问题进行深入解析。"
+tags: ["产品讲解"]
+author: 开源社
 ---
-
-# COSCon'19 | 如何设计新一代的图数据库 Nebula
 
 ![image](https://nebula-blog.azureedge.net/nebula-blog/COSCon01.png)
 
@@ -157,7 +157,7 @@ Nebula 有 CSV、HDFS 批量 数据导入工具。用户可以将数仓的数据
 
 #### 开源社： 作为资深数据库从业人员，怎样让自己的眼界更加开阔，怎么获取这个领域的最前沿信息？
 
-<br />多看看论文，看看开源分布式系统的设计以及源代码；多关注数据库的的会议，比如，SIGMOD, VLDB，关注学术界的最新成果；多关注业界相关公司的发展和动态，比如 OsceanBase，TiDB。
+多看看论文，看看开源分布式系统的设计以及源代码；多关注数据库的的会议，比如，SIGMOD, VLDB，关注学术界的最新成果；多关注业界相关公司的发展和动态，比如 OsceanBase，TiDB。
 
 ### Nebula 有话说
 
@@ -165,6 +165,6 @@ Nebula 有 CSV、HDFS 批量 数据导入工具。用户可以将数仓的数据
 
 #### 推荐阅读
 
-- [亿万级图数据库 Nebula Graph 的数据模型和系统架构设计](https://zhuanlan.zhihu.com/p/74986362)
-- [Nebula Graph 在 HBaseCon Asia2019 的分享实录](https://zhuanlan.zhihu.com/p/75024176)
-- [Vol.03 nMeetup | 图数据库综述与 Nebula 在图数据库设计的实践](https://zhuanlan.zhihu.com/p/77459312)
+- [图数据库 Nebula Graph 的数据模型和系统架构设计](https://nebula-graph.io/cn/posts/nebula-graph-data-model-and-system-design/)
+- [Nebula Graph 在 HBaseCon Asia2019 的分享实录](https://nebula-graph.io/cn/posts/nebula-graph-in-hbasecon-asia-2019/)
+- [Vol.03 nMeetup | 图数据库综述与 Nebula 在图数据库设计的实践](https://nebula-graph.io/cn/posts/nebula-graph-design-in-practice/)

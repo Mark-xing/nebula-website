@@ -2,9 +2,9 @@
 title: "应用 AddressSanitizer 发现程序内存错误"
 date: 2020-02-18
 description: "作为 C/ C++ 工程师，在开发过程中会遇到各类问题，最常见便是内存使用问题，本文讲述了如何使用 Google 开源的 AddressSanitizer 来检测内存问题。"
+tags: ["系统测试"]
+author: 刘炜
 ---
-
-# 应用 AddressSanitizer 发现程序内存错误
 
 ![AddressSanitizer.png](https://nebula-blog.azureedge.net/nebula-blog/AddressSanitizer01.png)
 
@@ -175,3 +175,7 @@ Cmake -DENABLE_ASAN=On
 ```
 
 这里建议所有的开发者在开发完毕功能运行单元测试的时候都打开 AddressSanitizer 来运行单元测试，这样可以发现很多不容易发现的内存问题，节省很多调试的时间。
+
+## 推荐阅读
+
+- [Jepsen 测试框架在图数据库 Nebula Graph 中的实践](https://nebula-graph.io/cn/posts/practice-jepsen-test-framework-in-nebula-graph/)

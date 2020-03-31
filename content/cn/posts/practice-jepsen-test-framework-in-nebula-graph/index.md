@@ -2,9 +2,9 @@
 title: Jepsen 测试框架在图数据库 Nebula Graph 中的实践
 date: 2020-01-09
 description: "在本篇文章中主要介绍图数据库 Nebula Graph 在 Jepsen 这块的实践"
+tags: ["系统测试"]
+author: 王扶摇
 ---
-
-# Jepsen 测试框架在图数据库 Nebula Graph 中的实践
 
 ​![产品细节](https://nebula-blog.azureedge.net/nebula-blog/Jepsen01.png)
 
@@ -213,5 +213,9 @@ Jepsen 本身也存在一些不足，比如测试无法长时间运行，因为�
 - [Raft Understandable Distributed Consensus](http://thesecretlivesofdata.com/raft/)
 - [The Raft Consensus Algorithm](https://raft.github.io/)
 - Nebula Graph GitHub：[https://github.com/vesoft-inc/nebula](https://github.com/vesoft-inc/nebula)
+
+## 推荐阅读
+
+- [应用 AddressSanitizer 发现程序内存错误(https://nebula-graph.io/cn/posts/introduction-to-google-memory-detect-tool-addresssanitizer/)
 
 
