@@ -153,14 +153,15 @@
 
 .blog-detail .blog-footer > li.nebula-share {
   position: relative;
+  min-width: 80px;
+  text-align: center;
 }
 
 .blog-detail .blog-footer .blog-footer-share-links {
   position: absolute;
   top: 20px;
   left: 0px;
-  width: 120px;
-  text-align: center;
+  width: 100%;
   border: 1px solid #eee;
   display: none;
   list-style: none;
