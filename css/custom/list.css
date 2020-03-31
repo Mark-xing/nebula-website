@@ -152,7 +152,7 @@
 
   .blog-list .list {
     width: 960px;
-    margin: auto;
+    margin: 0 auto;
     z-index: 1;
   }
 
@@ -222,7 +222,7 @@
   }
 }
 
-@media(min-width: 1160px) {
+@media(min-width: 1200px) {
   .blog-list .wrapper .inner {
     min-width: 1160px;
     max-width: 1300px;
