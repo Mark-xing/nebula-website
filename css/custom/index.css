@@ -17,6 +17,10 @@
     src: url('../fonts/PingFang-Medium.ttf')
 }
 
+* {
+  font-family:"PingFangSC-Regular,PingFang SC" !important;
+}
+
 main {
   height: 100%;
   width: 100%;
@@ -77,9 +81,11 @@ main {
   bottom: 0px;
 }
 
-.nebula-star-popup .glyphicon-remove {
+.nebula-star-popup .cross {
   position: absolute;
   right: 8px;
   top: 8px;
   cursor: pointer;
+  width: 16px;
+  height: 16px;
 }

@@ -12,7 +12,7 @@
   setTimeout(function (){
     $('#J-star-popup').popover({
       content: 
-        '<span class="glyphicon glyphicon-remove"></span>' +
+        '<img class="cross" src="/images/cross.png"></img>' +
         '<div class="item">' +
           '<p><span class="emoj">🌟</span>Like what we do?</p>' +
           '<p><a href="https://0x7.me/popup2github" target="_blank">Star us on GitHub</a></p>' +
