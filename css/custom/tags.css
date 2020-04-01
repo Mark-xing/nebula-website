@@ -12,8 +12,13 @@
   padding: 0;
   margin-bottom: 0;
 }
+
+.tags-block img{
+  width: 20px;
+  margin-right: 5px;
+}
 .blog-tags li {
-  margin: 4px 4px 0px 0px;
+  margin: 6px 4px 0px 0px;
   padding: 0px;
   list-style: none;
   display: inline-block;
@@ -23,7 +28,7 @@
   padding: 0px 10px;
   height: auto;
   display: inline-block;
-  line-height: 24px;
+  line-height: 28px;
   font-size: 18px;
   color: #060812;
   border-radius:1px;

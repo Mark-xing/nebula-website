@@ -50,11 +50,11 @@
   color: #060812;
   line-height: 20px;
   font-size: 14px;
-  padding: 0 3px;
+  padding: 0 6px;
 }
 
 .blog-detail .wrapper .inner .blog-content .blog-metas .meta > a + a {
-  border-left: 1px solid #131831;
+  border-left: 1px solid #aaa;
 }
 
 .blog-detail .wrapper .inner .blog-content blockquote {
@@ -84,6 +84,7 @@
 .blog-content h1 {
   font-size: 32px !important;
   line-height: 48px;
+  color: #060812;
 }
 
 .blog-content h2 {
@@ -139,7 +140,7 @@
   padding: 0;
   flex-wrap: wrap;
   align-items: center;
-  margin: 0 -10px;
+  margin: 0 0 60px 0;
 }
 
 .blog-detail .blog-footer > li {
@@ -148,19 +149,31 @@
   font-size: 16px;
   letter-spacing: 0;
   cursor: pointer;
-  margin: 10px;
+  padding: 0 10px;
+  
+}
+
+.blog-detail .blog-footer>li:first-child a{
+   border-right: 1px solid #aaa;
+   padding-right: 5px;
+}
+
+.blog-detail .blog-footer>li:first-child a:last-child {
+    border-right: 0;
 }
 
 .blog-detail .blog-footer > li.nebula-share {
   position: relative;
+  min-width: 80px;
+  text-align: center;
 }
 
 .blog-detail .blog-footer .blog-footer-share-links {
   position: absolute;
   top: 20px;
   left: 0px;
-  width: 120px;
-  text-align: center;
+  width: 100%;
+  text-align: left;
   border: 1px solid #eee;
   display: none;
   list-style: none;
@@ -180,11 +193,9 @@
 .blog-detail .blog-footer li .blog-footer-share-links > li > .st-label {
   margin-left: 4px;
 }
-
-.blog-detail .wrapper .inner .blog-content li > a {
-  color: #404040;
+.blog-footer-share-links img{
+  margin-left: 5px;
 }
-
 .blog-detail .blog-footer li > img {
   position: relative;
   bottom: 3px;

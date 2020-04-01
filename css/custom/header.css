@@ -49,7 +49,7 @@ header .header-content #subtitle {
   margin: 36px 0 80px;
 }
 header .get-start {
-  background: #037FFF;
+  background: #037FFF !important;
 }
 header #download{
   background: #fff;

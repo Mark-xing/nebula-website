@@ -1,5 +1,9 @@
 #features{
-  background: #EEF0F3;
+  background-image: url('../../img/Nebula2.png');
+  background-repeat:no-repeat;
+  background-size: 50%;
+   background-position: center;
+  background-color: #FFFFFF;
   padding:40px 0;
 }
 .container{
@@ -36,7 +40,7 @@
 .text-muted{
   font-size: 16px;
   color:rgba(128, 128, 128, 1);
-  line-height:20px;
+  line-height:24px;
   letter-spacing:2px;
 }
 
