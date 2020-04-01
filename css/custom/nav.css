@@ -116,7 +116,7 @@
     padding-left: 0;
     padding-right: 0;
   }
-  #nav>li a:hover{
+  #nav>li a:hover, #nav > li.active a {
     color:rgba(0, 128, 255, 1)!important;
     border-bottom: 1px solid rgba(0, 128, 255, 1);
   }
