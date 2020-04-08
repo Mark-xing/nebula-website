@@ -49,7 +49,7 @@ RUN npm install <span style=color:#f92672>&amp;&amp;</span> npm run build
      此操作可以放在构建步骤阶段，这样会进一步缩小镜像的文件体积。</li><li>node_modules 只下载生产环境需要的代码
      此操作可以放在部署阶段，只下载生产环境所需要的第三方依赖代码: <code>npm install --production</code> 。</li><li>公共资源放在CDN
      如果镜像被期待运行在联网环境，可以考虑将一些体积相比较大的公共文件（图片、第三方库等）放在CDN服务 器上，将部分资源剥离出去，也会进一步缩小体积。</li><li>&mldr;</li></ul><p>以上只作为一个线索参考，更多前端常规的优化步骤，都可以迁移至镜像中进行，毕竟和我们本地开发一样，镜像构建也是一个运行代码的环境嘛。</p><h2 id=小结>小结</h2><p>以上便是我在此次使用 Docker 镜像来运行我们 <a href=https://github.com/vesoft-inc/nebula-web-docker/blob/master/README.md>Nebula Studio</a> 所用到的一些优化镜像体积的方法，希望能给需要的人一些帮助和参考，可能还有一些认识不准确的地方，欢迎指出，同样欢迎你来试用 Nebula Graph Studio：<a href=https://github.com/vesoft-inc/nebula-web-docker>https://github.com/vesoft-inc/nebula-web-docker</a> </p><blockquote class=star-ads><span>你喜欢这篇文章吗? 喜欢的话，给我们点个</span>
-<span class="glyphicon glyphicon-star"></span><span>star 吧:</span>
+<span>star 吧:</span>
 <a href=https://github.com/vesoft-inc/nebula>https://github.com/vesoft-inc/nebula</a></blockquote><ul class=blog-footer><li><img src=/images/tag.png>
 <a href=/nebula-website/cn/tags/%E6%80%A7%E8%83%BD>性能</a></li><li class="nebula-share st-btn"><img src=/images/share.png>
 <span>分享</span><ul class=blog-footer-share-links><li class=st-custom-button data-network=wechat><img alt="wechat-white sharing button" src=https://platform-cdn.sharethis.com/img/wechat-white.svg>

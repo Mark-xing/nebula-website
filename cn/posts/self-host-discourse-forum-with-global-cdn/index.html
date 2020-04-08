@@ -47,7 +47,7 @@ hooks:
           - git clone https://github.com/discourse/docker_manager.git
           - git clone https://github.com/discourse/discourse-translator.git
 </code></pre><h4 id=完成配置后>完成配置后</h4><p>在完成以上配置后，在 <code>/var/discourse</code> 目录录下运行 <code>./launcher rebuild app</code>，并再次等待 10 分钟，即可完成最终的构建。</p><p>对于个人站长而言，还需安装并配置 Fail2ban 来保护 ssh 服务安全。Discourse 每周会自动创建一个备份保存在本机的 <code>/var/discourse/shared/standalone/backups</code> 目录下，可设置 rsync 将它们备份到本地的服务器上。如果有可用的 Amazon S3 服务，还可在后台配置 S3 服务的相关信息，Discourse 会在完成备份后自动将备份上传至对应的 S3 实例。</p><p>现在，你拥有了一个具备全站 CDN 加速能力的 Discourse 论坛，得益于全站 CDN 和全链路 SSL，论坛可以在全球任何位置被安全的访问。从你的域名访问论坛，并根据需要填写的信息即可初始化论坛并创建管理员账号，通过邮件中的链接确认注册后即可开启论坛服务。</p><h2 id=结语>结语</h2><p>以上是我们为 Nebula Graph 部署 Discourse 论坛服务的一点小小的心得，本文中如有错误或疏漏还请多指教。最后，欢迎大家前往 <a href=discuss.nebula-graph.io>discuss.nebula-graph.io</a> 参与图数据库及开源的讨论~</p><blockquote><p>作者有话说：Hi，我是 George，是 Nebula Graph 的实施工程师，在运维领域有一些心得体会，希望能为图数据库领域带来一些自己的贡献。希望本文对你有所帮助，如果有错误或不足也请与我交流，不甚感激！</p></blockquote><blockquote class=star-ads><span>你喜欢这篇文章吗? 喜欢的话，给我们点个</span>
-<span class="glyphicon glyphicon-star"></span><span>star 吧:</span>
+<span>star 吧:</span>
 <a href=https://github.com/vesoft-inc/nebula>https://github.com/vesoft-inc/nebula</a></blockquote><ul class=blog-footer><li><img src=/images/tag.png>
 <a href=/nebula-website/cn/tags/%E4%BA%A7%E5%93%81%E8%AE%B2%E8%A7%A3>产品讲解</a></li><li class="nebula-share st-btn"><img src=/images/share.png>
 <span>分享</span><ul class=blog-footer-share-links><li class=st-custom-button data-network=wechat><img alt="wechat-white sharing button" src=https://platform-cdn.sharethis.com/img/wechat-white.svg>

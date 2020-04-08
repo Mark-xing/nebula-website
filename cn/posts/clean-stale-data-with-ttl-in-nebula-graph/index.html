@@ -59,7 +59,7 @@ nebula&gt; FETCH prop on t 102;
 Execution succeeded <span style=color:#f92672>(</span>Time spent: 5.945/7.492 ms<span style=color:#f92672>)</span>
 </code></pre></div><p>注意：</p><ol><li>当某一列作为 ttl_col 值的时候，不允许 change 该列。
      必须先移除 TTL 属性，再 change 该列。</li><li>对同一 tag，index 和 TTL 功能不能同时使用。即使 index 和 TTL 创建于不同列，也不可以同时使用。</li></ol><p>edge 同 tag 的逻辑一样，这里就不在详述了。</p><p>TTL 的介绍就到此为止了，如果你对图数据库 Nebula Graph 的 TTL 有改进想法或其他要求，欢迎去 GitHub：<a href=https://github.com/vesoft-inc/nebula>https://github.com/vesoft-inc/nebula</a> issue 区向我们提 issue 或者前往官方论坛：<a href=https://discuss.nebula-graph.io/>https://discuss.nebula-graph.io/</a> 的 <code>Feedback</code> 分类下提建议 👏</p><blockquote><p>作者有话说：Hi，我是 panda sheep，是图数据库 Nebula Graph 研发工程师，对数据库领域非常感兴趣，也有自己的一点点心得，希望写的经验分享能给大家带来帮助，如有不当之处也希望能帮忙纠正，谢谢~</p></blockquote><h2 id=推荐阅读>推荐阅读</h2><ul><li><a href=https://nebula-graph.io/cn/posts/how-indexing-works-in-nebula-graph/>分布式图数据库 Nebula Graph 的 Index 实践</a></li><li><a href=https://nebula-graph.io/cn/posts/introduction-to-snapshot-in-nebula-graph/>分布式图数据库 Nebula Graph 中的集群快照实践</a></li></ul><blockquote class=star-ads><span>你喜欢这篇文章吗? 喜欢的话，给我们点个</span>
-<span class="glyphicon glyphicon-star"></span><span>star 吧:</span>
+<span>star 吧:</span>
 <a href=https://github.com/vesoft-inc/nebula>https://github.com/vesoft-inc/nebula</a></blockquote><ul class=blog-footer><li><img src=/images/tag.png>
 <a href=/nebula-website/cn/tags/%E7%89%B9%E6%80%A7%E8%AE%B2%E8%A7%A3>特性讲解</a></li><li class="nebula-share st-btn"><img src=/images/share.png>
 <span>分享</span><ul class=blog-footer-share-links><li class=st-custom-button data-network=wechat><img alt="wechat-white sharing button" src=https://platform-cdn.sharethis.com/img/wechat-white.svg>
