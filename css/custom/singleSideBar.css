@@ -35,6 +35,10 @@
   overflow: hidden;
 }
 
+.single-side-bar .blog-anchors.affix {
+  top: 60px;
+}
+
 .single-side-bar .blog-anchors > h3 {
   margin-top: 0px;
 }
@@ -49,6 +53,12 @@
 
 .single-side-bar ul li > a {
   color: #333333;
+  display: inline-block;
+}
+
+.single-side-bar ul li > a.active {
+  color: #fff;
+  background: rgba(0,128,255,1);
 }
 
 @media(max-width: 768px) {
