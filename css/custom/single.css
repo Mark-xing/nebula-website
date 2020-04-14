@@ -14,6 +14,11 @@
   margin: -120px 0 0;
 }
 
+.blog-left-aside {
+  width: 40px;
+  margin-top: 10%;
+}
+
 .blog-detail .wrapper {
   min-height: 100%;
   padding-bottom: 24px;
@@ -224,6 +229,9 @@
     padding: 0 24px 60px 24px;
   }
 
+  .blog-left-aside {
+    display: none;
+  }
 
   .blog-detail .wrapper .inner .blog-content .blog-metas {
     display: none;

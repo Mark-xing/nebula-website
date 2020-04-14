@@ -1,8 +1,8 @@
-.single-side-bar .nebula-share-buttons {
+.social-share > .nebula-share-buttons {
   width: 32px;
 }
 
-.single-side-bar .nebula-share-buttons > .st-custom-button {
+.social-share > .nebula-share-buttons > .st-custom-button {
   display: inline-block;
   position: relative;
   top: 0;
@@ -17,7 +17,7 @@
   cursor: pointer;
 }
 
-.single-side-bar .nebula-share-buttons > .st-custom-button > img {
+.social-share > .nebula-share-buttons > .st-custom-button > img {
   display: inline-block;
   width: 16px;
   height: 16px;
@@ -26,13 +26,15 @@
   vertical-align: top;
 }
 
-.single-side-bar .nebula-share-buttons > .st-custom-button + .st-custom-button {
+.social-share .nebula-share-buttons > .st-custom-button + .st-custom-button {
   margin-top: 6px;
 }
 
 .single-side-bar .blog-anchors {
   margin-top: 25px;
   overflow: hidden;
+  z-index: 100;
+  background: #fff;
 }
 
 .single-side-bar .blog-anchors.affix {

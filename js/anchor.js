@@ -1,17 +1,25 @@
 (function () {
-  $share = $('.single-side-bar>.social-share');
-  $('#J_Anchor').affix({
+  $anchors = $('.single-side-bar>.blog-anchors');
+  $anchors.affix({
     offset: {
-      top: $share.offset().top
-        + $share.outerHeight()
+      top: $anchors.offset().top
     }
   })
 
-  function debounce(fn) {
+  $share = $('#J_Share');
+  $share.affix({
+    offset: {
+      top: $share.offset().top
+    }
+  })
+
+  function throttle(fn) {
     var timer = null;
     return function() {
-      timer && clearTimeout(timer);
-      timer = setTimeout(fn, 50);
+      if (timer) {
+        return;
+      }
+      timer = setInterval(fn, 100);
     }
   }
 
@@ -52,5 +60,5 @@
   }
 
   activeAnchor();
-  window.addEventListener('scroll', debounce(activeAnchor));
+  window.addEventListener('scroll', throttle(activeAnchor));
 })()
