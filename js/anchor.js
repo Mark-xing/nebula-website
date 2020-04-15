@@ -1,8 +1,9 @@
 (function () {
   $anchors = $('.single-side-bar>.blog-anchors');
+  $notify = $('#nav-popup');
   $anchors.affix({
     offset: {
-      top: $anchors.offset().top
+      top: $anchors.offset().top 
     }
   })
 
@@ -11,6 +12,10 @@
     offset: {
       top: $share.offset().top
     }
+  })
+
+  $share.on('affix.bs.affix', function () {
+    $anchors.css('top',  60 + ($notify.height() || 0));
   })
 
   function throttle(fn) {
