@@ -1,8 +1,58 @@
 <div class="single-side-bar">
     {{ partial "tags.html" . }}
     <!-- {{ partial "carousel.html" . }} -->
-    <div class="blog-anchors" id="J_Anchor">
+    <div class="blog-anchors">
         <h3>{{ .Site.Params.blog.title }}</h3>
         {{ .TableOfContents }}
+    </div>
+    <div class="social-share">
+      <h3>{{.Site.Params.share.title }}</h3>
+      <div class="nebula-share-buttons">
+        {{ if eq $.Site.Language.Lang "en" }}
+          <div class="st-custom-button st-remove-label" data-network="twitter">
+            <img alt="twitter-white sharing button" src="https://platform-cdn.sharethis.com/img/twitter-white.svg">
+          </div>
+          <div class="st-custom-button st-remove-label" data-network="linkedin">
+            <img alt="linkedin-white sharing button" src="https://platform-cdn.sharethis.com/img/linkedin-white.svg">
+          </div>
+          <div class="st-custom-button st-remove-label" data-network="facebook">
+            <img alt="facebook-white sharing button" src="https://platform-cdn.sharethis.com/img/facebook-white.svg">
+          </div>
+          <div class="st-custom-button st-remove-label" data-network="hackernews">
+            <img alt="hackernews-white sharing button" src="https://platform-cdn.sharethis.com/img/hackernews-white.svg">
+          </div>
+          <div class="st-custom-button st-remove-label" data-network="reddit">
+            <img alt="reddit-white sharing button" src="https://platform-cdn.sharethis.com/img/reddit-white.svg">
+          </div>
+          <div class="st-custom-button st-remove-label" data-network="sharethis">
+            <img alt="reddit-white sharing button" src="https://platform-cdn.sharethis.com/img/sharethis-white.svg">
+          </div>
+        {{ else }}
+          <div class="st-custom-button st-remove-label" data-network="wechat">
+            <img alt="wechat-white sharing button" src="https://platform-cdn.sharethis.com/img/wechat-white.svg">
+          </div>
+          <div class="st-custom-button st-remove-label" data-network="weibo">
+            <img alt="weibo-white sharing button" src="https://platform-cdn.sharethis.com/img/weibo-white.svg">
+          </div>
+          <div class="st-custom-button st-remove-label" data-network="twitter">
+            <img alt="twitter-white sharing button" src="https://platform-cdn.sharethis.com/img/twitter-white.svg">
+          </div>
+          <div class="st-custom-button st-remove-label" data-network="linkedin">
+            <img alt="linkedin-white sharing button" src="https://platform-cdn.sharethis.com/img/linkedin-white.svg">
+          </div>
+          <div class="st-custom-button st-remove-label" data-network="facebook">
+            <img alt="facebook-white sharing button" src="https://platform-cdn.sharethis.com/img/facebook-white.svg">
+          </div>
+          <div class="st-custom-button st-remove-label" data-network="hackernews">
+            <img alt="hackernews-white sharing button" src="https://platform-cdn.sharethis.com/img/hackernews-white.svg">
+          </div>
+          <div class="st-custom-button st-remove-label" data-network="reddit">
+            <img alt="reddit-white sharing button" src="https://platform-cdn.sharethis.com/img/reddit-white.svg">
+          </div>
+          <div class="st-custom-button st-remove-label" data-network="sharethis">
+            <img alt="reddit-white sharing button" src="https://platform-cdn.sharethis.com/img/sharethis-white.svg">
+          </div>
+        {{ end }}
+      </div>
     </div>
   </div>

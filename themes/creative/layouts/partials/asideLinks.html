@@ -1,6 +1,6 @@
 <ul class="aside-links">
   {{ range .Site.Params.links }}
-    <li onclick="{{.onclick | safeJS}};window.open('{{.link}}')">
+    <li onclick="window.open('{{.link}}')">
       <span>{{.text}}</span>
       <img src="{{.image}}" width="16px" height="16px" />
     </li>

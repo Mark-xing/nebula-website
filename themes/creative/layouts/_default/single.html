@@ -48,46 +48,6 @@
   <main id="top" class="blog-detail">
     <div class="wrapper">
       <div class="inner">
-        <div class="blog-left-aside">
-          <div class="social-share" id="J_Share">
-            <h3>{{.Site.Params.share.title }}</h3>
-            <div class="nebula-share-buttons">
-              {{ if eq $.Site.Language.Lang "en" }}
-                <div class="st-custom-button st-remove-label" data-network="twitter">
-                  <img alt="twitter-white sharing button" src="https://platform-cdn.sharethis.com/img/twitter-white.svg">
-                </div>
-                <div class="st-custom-button st-remove-label" data-network="linkedin">
-                  <img alt="linkedin-white sharing button" src="https://platform-cdn.sharethis.com/img/linkedin-white.svg">
-                </div>
-                <div class="st-custom-button st-remove-label" data-network="facebook">
-                  <img alt="facebook-white sharing button" src="https://platform-cdn.sharethis.com/img/facebook-white.svg">
-                </div>
-                <div class="st-custom-button st-remove-label" data-network="hackernews">
-                  <img alt="hackernews-white sharing button" src="https://platform-cdn.sharethis.com/img/hackernews-white.svg">
-                </div>
-                <div class="st-custom-button st-remove-label" data-network="reddit">
-                  <img alt="reddit-white sharing button" src="https://platform-cdn.sharethis.com/img/reddit-white.svg">
-                </div>
-                <div class="st-custom-button st-remove-label" data-network="sharethis">
-                  <img alt="reddit-white sharing button" src="https://platform-cdn.sharethis.com/img/sharethis-white.svg">
-                </div>
-              {{ else }}
-                <div class="st-custom-button st-remove-label" data-network="wechat">
-                  <img alt="wechat-white sharing button" src="https://platform-cdn.sharethis.com/img/wechat-white.svg">
-                </div>
-                <div class="st-custom-button st-remove-label" data-network="weibo">
-                  <img alt="weibo-white sharing button" src="https://platform-cdn.sharethis.com/img/weibo-white.svg">
-                </div>
-                <div class="st-custom-button st-remove-label" data-network="twitter">
-                  <img alt="twitter-white sharing button" src="https://platform-cdn.sharethis.com/img/twitter-white.svg">
-                </div>
-                <div class="st-custom-button st-remove-label" data-network="sharethis">
-                  <img alt="reddit-white sharing button" src="https://platform-cdn.sharethis.com/img/sharethis-white.svg">
-                </div>
-              {{ end }}
-            </div>
-          </div>
-        </div>
         <section class="blog-content">
           <h1>{{ .Title }}</h1>
           <div class="blog-metas">
@@ -114,17 +74,11 @@
           <blockquote class="star-ads">
             {{ if eq $.Site.Language.Lang "en" }}
               <span>Like what we do ? Star us on GitHub. </span>
-              <a
-                href="https://github.com/vesoft-inc/nebula"
-                onclick="gtag('event', 'Link Click', { event_category: 'Engagement', event_label: 'Star via blogbody'});"
-              > https://github.com/vesoft-inc/nebula</a>
+              <a href="https://github.com/vesoft-inc/nebula"> https://github.com/vesoft-inc/nebula</a>
             {{ else }}
               <span>你喜欢这篇文章吗? 喜欢的话，给我们点个</span>
               <span>star 吧:</span>
-              <a
-                href="https://github.com/vesoft-inc/nebula"
-                onclick="gtag('event', 'Link Click', { event_category: 'Engagement', event_label: 'Star via blogbody'});"
-              >https://github.com/vesoft-inc/nebula</a>
+              <a href="https://github.com/vesoft-inc/nebula">https://github.com/vesoft-inc/nebula</a>
             {{ end }}
           </blockquote>
           <ul class="blog-footer">
@@ -177,15 +131,9 @@
                 <img src="/images/blog.png" />
                 <a href="{{"/"|relLangURL}}posts">{{$.Site.Params.backBlogs}}</a>
               </li>
-
-              <li
-                onclick="
-                  gtag('event', 'Link Click', { event_category: 'Engagement', event_label: 'RSS on sidebar'});
-                  window.open('https:\/\/nebula-graph.io/{{$.Site.Language.Lang}}/posts/index.xml');
-                "
-              >
+              <li onclick="location.href='https:\/\/nebula-graph.io/{{$.Site.Language.Lang}}/posts/index.xml'">
                 <img src="/images/rss.png" />
-                <a href="javascript:void(0);">RSS</a>
+                <a onclick="window.open('https:\/\/nebula-graph.io/{{$.Site.Language.Lang}}/posts/index.xml')" href="">RSS</a>
               </li>
             </ul>
           <div id='discourse-comments'></div>
@@ -213,6 +161,5 @@
       })();
     </script>
   {{ end }}
-
-  <script src="{{ "js/anchor.js" | relURL }}"></script>
+  <!-- <script src="{{ "js/anchor.js" | relURL }}"></script> -->
 {{ end }}

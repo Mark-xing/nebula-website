@@ -10,13 +10,8 @@
 .blog-detail .blog-content h5[id]::before {
   content: '';
   display: block;
-  height: 120px;
-  margin: -120px 0 0;
-}
-
-.blog-left-aside {
-  width: 40px;
-  margin-top: 10%;
+  height: 60px;
+  margin: -60px 0 0;
 }
 
 .blog-detail .wrapper {
@@ -229,9 +224,6 @@
     padding: 0 24px 60px 24px;
   }
 
-  .blog-left-aside {
-    display: none;
-  }
 
   .blog-detail .wrapper .inner .blog-content .blog-metas {
     display: none;

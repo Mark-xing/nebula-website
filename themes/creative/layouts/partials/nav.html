@@ -4,18 +4,9 @@
     <div class="container-fluid">
         {{ "<!-- Brand and toggle get grouped for better mobile display -->" | safeHTML }}
         <div class="navbar-header">
-            <div 
-                class="github-star"
-                onclick="gtag('event', 'Link Click', { event_category: 'Engagement', event_label: 'Star via Navi'})"
-            >
+            <div class="github-star">
                 <!-- Place this tag where you want the button to render. -->
-                <a
-                    class="github-button"
-                    href="https://github.com/vesoft-inc/nebula"
-                    data-icon="octicon-star"
-                    data-show-count="true"
-                    aria-label="Star vesoft-inc/nebula on GitHub"
-                >Star</a>
+                <a class="github-button" href="https://github.com/vesoft-inc/nebula" data-icon="octicon-star" data-show-count="true" aria-label="Star vesoft-inc/nebula on GitHub">Star</a>
             </div>
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
@@ -28,17 +19,8 @@
         {{ "<!-- Collect the nav links, forms, and other content for toggling -->" | safeHTML }}
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav" id="nav">
-                <li 
-                    class="github-star"
-                    id="github-star"
-                    onclick="gtag('event', 'Link Click', { event_category: 'Engagement', event_label: 'Star via Navi'})"
-                >
-                    <a
-                        class="github-button"
-                        href="https://github.com/vesoft-inc/nebula"
-                        data-size="large" data-show-count="true"
-                        aria-label="Star vesoft-inc/nebula on GitHub"
-                    >Star</a>
+                <li class="github-star" id="github-star">
+                    <a class="github-button" href="https://github.com/vesoft-inc/nebula" data-size="large" data-show-count="true" aria-label="Star vesoft-inc/nebula on GitHub">Star</a>
                 </li>
                 {{ range .Site.Params.navigation.links }}
                     {{ if .links }}
@@ -60,12 +42,37 @@
                         {{ $blogLink := replace $.Permalink "/tags/" "/posts/"}}
                         <li id="{{.calss}}" class="{{if (or (in $.Permalink .link) (in $blogLink .link)) }}active{{end}}">
                           {{if .link}}
-                            <a href={{.link}} target="{{.target}}" onclick="{{.onclick | safeJS }}" >{{.title}}</a>
+                            <a href={{.link}} target="{{.target}}" >{{.title}}</a>
                           {{else}}
                             <a href={{.id}} target="{{.target}}" onclick="contactUsClick()">{{.title}}</a>
                           {{end}}
                         </li>
                     {{ end }}
+                <!-- {{ if and .Site.Params.about .Site.Params.navigation.links.about }}
+                    <li>
+                        <a class="page-scroll" href="#about">{{ .Site.Params.navigation.links.about }}</a>
+                    </li>
+                {{ end }}
+                {{ if and .Site.Params.services.list .Site.Params.navigation.links.services }}
+                    <li>
+                        <a class="page-scroll" href="#services">{{ .Site.Params.navigation.links.services }}</a>
+                    </li>
+                {{ end }}
+                {{ if and .Site.Data.projects .Site.Params.navigation.links.portfolio }}
+                    <li>
+                        <a class="page-scroll" href="#portfolio">{{ .Site.Params.navigation.links.portfolio }}</a>
+                    </li>
+                {{ end }}
+                {{ if and .Site.Params.location .Site.Params.navigation.links.location }}
+                <li>
+                    <a class="page-scroll" href="#location">{{ .Site.Params.navigation.links.location }}</a>
+                </li>
+                {{ end }}
+                {{ if and .Site.Params.contact .Site.Params.navigation.links.contact }}
+                    <li>
+                        <a class="page-scroll" href="#contact">{{ .Site.Params.navigation.links.contact }}</a>
+                    </li>
+                {{ end }} -->
                 {{ end }}
             </ul>
         </div>

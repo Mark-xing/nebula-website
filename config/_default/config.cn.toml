@@ -61,7 +61,7 @@ contentDir = "content/cn"
       title = "Nebula Studio"
       link = "https://github.com/vesoft-inc/nebula-web-docker"
       calss= "navbar-right"
-      onclick = "gtag('event', 'Button Click', { event_category: 'Engagement', event_label: 'Nebula Studio'})"
+
       target = "_blank"
 
   # Hero section
@@ -250,11 +250,9 @@ contentDir = "content/cn"
     text = "去 Github 点 star"
     link = "https://github.com/vesoft-inc/nebula"
     image = "/images/good.png"
-    onclick = "gtag('event', 'Link Click', { event_category: 'Engagement', event_label: 'Star via sidebar'})"
   [[params.links]]
     text = "订阅 RSS"
     link = "https://nebula-graph.io/cn/posts/index.xml"
     image = "/images/rss.png"
-    onclick = "gtag('event', 'Link Click', { event_category: 'Engagement', event_label: 'RSS on sidebar'})"
   [params.share]
     title = "分享"

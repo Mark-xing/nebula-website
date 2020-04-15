@@ -53,18 +53,9 @@
                 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
                 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         {{ "<![endif]-->" | safeHTML }}
-
         <script src="{{ "js/jquery.js" | relURL }}"></script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         {{ if not .Site.IsServer }}
-            <!-- Google Tag Manager -->
-            <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-PPJVFGH');</script>
-            <!-- End Google Tag Manager -->
-
             <script async src="https://www.googletagmanager.com/gtag/js?id=UA-60523578-5"></script>
             <script>
                 window.dataLayer = window.dataLayer || [];
@@ -79,21 +70,14 @@
         {{ end -}}
     </head>
     <body id="page-top">
-        {{ if not .Site.IsServer }}
-            <!-- Google Tag Manager (noscript) -->
-            <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PPJVFGH"
-            height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-            <!-- End Google Tag Manager (noscript) -->
-        {{ end }}
-
         {{ partial "nav.html" . }}
 
         {{- block "main" . }}{{- end }}
-        <div id="J_Star_Popup" class="nebula-star-popup"></div>
+        <div id="J-star-popup" class="nebula-star-popup"></div>
 
         {{ partial "js.html" . }}
 
-        <!-- {{ template "_internal/google_analytics.html" . }} -->
+        {{ template "_internal/google_analytics.html" . }}
         {{- block "extraJs" .}}{{- end}}
     </body>
 </html>
