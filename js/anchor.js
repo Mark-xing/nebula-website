@@ -1,10 +1,14 @@
 (function () {
-  $anchors = $('.single-side-bar>.blog-anchors');
+  $anchors = $('#J_Anchor');
   $notify = $('#nav-popup');
   $anchors.affix({
     offset: {
       top: $anchors.offset().top 
     }
+  })
+  $anchors.on('affix.bs.affix', function () {
+    var offset = $notify.css('display') === 'none' ? 0 : $notify.height();
+    $anchors.css('top',  60 + offset);
   })
 
   $share = $('#J_Share');
@@ -12,10 +16,6 @@
     offset: {
       top: $share.offset().top
     }
-  })
-
-  $share.on('affix.bs.affix', function () {
-    $anchors.css('top',  60 + ($notify.height() || 0));
   })
 
   function throttle(fn) {
