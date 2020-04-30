@@ -55,10 +55,12 @@ header #download{
   background: #fff;
   background-image: url('../../img/download-cat.png');
   background-repeat:no-repeat;
-  background-position: 6px 4px;
+  background-position: 5px;
+  background-size: 30px;
   color:rgba(0, 128, 255, 1);
   margin-left: 60px;
-  padding:0 40px;
+  padding-left:25px;
+  width: 220px;
 }
 
 
@@ -176,6 +178,7 @@ header .get-start:hover {
   }
   header #download {
     margin-left: 0 ;
+    width: 180px;
   }
   .get-start{
     margin-right: 10px;

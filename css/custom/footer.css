@@ -75,6 +75,7 @@
         padding: 20px 0 0;
     }
     .row-content h3{
+        margin-left: 0;
         font-size: 16px;
         padding-left: 0;
         text-align: center;

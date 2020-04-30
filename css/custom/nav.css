@@ -172,6 +172,17 @@
     background-image: url('../../img/logo-dart.png');
     background-size: cover;
   }
+  .nav-popup {
+    font-size: 13px;
+  }
+  .nav-popup img{
+    display: none;
+  }
+  .nav-popup #shut {
+    display: inline-block;
+    width: 3%;
+    margin-left: 3%;
+  }
   .navbar-header {
     text-align: right;
   }
