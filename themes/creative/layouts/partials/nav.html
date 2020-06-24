@@ -58,11 +58,25 @@
                         </li>
                     {{ else }}
                         {{ $blogLink := replace $.Permalink "/tags/" "/posts/"}}
-                        <li id="{{.calss}}" class="{{if (or (in $.Permalink .link) (in $blogLink .link)) }}active{{end}}">
+                        <li id="{{.calss}}" class="{{if (or (in $.Permalink .link) (in $blogLink .link)) }}active{{end}}dropdown">
                           {{if .link}}
                             <a href={{.link}} target="{{.target}}" onclick="{{.onclick | safeJS }}" >{{.title}}</a>
                           {{else}}
-                            <a href={{.id}} target="{{.target}}" onclick="contactUsClick()">{{.title}}</a>
+                            {{if .id}}
+                                <a href={{.id}} target="{{.target}}" onclick="contactUsClick()">{{.title}}</a>
+                            {{else}}
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                    {{.title}}
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    {{ range .case }}
+                                        <li class="nav-item">
+                                            <a class="dropdown-item" href="{{.link}}" target="{{.target}}">{{ .title }}</a>
+                                        </li>
+                                    {{ end }}
+                                </ul>
+                            {{end}}
                           {{end}}
                         </li>
                     {{ end }}

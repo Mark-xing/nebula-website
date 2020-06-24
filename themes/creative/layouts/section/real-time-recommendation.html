@@ -1,0 +1,48 @@
+{{ define "main" }}
+<main id="top" class="use-case">
+    <div class="case">
+    {{ if .Site.Params.realTimeRecommendation }}
+        <div class="caseBanner">
+            <div class="caseBanner-content">
+                <img src="/images/{{ .Site.Params.realTimeRecommendation.pic }}">
+                <div class="caseBanner-text">
+                    <p class="caseBanner-title">{{.Site.Params.realTimeRecommendation.bannerTtile}}</p>
+                    <p>{{.Site.Params.realTimeRecommendation.bannerText}}</p>  
+                </div>
+            </div>
+        </div>
+        {{ range .Site.Params.realTimeRecommendation.list }}
+            <div class="{{.background}}">
+                <div class="case-list case-{{.calss}}">
+                    <img src="/images/{{ .pic }}">
+                    <div class="case-content {{.calss}}">
+                        <p class="case-title">{{.title}}</p>
+                        <hr />
+                        <p>{{.text}}</p>
+                        <p>{{.text1}}</p> 
+                        <p>{{.text2}}</p>   
+                        <p>{{.text3}}</p> 
+                    </div>
+                </div>
+            </div>
+        {{ end }}
+        {{ range .Site.Params.realTimeRecommendation.fix }}
+            <div class="useCase-fix">
+                <p class="useCase-title">{{.title}}</p>
+                <hr />
+                <p class="useCase-text">{{.fixText}}</p>   
+                <div class="useCase-fix-content">
+                    {{ range .fixList }}
+                        <div>{{.text}}</div>
+                    {{ end }}
+                </div>
+                <button><a href={{.link}}>{{.btnText}}</a></button>
+            </div>
+        {{ end }}
+    {{ end }}
+    </div>
+    {{ if .Site.Params.footer }}
+        {{ partial "footer.html" . }}
+    {{ end }}
+</main>
+{{ end }}

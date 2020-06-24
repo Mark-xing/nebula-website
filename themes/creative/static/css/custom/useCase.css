@@ -1,0 +1,231 @@
+.use-case .case{
+  margin: 10px auto 0;
+}
+.caseBanner{
+  background: #181D58;
+}
+.caseBanner .caseBanner-content {
+  width: 960px;
+  height: 360px;
+  margin: 0 auto;
+  color: #FFFFFF;
+  display: flex;
+  direction: rtl;
+  position: relative;
+  justify-content:center;
+  align-items: center;
+}
+.caseBanner .caseBanner-content .caseBanner-text {
+  width: 100%;
+  display: inline-block;
+  font-size: 14px;
+  direction: ltr;
+  position: absolute;
+}
+.caseBanner .caseBanner-content img {
+  width: 430px;
+  height: 284px;
+  position: absolute;
+  right:0;
+}
+.caseBanner .caseBanner-content .caseBanner-text p {
+  width: 368px;
+  margin-left: 70px;
+}
+.caseBanner .caseBanner-content .caseBanner-text .caseBanner-title {
+  font-size: 36px;
+  letter-spacing: 0;
+  line-height: 46px;
+}
+.backgroundA{
+  background: #FAFBFC;
+}
+.case-list{
+  width: 960px;
+  height: 100%;
+  margin: 0 auto;
+  padding-top: 50px;
+  box-sizing: border-box;
+  padding:65px 53px;
+  direction: rtl;
+}
+.case-list img{
+  width: 350px;
+  height: 230px;
+  float: right;
+}
+
+.case-list .case-content{
+  display: inline-block;
+  margin-right: 114px;
+  direction: ltr;
+}
+.backgroundB{
+  direction: ltr;
+}
+.backgroundB .case-right img{
+ float: left;
+}
+.case-list .right {
+  margin-right: 0;
+  margin-left: 114px;
+}
+.case-list .case-content p{
+  font-size: 14px;
+  color: #595959;
+  letter-spacing: 0;
+  width: 382px;
+  margin-bottom: 0;
+}
+.case-list .case-content .case-title{
+  font-size: 26px;
+  color: #000000;
+}
+.case-list .case-content hr {
+  margin: 12px 0 17px 0;
+  border-color: #4A4A4A;
+  max-width:60px;
+  border-width:2px;
+}
+.useCase-fix{
+  background: #FAFBFC;
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 40px;
+}
+.useCase-fix hr{
+  max-width:60px;
+  border-width:2px;
+  margin-top: 10px ;
+  margin-bottom: 10px;
+  border-color: #4A4A4A;
+}
+.useCase-fix button{
+  background: #1890FF;
+  border-radius: 23px;
+  margin-top: 40px;
+  border: 0;
+  padding:12px 65px;
+  outline: none;
+}
+.useCase-fix button a{
+    color: #fff;
+    text-decoration: none;
+}
+.useCase-fix .useCase-title {
+  font-size: 26px;
+  color: #000000;
+  letter-spacing: 0;
+}
+.useCase-fix .useCase-text{
+  font-size: 14px;
+  color: #4A4A4A;
+  letter-spacing: 0;
+}
+.useCase-fix-content{
+  width: 960px;
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+}
+.useCase-fix-content div{
+  flex:1;
+  background: #FFFFFF;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+  padding: 38px 48px;
+  margin-right: 60px;
+  text-align: left;
+}
+.useCase-fix-content div:last-child {
+    margin-right: 0;
+}
+/* Mobile style */
+@media(max-width: 959px) {
+  .caseBanner .caseBanner-content {
+  width: 100%;
+  display: block;
+  text-align: center;
+  }
+  .caseBanner .caseBanner-content .caseBanner-text{
+    width: 100%;
+    position: unset;
+  }
+  .caseBanner .caseBanner-content img {
+    width: 70vw;
+    height: 47vw;
+    margin: 0 auto;
+    display: block;
+    position: unset;
+  }
+  .caseBanner .caseBanner-content .caseBanner-text p{
+    width: 80%;
+    margin-left: 5%;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .caseBanner .caseBanner-content .caseBanner-text .caseBanner-title{
+    margin-top: 0;
+    font-size: 24px;
+    margin-bottom: 0;
+    text-align: center;
+    line-height: 32px;
+  }
+  .useCase-fix-content {
+    width: 100%;
+  }
+  .case-list {
+    width: 100%;
+    padding: 5%;
+    overflow: hidden;
+  }
+  .case-list img{
+    width: 70vw;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    float:unset !important;
+  }
+  .case-list .case-content .case-title,
+  .useCase-fix .useCase-title {
+    font-size: 20px;
+    text-align: center;
+  }
+  .case-list .case-content hr{
+    margin: 6px auto;
+  }
+  .case-list .case-content{
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    text-align: center;
+  }
+  .case-list .case-content p{
+    width: 80%;
+    margin: 0 auto;
+    font-size: 12px;
+    text-align: left;
+  }
+  .useCase-fix{
+    padding: 5%;
+  }
+  .useCase-fix .useCase-text{
+    font-size: 12px;
+  }
+  .useCase-fix p{
+    width: 80%;
+    margin: 0 auto 10px;
+    text-align: left;
+  }
+  .useCase-fix-content{
+    display: block;
+  }
+  .useCase-fix-content div{
+    margin-right: 0;
+    margin-top: 20px;
+    font-size: 12px;
+    padding: 7vw 8vw;
+  }
+  .useCase-fix button{
+    margin-top: 30px;
+  }
+}

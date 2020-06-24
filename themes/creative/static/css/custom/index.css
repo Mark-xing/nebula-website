@@ -12,6 +12,7 @@
 @import url('./asideLinks.css');
 @import url('./singleSideBar.css');
 @import url('./news.css');
+@import url('./useCase.css');
 
 @font-face {
     font-family: "PingFangSC-Regular,PingFang SC";

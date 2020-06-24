@@ -32,6 +32,20 @@ contentDir = "content/cn"
     brand = "NebulaGraph"
 
     [[params.navigation.links]]
+      title = "应用场景"
+        [[params.navigation.links.case]]
+          title = "实时推荐"
+          link = "/real-time-recommendation/"
+        [[params.navigation.links.case]]
+          title = "金融风控"
+          link = "/fraud-detection/"
+        [[params.navigation.links.case]]
+          title = "网络安全"
+          link = "/cyber-security/"
+        [[params.navigation.links.case]]
+          title = "知识图谱"
+          link = "/ai-and-machine-learning/"
+    [[params.navigation.links]]
       title = "文档"
       link = "https://docs.nebula-graph.com.cn/"
       target = "_blank"
@@ -47,11 +61,13 @@ contentDir = "content/cn"
       link = "https://discuss.nebula-graph.com.cn/"
       target = "_blank"
     [[params.navigation.links]]
-      title = "媒体报道"
-      link = "/news"
-    [[params.navigation.links]]
-      title = "联系我们"
-      id = "#contact_us"
+      title = "公司简介"
+      [[params.navigation.links.case]]
+        title = "媒体报道"
+        link = "/news"
+      [[params.navigation.links.case]]
+        title = "联系我们"
+        link = "mailto:info@vesoft.com"
     [[params.navigation.links]]
       pic = "language120x120.png"
         [[params.navigation.links.links]]
@@ -299,3 +315,125 @@ contentDir = "content/cn"
         source = "IT168"
         readMore = "Read More >>"
         Description = "分布式图数据库 Nebula Graph V1.0 正式亮相，为深耕 AI、金融、政府、医疗、IoT 等多个垂直领域的 CIO、架构师、数据科学家提供了新型的数据分析和洞察能力。"
+
+  #  Real-time Recommendation section
+  [params.realTimeRecommendation]
+      pic = "realTimeRecommendation.png"
+      bannerTtile = "实时推荐"
+      bannerText="实时推荐是在线业务的新增长点，电商巨头亚马逊称其35%的销售额来自于商品交叉推荐。"
+      [[params.realTimeRecommendation.fix]]
+        title = "解决方案"
+        btnText = "合作咨询"
+        link = "mailto:sales@vesoft.com"
+        [[params.realTimeRecommendation.fix.fixList]]
+          text = "原生图存储保证高效、实时遍历高度关联的复杂数据 "
+        [[params.realTimeRecommendation.fix.fixList]]
+          text = "shared-nothing 的架构设计保证系统可扩展性"
+      [[params.realTimeRecommendation.list]]
+        pic = "realTimeRecommendationCase1.png"
+        title = "商业目标"
+        text = "为用户提供高度个性化的实时推荐，企业能够灵活添加推荐相关因子及数据源，提高推荐个性化程度。"
+        calss = "left"
+        background="backgroundA"
+
+      [[params.realTimeRecommendation.list]]
+        pic = "realTimeRecommendationCase2.png"
+        title = "面临挑战"
+        text = "要实现高度个性化的实时推荐，面临几个挑战："
+        text1 = "1. 实时遍历高度关联的复杂数据"
+        text2 = "2. 保证实时遍历查询性能"
+        text3 = "3. 业务数据量迅速增加"
+        calss = "right"
+        background="backgroundB"
+  
+  #  Fraud Detection section
+  [params.fraudDetection]
+      pic = "fraudDetection.png"
+      bannerTtile = "金融风控"
+      bannerText="风险控制对金融行业的重要性不言而喻，其中层出不穷的金融欺诈手段对金融行业的健康发展造成了严重的威胁。"
+      [[params.fraudDetection.fix]]
+        title = "解决方案"
+        btnText = "合作咨询"
+        link = "mailto:sales@vesoft.com"
+        [[params.fraudDetection.fix.fixList]]
+          text = "原生图存储保证高效、实时遍历高度关联的复杂数据 "
+        [[params.fraudDetection.fix.fixList]]
+          text = "灵活的数据模型，新增业务逻辑不影响现有的逻辑"
+        [[params.fraudDetection.fix.fixList]]
+          text = "高可用，保障关键业务不断线"
+      [[params.fraudDetection.list]]
+        pic = "fraudDetection1.png"
+        title = "商业目标"
+        text = "通过分析交易行为识别欺诈交易特征，实现在交易中实时探测欺诈特征，阻断可疑交易。"
+        calss = "left"
+        background="backgroundA"
+
+      [[params.fraudDetection.list]]
+        pic = "fraudDetection2.png"
+        title = "面临挑战"
+        text = "要在金融交易发生的短时间内实时探测出可疑交易并返回结果，面临如下挑战："
+        text1 = "1. 欺诈交易涉及的数据具有高度复杂的关联关系"
+        text2 = "2. 保证实时遍历复杂关联数据的性能，在交易时间内返回分析结果"
+        text3 = "3. 适应欺诈手段和规模的不断变迁"
+        calss = "right"
+        background="backgroundB"
+  
+  #  Cyber Security section
+  [params.cyberSecurity]
+      pic = "cyberSecurity.png"
+      bannerTtile = "网络安全"
+      bannerText="数据库是企业最为核心的数据保护对象，其中敏感信息保护、潜在威胁检测更是重中之重。"
+      [[params.cyberSecurity.fix]]
+        title = "解决方案"
+        btnText = "合作咨询"
+        link = "mailto:sales@vesoft.com"
+        [[params.cyberSecurity.fix.fixList]]
+          text = "原生图存储可快速遍历数据，了解事务之间隐藏关系 "
+        [[params.cyberSecurity.fix.fixList]]
+          text = "以集群维度创建快照，提供在线的数据备份功能、快速恢复"
+      [[params.cyberSecurity.list]]
+        pic = "cyberSecurity1.png"
+        title = "商业目标"
+        text = "通过跟踪网络和设备路径寻找潜在威胁，及时应对网络攻击。"
+        calss = "left"
+        background="backgroundA"
+
+      [[params.cyberSecurity.list]]
+        pic = "cyberSecurity2.png"
+        title = "面临挑战"
+        text = "要跟踪网络和设备路径寻找潜在攻击威胁，面临如下挑战："
+        text1 = "1. 攻击路径存在复杂且隐蔽关系，传统防御手段难以有效识别"
+        text2 = "2. 分析数据或基础设施是否遭受破坏需筛选海量数据"
+        text3 = "3. 有组织的网络攻击可形成信息孤岛，需快速地判断单一事务是否为攻击的一环"
+        calss = "right"
+        background="backgroundB"
+
+  # ai-and-machine-learning section
+  [params.aiAndMachineLearning]
+      pic = "aiAndMachineLearning1.png"
+      bannerTtile = "知识图谱"
+      bannerText="知识图谱广泛应用于聊天机器人、大数据风控、证券投资、智能医疗、自适应教育、推荐系统等场景，并覆盖泛互联网、金融、政务、医疗等众多领域。"
+      [[params.aiAndMachineLearning.fix]]
+        title = "解决方案"
+        btnText = "合作咨询"
+        link = "mailto:sales@vesoft.com"
+        [[params.aiAndMachineLearning.fix.fixList]]
+          text = "以属性图方式存储实体和实体间关系，提高知识图谱表达描述实际场景能力 "
+        [[params.aiAndMachineLearning.fix.fixList]]
+          text = "存储计算分离，资源独立扩展使资源利用更充分，便捷根据数据量进行扩缩容"
+      [[params.aiAndMachineLearning.list]]
+        pic = "aiAndMachineLearning2.png"
+        title = "商业目标"
+        text = "知识图谱的应用难点在于如何表达现实世界中千变万化的业务场景。"
+        calss = "left"
+        background="backgroundA"
+
+      [[params.aiAndMachineLearning.list]]
+        pic = "aiAndMachineLearning.png"
+        title = "面临挑战"
+        text = "要使用属性图表达多种业务场景，面临如下挑战："
+        text1 = "1. 知识类型具有多样性，现实中实体及其之间存在复杂交错关系"
+        text2 = "2. 海量数据的存储问题"
+        calss = "right"
+        background="backgroundB"
+      
