@@ -1,0 +1,35 @@
+[recommendations]
+  title = "客户说"
+  [[recommendations.logos]]
+    url = "/companies/logo-jd-sm.png"
+  [[recommendations.logos]]
+    url = "/companies/logo-meituan-sm.png"
+  [[recommendations.logos]]
+    url = "/companies/logo-youzan-sm.png"
+  [[recommendations.logos]]
+    url = "/companies/logo-qcc-sm.png"
+  [[recommendations.logos]]
+    url = "/companies/logo-redbook-sm.png"
+  [[recommendations.logos]]
+    url = "/companies/logo-tencent-sm.png"
+
+  [[recommendations.statements]]
+    who = "京东数科图技术团队负责人 钱勇"
+    figure = "/companies/logo-jd-bg.png"
+    description = "之前京东数科的图服务是由JanusGraph提供的，我们碰到的主要问题是写入和查询速度很慢，且社区不活跃bug fix不及时，导致业务使用体验不理想。正在寻找新的解决方案时，遇到Nebula Graph刚启动，所以京东数科图技术团队立刻就参与了Nebula Graph的开源社区，并一起参与和合作开发了很多功能。借助Nebula Graph图数据库的高性能分布式存储和查询能力，从京东数科海量数据集中挖掘重要的关联关系，很好的助力内部和集团业务的开展。目前，我们正在将更多的图项目从传统方案迁移到NebulaGraph。"
+  [[recommendations.statements]]
+    who = "美团点评AI平台技术专家 赵登昌"
+    figure = "/companies/logo-meituan-bg.png"
+    description = "在接触Nebula Graph之前，我们的图谱项目已经试用过多个知名的开源图数据库，包括Neo4j、JanusGraph、DGraph这些在DB-Engine上排名非常靠前的产品，但在规模和性能上没法满足我们的要求，导致项目一直没有上线。当遇到Nebula Graph后，我们发现Nebula Graph的架构设计简洁可扩展，且基于C++开发，性能特别强劲，具备非常强的互联网分布式基因；Nebula的同学们也非常给力靠谱，大家一起解决了N多个技术难题，成功把性能提升到远超最初规划，并且基于公司已有基础设施，搭建了一套图数据库平台，方便业务接入。现在，我们正在通力合作，把更多的知识图谱项目迁移到Nebula Graph上面来。"
+  [[recommendations.statements]]
+    who = "有赞数据基础平台技术专家 陈琦"
+    figure = "/companies/logo-youzan-bg.png"
+    description = "基于图的风控和推荐方案相比传统方案有很大的技术优势，通过图技术赋予的新能力，我们在业务上发现了很多有意思的增长点。但由于业务上对于低时延、高并发的要求，我们一直在寻找高性能的开源图数据库方案。在通过详尽的比较Nebula Graph、Neo4j、DGraph、JanusGraph几种开源方案后，我们最终选用了Nebula Graph，是基于这样几个原因：1. 可扩展的分布式架构，避免服务容量成为业务瓶颈；2. 高性能，经过性能比较测试后，Nebula的性能相比其他几个更能够满足我们的期望；3. 社区支持，我们对于图的使用也在摸索过程中，各种问题能够在社区很快得到响应。"
+  [[recommendations.statements]]
+    who = "苏州朗动网络技术有限公司（企查查）知识图谱算法专家 郑文裕"
+    figure = "/companies/logo-qcc-bg.png"
+    description = "基于企业间关系的企业图谱、供应链关系、企业知识图谱这些应用都是非常典型的知识图谱应用，也非常适合使用图数据库来作为基础设施支撑业务发展。最初阶段，我们使用了某知名单机图数据库的方案，很好的支持了彼时业务的快速扩张；但随着互联网式的数据量和访问规模快速增加，这样的方案在扩展性和时效性上的问题越来越突出。在得知Nebula Graph去年5月份开源后，我们就一直持续关注其动态，其分布式架构很适合我们的业务需求，并且迭代速度相当快速。在经过几个月的试用和调优后，Nebula Graph已经在相当多内部业务上替代了原方案；未来，随着对于OpenCypher的兼容，我们计划将更多业务迁移到Nebula Graph上。"
+  [[recommendations.statements]]
+    who = "小红书反作弊风控策略算法负责人 吹雪"
+    figure = "/companies/logo-redbook-bg.png"
+    description = "I have a graph,a red graph. 小红书作为一个在线社区，有着很多的图存在：用户和笔记的交互关系，用户和用户的关注关系，电商交易关系等等。关系型数据库往往不能有效支撑小红书这样一个量级的图有效存储和实时查询计算。笔者接触过不少图数据库，一些寄希望于摩尔定律的发展，其他在性能上达不到我们的要求。我们选用Nebula图数据库，首先来自对团队的信任,创始人和核心成员在Facebook和蚂蚁金服，阿里等大公司做过图数据库，支撑了在线业务数据流下的推荐、搜索和风控等多个场景，深刻理解数据和业务形态以及之上的算法场景和需求，是最熟悉中国一线互联网公司图数据库需求的团队。其次诸多核心架构设计保证了对于超大规模数据的支持和集群规模的可扩展性。值得一提的是，对于图上经典的热点问题，Nebula最早应小红书需求实现了蓄水池抽样算法。我们也利用Nebula这个风控底层武器来保护小红书社区这个Red Graph，同时也在赋能给我们的其它业务算法线。"

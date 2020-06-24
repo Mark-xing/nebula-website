@@ -1,0 +1,40 @@
+<div class="customer-recommendations">
+  <ul>
+    {{ range .Site.Params.recommendations.logos }}
+      <li><img src="/images/{{.url}}" /></li>
+    {{ end }}
+  </ul>
+  <h3>{{ .Site.Params.recommendations.title}} </h3>
+
+  <div id="company-recommendation-carousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="recommendation-indicators carousel-indicators">
+        {{ range $index, $item := $.Page.Site.Params.Recommendations.Statements }}
+          <li data-target="#company-recommendation-carousel" data-slide-to="{{$index}}" class="{{if eq $index 0 }}active{{ end }}"></li>
+        {{ end }}
+      </ol>
+    
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox">
+          {{ range $index, $item := $.Page.Site.Params.Recommendations.Statements }}
+            <div class="item {{if eq $index 0 }}active{{ end }}" >
+              <div class="item-wrap">
+                <img src="/images{{.figure}}">
+                <div class="recommendation-content">
+                  <h4>{{.who}}</h4>
+                  <p>{{.description}}</p>
+                </div>
+              </div>
+            </div>
+          {{ end }}
+      </div>
+    
+      <!-- Controls -->
+      <a class="left carousel-control" href="#company-recommendation-carousel" role="button" data-slide="prev">
+        <img src="/images/arrow-left.png" width="20px">
+      </a>
+      <a class="right carousel-control" href="#company-recommendation-carousel" role="button" data-slide="next">
+        <img src="/images/arrow-right.png" width="20px">
+      </a>
+    </div>
+</div>

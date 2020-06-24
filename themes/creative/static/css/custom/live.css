@@ -1,0 +1,95 @@
+.nebula-live {
+  display: flex;
+  align-items: center;
+  height: 450px;
+  background: #ecf0f4;
+}
+
+.nebula-live .live-wrap {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  width: 940px;
+}
+
+.nebula-live .live-wrap > img {
+  width: 450px;
+  height: 300px;
+}
+
+.nebula-live .live-wrap .content {
+  flex: 1;
+  margin-left: 47px;
+}
+
+.nebula-live .live-wrap .content h3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  letter-spacing: 2px;
+}
+
+.nebula-live .live-wrap .content p {
+  margin: 21px 0 25px 0;
+  font-size: 16px;
+  color: #9B9B9B;
+  letter-spacing: 1.33px;
+}
+
+.nebula-live .live-wrap .content h3 img {
+  margin-right: 15px;
+  width: 44px;
+}
+
+.nebula-live .live-wrap .content button {
+  display: block;
+  margin: auto;
+  width: 194px;
+  color: #fff;
+  background: #1890ff;
+  border-radius: 23px;
+  height: 46px;
+  border: none;
+  outline: none;
+}
+
+@media(max-width: 768px) {
+  .nebula-live {
+    height: 450px;
+  }
+
+  .nebula-live .live-wrap {
+    padding: 0 30px;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .nebula-live .live-wrap > img {
+    width: 100%;
+    height: auto;
+  }
+
+  .nebula-live .live-wrap .content {
+    margin-left: 20px;
+  }
+
+  .nebula-live .live-wrap .content h3 {
+    font-size: 14px;
+  }
+
+  .nebula-live .live-wrap .content h3 img {
+    margin-right: 8px;
+    width: 22px;
+  }
+
+  .nebula-live .live-wrap .content p {
+    display: none;
+  }
+
+  .nebula-live .live-wrap .content button {
+    height: 23px;
+    font-size: 12px;
+    width: 100px;
+  }
+}

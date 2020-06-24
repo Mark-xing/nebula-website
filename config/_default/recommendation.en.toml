@@ -1,0 +1,34 @@
+[recommendations]
+  title = "Customer Statements"
+  [[recommendations.logos]]
+    url = "/companies/logo-jd-sm.png"
+  [[recommendations.logos]]
+    url = "/companies/logo-meituan-sm.png"
+  [[recommendations.logos]]
+    url = "/companies/logo-youzan-sm.png"
+  [[recommendations.logos]]
+    url = "/companies/logo-qcc-sm.png"
+  [[recommendations.logos]]
+    url = "/companies/logo-redbook-sm.png"
+  [[recommendations.logos]]
+    url = "/companies/logo-tencent-sm.png"
+  [[recommendations.statements]]
+    who = "Qian Yong, Graph Tech team leader at JD Digits"
+    figure = "/companies/logo-jd-bg.png"
+    description = "JDD used to use Janus Graph as its graph platform. The main problem with Janus Graph was slow read and write as well as inactive community. The bug fix was slow and the experience was not good. Then we encountered Nebula Graph when looking for new graph database solutions. JDD immediately joined the community and partnered with the Nebula Graph team. We have worked together and developed many features. With the highly performant distributed storage and query capabilities of Nebula Graph, JDD is able to dig the most important connections from the super large amount of business data, which benefits both internal and external businesses. We have been migrating our graph related projects from Janus Graph to Nebula Graph."
+  [[recommendations.statements]]
+    who = "Zhao Dengchang, the AI platform expert at Meituan"
+    figure = "/companies/logo-meituan-bg.png"
+    description = "Before we met Nebula Graph, we have tried many well-ranking graph databases on db-engines.com, including Neo4j, Janus Graph, and Dgraph. However, our project was not able to go live because these solutions can't meet our requirements from both scalability and performance point of view. Then we found that Nebula Graph is neatly designed and scalable. In addition, it is written in C++ and highy performant. Nebula Graph is built sidtributed. Also, the team is excellent and capable. We have worked with them and solved so many problems and finally improved the performance to much higher than what we have expected. We have set up a graph platform based on our existing infrastructure for easier business access. Currently we are working closely together, hoping to migrate more knowledge graph projects to Nebula Graph."
+  [[recommendations.statements]]
+    who = "Chen Qi, the Data Platform expert at YouZan"
+    figure = "/companies/logo-youzan-bg.png"
+    description = "There are tremendous advantages in graph-based risk management and recommendation solutions compared to the traditional ones. Thanks to the innovative capabilities enabled by the graph technology, we have found a bunch of new growing opportunities. Therefore, we have been looking for highly performant open source graph databases based on our requirements of high throughput and low latency. After a thorough comparison among multiple solutions including Nebula Graph, Neo4j, Dgraph, and JanusGraph, we finally chose Nebula Graph because 1) the scalable distributed architecture can avoid capacity bottlenecks for business growth; 2) the performance of Nebula Graph meets our expectations better than the other candidates; 3) the community is quite active and responsive when we have encountered any problems."
+  [[recommendations.statements]]
+    who = "Zheng Wenyu, the Knowledge Graph Algorithm expert at Suzhou Langdong Network Technology Co., Ltd"
+    figure = "/companies/logo-qcc-bg.png"
+    description = "At the very beginning, we adopted a well-known single-host graph database which did support our rapid business growth in our early stage. However, our business data scaled rapidly and the original solution fell short in both scalability and timeliness. We have been keeping a close eye on Nebula Graph ever since its beta launch back in May 2019 and found that the distributed architecture meets our business requirements perfectly. After a few months of trial and profiling, Nebula Graph has substituted the original solution in most of our internal business units. We plan to migrate more businesses to Nebula Graph in the future as soon as the OpenCypher compatibility is ready."
+  [[recommendations.statements]]
+    who = "Chuixue, head of the anti-cheat and risk control algorithm at RED (xiaohongshu)"
+    figure = "/companies/logo-redbook-bg.png"
+    description = "There are a lot of graphs that exist in xiaohongshu as an online community. They decipher the connections between users and notes, followings among users, transaction relationships, etc. A traditional RDBMS cannot efficiently support the graph storage and online queries at xiaohongshu. The reasons we chose Nebula Graph include that we believe that the Nebula Graph team has the deepest understanding of the graph database industry because they have tremendous experience in real-time recommendations, search, and risk control. In addition, the core architecture provides cluster-level scalability and supports super-scale datasets perfectly. We are protecting the Red Graph community with Nebula Graph, the underlying risk control weapon. Meanwhile we are adopting Nebula Graph in other business units."

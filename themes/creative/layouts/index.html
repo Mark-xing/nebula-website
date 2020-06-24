@@ -4,10 +4,19 @@
         {{ partial "header.html" . }}
         {{ end }}
     
-        {{ if .Site.Params.advantage }}
+        <!-- {{ if .Site.Params.advantage }}
         {{ partial "advantage.html" . }}
         {{ end }}
-    
+     -->
+
+        {{ if .Site.Params.recommendations}}
+        {{ partial "recommendations.html" . }}
+        {{ end }}
+
+        {{ if .Site.Params.live }}
+        {{ partial "live.html" . }}
+        {{ end }}
+
         {{ if .Site.Params.features.list }}
         {{ partial "features.html" . }}
         {{ end }}

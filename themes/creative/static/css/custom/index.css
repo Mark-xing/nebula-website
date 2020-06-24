@@ -12,6 +12,8 @@
 @import url('./asideLinks.css');
 @import url('./singleSideBar.css');
 @import url('./news.css');
+@import url('./recommendations.css');
+@import url('./live.css');
 @import url('./useCase.css');
 
 @font-face {
