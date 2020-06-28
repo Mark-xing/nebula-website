@@ -1,5 +1,5 @@
 [live]
-  poster = "/companies/logo-tencent-bg.png"
+  poster = "/medium.png"
   title = "Nebula Graph 1.0 性能基准测试报告"
   text = "Nebula Graph 发布了基于 LDBC 社交基准数据集的性能报告，主要关注了 k-hop 读延时和吞吐性能。"
   link = "https://discuss.nebula-graph.com.cn/t/topic/782"

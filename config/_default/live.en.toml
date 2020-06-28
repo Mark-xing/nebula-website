@@ -1,5 +1,5 @@
 [live]
-  poster = "/companies/logo-tencent-bg.png"
+  poster = "/medium.png"
   title = "Nebula Graph 1.0 Benchmark Report"
   text = "Nebula Graph has just published the benchmark data based on the LDBC social networking benchmark dataset. The report mainly focuses on the k-hop read latency and throughput performance."
   link = "https://discuss.nebula-graph.io/t/nebula-graph-1-0-benchmark-report/581"
