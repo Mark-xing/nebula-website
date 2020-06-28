@@ -1,0 +1,27 @@
+contentDir = "content/cn"
+[params]
+
+    # News section
+  [params.news]
+      pic = "download-cn.png"
+      downloadLink = "/file/NebulaGraphMediaKit-CN.zip"
+      title="媒体资源包"
+      content1= "• 公司 Logo"
+      content2= "• 创始人宣传照"
+      [[params.news.list]]
+        pic = "feature1.png"
+        title = "开源图数据库研发商「欧若数网」开启全球商用化，获800万美元Pre-A轮融资"
+        link = "https://36kr.com/p/737314527110281"
+        date = "2020-06-05"
+        source = "36kr"
+        readMore = "Read More >>"
+        Description = "图数据库研发商欧若数网科技有限公司（以下简称“欧若数网”）已完成 800 万美元 Pre-A 轮融资，由红点创投中国基金、经纬中国投资。本轮融资将主要用于最新产品 2.0 版本开发，以及全球市场拓展。"
+
+      [[params.news.list]]
+        pic = "feature4.png"
+        title = "超大规模图数据库 Nebula Graph V1.0 发布，为数据分析处理提速"
+        link = "http://software.it168.com/a2020/0609/6223/000006223679.shtml"
+        date = "2020-06-09"
+        source = "IT168"
+        readMore = "Read More >>"
+        Description = "分布式图数据库 Nebula Graph V1.0 正式亮相，为深耕 AI、金融、政府、医疗、IoT 等多个垂直领域的 CIO、架构师、数据科学家提供了新型的数据分析和洞察能力。"

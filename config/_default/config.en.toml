@@ -36,7 +36,7 @@ contentDir = "content/en"
 
     [[params.navigation.links]]
       title = "Use Cases"
-      class = "dropdown"
+      class = "dropdown dropdown-left"
         [[params.navigation.links.case]]
           title = "Real-time Recommendation"
           link = "/real-time-recommendation/"
@@ -62,6 +62,7 @@ contentDir = "content/en"
       target = "_blank"
     [[params.navigation.links]]
       title = "Company"
+      class = "dropdown dropdown-left"
       [[params.navigation.links.case]]
         title = "Newsroom"
         link = "/news"
@@ -290,145 +291,5 @@ contentDir = "content/en"
   [params.rss]
     link = "https://nebula-graph.io/posts/index.xml"
 
-  # News section
-  [params.news]
-      pic = "download.png"
-      downloadLink = "/file/NebulaGraphMediaKit.zip"
-      title="Media Kit"
-      content1= "• Company logo"
-      content2= "• Founder headshot"
-      [[params.news.list]]
-        pic = "feature1.png"
-        title = "VESoft raises $8M to meet China’s growing need for graph databases"
-        link = "https://techcrunch.com/2020/06/15/vesoft-china-graph-database-8m-funding/"
-        date = "June 15, 2020"
-        source = "TechCrunch"
-        readMore = "Read More >>"
-        Description = "VEsoft raises $8M to meet China’s growing need for graph databases. The new capital will allow the startup to develop products and expand to markets in North America, Europe and other parts of Asia."
 
-      [[params.news.list]]
-        pic = "feature4.png"
-        title = "Nebula Graph™ Database Raises $8 Million in Series Pre-A Funding"
-        date = "June 15, 2020"
-        readMore = "Read More >>"
-        link = "https://nebula-graph.io/posts/nebula-graph-raises-8-million-dollars-in-series-pre-a-funding/"
-        Description = "VEsoft Inc., the developer of the Nebula Graph™ database, today announced it raised $8M in a series pre-A funding round. The lead investor is Redpoint China Ventures. Matrix Partners China, who previously contributed as an angel investor, also contributed to this series pre-A round.a "
   
-#  Real-time Recommendation section
-  [params.realTimeRecommendation]
-      pic = "realTimeRecommendation.png"
-      bannerTtile = "Real-Time Recommendations"
-      bannerText="Social media, online retailers, streaming media, news outlets and similar businesses want to provide users with valuable in-the-moment recommendations."
-      [[params.realTimeRecommendation.fix]]
-        title = "Why Nebula Graph"
-        btnText = "Get Started with Nebula Graph"
-        link = "https://docs.nebula-graph.io/manual-EN/1.overview/2.quick-start/1.get-started/"
-        [[params.realTimeRecommendation.fix.fixList]]
-          text = "Nebula Graph is the most capable graph database available, able to handle the billions of data connections necessary for large-scale real-time recommendations unlike any other solution "
-        [[params.realTimeRecommendation.fix.fixList]]
-          text = "Nebula Graph’s architecture is designed for high scalability so growing your real-time recommendations engine as needed does not disrupt business continuity"
-      [[params.realTimeRecommendation.list]]
-        pic = "realTimeRecommendationCase1.png"
-        title = "Desired Results"
-        text = "A good real-time recommendation is done at the right moment. This is what makes a good real time recommendation highly relevant. When a business can make recommendations highly relevant, they add true user value creating a two-way beneficial relationship."
-        calss = "left"
-        background="backgroundA"
-
-      [[params.realTimeRecommendation.list]]
-        pic = "realTimeRecommendationCase2.png"
-        title = "Business Obstacles"
-        text1 = "1. The ability for a vendor or service provider to traverse all meaningful data is understood to create a better user experience."
-        text2 = "2. But market leaders in these categories have billions of transactions and unusually large-scale data sets to filter through."
-        text3 = "3. This creates complexity, not just in mining the data for significant results but also in the levels of performance required to get at it quickly."
-        calss = "right"
-        background="backgroundB"
-  
-  #  Fraud Detection section
-  [params.fraudDetection]
-      pic = "fraudDetection.png"
-      bannerTtile = "Anti-Money Laundering & Fraud Detection"
-      bannerText="Fraudulent activities are more abundant than ever: money laundering, credit card fraud, skimming, and so on. Millions of fraudulent activities are reported to banks alone each year and account for billions of dollars in losses."
-      [[params.fraudDetection.fix]]
-        title = "Why Nebula Graph"
-        btnText = "Get Started with Nebula Graph "
-        link = "https://docs.nebula-graph.io/manual-EN/1.overview/2.quick-start/1.get-started/"
-        [[params.fraudDetection.fix.fixList]]
-          text = "Nebula Graph can securely process billions of data sets with trillions of connections, so it can uncover the significant meaningful data behind even the most sophisticated frauds "
-        [[params.fraudDetection.fix.fixList]]
-          text = "Nebula Graph’s architecture is high performing and scalable enough to ensure real-time analytics of billions of transactions and the multitude of relationships they might have with each other"
-        [[params.fraudDetection.fix.fixList]]
-          text = "Nebula Graph’s distributed architecture is designed for high availability so you can rely on it to have practically no disruptions regardless of the size of the job at hand"
-      [[params.fraudDetection.list]]
-        pic = "fraudDetection1.png"
-        title = "Desired Results"
-        text = "Businesses susceptible to online fraud schemes need to have a better understanding of how complex schemes are pulled off, not just to recover losses but to prevent new ones. This understanding is valuable to have for real-time analysis that creates the possibility of stopping fraud schemes before they finish."
-        calss = "left"
-        background="backgroundA"
-
-      [[params.fraudDetection.list]]
-        pic = "fraudDetection2.png"
-        title = "Business Obstacles"
-        text1 = "1. A common obstacle for fraud experts is to traverse countless numbers of transactions to piece together potential crimes."
-        text2 = "2. Be able to understand how combinations of transactions and devices might be related to a single fraud scheme to ensure appropriate paths of investigation. This can include distributed information of individual account holders, various servers and IP addresses, and much more."
-        calss = "right"
-        background="backgroundB"
-  
-  #  Cyber Security section
-  [params.cyberSecurity]
-      pic = "cyberSecurity.png"
-      bannerTtile = "Combatting Cybersecurity Threats"
-      bannerText="Cybersecurity has been called by many in the federal government as the next big threat to a country’s national security. For businesses, everything from corporate espionage to elaborate hacking schemes are daily threats."
-      [[params.cyberSecurity.fix]]
-        title = "Why Nebula Graph"
-        btnText = "Get Started with Nebula Graph "
-        link = "https://docs.nebula-graph.io/manual-EN/1.overview/2.quick-start/1.get-started/"
-        [[params.cyberSecurity.fix.fixList]]
-          text = "Nebula Graph can securely process billions of data sets with trillions of connections, so it can uncover the significant meaningful data behind even the most sophisticated cyberattacks "
-        [[params.cyberSecurity.fix.fixList]]
-          text = "Nebula Graph’s distributed high-availability architecture is also designed for scalability and recovery without disruption, removing any concern whether technical teams can process the data needed to get past a major cyberattack"
-      [[params.cyberSecurity.list]]
-        pic = "cyberSecurity1.png"
-        title = "Desired Results"
-        text = "Organizations need useful tools to be able to track how these threats emerge so they can counter them. This means being able to find meaning to the various incidents and transactions that take place during attacks. Furthermore, by being able to more deeply analyze relationships between data sets, organizations might be able to get ahead of attacks with predictive analysis opportunities unlike possible before."
-        calss = "left"
-        background="backgroundA"
-
-      [[params.cyberSecurity.list]]
-        pic = "cyberSecurity2.png"
-        title = "Business Obstacles"
-        text1 = "1. Cybersecurity analysts must traverse immense amounts of data when a cyberattack occurs."
-        text2 = "2. Overcome information silos. It can be difficult to understand if relationships exist between incidents or individual transactions in an attack."
-        text3 = "3. Being able to quickly understand if a number of incidents are part of a single attack can be the difference between stopping a breach or allowing it to continue for days of continual damage."
-        calss = "right"
-        background="backgroundB"
-
-  # ai-and-machine-learning section
-  [params.aiAndMachineLearning]
-      pic = "aiAndMachineLearning1.png"
-      bannerTtile = "Machine Learning and AI Data Sets"
-      bannerText="A main goal behind machine learning is to implement artificial intelligence to automatically have systems learn from experience to gain accuracy without needing to program in that knowledge."
-      [[params.aiAndMachineLearning.fix]]
-        title = "Why Nebula Graph"
-        btnText = "Get Started with Nebula Graph "
-        link = "https://docs.nebula-graph.io/manual-EN/1.overview/2.quick-start/1.get-started/"
-        [[params.aiAndMachineLearning.fix.fixList]]
-          text = "Nebula Graph can securely process billions of data sets with trillions of connections, so it can more rapidly deliver greater accuracy for better AI results "
-        [[params.aiAndMachineLearning.fix.fixList]]
-          text = "Nebula Graph’s architecture is designed for high scalability so expanding machine learning data sets as needed does not disrupt business continuity"
-        [[params.aiAndMachineLearning.fix.fixList]]
-          text = "Nebula Graph is built with high availability and recovery in mind so disruptions are unlikely and your machine learning engine remains always on"
-      [[params.aiAndMachineLearning.list]]
-        pic = "aiAndMachineLearning2.png"
-        title = "Desired Results"
-        text = "Many large businesses are seeking ways to apply more accurate AI via machine learning engines to solve some of their largest problems or bring new solutions to market, such as driverless cars. From new technologies to advances in sciences, uncovering meaning behind previously unseen data can provide leaps of gains in new intelligence."
-        calss = "left"
-        background="backgroundA"
-
-      [[params.aiAndMachineLearning.list]]
-        pic = "aiAndMachineLearning.png"
-        title = "Business Obstacles"
-        text1 = "1. Machine learning requires immense amounts of data as the principle need is for AI to learn from each experience. The more data that can be processed, the more accurate AI results become. Each learning experience can mean many new transactions that must be correlated to many other transactions for full understanding. It can literally be billions of data sets."
-        text2 = "2. For larger applications, such as medical diagnosis that might be based on millions of patients, traversing the data for meaningful results will require analyzing billions of potential data sets."
-        text3 = "3. High performance is critical for some applications, which is why a graph database is one foundational need for optimal machine learning and AI."
-        calss = "right"
-        background="backgroundB"

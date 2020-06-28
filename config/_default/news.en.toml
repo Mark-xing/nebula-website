@@ -1,0 +1,25 @@
+contentDir = "content/en"
+[params]
+  # News section
+  [params.news]
+      pic = "download.png"
+      downloadLink = "/file/NebulaGraphMediaKit.zip"
+      title="Media Kit"
+      content1= "• Company logo"
+      content2= "• Founder headshot"
+      [[params.news.list]]
+        pic = "feature1.png"
+        title = "VESoft raises $8M to meet China’s growing need for graph databases"
+        link = "https://techcrunch.com/2020/06/15/vesoft-china-graph-database-8m-funding/"
+        date = "June 15, 2020"
+        source = "TechCrunch"
+        readMore = "Read More >>"
+        Description = "VEsoft raises $8M to meet China’s growing need for graph databases. The new capital will allow the startup to develop products and expand to markets in North America, Europe and other parts of Asia."
+
+      [[params.news.list]]
+        pic = "feature4.png"
+        title = "Nebula Graph™ Database Raises $8 Million in Series Pre-A Funding"
+        date = "June 15, 2020"
+        readMore = "Read More >>"
+        link = "https://nebula-graph.io/posts/nebula-graph-raises-8-million-dollars-in-series-pre-a-funding/"
+        Description = "VEsoft Inc., the developer of the Nebula Graph™ database, today announced it raised $8M in a series pre-A funding round. The lead investor is Redpoint China Ventures. Matrix Partners China, who previously contributed as an angel investor, also contributed to this series pre-A round.a "
