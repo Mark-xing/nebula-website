@@ -1,3 +1,6 @@
+.use-case{
+  padding-top: 50px;
+}
 .use-case .case{
   margin: 10px auto 0;
 }
@@ -14,7 +17,6 @@
   position: relative;
   justify-content:center;
   align-items: center;
-  padding-top: 50px;
   box-sizing:content-box;
 }
 .caseBanner .caseBanner-content .caseBanner-text {
@@ -41,6 +43,7 @@
 }
 .backgroundA{
   background: #FAFBFC;
+  min-height: 320px;
 }
 .case-list{
   width: 960px;
@@ -64,6 +67,7 @@
 }
 .backgroundB{
   direction: ltr;
+  min-height: 320px;
 }
 .backgroundB .case-right img{
  float: left;

@@ -3,7 +3,7 @@ header {
   background-repeat:no-repeat;
   background-size: 60vh 85vh;
   background-position: 97% 10vh;  
-  background-color: #000;
+  background-color: #1A1A1A;
   height: 640px;
   font-weight: 400;
 }
@@ -27,7 +27,7 @@ header a{
 header .header-content #title {
   max-width: 100%;
   text-transform: none;
-  font-size: 60px;
+  font-size: 52px;
   font-weight: 600;
   color:rgba(255, 255, 255, 1);
   line-height: 90px;
@@ -38,7 +38,7 @@ header .header-content #title {
 header .header-content #subtitle {
   max-width: 75% ;
   text-transform: none;
-  font-size: 30px ;
+  font-size: 26px ;
   color: rgba(255, 255, 255, 1);
   line-height: 45px;
   font-weight: 400;

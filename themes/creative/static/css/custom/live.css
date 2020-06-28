@@ -22,12 +22,14 @@
   margin-left: 47px;
 }
 
-.nebula-live .live-wrap .content h3 {
+.nebula-live .live-wrap .content h3 a{
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 24px;
   letter-spacing: 2px;
+  color: #000;
+  text-decoration: none;
 }
 
 .nebula-live .live-wrap .content p {
@@ -37,7 +39,7 @@
   letter-spacing: 1.33px;
 }
 
-.nebula-live .live-wrap .content h3 img {
+.nebula-live .live-wrap .content h3 a img {
   margin-right: 15px;
   width: 44px;
 }
@@ -46,12 +48,15 @@
   display: block;
   margin: auto;
   width: 194px;
-  color: #fff;
   background: #1890ff;
   border-radius: 23px;
   height: 46px;
   border: none;
   outline: none;
+}
+.nebula-live .live-wrap .content button a{
+  color: #fff;
+  text-decoration: none;
 }
 
 @media(max-width: 768px) {
@@ -89,8 +94,11 @@
 
   .nebula-live .live-wrap .content button {
     height: 30px;
-    font-size: 12px;
+    
     width: 100px;
     margin-top: 35px;
+  }
+  .nebula-live .live-wrap .content button a {
+    font-size: 12px;
   }
 }
