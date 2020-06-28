@@ -18,12 +18,10 @@
   font-weight:400;
   color:rgba(15, 15, 15, 1);
   line-height:50px;
-  font-family:"PingFangSC-Regular,PingFang SC";
 }
 .feature-item{
   font-size:16px;
   font-weight:400;
-  font-family:"PingFangSC-Regular,PingFang SC";
   color:rgba(128, 128, 128, 1);
   line-height: 24px;
   letter-spacing:2px;
@@ -58,10 +56,17 @@
   }
 }
 
-@media(max-width: 767px) {
+@media(max-width: 768px) {
+  #title{
+    font-size: 32px;
+  }
   .feature-item {
-    width: 50%;
+    width: 100%;
     text-align: center;
+  }
+
+  .container {
+      width: 100%;
   }
 
   .container {

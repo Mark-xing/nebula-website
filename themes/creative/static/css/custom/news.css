@@ -10,7 +10,6 @@
     font-size: 22px;
     color: #000000;
     letter-spacing: 0;
-    margin-bottom: 16px;
     display: inline-block;
     text-decoration: none;
   }
@@ -28,6 +27,9 @@
   }
   .blog-list .blog-summary+.news-summary {
     margin-top: 19px;
+  }
+  .blog-list .blog-summary .text {
+    padding-top: 16px;
   }
   #news-readMore{
     margin-top: 18px;

@@ -36,7 +36,7 @@
                         <div>{{.text}}</div>
                     {{ end }}
                 </div>
-                <button><a href={{.link}}>{{.btnText}}</a></button>
+                <button onclick="ga('send', 'event', 'Engagement', 'Button Click', 'CTA via Use Cases'),"><a href={{.link}}>{{.btnText}}</a></button>
             </div>
         {{ end }}
     {{ end }}

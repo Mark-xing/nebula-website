@@ -16,13 +16,8 @@
 @import url('./live.css');
 @import url('./useCase.css');
 
-@font-face {
-    font-family: "PingFangSC-Regular,PingFang SC";
-    src: url('../fonts/PingFang-Medium.ttf')
-}
-
 * {
-  font-family:"PingFangSC-Regular,PingFang SC" !important;
+  font-family: sans-serif !important;
 }
 
 main {

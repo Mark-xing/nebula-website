@@ -6,7 +6,6 @@
     width: 960px;
     margin: 0 auto;
     font-size: 16px;
-    font-family: "PingFangSC-Regular,PingFang SC";
     font-weight: 400;
     color: rgba(63, 64, 71, 1);
     line-height: 28px;
@@ -18,7 +17,6 @@
 }
 .posts-title{
   font-size:26px;
-  font-family:"PingFangSC-Regular,PingFang SC";
   color:rgba(6, 8, 18, 1);
   line-height:40px;
   text-decoration: none !important;
@@ -66,7 +64,6 @@
 
 .title-content{
   font-size:24px;
-  font-family:"PingFangSC-Regular,PingFang SC";
   font-weight: 400;
   color:rgba(6, 8, 18, 1);
   line-height:27px;

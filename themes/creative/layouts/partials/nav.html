@@ -42,7 +42,7 @@
                 </li>
                 {{ range .Site.Params.navigation.links }}
                     {{ if .links }}
-                        <li class="dropdown navbar-right">
+                        <li class="{{.class}} navbar-right">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                                 <img src="/images/language120x120.png">
                                 <span class="caret"></span>
@@ -58,7 +58,7 @@
                         </li>
                     {{ else }}
                         {{ $blogLink := replace $.Permalink "/tags/" "/posts/"}}
-                        <li id="{{.calss}}" class="{{if (or (in $.Permalink .link) (in $blogLink .link)) }}active{{end}}dropdown">
+                        <li id="{{.calss}}" class="{{if (or (in $.Permalink .link) (in $blogLink .link)) }}active{{end}}{{.class}}">
                           {{if .link}}
                             <a href={{.link}} target="{{.target}}" onclick="{{.onclick | safeJS }}" >{{.title}}</a>
                           {{else}}

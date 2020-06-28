@@ -7,7 +7,7 @@
         <span>{{.Site.Params.live.title}}</span>
       </h3>
       <p>{{.Site.Params.live.text}}</p>
-      <button type="button">{{.Site.Params.live.btnText}}</button>
+      <button type="button" onclick="ga('send', 'event', 'Engagement', 'Button Click', 'Promo via home'),">{{.Site.Params.live.btnText}}</button>
     </div>
   </div>
 </div>

@@ -36,6 +36,7 @@ contentDir = "content/en"
 
     [[params.navigation.links]]
       title = "Use Cases"
+      class = "dropdown"
         [[params.navigation.links.case]]
           title = "Real-time Recommendation"
           link = "/real-time-recommendation/"
@@ -60,17 +61,20 @@ contentDir = "content/en"
       link = "https://discuss.nebula-graph.io/"
       target = "_blank"
     [[params.navigation.links]]
-      title = "Newsroom"
-      link = "/news"
-    [[params.navigation.links]]
-      title = "Contact Us"
-      id = "#contact_us"
+      title = "Company"
+      [[params.navigation.links.case]]
+        title = "Newsroom"
+        link = "/news"
+      [[params.navigation.links.case]]
+        title = "Contact Us"
+        link = "mailto:info@vesoft.com"
       # [[params.navigation.links.links]]
       # 	title = "Use cases"
     # [[params.navigation.links]]
     # 	title = "Customers"
     [[params.navigation.links]]
       pic = "language120x120.png"
+      class = "dropdown"
         [[params.navigation.links.links]]
           title = "English"
           link = "/en/"

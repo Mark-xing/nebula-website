@@ -88,8 +88,9 @@
   }
 
   .nebula-live .live-wrap .content button {
-    height: 23px;
+    height: 30px;
     font-size: 12px;
     width: 100px;
+    margin-top: 35px;
   }
 }

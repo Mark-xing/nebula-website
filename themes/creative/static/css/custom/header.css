@@ -33,7 +33,6 @@ header .header-content #title {
   line-height: 90px;
   letter-spacing:2px;
   text-align: left;
-  font-family:"PingFangSC-Regular,PingFang SC";
   margin: 0 ;
 }
 header .header-content #subtitle {
@@ -45,7 +44,6 @@ header .header-content #subtitle {
   font-weight: 400;
   letter-spacing: 1px;
   text-align: left;
-  font-family: "PingFangSC-Regular,PingFang SC";
   margin: 36px 0 80px;
 }
 header .get-start {
@@ -150,8 +148,10 @@ header .get-start:hover {
  }
 @media(max-width: 768px) {
   header .header-content {
-      transform: translateY(20%);
-      padding: 50px 15px;
+      padding: 10px 15px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-45%)
   }
 
   .BlogAnchor{

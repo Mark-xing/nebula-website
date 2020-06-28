@@ -71,6 +71,7 @@
 .blog-list .blog-summary .text {
   display: flex;
   flex-direction: column;
+  -webkit-flex-direction: column;
   overflow: hidden;
 }
 
