@@ -116,6 +116,7 @@
   line-height: 16px;
   display: flex;
   align-items: center;
+  color: #8C8C8C;
 }
 
 .blog-summary .blog-metas > .meta + .meta {
@@ -133,7 +134,7 @@
 
 .blog-summary .blog-metas .tags > a {
   padding: 0 6px;
-  color: #131831;
+  color: #8C8C8C;
   text-decoration: underline;
 }
 

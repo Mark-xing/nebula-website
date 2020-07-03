@@ -30,8 +30,8 @@ header .header-content #title {
   font-size: 52px;
   font-weight: 600;
   color:rgba(255, 255, 255, 1);
-  line-height: 90px;
-  letter-spacing:2px;
+  line-height: 78px;
+  letter-spacing:1px;
   text-align: left;
   margin: 0 ;
 }
@@ -40,11 +40,11 @@ header .header-content #subtitle {
   text-transform: none;
   font-size: 26px ;
   color: rgba(255, 255, 255, 1);
-  line-height: 45px;
+  line-height:39px;
   font-weight: 400;
   letter-spacing: 1px;
   text-align: left;
-  margin: 36px 0 80px;
+  margin: 36px 0 36px;
 }
 header .get-start {
   background: #037FFF !important;
