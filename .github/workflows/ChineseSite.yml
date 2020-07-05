@@ -29,7 +29,7 @@ jobs:
     - name: OSS UPLOAD
       run: |
         chmod 755 ossutil64 &&
-        ./ossutil64 cp -r ./nebula-website/ oss://nebula-website-cn/website/ --language=CH --endpoint=${{ secrets.OSS_ENDPOINT }} --access-key-id=${{ secrets.OSS_ACCESS_KEY_ID }} --access-key-secret=${{ secrets.OSS_ACCESS_KEY_SECRET }} &&
+        ./ossutil64 cp -r ./nebula-website/ oss://nebula-website-cn/website/ --endpoint=${{ secrets.OSS_ENDPOINT }} --access-key-id=${{ secrets.OSS_ACCESS_KEY_ID }} --access-key-secret=${{ secrets.OSS_ACCESS_KEY_SECRET }} &&
         echo "oss upload finish"
 
 
