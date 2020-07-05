@@ -40,4 +40,4 @@ jobs:
           password: ${{ secrets.CN_PASSWORD }}
           port: ${{ secrets.CN_PORT }}
           source: ./nebula-website/index.html
-          target: /usr/web/nebula-website
+          target: /usr/web/test-website
