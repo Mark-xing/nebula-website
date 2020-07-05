@@ -29,9 +29,7 @@ jobs:
     - name: OSS UPLOAD
       run: |
         chmod 755 ossutil64 &&
-        ./ossutil64 -c ./github/config/.ossutilconfig &&
-        echo "ossutil ready" &&
-        ./ossutil64 cp -r ./nebula-website/ oss://nebula-website-cn/website/ &&
+        ./ossutil64 cp -r ./nebula-website/ oss://nebula-website-cn/website/ --config-file=./github/config/.ossutilconfig &&
         echo "oss upload finish"
 
 
