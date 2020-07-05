@@ -32,25 +32,12 @@ jobs:
         ./ossutil64 cp -r ./nebula-website/ oss://nebula-website-cn/website/ --endpoint=${{ secrets.OSS_ENDPOINT }} --access-key-id=${{ secrets.OSS_ACCESS_KEY_ID }} --access-key-secret=${{ secrets.OSS_ACCESS_KEY_SECRET }} &&
         echo "oss upload finish"
 
-
-    # - name: Compress
-    #   run: tar -czf site.tar.gz nebula-website
-
-    # - name: Transfer
-    #   uses: appleboy/scp-action@master
-    #   with:
-    #       host: ${{ secrets.CN_HOST }}
-    #       username: ${{ secrets.CN_USER_NAME }}
-    #       password: ${{ secrets.CN_PASSWORD }}
-    #       port: ${{ secrets.CN_PORT }}
-    #       source: site.tar.gz 
-    #       target: /usr/web
-
-    # - name: UnCompress
-    #   uses: appleboy/ssh-action@master
-    #   with:
-    #     host: ${{ secrets.CN_HOST }}
-    #     username: ${{ secrets.CN_USER_NAME }}
-    #     password: ${{ secrets.CN_PASSWORD }}
-    #     port: ${{ secrets.CN_PORT }}
-    #     script: tar -xzvf /usr/web/site.tar.gz -C /usr/web/
+    - name: Transfer index.html
+      uses: appleboy/scp-action@master
+      with:
+          host: ${{ secrets.CN_HOST }}
+          username: ${{ secrets.CN_USER_NAME }}
+          password: ${{ secrets.CN_PASSWORD }}
+          port: ${{ secrets.CN_PORT }}
+          source: ./nebula-website/index.html
+          target: /usr/web/nebula-website

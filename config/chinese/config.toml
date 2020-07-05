@@ -1,4 +1,4 @@
-baseurl = "https://nebula-graph.com.cn"
+baseurl = "https://www-cdn.nebula-graph.com.cn/website/"
 title = "Nebula Graph  - An Open Source, Distributed and High Performant Graph Database"
 theme = "creative"
 googleAnalytics = ""
