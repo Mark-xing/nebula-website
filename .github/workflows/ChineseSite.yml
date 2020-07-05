@@ -2,7 +2,8 @@ name:
 on:
   push:
     branches:
-      - master
+      # - master
+      - jerry-dev
 
 jobs:
   build-and-deploy:
@@ -11,35 +12,39 @@ jobs:
     - name: Checkout Github Action
       uses: actions/checkout@master
 
-    - name: Setup Hugo
-      uses: peaceiris/actions-hugo@v2
-      with:
-        hugo-version: '0.65.3'
+    - name: Setup ossutil
+      run: wget http://gosspublic.alicdn.com/ossutil/1.6.15/ossutil64
 
-    - name: Build
-      run: hugo --environment=chinese --minify -d nebula-website
 
-    - name: Remove resource about chinese
-      run: rm -rf ./nebula-website/en/
+    # - name: Setup Hugo
+    #   uses: peaceiris/actions-hugo@v2
+    #   with:
+    #     hugo-version: '0.65.3'
 
-    - name: Compress
-      run: tar -czf site.tar.gz nebula-website
+    # - name: Build
+    #   run: hugo --environment=chinese --minify -d nebula-website
 
-    - name: Transfer
-      uses: appleboy/scp-action@master
-      with:
-          host: ${{ secrets.CN_HOST }}
-          username: ${{ secrets.CN_USER_NAME }}
-          password: ${{ secrets.CN_PASSWORD }}
-          port: ${{ secrets.CN_PORT }}
-          source: site.tar.gz 
-          target: /usr/web
+    # - name: Remove resource about chinese
+    #   run: rm -rf ./nebula-website/en/
 
-    - name: UnCompress
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.CN_HOST }}
-        username: ${{ secrets.CN_USER_NAME }}
-        password: ${{ secrets.CN_PASSWORD }}
-        port: ${{ secrets.CN_PORT }}
-        script: tar -xzvf /usr/web/site.tar.gz -C /usr/web/
+    # - name: Compress
+    #   run: tar -czf site.tar.gz nebula-website
+
+    # - name: Transfer
+    #   uses: appleboy/scp-action@master
+    #   with:
+    #       host: ${{ secrets.CN_HOST }}
+    #       username: ${{ secrets.CN_USER_NAME }}
+    #       password: ${{ secrets.CN_PASSWORD }}
+    #       port: ${{ secrets.CN_PORT }}
+    #       source: site.tar.gz 
+    #       target: /usr/web
+
+    # - name: UnCompress
+    #   uses: appleboy/ssh-action@master
+    #   with:
+    #     host: ${{ secrets.CN_HOST }}
+    #     username: ${{ secrets.CN_USER_NAME }}
+    #     password: ${{ secrets.CN_PASSWORD }}
+    #     port: ${{ secrets.CN_PORT }}
+    #     script: tar -xzvf /usr/web/site.tar.gz -C /usr/web/
