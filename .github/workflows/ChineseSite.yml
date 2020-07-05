@@ -15,17 +15,25 @@ jobs:
     - name: Setup ossutil
       run: wget http://gosspublic.alicdn.com/ossutil/1.6.15/ossutil64
 
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: '0.65.3'
 
-    # - name: Setup Hugo
-    #   uses: peaceiris/actions-hugo@v2
-    #   with:
-    #     hugo-version: '0.65.3'
+    - name: Build
+      run: hugo --environment=chinese --minify -d nebula-website
 
-    # - name: Build
-    #   run: hugo --environment=chinese --minify -d nebula-website
+    - name: Remove resource about chinese
+      run: rm -rf ./nebula-website/en/
 
-    # - name: Remove resource about chinese
-    #   run: rm -rf ./nebula-website/en/
+    - name: OSS UPLOAD
+      run: |
+        chmod 755 ossutil64 &&
+        ossutil64 -c ./github/config/.ossutilconfig &&
+        echo "ossutil ready" &&
+        ossutil64 cp -r ./nebula-website/ oss://nebula-website-cn/website/ &&
+        echo "oss upload finish"
+
 
     # - name: Compress
     #   run: tar -czf site.tar.gz nebula-website
