@@ -1,11 +1,5 @@
 {{ "<!-- NAVIGATION -->" | safeHTML }}
 <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-    <!--Begin Comm100 Live Chat Code-->
-    <div id="comm100-button-f87c9787-cf25-4f2b-b92a-b14da3805db6"></div>
-    <script type="text/javascript">
-    var Comm100API=Comm100API||{};(function(t){function e(e){var a=document.createElement("script"),c=document.getElementsByTagName("script")[0];a.type="text/javascript",a.async=!0,a.src=e+t.site_id,c.parentNode.insertBefore(a,c)}t.chat_buttons=t.chat_buttons||[],t.chat_buttons.push({code_plan:"f87c9787-cf25-4f2b-b92a-b14da3805db6",div_id:"comm100-button-f87c9787-cf25-4f2b-b92a-b14da3805db6"}),t.site_id=40000004,t.main_code_plan="f87c9787-cf25-4f2b-b92a-b14da3805db6",e("https://vue.comm100.com/livechat.ashx?siteId="),setTimeout(function(){t.loaded||e("https://standby.comm100vue.com/livechat.ashx?siteId=")},5e3)})(Comm100API||{})
-    </script>
-    <!--End Comm100 Live Chat Code-->
     <div class="nav-popup" id="nav-popup"> <img src="/images/popup.png" /><img src="/images/popup.png" /><img src="/images/popup.png" />  {{ .Site.Params.popupText  }} <a href={{ .Site.Params.popupLink }} onclick="{{.Site.Params.popupClick | safeJS}}" target="_blank">{{ $.Site.Params.popupLinkText }}</a> <img src="/images/shut.png" id="shut" onclick="shut()"/></div>
     <div class="container-fluid">
         {{ "<!-- Brand and toggle get grouped for better mobile display -->" | safeHTML }}
@@ -92,7 +86,12 @@
         {{ "<!-- /.navbar-collapse -->" | safeHTML }}
     </div>
     {{ "<!-- /.container-fluid -->" | safeHTML }}
-    
+    <!--Begin Comm100 Live Chat Code-->
+    <!-- <div id="comm100-button-f87c9787-cf25-4f2b-b92a-b14da3805db6"></div>
+    <script type="text/javascript">
+    var Comm100API=Comm100API||{};(function(t){function e(e){var a=document.createElement("script"),c=document.getElementsByTagName("script")[0];a.type="text/javascript",a.async=!0,a.src=e+t.site_id,c.parentNode.insertBefore(a,c)}t.chat_buttons=t.chat_buttons||[],t.chat_buttons.push({code_plan:"f87c9787-cf25-4f2b-b92a-b14da3805db6",div_id:"comm100-button-f87c9787-cf25-4f2b-b92a-b14da3805db6"}),t.site_id=40000004,t.main_code_plan="f87c9787-cf25-4f2b-b92a-b14da3805db6",e("https://vue.comm100.com/livechat.ashx?siteId="),setTimeout(function(){t.loaded||e("https://standby.comm100vue.com/livechat.ashx?siteId=")},5e3)})(Comm100API||{})
+    </script> -->
+    <!--End Comm100 Live Chat Code-->
 </nav>
 
 <script>
