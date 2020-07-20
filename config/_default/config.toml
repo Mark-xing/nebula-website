@@ -1,4 +1,4 @@
-baseurl = "https://nebula-graph.io/"
+baseurl = "http://localhost:1313/"
 title = "Nebula Graph  - An Open Source, Distributed and High Performant Graph Database"
 theme = "creative"
 googleAnalytics = ""
